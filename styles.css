@@ -1,0 +1,319 @@
+:root {
+    --primary: #4faef8;
+    --primary-dark: #2b8fd9;
+    --primary-light: #6fc3ff;
+    --bg: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --card-bg: #ffffff;
+    --border: #e2e8f0;
+    --shadow: rgba(15, 23, 42, 0.08);
+    --logo-size: 96px;
+    --radius: 16px;
+    --radius-sm: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+#brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#logo {
+    width: var(--logo-size);
+    height: auto;
+}
+
+#team-name {
+    font-weight: 700;
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+#header-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg-secondary);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.icon-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 174, 248, 0.3);
+    border-color: var(--primary);
+}
+
+.icon-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.icon-link:hover svg {
+    transform: scale(1.1);
+}
+
+main {
+    flex: 1;
+    padding: 3rem 2.5rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+section {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    border: 1px solid var(--border);
+}
+
+ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+ul ul {
+    margin-left: 2rem;
+    margin-top: 0.75rem;
+    margin-right: -1rem;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+    border-left: 2px solid var(--border);
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+    opacity: 1;
+}
+
+ul ul.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+li {
+    margin: 0.75rem 0;
+    position: relative;
+}
+
+.folder-item {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.folder-item:hover {
+    background: linear-gradient(135deg, rgba(79, 174, 248, 0.08) 0%, rgba(43, 143, 217, 0.08) 100%);
+    border-color: var(--primary-light);
+}
+
+.folder-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.folder-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.folder-toggle svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--primary);
+}
+
+.folder-item.collapsed .folder-toggle {
+    transform: rotate(-90deg);
+}
+
+.folder-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%234faef8" viewBox="0 0 640 640"><path d="M128 512L512 512C547.3 512 576 483.3 576 448L576 208C576 172.7 547.3 144 512 144L362.7 144C355.8 144 349 141.8 343.5 137.6L305.1 108.8C294 100.5 280.5 96 266.7 96L128 96C92.7 96 64 124.7 64 160L64 448C64 483.3 92.7 512 128 512z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+.folder-name {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+}
+
+.pdf-item {
+    transition: all 0.3s ease;
+}
+
+.pdf-item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 1.25rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.pdf-item a::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%234faef8" viewBox="0 0 640 640"><path d="M192 64C156.7 64 128 92.7 128 128L128 512C128 547.3 156.7 576 192 576L448 576C483.3 576 512 547.3 512 512L512 234.5C512 217.5 505.3 201.2 493.3 189.2L386.7 82.7C374.7 70.7 358.5 64 341.5 64L192 64zM453.5 240L360 240C346.7 240 336 229.3 336 216L336 122.5L453.5 240z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.pdf-item a:hover {
+    background: linear-gradient(135deg, rgba(79, 174, 248, 0.1) 0%, rgba(111, 195, 255, 0.1) 100%);
+    border-color: var(--primary);
+    color: var(--primary-dark);
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(79, 174, 248, 0.15);
+}
+
+.pdf-item a:hover::before {
+    transform: scale(1.15);
+}
+
+footer {
+    background: var(--card-bg);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 2rem 2.5rem;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+footer p:first-child {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --logo-size: 52px;
+    }
+
+    header {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #team-name {
+        font-size: 1.4rem;
+    }
+
+    #header-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .icon-link {
+        flex: 1;
+        justify-content: center;
+    }
+
+    main {
+        padding: 2rem 1.5rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    ul ul {
+        margin-left: 1rem;
+        padding-left: 1rem;
+    }
+
+    footer {
+        padding: 1.5rem 1.5rem;
+    }
+}

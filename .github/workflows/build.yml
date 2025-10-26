@@ -1,0 +1,124 @@
+name: Build and Publish LaTeX PDFs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compile all LaTeX sources
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "**/*.tex"
+          work_in_root_file_dir: true
+          latexmk_use_lualatex: true
+          latexmk_shell_escape: true
+
+      - name: Prepare public folder and copy PDFs + static resources
+        run: |
+          mkdir -p public
+
+          find . -maxdepth 1 -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.svg" -o -name "*.ico" \) -exec cp {} public/ \;
+
+          for d in assets static images; do
+            [ -d "$d" ] && cp -r "$d" public/
+          done
+
+          find . -name "*.pdf" -type f | while read f; do
+            target="public/${f#./}"
+            mkdir -p "$(dirname "$target")"
+            cp "$f" "$target"
+          done
+
+      - name: Update index.html with PDF section
+        run: |
+          [ -f public/index.html ] || cp index.html public/index.html
+
+          generate_folder_content() {
+            local dir="$1"
+            local html=""
+
+            mapfile -t pdfs < <(find "$dir" -maxdepth 1 -type f -name "*.pdf" | sort -r)
+            for file in "${pdfs[@]}"; do
+              [ -f "$file" ] || continue
+              relpath="${file#public/}"
+              filename=$(basename "$file")
+              html+="<li class=\"pdf-item\"><a href='$relpath' target='_blank'>$filename</a></li>"
+            done
+
+            mapfile -t subdirs < <(find "$dir" -mindepth 1 -maxdepth 1 -type d | sort)
+            for subdir in "${subdirs[@]}"; do
+              folder_name=$(basename "$subdir")
+              [[ "$folder_name" == ".git" || "$folder_name" == ".github" || "$folder_name" == "public" || "$folder_name" == "assets" || "$folder_name" == "images" || "$folder_name" == "static" ]] && continue
+
+              subtree=$(generate_folder_content "$subdir")
+              if [[ -n "$subtree" ]]; then
+                html+="<li class=\"folder-item\"><div class=\"folder-header\"><div class=\"folder-toggle\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 320 512\"><path d=\"M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z\"/></svg></div><div class=\"folder-icon\"></div><span class=\"folder-name\">$folder_name</span></div>$subtree</li>"
+              fi
+            done
+
+            if [[ -n "$html" ]]; then
+              echo "<ul>$html</ul>"
+            else
+              echo ""
+            fi
+          }
+
+          for main_folder in "0 - Candidatura" "1 - RTB" "2 - PB"; do
+            folder_path="public/$main_folder"
+            if [ -d "$folder_path" ]; then
+              folder_content=$(generate_folder_content "$folder_path")
+              
+              # Escape special characters for awk
+              escaped_content=$(echo "$folder_content" | sed 's/[&/\]/\\&/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+              
+              awk -v content="$escaped_content" -v marker="<!-- CONTENT-$main_folder -->" '
+                $0 ~ marker {print; print content; next}
+                {print}
+              ' public/index.html > public/index_temp.html
+              
+              mv public/index_temp.html public/index.html
+            fi
+          done
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: public
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: public
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
