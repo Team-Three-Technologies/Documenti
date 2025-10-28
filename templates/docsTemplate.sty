@@ -1,0 +1,53 @@
+\ProvidesPackage{docsTemplate}
+
+\usepackage{array}
+\usepackage[italian]{babel}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+\graphicspath{{./assets/}{assets/}}
+
+\hypersetup {
+    colorlinks=true,
+    linkcolor=black,
+}
+
+\def\docTitle{}
+\def\docAuthors{}
+\def\docVerificators{}
+\def\docApprovation{}
+\def\docVersion{}
+\def\docType{}
+\def\docDestination{}
+\def\memoTime{}
+\def\memoPlace{}
+\def\memoAbsents{}
+
+\newcommand{\setTitle}[1]{\def\docTitle{#1}}
+\newcommand{\setAuthors}[1]{\def\docAuthors{#1}}
+\newcommand{\setVerificators}[1]{\def\docVerificators{#1}}
+\newcommand{\setApprovation}[1]{\def\docApprovation{#1}}
+\newcommand{\setVersion}[1]{\def\docVersion{#1}}
+\newcommand{\setType}[1]{\def\docType{#1}}
+\newcommand{\setDestination}[1]{\def\docDestination{#1}}
+\newcommand{\setTime}[1]{\def\memoTime{#1}}
+\newcommand{\setPlace}[1]{\def\memoPlace{#1}}
+\newcommand{\setAbsents}[1]{\def\memoAbsents{#1}}
+
+\definecolor{lightgray}{gray}{0.9}
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[width=1cm]{logo.png}}
+\fancyhead[R]{\textit{Team Three Technologies}}
+\fancyfoot[C]{\docTitle}
+\fancyfoot[R]{\thepage}
+
+\renewcommand{\footrulewidth}{0.4pt}

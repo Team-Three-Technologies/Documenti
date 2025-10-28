@@ -15,13 +15,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up LaTeX
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: "**/*.tex"
-          work_in_root_file_dir: true
-          latexmk_use_lualatex: true
-          latexmk_shell_escape: true
+      - name: Compile LaTeX documents
+        run: |
+          find . -name "*.tex" -type f ! -path "*/templates/*" | while IFS= read -r texfile; do
+            texdir=$(dirname "$texfile")
+            texbase=$(basename "$texfile" .tex)
+            
+            echo "Directory: $texdir"
+            echo "Basename: $texbase"
+            
+            docker run --rm \
+              -v "$PWD:/work" \
+              -w "/work" \
+              ghcr.io/xu-cheng/texlive-full:latest \
+              sh -c "TEXINPUTS='.:./templates//:$texdir:' latexmk -pdf -lualatex -shell-escape -interaction=nonstopmode -output-directory='$texdir' '$texfile'" || {
+                echo "❌ FAILED to compile: $texfile"
+                echo "Exit code: $?"
+              }
+          done
 
       - name: Prepare public folder and copy PDFs + static resources
         run: |
@@ -78,7 +89,6 @@ jobs:
             if [ -d "$folder_path" ]; then
               folder_content=$(generate_folder_content "$folder_path")
               
-              # Escape special characters for awk
               escaped_content=$(echo "$folder_content" | sed 's/[&/\]/\\&/g' | sed ':a;N;$!ba;s/\n/\\n/g')
               
               awk -v content="$escaped_content" -v marker="<!-- CONTENT-$main_folder -->" '
