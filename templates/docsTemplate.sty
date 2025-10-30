@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{longtable}
+\usepackage{ragged2e}
 \usepackage{setspace}
 \usepackage{tabularx}
 \usepackage[table]{xcolor}
@@ -44,6 +45,7 @@
 \definecolor{lightgray}{gray}{0.9}
 
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
 
 \pagestyle{fancy}
 \fancyhf{}
