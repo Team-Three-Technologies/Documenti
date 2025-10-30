@@ -1,0 +1,475 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Analisi dei Capitolati}
+\setAuthors{Nenad Radulovic}
+\setVerificators{N/A}
+\setVersion{0.1}
+\setType{Interno}
+\setDestination{Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \rowcolors{2}{white}{lightgray}
+        \begin{tabularx}{\textwidth}{|l|l|X|l|X|X|}
+        \hline
+        \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+        \hline
+        \textbf{0.1} & 30/10/2025 & Nenad Radulovic & Da aggiungere & N/A & Stesura analisi dei capitolati \\
+        \hline
+        \end{tabularx}
+    }
+    \newpage
+
+    \tableofcontents
+    \newpage
+
+    \section{Introduzione}
+    Il presente documento punta a fornire un'analisi esaustiva dei capitolati esaminati, mostrando per ogni capitolato un resoconto della realtà in cui si applica e delle richieste. A questo resoconoto si aggiungono le considerazioni sui punti di forza e sui difetti che il gruppo ha trovato durante il periodo di analisi. \\ Il gruppo ha ritenuto in alcuni casi organizzare delle riunioni con i proponenti di alcuni capitolati, i riferimenti al contenuto di queste riunioni è presente nelle relative sezioni.
+
+    \section{Capitolato C1 - Automated EN18031 Compliance Verification}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}: Automated EN18031 Compliance Verification
+            \item \textbf{Proponente}: Bluewind S.r.l
+        \end{itemize}
+    \subsection{Obbiettivo}
+    L’obiettivo del progetto è quello di realizzare un sistema software che automatizzi e renda ripetibile la verifica di conformità ai requisiti di cybersecurity definiti nello standard EN18031. Il progetto prevede inoltre la validazione funzionale mediante un case study pratico (una macchina da caffè connessa via Wi-Fi).
+    \subsection{Dominio Applicativo}
+    Il progetto prevede una piattaforma che guida un verificatore (ingegnere / tecnico / auditor) nella verifica di conformità EN18031/RED attraverso decision tree collegati ai singoli requisiti, permettendo di compilare domande, allegare evidenze, tracciare lo stato dei requisiti e generare la documentazione richiesta.\\
+    Le componenti principali saranno:
+    \begin{itemize}
+        \item Interfaccia grafica (web o desktop): GUI guidata per compilare le domande dei decision tree, visualizzare lo stato dei requisiti e navigare/modificare i tree.
+        \item Motore dei decision tree: importa XML/JSON dei tree, esegue le domande in ordine gerarchico (Yes/No) rispettando dipendenze e produce output univoci (NA / Pass / Fail).
+        \item Modulo import/export e parsing: importa descrizioni del sistema (CSV, XML, JSON), effettua parsing/serializzazione dei tree e salva i risultati in formati modificabili.
+        \item Dashboard ed editor grafico: pannello per monitorare lo stato complessivo, navigare i tree e, se richiesto, modificare e salvare versioni dei tree (text/graph).
+        \item Tracciabilità e reporting: registra le decisioni e le evidenze, con esportazione dei risultati e report (PDF/CSV/JSON/XML) e possibilità di includere giustificazioni.
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+        \item Python 3.x: preferenza per la parte backend in Python, con gestione del packaging tramite strumenti tipo pyproject.toml. 
+        \item Formati documentali standard: import/export e rappresentazione dei decision tree e dei documenti in CSV, XML, JSON. 
+        \item Protocollo MQTT + TLS: utilizzato nel caso studio (broker locale e remoto) per la raccolta dati e per la verifica delle modalità di comunicazione/autenticazione. 
+        \item Metodologia Agile: approccio raccomandato per l’organizzazione e la gestione del progetto. 
+        \item Interfaccia web o desktop: non vengono imposti vincoli rigidi; è lasciata libertà di scelta tra applicazione web-based o desktop, compatibilmente con i requisiti di import/export e dashboard.
+    \end{itemize}
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+        \item Carico di lavoro molto accessibile 
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+        \item Presentazione non accativante, poco chiara
+        \item La notevole lontananza dell'ufficio renderebbe scomodo organizzare degli incontri in presenza con la proponente 
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato non è stato molto considerato, in quanto diversi membri del gruppo hanno ritenuto l'esposizione poco chiara, e in generale l'ambito del progetto non è stato giudicato particolarmente interessante.
+
+    \section{Capitolato C2 - Code Guardian}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}: Code Guardian
+            \item \textbf{Proponente}: VarGroup S.p.A
+        \end{itemize}
+    \subsection{Obbiettivo}
+    L’obiettivo del progetto è realizzare Code Guardian, una piattaforma web basata su un’architettura ad agenti che automatizza l’audit e la remediation dei repository software. La piattaforma deve analizzare repository (es. GitHub) per valutare qualità, sicurezza, test e documentazione, generare report automatici, proporre suggerimenti di remediation e fornire una demo/MVP funzionante con documentazione tecnica.
+    \subsection{Dominio Applicativo}
+    La piattaforma automatizza il processo di valutazione e miglioramento dei repository software tramite un’architettura ad agenti coordinata da un orchestratore. Scansiona i repository per rilevare linguaggi, dipendenze e metriche di qualità, esegue controlli automatici (test coverage, sicurezza OWASP) e genera suggerimenti di remediation. Fornisce una dashboard web con ranking e report esportabili, integrazione CI/CD per analisi automatiche su eventi di repository e funzionalità opzionali per storico/analisi temporale e applicazione interattiva delle correzioni. L’architettura è modulare ed espandibile tramite plugin/nuovi agenti.\\
+
+    Le parti fondamentali della piattaforma saranno:
+    \begin{itemize}
+        \item Orchestratore + agenti specializzati: coordinamento di task paralleli e mirati.
+        \item Analisi repository: identificazione di linguaggi, dipendenze e metriche di qualità.
+        \item Agent coverage: verifica presenza/qualità dei test (target indicativo 70% coverage).
+        \item Agent sicurezza (OWASP): scansione automatica per vulnerabilità critiche.
+        \item Modulo remediation: suggerimenti concreti per fix; possibilità di applicazione interattiva (opz.).
+        \item Dashboard web: visualizzazione stato, ranking e report dettagliati.
+        \item Reportistica \& export: esportazione in Swagger/PDF/CSV/JSON e notifiche (opz.).
+        \item CI/CD, storico e plugin system: trigger automatici, analisi temporali e estendibilità con nuovi agenti (opz.).
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+        \item 
+        \item Backend / Orchestratore: Node.js e/o Python per la realizzazione dell’orchestratore e degli agenti. 
+        \item Frontend: React.js.
+        \item Database: MongoDB o PostgreSQL. 
+        \item CI/CD \& integrazione: GitHub Actions per pipeline di build/test/scan e integrazione con i trigger di analisi. 
+        \item Cloud / Hosting: AWS come piattaforma di riferimento per deployment e scalabilità. 
+        \item Sicurezza \& best practice: linee guida OWASP per l’analisi delle vulnerabilità e remediation. 
+        \item Frameworks/SDK agenti: esempi e risorse indicate per progettare agenti da cui trarre pattern di orchestrazione, observability e testing. 
+        \item Linguaggi e tool consigliati: Node.js, Python, TypeScript; strumenti di analisi statiche, scanner di sicurezza e tool per coverage test. 
+        \item Pratiche di progetto: metodologia Agile, documentazione Swagger per API, modularità del codice e requisito di test automatizzati (coverage >= 70%).
+    \end{itemize}   
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+        \item Presentazione accattivante
+        \item Progetto molto stimolante
+        \item Nel complesso sembra offrire la possibilità di apprendere molto riguardo ad aspetti che potrebbero tornare molto utili in futuro in diverse realtà lavorative. 
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+        \begin{itemize}
+            \item Timore che il carico di lavoro vada oltre le nostre capacità   
+            \item Timore di non essere seguiti adeguatamente vista la dimensione dell'azienda 
+        \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato inizialmente è stato preso in considerazione da alcuni membri del gruppo, ma in seguito messo da parte non per un demerito suo ma perché si è ritenuto più adatto l'approfondimento di altri capitolati. A influenzare questo cambio di priorità è stato anche il presentimento che questo capitolato, rispeto ad altri, richiedesse una maggiore conoscenza preliminare delle tecnologie.
+
+    \section{Capitolato C3 - DIPReader} \label{sec:C3}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}: DIPReader
+            \item \textbf{Proponente}: Sanmarco Informatica S.p.A.
+        \end{itemize}
+    \subsection{Obbiettivo}
+    L’obiettivo del progetto DIPReader è realizzare una piattaforma che permetta a utenti (anche in assenza di connettività) di interrogare e consultare localmente i pacchetti di distribuzione (Distribution Information Package, ZIP) forniti dal sistema di conservazione digitale. L’app deve rendere ricercabili e navigabili i documenti e i metadati contenuti nel DIP, offrire anteprime per i formati comuni (PDF, XML, …), consentire la selezione e il salvataggio locale di documenti, raccogliere e mostrare le informazioni relative al processo di conservazione e supportare, opzionalmente, ricerche in linguaggio naturale e verifica delle firme digitali.
+    \subsection{Dominio Applicativo}
+    La soluzione richiesta copre le funzionalità di importazione, indicizzazione, consultazione e gestione dei pacchetti DIP; in dettaglio i componenti e i casi d’uso principali sono:
+    \begin{itemize}
+        \item Import / Parsing del pacchetto DIP: apertura del file ZIP fornito dal sistema di conservazione e parsing della sua struttura. 
+        \item Indicizzazione e ricerca metadata-driven: creazione di un indice locale basato sui metadati contenuti nel pacchetto per rendere i documenti immediatamente ricercabili tramite filtri e query testuali. 
+        \item Visualizzazione / anteprima: preview integrata per i formati più diffusi (PDF, XML, ecc.) direttamente nel browser o nell’app multipiattaforma, senza richiedere installazioni aggiuntive. 
+        \item Selezione ed esportazione locale: possibilità per l’utente di selezionare sottoinsiemi di documenti e salvarli sul proprio dispositivo o inviarli alla coda di stampa. 
+        \item Verifica informazioni di conservazione e firme: componenti per controllare e rappresentare i dati del processo di conservazione e, opzionalmente, verificare le firme digitali dei documenti. 
+        \item Ricerca semantica: supporto a funzionalità avanzate di ricerca semantica basata su embedding per recuperare documenti affini anche quando la corrispondenza lessicale è scarsa. 
+        \item Modalità offline e multi-piattaforma: l’app deve funzionare autonomamente nel browser o come app multipiattaforma (PWA/Electron), garantendo la consultazione anche senza connessione. 
+        \item Testabilità e qualità: suite di test (unità e integrazione) per la parte di reperimento ed elaborazione dei dati, per assicurare che nuove funzionalità non compromettano il comportamento esistente. 
+        \item Integrazione cloud: accesso a pacchetti di distribuzione disponibili in cloud per scaricare/importare direttamente DIP remoti.
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+        \item Database / storage locale: SQLite. 
+        \item Motore di similarità / ricerca semantica (opzionale): Faiss (o librerie equivalenti) per la ricerca per embedding se si implementa la ricerca semantica. 
+        \item Frontend / framework: TypeScript con React o Angular. 
+        \item Parsing e viewer: librerie JavaScript per decomprimere ZIP nel browser, parser XML/JSON e viewer per PDF/XML (es. PDF.js) per le anteprime. 
+        \item Indicizzazione e ricerca full-text: soluzioni locali di indicizzazione testuale integrate nell’app o basate su SQLite + FTS. 
+        \item Architettura e distribuzione: architettura autoconsistente (no-install), quindi PWA o applicazione web static-hosted; per accesso cloud opzionale usare API sicure e storage su cloud. 
+        \item Testing e CI: test unitari e di integrazione obbligatori per i flussi di reperimento/elaborazione; uso di sistemi di versionamento (GitHub/Bitbucket) e pipeline CI per esecuzione automatica dei test. 
+    \end{itemize}
+
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+        \item Il progetto sembra offrire un buon bilanciamento tra le parti frontend, backend e ingrazione con un sistema presistente 
+        \item Nella riunione di approfondimento il proponente si è mostrato molto diponibile ed esaustivo nel rispondere alle domande
+        \item Il progetto offre un buon compromesso tra le indicazioni del committente e la libertà lasciata al gruppo
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \subsection{Considerazioni Finali}
+    Questo capitolato fin da subito ha attirato l'attenzione di molti membri del gruppo, e in seguito alla valutazione degli altri capitolati, è stato scelto, dal momento che è stato considerato il più interessante dalla maggioranza del gruppo. Per approfondire la proposta è stata organizzata anche una riunione con la proponente; il contenuto della riunione (comprese le domande) è consultabile nel Verbale Esterno del 20 Ottobre 2025.
+
+    \section{Capitolato C5 - L’App che Protegge e Trasforma}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}: L’App che Protegge e Trasforma
+            \item \textbf{Proponente}: Miriade S.r.l
+        \end{itemize}
+    \subsection{Obbiettivo}
+    Questo progetto ha come obiettivo lo sviluppo di un’applicazione mobile con il fine di prevenire e supportare le vittime di violenza di genere. L’app dovrà essere uno strumento intelligente e sicuro, in grado di riconoscere segnali di pericolo e offrire delle soluzioni agli utenti. Inoltre è richiesto che venga sviluppata sia per sistemi iOS che per sistemi Android, garantendo un’interfaccia utente intuitiva e accessibile.
+    \subsection{Dominio Applicativo}
+    L’app dovrà permettere di identificare le situazioni a rischio, di inviare messaggi di pericolo a contatti predefiniti o centri di aiuto e di accedere facilmente a servizi di supporto. Inoltre dovrà mettere a disposizione delle funzionalità di sicurezza personalizzate, dei moduli educativi per sensibilizzare sul tema della violenza di genere e uno spazio sicuro per la comunicazione e il supporto reciproco tra gli utenti.
+    L’applicazione sarà composta dalle seguenti funzionalità principali:
+    \begin{itemize}
+        \item Il detective delle relazioni, cioè un motore di regole avanzato che aiuta l’utente a riconoscere i segnali d’allarme nelle relazioni sentimentali.
+        \item Lo specchio intelligente che permette di fornire un feedback in tempo reale di un evento descritto dall’utente, per aiutarlo a comprendere se rientra in uno schema di rischio.
+        \item La scatola nera grazie alla quale l’utente potrà analizzare i propri pensieri e messaggi, ottenendo un feedback dall’app, con l’obiettivo di prevenire la comunicazione tossica.
+        \item La guida al coraggio è una sezione informativa contenente la posizione di centri antiviolenza, numeri di emergenza e procedure legali per la denuncia.
+        \item Il guardiano silenzioso che, tramite un comando discreto, consentirà l’invio di un allarme silenzioso a dei contatti fidati e fisicamente vicini alla posizione dell’utente.
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+        \item Flutter per lo sviluppo della parte mobile.
+        \item AWS come servizio cloud per ospitare l’infrastruttura di backend.
+        \item Amazon API Gateway per la comunicazione tra l’app mobile e il backend.
+        \item AWS Lambda per i microservizi.
+        \item Amazon RDS come database relazionale per dati strutturati.
+        \item Amazon DynamoDB come database NoSQL per dati meno strutturati e alta scalabilità.
+        \item Amazon S3 come storage per contenuti multimediali e dati di configurazione.
+        \item Amazon Cognito come servizio per gestire accesso, autenticazione, autorizzazioni e profili dell’utente.
+        \item Amazon Kinesis / AWS SQS per gestire messaggi asincroni, utile per l’invio di allarmi.
+        \item Amazon SageMaker e Amazon Bedrock  per l'implementazione del "Detective delle Relazioni" e dello "Specchio Intelligente".
+        \item AWS Step Functions come orchestratore dei flussi di lavoro.
+        \item AWS CloudWatch per monitorare l’applicazione, raccogliere log e impostare allarmi.
+    \end{itemize}
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+        \item Importanza e utilità sociale dell’applicazione.
+        \item Proposta chiara di una possibile soluzione tecnica.
+        \item Corsi messi a disposizione.
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+        \item Viene proposta una soluzione quasi interamente basata su AWS, limitando così la portabilità in altre infrastrutture cloud.
+        \item Capitolato troppo approfondito, poco chiari quali sono i requisiti minimi.
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato aveva incuriosito diversi membri del gruppo, principalmente per la tematica trattata, ma in seguito è stato considerato meno interessante rispetto ad altri capitolati che hanno attirato maggiormente l’attenzione del gruppo. Anche in questo caso è disponibile il resoconoto di un incontro effettuato con il proponente reperibile nel Verbale Esterno del 23 Ottobre 2025.
+
+    \section{Capitolato C5 - NEXUM}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}: NEXUM
+            \item \textbf{Proponente}: Eggon S.r.l
+        \end{itemize}
+    \subsection{Obbiettivo}
+    Lo scopo del progetto è sviluppare nuove funzionalità, per la piattaforma NEXUM, che mirano a migliorare la gestione HR (Human Resources), il dialogo con i CdL (Consulenti del Lavoro) e l’esperienza digitale dei dipendenti.
+    \subsection{Dominio Applicativo}
+    Con questo progetto si vogliono introdurre un AI Assistant per la creazione di contenuti, in grado di adeguare stile e tono comunicativo a quello dell’azienda; una estensione del modulo di timbratura per la raccolta di ferie, permessi, malattia e straordinari; un modulo di rilevamento anomalie nelle presenze e negli straordinari; un sistema di interoperabilità con gli studi dei CdL, per scambio di documenti e scadenze, potenziato dalla AI per il riconoscimento e dispaccio dei documenti.
+    In particolare viene richiesta l’implementazione di due moduli AI, che saranno accessibili da una dashboard amministrativa:
+    \begin{itemize}
+        \item AI Assistant Generativo che dovrà permettere:
+        \begin{itemize}
+	        \item La generazione di titolo, contenuto, immagine di copertina a partire da un prompt. 
+	        \item La selezione del tono e dello stile del messaggio (formale, informale, neutro) da una lista precompilata di possibilità che influenzeranno la generazione del contenuto. 
+	        \item Il salvataggio dei prompt utilizzati e dei risultati. 
+	        \item Un sistema di rating da parte dell’utente per la catalogazione della qualità dei risultati.
+        \end{itemize}
+        \item AI Co-Pilot per i CdL che consentirà:
+        \begin{itemize}
+	        \item L’accesso a una funzione di repository documentale accessibile dalla dashboard per gli utenti CdL per l’upload di documenti. 
+	        \item Il riconoscimento del documento. 
+	        \item Il riconoscimento del/dei destinatari. 
+	        \item Lo split dei documenti caricati se coinvolgono diversi destinatari (cedolini massivi). 
+	        \item La creazione automatica di una lista di distribuzione/dispaccio dei documenti e del messaggio.
+        \end{itemize}
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+		\item Angular per la creazione della dashboard amministrativa.
+		\item Next.js per creare la web app per gli utenti finali.
+		\item Ruby on Rails per la gestione delle API.
+		\item Sidekiq per l’elaborazione dei background jobs di Ruby on Rails.
+		\item Amazon RDS come database relazionale.
+		\item S3 per lo storage dei documenti.
+		\item Amazon Cognito per la gestione di autenticazioni, autorizzazioni e degli utenti.
+		\item VPC per l’isolamento delle risorse.
+		\item WAF e AWS Shield come servizi di sicurezza.
+		\item CloudWatch per il monitoraggio.
+		\item AWS Config e GuardDuty per migliorare la sicurezza e la conformità.
+    \end{itemize}
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+	    \item Il progetto permette di acquisire una buona quantità di esperienza sia nello sviluppo front-end, che in quello back-end.
+	    \item Piattaforma di partenza già pronta, il progetto riguarda l’aggiunta di features.
+	    \item Progetto effettivamente utile, non solo didattico.
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+		\item Numero elevato di tecnologie diverse da utilizzare.
+		\item Il progetto in generale sembra molto vasto in relazione al tempo a disposizione per portarlo a termine.
+		\item Test sui clienti reali.
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato inizialmente aveva attirato l’interesse di alcuni membri del gruppo, ma successivamente non è stato scelto principalmente per via della mole di lavoro richiesta e della sua potenziale complessità.
+
+
+    \section{Capitolato C6 - Second Brain}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}:Second Brain
+            \item \textbf{Proponente}:Zucchetti S.p.A
+        \end{itemize}
+    \subsection{Obbiettivo}
+    L’obiettivo del progetto è sviluppare un’applicazione, basata su un LLM (Large Language Models), in grado di aiutare una persona nella creazione di testi, nello sviluppo di un’idea e nell’attività di brainstorming.
+    \subsection{Dominio Applicativo}
+    L’idea è che l’utente scriverà su una “edit-area” HTML utilizzando il linguaggio di markup MarkDown, e su una parte della finestra separata verrà visualizzato il testo prodotto da una libreria MarkDown. Quindi il centro del programma è un editor di testo che permetta l’accesso a un LLM per migliorare o correggere il testo che l’utente sta scrivendo.
+    L’applicazione dovrà consentire:
+    \begin{itemize}
+		\item L’editing di testo in un'area che accetta testo e marcatori in formato MarkDown. 
+		\item La presentazione in forma grafica del testo in seguito all’applicazione della formattazione definita dai marcatori.
+		\item L’accesso a un LLM che possa operare sull’intero testo o parti di testo.
+		\item La possibilità di svolgere almeno tre funzioni di base da applicare al testo:
+        \begin{itemize}
+	        \item Riassunto.
+	        \item Riscrittura da parte del LLM.
+	        \item Traduzione in una lingua diversa dall’originale.
+        \end{itemize}
+		\item La critica del testo da parte del LLM secondo il modello dei “sei cappelli per pensare” di Edward De Bono.
+		\item La generazione dell’intero testo nella finestra di editing da parte del LLM.
+		\item Il salvataggio e la lettura in un file di testo.
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+		\item Linguaggio HTML per la creazione della pagina di editing del testo.
+		\item Joplin, Obsidian e Logseq come editor di note in formato markdown che possono essere presi ad ispirazione.
+		\item LLM come Gemini, Mistral o Gemma messi a disposizione dall’azienda per verificare i risultati.
+		\item API per permettere l’accesso del LLM al testo, usualmente esposte secondo la definizione di OpenAI.
+    \end{itemize}
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+		\item Definizione chiara delle aspettative per quanto riguarda PoC e MVP, e anche delle funzionalità richieste in generale.
+		\item L’azienda mette a disposizione degli LLM, per poter verificare i risultati.
+		\item Carico di lavoro adeguato.
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+		\item Esplorare i prompt per ottenere i risultati richiesti potrebbe richiedere una quantità di tempo molto elevata.
+		\item Requisiti minimi per l’accettazione del prodotto non negoziabili.
+		\item Progetto prettamente didattico.
+		\item Tema poco stimolante.
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato non è stato particolarmente preso in considerazione nella fase di scelta dei capitolati, dal momento che l’ambito del progetto non ha suscitato l’interesse dei membri del gruppo, e di conseguenza è stata riposta maggiore attenzione su altri capitolati.
+
+    \section{Capitolato C7 - Sistema di acquisizione dati da sensori}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}:Sistema di acquisizione dati da sensori
+            \item \textbf{Proponente}:M31 S.r.l
+        \end{itemize}
+    \subsection{Obbiettivo}
+    Il progetto mira a sviluppare un sistema distribuito di acquisizione, smistamento, aggregazione e normalizzazione di dati provenienti da sensori BLE (Bluetooth Low Energy) eterogenei. Inoltre il sistema dovrà essere sicuro, scalabile e garantire la segregazione dei dati tra diversi tenant, permettendo così a più soggetti di utilizzare lo stesso sistema in modalità multi-tenant.
+    \subsection{Dominio Applicativo}
+    Il sistema sarà composto dai gateway BLE-WiFi che acquisiscono i dati raccolti dai sensori BLE, e che li formattano per poi inviarli al cloud. A sua volta il cloud rende disponibili i dati agli utenti tramite API e interfacce di visualizzazione. Sarà quindi necessario progettare un’infrastruttura per la gestione dei dati sensibili provenienti da sensori eterogenei, implementando dei meccanismi di comunicazione sicura tra i vari livelli, e si dovranno fornire strumenti di monitoraggio e visualizzazione dei dati per gli amministratori e gli utenti finali.
+    
+    Il sistema quindi richiede:
+    \begin{itemize}
+		\item La gestione dei dati provenienti dai sensori BLE, prodotti dal simulatore di gateway.
+		\item Lo sviluppo di un simulatore di gateway che riproduca i comportamenti principali di un gateway fisico.
+		\item La presenza di un isolamento logico tra diversi tenant, garantito dal cloud, così che ciascun utente possa accedere solo ai propri dati.
+		\item L’accesso ai dati tramite API sicure, documentate e versionate.
+		\item L’accesso al sistema attraverso meccanismi di autenticazione sicuri e robusti.
+		\item La creazione di un’interfaccia utente che consenta la consultazione dei dati acquisiti e la possibilità di registrare e configurare (in modo semplificato) i nuovi sensori o gateway simulati.
+    \end{itemize}
+
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+		\item Node.js e Nest.js (usando TypeScript come linguaggio) per lo sviluppo dei microservizi.
+		\item Go per la gestione di eventuali componenti ad alte prestazioni, come i servizi di sincronizzazione.
+		\item NATS o Apache Kafka per la gestione dei messaggi distribuiti e asincroni.
+		\item Kubernetes per l’orchestrazione e la gestione centralizzata.
+		\item MongoDB per la memorizzazione di dati non strutturati.
+		\item PostgreSQL per la persistenza di dati strutturati.
+		\item Redis potrà essere utilizzato come sistema di caching per migliorare le prestazioni e ridurre la latenza.
+		\item Angular per la realizzazione dell’interfaccia utente.
+    \end{itemize}
+
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+		\item Viene posta una particolare enfasi sulla qualità del codice e sulla validazione del sistema sviluppato attraverso l’implementazione di test che garantiscono il corretto funzionamento del sistema in tutte le sue parti.
+		\item Utilizzo di tecnologie che semplificano il versionamento, il monitoraggio e la scalabilità del sistema.
+		\item Spazio disponibile in azienda.
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+		\item Il progetto necessita dell’utilizzo di Google Cloud Platform, limitando così la portabilità in altre infrastrutture cloud.
+		\item Presentazione in inglese, è stata una difficoltà aggiuntiva nel seguire l’esposizione.
+		\item Tema poco chiaro.
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato inizialmente aveva attirato l’interesse di alcuni membri del gruppo, ma successivamente non è stato scelto principalmente perché sono risultati più accattivanti altri capitolati.
+
+
+    \section{Capitolato C8 - Smart Order}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}:Smart Order
+            \item \textbf{Proponente}:Ergon Informatica S.r.l
+        \end{itemize}
+    \subsection{Obbiettivo}
+    L’obiettivo del progetto è sviluppare un sistema intelligente in grado di analizzare input multimodali (testo, audio e immagini) non strutturati, che rappresentano gli ordini dei clienti, e convertirli automaticamente in ordini strutturati e normalizzati, così che possano essere archiviati all’interno di un database. In questo modo si riduce notevolmente la mole di lavoro richiesta per la gestione manuale degli ordini.
+    \subsection{Dominio Applicativo}
+    Il sistema è progettato come pipeline modulare ed è costituito da diversi layer che provvedono alla raccolta, la normalizzazione, l’analisi da parte dell’AI, la validità, la verifica e la trasformazione in ordini strutturati dei dati. Quindi il sistema sarà scalabile, affidabile grazie ai processi di validazione e facilmente manutenibile tramite log dettagliati e meccanismi di feedback.
+    In particolare, il sistema sarà composto dai seguenti layer:
+    \begin{itemize}
+		\item Layer di raccolta degli input da diversi canali, come email e chat per il testo; fotografie e etichette prodotto per le immagini; chiamate telefoniche e messaggi vocali per l’audio.
+		\item Layer di pre-processing per normalizzare e “pulire” i dati riducendo le ambiguità e i rumori nel caso di testo e audio, mentre per le immagini vengono ritagliate delle aree informative contenenti i dati rilevanti.
+		\item Layer di estrazione feature/embedding che si occupa di trasformare i dati in rappresentazioni vettoriali comprensibili dai modelli AI.
+		\item Layer di fusione multimodale grazie al quale gli embedding di testo, immagini e audio vengono combinati in una rappresentazione vettoriale unica.
+		\item Layer di interpretazione semantica che si occupa di identificare i codici prodotto corretti, completare descrizioni ambigue o incomplete e in generale vengono effettuati dei controlli preliminari basati sulle regole aziendali.
+		\item Layer di validazione e arricchimento dei dati che vengono verificati per garantire integrità, coerenza e completezza.
+		\item Layer di output e integrazione database nel quale i dati vengono trasformati in ordini strutturati compatibili con i sistemi gestionali, in formati come JSON, XML e tabelle relazionali.
+		\item Layer di monitoraggio e feedback che permette di migliorare la trasformazione dei dati in embedding multimodali basandosi su feedback manuale, e fornisce dei meccanismi di logging, consentendo anche il retraining periodico.
+    \end{itemize}
+
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+		\item Database relazionale per l’archiviazione dei dati strutturati.
+		\item BERT, RoBERTa e GPT come modelli di apprendimento automatico per l’elaborazione del linguaggio naturale.
+		\item Tesseract OCR, EasyOCR,Convolutional Neural Networks (CNN) e Vision Transformer (ViT) per estrarre il testo dalle immagini.
+		\item Whisper (OpenAI) e Google Speech-to-Text per il riconoscimento vocale e la trascrizione di audio.
+		\item API REST per permettere la comunicazione tra a il modello LLM e l’app di interazione con l’utente.
+		\item ODBC o middleware per comunicare con il database, in base al componente scelto per lo sviluppo del modello LLM.
+		\item .NET Blazor, React.js e Angular per implementare l’interfaccia utente.
+    \end{itemize}
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+		\item La proposta di un sistema modulare che grazie alla sua struttura riesce a facilitare notevolmente i requisiti di scalabilità, affidabilità e manutenibilità.
+		\item La possibilità di migliorare la trasformazione dei dati attraverso feedback e retraining dei modelli AI.
+		\item Tema interessante.
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+		\item L’integrazione di tecniche avanzate di AI, ML e NLP, che potrebbero risultare particolarmente complesse, data la scarsa esperienza del gruppo in questo campo.
+		\item Presentazione scarna, poca chiarezza.
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato non è stato particolarmente preso in considerazione nella fase di scelta dei capitolati, dal momento che l’ambito del progetto non ha suscitato l’interesse dei membri del gruppo, e di conseguenza è stata riposta maggiore attenzione su altri capitolati.
+
+
+    \section{Capitolato C9 - View4Life}
+    \subsection{Informazioni Generali}
+        \begin{itemize}
+            \item \textbf{Titolo}:View4Life
+            \item \textbf{Proponente}:Vimar S.p.A
+        \end{itemize}
+    \subsection{Obbiettivo}
+    Questo progetto mira a realizzare una piattaforma web per la gestione completa degli impianti Smart nelle residenze protette. Dovrà permettere il controllo dell’illuminazione, degli accessi, degli allarmi, delle tapparelle elettriche, della temperatura e dei sensori di rilevamento di presenza e cadute.
+    \subsection{Dominio Applicativo}
+    Per questa piattaforma è quindi richiesta l’implementazione di una infrastruttura Cloud per ospitare tutte le funzioni dell’applicativo, che deve utilizzare i container e deve essere progettata secondo il principio del IaC (Infrastructure as Code), e di un applicativo web responsive per il personale sanitario, che funzioni via browser da smartphone, tablet e desktop, facendo particolare attenzione alla qualità estetica e alla semplicità d’uso.
+    In particolare, l’applicativo web dovrà rispettare le seguenti caratteristiche:
+    \begin{itemize}
+        \item La possibilità di interfacciarsi con uno o più impianti Vimar View Wireless che identificano gli appartamenti della residenza.
+		\item L’uso dell’interfaccia API KNX IoT messa a disposizione da Vimar per comunicare con gli impianti View Wireless.
+		\item Un sistema di gestione degli allarmi per gli operatori sanitari.
+		\item Una sezione informativa contenente i dispositivi dell’impianto.
+		\item Una sezione analytics dove le statistiche della piattaforma e dell’impianto vengono riportate come grafici.
+		\item Nella sezione analytics l’applicativo dovrà anche dare dei suggerimenti all’utente per ridurre i consumi energetici in base ai dati raccolti.
+    \end{itemize}
+    \subsection{Tecnologie}
+    Elenco delle tecnologie, pratiche e riferimenti suggeriti dal capitolato:
+    \begin{itemize}
+		\item Docker con docker-compose per l’infrastruttura Cloud.
+		\item AWS LightSail o AWS EC2 per implementare la soluzione architetturale di tipo container.
+		\item KNX IoT 3rd party API e OAuth2 per la comunicazione con gli impianti View Wireless.
+		\item Standard KNX IoT nell’utilizzo del meccanismo di ricezione delle notifiche di impianto (push).
+		\item GIT per il versionamento e GitHub per l’accesso pubblico al progetto.
+		\item Angular, React o Flask per lo sviluppo front-end.
+		\item Node.js, Java, Python per lo sviluppo back-end
+    \end{itemize}
+    \subsection{Caratteristiche Positive}
+    \begin{itemize}
+		\item Viene fornito un kit di impianto portatile Smart, per poter raccogliere dati reali, senza dover ricorrere all’implementazione di simulatori.
+		\item Esposizione del progetto molto chiara ed esaustiva.
+    \end{itemize}
+    \subsection{Caratteristiche Negative}
+    \begin{itemize}
+        \item Timore che il carico di lavoro vada oltre le nostre capacità   
+        \item Timore di non essere seguiti adeguatamente vista la dimensione dell'azienda 
+    \end{itemize}
+    \subsection{Considerazioni Finali}
+    Questo capitolato ha riscosso un certo successo tra i membri del gruppo, risultando fin da subito una delle possibili scelte, ma in seguito è passato in secondo piano, in quanto l’ambito di un altro capitolato è stato ritenuto di maggior interesse da parte del gruppo.
+
+
+    \section{Conclusione}
+    Come già detto nella \hyperref[sec:C3]{sezione del capitolato C3}, dopo aver esaminato tutti i capitolati e averne discusso tra i membri del gruppo si è deciso che il gruppo si poporra per aggiudicarsi il capitolato C3: DIPReader. Quest ultimo infatti, tra tutti gli altri, è quello che si ritiene essere il meglio bilanciato sotto tutti gli aspetti; ha influito molto la buona opionione suscitata dall'azienda proponende durante la riunione.
+
+
+\end{document}
+
+
+
+
+
+
+
+
