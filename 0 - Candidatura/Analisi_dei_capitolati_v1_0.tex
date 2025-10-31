@@ -4,7 +4,8 @@
 
 \setTitle{Analisi dei Capitolati}
 \setAuthors{Nenad Radulovic}
-\setVerificators{N/A}
+\setVerificators{Francesco Balestro}
+\setApprovation{Filippo Compagno}
 \setVersion{1.0}
 \setType{Interno}
 \setDestination{Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin}
@@ -12,16 +13,20 @@
 \begin{document}
     \include{docTitlepage}
 
+    \newpage
     \section*{Registro delle modifiche} {
-        \rowcolors{2}{white}{lightgray}
-        \begin{tabularx}{\textwidth}{|l|l|X|l|X|X|}
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
         \hline
         \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
         \hline
-        \textbf{0.2} & 30/10/2025 & Nenad Radulovic & Da aggiungere & N/A & Correzione di alcuni errori \\
-        \textbf{0.1} & 30/10/2025 & Nenad Radulovic & Da aggiungere & N/A & Stesura analisi dei capitolati \\
+        \textbf{1.0} & 31/10/2025 & Filippo Compagno & Responsabile & & Approvazione documento \\
+        \textbf{0.2} & 30/10/2025 & Nenad Radulovic & Analista & Francesco Balestro & Correzione di alcuni errori \\
+        \textbf{0.1} & 26/10/2025 & Francesco Balestro & Analista & Nenad Radulovic & Stesura analisi dei capitolati \\
         \hline
         \end{tabularx}
+        \end{table}
     }
     \newpage
 
@@ -37,7 +42,7 @@
             \item \textbf{Titolo}: Automated EN18031 Compliance Verification
             \item \textbf{Proponente}: Bluewind S.r.l
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     L’obiettivo del progetto è quello di realizzare un sistema software che automatizzi e renda ripetibile la verifica di conformità ai requisiti di cybersecurity definiti nello standard EN18031. Il progetto prevede inoltre la validazione funzionale mediante un case study pratico (una macchina da caffè connessa via Wi-Fi).
     \subsection{Dominio Applicativo}
     Il progetto prevede una piattaforma che guida un verificatore (ingegnere / tecnico / auditor) nella verifica di conformità EN18031/RED attraverso decision tree collegati ai singoli requisiti, permettendo di compilare domande, allegare evidenze, tracciare lo stato dei requisiti e generare la documentazione richiesta.\\
@@ -60,12 +65,12 @@
     \end{itemize}
     \subsection{Caratteristiche Positive}
     \begin{itemize}
-        \item Carico di lavoro molto accessibile 
+        \item Carico di lavoro molto accessibile.
     \end{itemize}
     \subsection{Caratteristiche Negative}
     \begin{itemize}
-        \item Presentazione non accativante, poco chiara
-        \item La notevole lontananza dell'ufficio renderebbe scomodo organizzare degli incontri in presenza con la proponente 
+        \item Presentazione non accativante, poco chiara.
+        \item La notevole lontananza dell'ufficio renderebbe scomodo organizzare degli incontri in presenza con la proponente.
     \end{itemize}
     \subsection{Considerazioni Finali}
     Questo capitolato non è stato molto considerato, in quanto diversi membri del gruppo hanno ritenuto l'esposizione poco chiara, e in generale l'ambito del progetto non è stato giudicato particolarmente interessante.
@@ -76,7 +81,7 @@
             \item \textbf{Titolo}: Code Guardian
             \item \textbf{Proponente}: VarGroup S.p.A
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     L’obiettivo del progetto è realizzare Code Guardian, una piattaforma web basata su un’architettura ad agenti che automatizza l’audit e la remediation dei repository software. La piattaforma deve analizzare repository (es. GitHub) per valutare qualità, sicurezza, test e documentazione, generare report automatici, proporre suggerimenti di remediation e fornire una demo/MVP funzionante con documentazione tecnica.
     \subsection{Dominio Applicativo}
     La piattaforma automatizza il processo di valutazione e miglioramento dei repository software tramite un’architettura ad agenti coordinata da un orchestratore. Scansiona i repository per rilevare linguaggi, dipendenze e metriche di qualità, esegue controlli automatici (test coverage, sicurezza OWASP) e genera suggerimenti di remediation. Fornisce una dashboard web con ranking e report esportabili, integrazione CI/CD per analisi automatiche su eventi di repository e funzionalità opzionali per storico/analisi temporale e applicazione interattiva delle correzioni. L’architettura è modulare ed espandibile tramite plugin/nuovi agenti.\\
@@ -107,14 +112,14 @@
     \end{itemize}   
     \subsection{Caratteristiche Positive}
     \begin{itemize}
-        \item Presentazione accattivante
-        \item Progetto molto stimolante
+        \item Presentazione accattivante.
+        \item Progetto molto stimolante.
         \item Nel complesso sembra offrire la possibilità di apprendere molto riguardo ad aspetti che potrebbero tornare molto utili in futuro in diverse realtà lavorative. 
     \end{itemize}
     \subsection{Caratteristiche Negative}
         \begin{itemize}
-            \item Timore che il carico di lavoro vada oltre le nostre capacità   
-            \item Timore di non essere seguiti adeguatamente vista la dimensione dell'azienda 
+            \item Timore che il carico di lavoro vada oltre le nostre capacità.  
+            \item Timore di non essere seguiti adeguatamente vista la dimensione dell'azienda.
         \end{itemize}
     \subsection{Considerazioni Finali}
     Questo capitolato inizialmente è stato preso in considerazione da alcuni membri del gruppo, ma in seguito messo da parte non per un demerito suo ma perché si è ritenuto più adatto l'approfondimento di altri capitolati. A influenzare questo cambio di priorità è stato anche il presentimento che questo capitolato, rispeto ad altri, richiedesse una maggiore conoscenza preliminare delle tecnologie.
@@ -125,7 +130,7 @@
             \item \textbf{Titolo}: DIPReader
             \item \textbf{Proponente}: Sanmarco Informatica S.p.A.
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     L’obiettivo del progetto DIPReader è realizzare una piattaforma che permetta a utenti (anche in assenza di connettività) di interrogare e consultare localmente i pacchetti di distribuzione (Distribution Information Package, ZIP) forniti dal sistema di conservazione digitale. L’app deve rendere ricercabili e navigabili i documenti e i metadati contenuti nel DIP, offrire anteprime per i formati comuni (PDF, XML, …), consentire la selezione e il salvataggio locale di documenti, raccogliere e mostrare le informazioni relative al processo di conservazione e supportare, opzionalmente, ricerche in linguaggio naturale e verifica delle firme digitali.
     \subsection{Dominio Applicativo}
     La soluzione richiesta copre le funzionalità di importazione, indicizzazione, consultazione e gestione dei pacchetti DIP; in dettaglio i componenti e i casi d’uso principali sono:
@@ -154,9 +159,9 @@
 
     \subsection{Caratteristiche Positive}
     \begin{itemize}
-        \item Il progetto sembra offrire un buon bilanciamento tra le parti frontend, backend e ingrazione con un sistema presistente 
-        \item Nella riunione di approfondimento il proponente si è mostrato molto diponibile ed esaustivo nel rispondere alle domande
-        \item Il progetto offre un buon compromesso tra le indicazioni del committente e la libertà lasciata al gruppo
+        \item Il progetto sembra offrire un buon bilanciamento tra le parti frontend, backend e ingrazione con un sistema presistente.
+        \item Nella riunione di approfondimento il proponente si è mostrato molto diponibile ed esaustivo nel rispondere alle domande.
+        \item Il progetto offre un buon compromesso tra le indicazioni del committente e la libertà lasciata al gruppo.
     \end{itemize}
     \subsection{Caratteristiche Negative}
     Non sono stati trovati punti negativi per questo capitolato.
@@ -169,7 +174,7 @@
             \item \textbf{Titolo}: L’App che Protegge e Trasforma
             \item \textbf{Proponente}: Miriade S.r.l
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     Questo progetto ha come obiettivo lo sviluppo di un’applicazione mobile con il fine di prevenire e supportare le vittime di violenza di genere. L’app dovrà essere uno strumento intelligente e sicuro, in grado di riconoscere segnali di pericolo e offrire delle soluzioni agli utenti. Inoltre è richiesto che venga sviluppata sia per sistemi iOS che per sistemi Android, garantendo un’interfaccia utente intuitiva e accessibile.
     \subsection{Dominio Applicativo}
     L’app dovrà permettere di identificare le situazioni a rischio, di inviare messaggi di pericolo a contatti predefiniti o centri di aiuto e di accedere facilmente a servizi di supporto. Inoltre dovrà mettere a disposizione delle funzionalità di sicurezza personalizzate, dei moduli educativi per sensibilizzare sul tema della violenza di genere e uno spazio sicuro per la comunicazione e il supporto reciproco tra gli utenti.
@@ -217,7 +222,7 @@
             \item \textbf{Titolo}: NEXUM
             \item \textbf{Proponente}: Eggon S.r.l
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     Lo scopo del progetto è sviluppare nuove funzionalità, per la piattaforma NEXUM, che mirano a migliorare la gestione HR (Human Resources), il dialogo con i CdL (Consulenti del Lavoro) e l’esperienza digitale dei dipendenti.
     \subsection{Dominio Applicativo}
     Con questo progetto si vogliono introdurre un AI Assistant per la creazione di contenuti, in grado di adeguare stile e tono comunicativo a quello dell’azienda; una estensione del modulo di timbratura per la raccolta di ferie, permessi, malattia e straordinari; un modulo di rilevamento anomalie nelle presenze e negli straordinari; un sistema di interoperabilità con gli studi dei CdL, per scambio di documenti e scadenze, potenziato dalla AI per il riconoscimento e dispaccio dei documenti.
@@ -276,7 +281,7 @@
             \item \textbf{Titolo}: Second Brain
             \item \textbf{Proponente}: Zucchetti S.p.A
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     L’obiettivo del progetto è sviluppare un’applicazione, basata su un LLM (Large Language Models), in grado di aiutare una persona nella creazione di testi, nello sviluppo di un’idea e nell’attività di brainstorming.
     \subsection{Dominio Applicativo}
     L’idea è che l’utente scriverà su una “edit-area” HTML utilizzando il linguaggio di markup MarkDown, e su una parte della finestra separata verrà visualizzato il testo prodotto da una libreria MarkDown. Quindi il centro del programma è un editor di testo che permetta l’accesso a un LLM per migliorare o correggere il testo che l’utente sta scrivendo.
@@ -325,7 +330,7 @@
             \item \textbf{Titolo}: Sistema di acquisizione dati da sensori
             \item \textbf{Proponente}: M31 S.r.l
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     Il progetto mira a sviluppare un sistema distribuito di acquisizione, smistamento, aggregazione e normalizzazione di dati provenienti da sensori BLE (Bluetooth Low Energy) eterogenei. Inoltre il sistema dovrà essere sicuro, scalabile e garantire la segregazione dei dati tra diversi tenant, permettendo così a più soggetti di utilizzare lo stesso sistema in modalità multi-tenant.
     \subsection{Dominio Applicativo}
     Il sistema sarà composto dai gateway BLE-WiFi che acquisiscono i dati raccolti dai sensori BLE, e che li formattano per poi inviarli al cloud. A sua volta il cloud rende disponibili i dati agli utenti tramite API e interfacce di visualizzazione. Sarà quindi necessario progettare un’infrastruttura per la gestione dei dati sensibili provenienti da sensori eterogenei, implementando dei meccanismi di comunicazione sicura tra i vari livelli, e si dovranno fornire strumenti di monitoraggio e visualizzazione dei dati per gli amministratori e gli utenti finali.
@@ -375,7 +380,7 @@
             \item \textbf{Titolo}: Smart Order
             \item \textbf{Proponente}: Ergon Informatica S.r.l
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     L’obiettivo del progetto è sviluppare un sistema intelligente in grado di analizzare input multimodali (testo, audio e immagini) non strutturati, che rappresentano gli ordini dei clienti, e convertirli automaticamente in ordini strutturati e normalizzati, così che possano essere archiviati all’interno di un database. In questo modo si riduce notevolmente la mole di lavoro richiesta per la gestione manuale degli ordini.
     \subsection{Dominio Applicativo}
     Il sistema è progettato come pipeline modulare ed è costituito da diversi layer che provvedono alla raccolta, la normalizzazione, l’analisi da parte dell’AI, la validità, la verifica e la trasformazione in ordini strutturati dei dati. Quindi il sistema sarà scalabile, affidabile grazie ai processi di validazione e facilmente manutenibile tramite log dettagliati e meccanismi di feedback.
@@ -423,7 +428,7 @@
             \item \textbf{Titolo}: View4Life
             \item \textbf{Proponente}: Vimar S.p.A
         \end{itemize}
-    \subsection{Obbiettivo}
+    \subsection{Obiettivo}
     Questo progetto mira a realizzare una piattaforma web per la gestione completa degli impianti Smart nelle residenze protette. Dovrà permettere il controllo dell’illuminazione, degli accessi, degli allarmi, delle tapparelle elettriche, della temperatura e dei sensori di rilevamento di presenza e cadute.
     \subsection{Dominio Applicativo}
     Per questa piattaforma è quindi richiesta l’implementazione di una infrastruttura Cloud per ospitare tutte le funzioni dell’applicativo, che deve utilizzare i container e deve essere progettata secondo il principio del IaC (Infrastructure as Code), e di un applicativo web responsive per il personale sanitario, che funzioni via browser da smartphone, tablet e desktop, facendo particolare attenzione alla qualità estetica e alla semplicità d’uso.
@@ -454,8 +459,8 @@
     \end{itemize}
     \subsection{Caratteristiche Negative}
     \begin{itemize}
-        \item Timore che il carico di lavoro vada oltre le nostre capacità   
-        \item Timore di non essere seguiti adeguatamente vista la dimensione dell'azienda 
+        \item Timore che il carico di lavoro vada oltre le nostre capacità.
+        \item Timore di non essere seguiti adeguatamente vista la dimensione dell'azienda. 
     \end{itemize}
     \subsection{Considerazioni Finali}
     Questo capitolato ha riscosso un certo successo tra i membri del gruppo, risultando fin da subito una delle possibili scelte, ma in seguito è passato in secondo piano, in quanto l’ambito di un altro capitolato è stato ritenuto di maggior interesse da parte del gruppo.
@@ -466,11 +471,3 @@
 
 
 \end{document}
-
-
-
-
-
-
-
-
