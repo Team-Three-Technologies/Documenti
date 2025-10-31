@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Esterno 21/10/2025}
+\setAuthors{Bianca Zaghetto}
+\setVerificators{Sara Gioia Fichera}
+\setApprovation{Sara Gioia Fichera}
+\setVersion{2.0}
+\setType{Esterno}
+\setPlace{E-mail}
+\setTime{16.00}
+\setDestination{Tullio Vardanega \\
+& Riccardo Cardin \\
+& Vimar S.p.A.}
+\setAbsents{Nessuno}
+
+\begin{document}
+\include{memoTitlepage}
+
+\newpage
+\section*{Registro delle modifiche}
+
+\begin{table}[h!]
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+\hline
+\textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+\textbf{2.0} & 30/10/25 & Sara Gioia Fichera & Responsabile &  & Approvazione documento \\
+\textbf{1.1} & 30/10/25 & Bianca Zaghetto & Amministratore & Sara Gioia Fichera & Correzione \\
+\textbf{1.0} & 24/10/25 & Filippo Compagno & Analista &  & Approvazione documento \\
+\textbf{0.1} & 23/10/25 & Bianca Zaghetto & Amministratore & Sara Gioia Fichera & Prima versione \\
+\hline
+\end{tabularx}
+\end{table}
+
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Ordine del giorno}
+\begin{itemize}
+    \item Domande e risposte relative al progetto "View4Life" di Vimar S.p.A.
+\end{itemize}
+
+\section{Riassunto della riunione}
+Abbiamo curato, su richiesta dell’azienda e in collaborazione con gli altri gruppi, la raccolta delle domande sul progetto \textit{View4Life}.
+Di seguito riportiamo le risposte, rielaborate per maggiore chiarezza, alle domande di nostra competenza.
+
+\rowcolors{0}{}{}
+\begin{longtable}{P{5cm}|P{10cm}} 
+\textbf{Quanto possiamo variare sulle tecnologie da utilizzare?} & È stato confermato che, per le tecnologie richieste (sez. 5.1), le possibilità di variazione sono limitate, mentre per le tecnologie suggerite (sez. 5.2) è prevista piena libertà di scelta, pur con un supporto tecnico ridotto in caso di discostamento significativo.\\
+
+\\
+\textbf{Tra i requisiti “opzionali” e “nice-to-have”, ce ne sono alcuni che considerate particolarmente importanti o che danno un “valore aggiunto” significativo al progetto?} & I criteri di completamento nice-to-have riportati in (sezione 6.2) danno un contributo significativo al progetto, e quindi hanno anche un peso maggiore sulla valutazione finale data dall'azienda.\\
+
+\\
+\textbf{“L’impianto remoto” a Padova è accessibile 24/7?} & Sì, inoltre i sensori sono in uso poiché sono installati in salette che sono attivamente popolate da persone durante il giorno, quindi si possono ricavare dati utili sulle presenze.\\
+
+\\
+\textbf{Qual è la valenza del progetto presentato?} & Il progetto ha una duplice valenza: da un lato funge da dimostratore per integrazioni di terze parti via Cloud, mostrando il controllo dei dispositivi Vimar View Wireless tramite API REST; dall’altro risponde a esigenze di mercato, esplorando dashboard mirate per il settore socio-sanitario. Inoltre è stato specificato che il lavoro svolto sarà pubblicato con il nome del team. \\
+
+\\
+\textbf{Le notifiche di allarme dovranno arrivare solo al personale medico in servizio, a determinate persone in base all’area o a tutti gli utenti della piattaforma?} & Le notifiche devono raggiungere tutti gli utenti della piattaforma. È stata lasciata discrezionalità nel definire proprietà degli utenti (ad esempio ruolo o reparto) che permettano all’amministratore di decidere chi riceve gli allarmi. \\
+
+\\
+\textbf{Come sarà gestita la redazione e la firma dei verbali?} & Rispetto all’anno scorso, il processo sarà semplificato grazie a due novità: l’uso di trascrizione e riassunto automatico tramite Copilot durante le riunioni Teams, e una piattaforma open source per caricare, commentare e scaricare i verbali approvati e firmati digitalmente, riducendo i tempi di gestione. \\
+
+\\
+\textbf{Quale sarà il livello e la modalità di supporto durante il progetto?} & Il supporto sarà mantenuto a un livello elevato, come negli anni precedenti, purché ci sia contributo attivo e comunicazione da parte del team. Le modalità saranno concordate nella prima riunione e prevedono incontri periodici (1 ora bisettimanale, in presenza o online), sessioni di approfondimento su richiesta, un assessment a metà progetto con feedback da stakeholder aziendali, incremento delle riunioni a 30 minuti settimanali fino al MVP, collaudo finale e riunione retrospettiva per feedback professionale. \\
+
+\end{longtable}
+\vspace{3cm} % spazio verticale per far "scendere" la firma
+
+\noindent
+Firma del referente Vimar S.p.A.:\hspace{0.2cm} \rule{6cm}{0.4pt}
+
+\end{document}
