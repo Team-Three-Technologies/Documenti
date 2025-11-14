@@ -1,0 +1,99 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 13/11/2025}
+\setAuthors{Francesco Balestro}
+\setVerificators{}
+\setApprovation{}
+\setVersion{0.1}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16.00}
+\setDestination{Team Three Technologies}
+\setAbsents{Nessuno}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \section*{Registro delle modifiche}
+
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+            \hline
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \textbf{0.1} & 14/11/2025 & Francesco Balestro & Verificatore &  & Prima stesura \\
+        \hline
+        \end{tabularx}
+    \end{table}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno} {
+        \begin{itemize}
+            \item Stabilire orario e giorno per le riunioni con l'azienda
+            \item Discussione sulla modalità di comunicazione proposta dall'azienda
+            \item Rotazione dei ruoli
+            \item Organizzazione per l'analisi dei requisiti
+        \end{itemize}
+    }
+
+    \section{Svolgimento} {
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Stabilire orario e giorno per le riunioni con l'azienda} & Ogni membro del gruppo ha esplicitato i suoi impegni e le proprie preferenze riguardo quale giorno proporre all'azienda per le riunioni con quest'ultima, che si terranno ogni due settimane, salvo esigenze particolari da parte del gruppo. Quindi è stato stabilito che il giovedì sarebbe il giorno ottimale, e di conseguenza verrà proposto all'azienda. \\\\
+            \textbf{Discussione sulla modalità di comunicazione proposta dall'azienda} & È stata discussa e accettata la proposta dell'azienda di utilizzare un documento google sul drive come modalità di comunicazione asincrona, per porre le domande più semplici, che non richiedono necessariamente una riunione per essere chiarite.\\\\
+            \textbf{Rotazione dei ruoli} & Sono stati stabiliti i ruoli dei membri per il secondo ciclo.
+            \begin{itemize}
+                \item \textbf{Responsabile}: Andrea Masiero
+                \item \textbf{Amministratore}: Nenad Radulovic
+                \item \textbf{Analista}: Mattia Olivia Medin, Sara Gioia Fichera, Filippo Compagno
+                \item \textbf{Verificatore}: Francesco Balestro, Bianca Zaghetto
+            \end{itemize}\\\\
+            \textbf{Organizzazione per l'analisi dei requisiti} & Abbiamo deciso che per fare l'analisi dei requisiti sarà prima necessario studiare il materiale fornito dall'azienda per comprendere meglio il contesto del progetto, come ci è stato consigliato dall'azienda stessa. In seguito a questo studio procederemo creando i diagrammi dei casi d'uso per comprendere meglio i requisiti del prodotto da sviluppare. Inoltre è stato proposto draw.io come strumento per creare i diagrammi dei casi d'uso.\\\\
+        \end{longtable}
+    }
+
+    \section{Decisioni} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20251113.d1 & Giorno ottimale per le riunioni con l'azienda\\
+            \hline
+            VI\_20251113.d2 & Conferma modalità di comunicazione proposta dall'azienda\\
+            \hline
+            VI\_20251113.d3 & Rotazione dei ruoli\\
+            \hline
+            VI\_20251113.d4 & Iniziare l'analisi dei requisiti\\
+            \hline
+        \end{tabularx}
+    }
+
+    \section{Attività} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{Nenad Radulovic} & Aggiornare le Norme di Progetto sulla base delle decisioni prese & VI\_20251113.a1\\
+            \hline
+            \textbf{Analisti} & Creare diagrammi dei casi d'uso & VI\_20251113.a2\\
+            \hline
+            \textbf{Filippo Compagno} & Creazione template vuoto per verbali & VI\_20251113.a3\\
+            \hline
+            \textbf{Francesco Balestro} & Stesura Verbale Interno & VI\_20251113.a4\\
+            \hline
+            \textbf{Sara Gioia Fichera} & Stesura Verbale Esterno & VI\_20251113.a5\\
+            \hline
+            \textbf{Andrea Masiero} & Diario di bordo & VI\_20251113.a6\\
+            \hline
+        \end{tabularx}
+    }
+
+\end{document}
