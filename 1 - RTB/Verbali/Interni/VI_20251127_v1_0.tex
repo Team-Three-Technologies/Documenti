@@ -1,0 +1,93 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 27/11/2025}
+\setAuthors{Bianca Zaghetto}
+\setVerificators{Mattia Oliva Medin}
+\setApprovation{Andrea Masiero}
+\setVersion{0.1}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16.25}
+\setDestination{Team Three Technologies}
+\setAbsents{Nessuno}
+
+\begin{document}
+\include{memoTitlepage}
+
+\newpage
+\section*{Registro delle modifiche}
+
+\begin{table}[h!]
+\rowcolors{2}{lightgray}{white} % ecco :)
+\begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+\hline
+\textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+\textbf{1.0} & 30/11/25 & Andrea Masiero & Responsabile &  & Approvazione \\
+\hline
+\textbf{0.2} & 29/11/25 & Bianca Zaghetto & Verificatore & Mattia Oliva Medin & Correzioni \\
+\hline
+\textbf{0.1} & 27/11/25 & Bianca Zaghetto & Verificatore & Mattia Oliva Medin & Prima stesura \\
+\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Ordine del giorno}
+\begin{itemize}
+    \item Organizzazione interna
+    \item Rotazione ruoli
+\end{itemize}
+
+\section{Svolgimento}
+\begin{longtable}{P{5cm}|P{10cm}} 
+\textbf{Organizzazione interna} & Il gruppo si è confrontato sulle prossime attività da svolgere e la loro tracciatura. In particolare, verrà aggiornato il Glossario e si provvederà alla stesura della struttura inziale del Piano di Progetto e del Piano di Qualifica. È stato concordato all'unanimità l'utilizzo delle Issue di GitHub per la tracciatura delle attività.\\
+\\
+\textbf{Rotazione ruoli} & Sono stati stabiliti i ruoli dei membri per il secondo
+ciclo.
+\begin{itemize}
+    \item \textbf{Responsabile}: Nenad Radulovic
+    \item \textbf{Amministratore}: Francesco Balestro
+    \item \textbf{Analista}: Filippo Compagno, Andrea Masiero, Mattia Oliva Medin
+    \item \textbf{Verificatore}: Sara Gioia Fichera, Bianca Zaghetto
+\end{itemize}\\
+\end{longtable}
+
+\section{Decisioni} {
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+        \hline
+        \textbf{Identificativo} & \textbf{Descrizione}\\
+        \hline
+        VI\_20251127.d1 & Utilizzo di GitHub Issues per tracciatura attività\\
+        \hline
+    \end{tabularx}
+}
+
+\section{Attività} {
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabularx}{\textwidth}{|l|X|l|l|}
+        \hline
+        \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} & \textbf{Issue}\\
+        \hline
+        \textbf{Tutti} & Aggiornamento Analisi dei Requisiti & VI\_20251127.a1 & \\
+        \hline
+        \textbf{Tutti} & Prima stesura Piano di Progetto e Piano di Qualifica & VI\_20251127.a2 & \\
+        \hline
+        \textbf{Andrea Masiero} & Diario di bordo & VI\_20251127.a3 & \\
+        \hline
+        \textbf{Filippo Compagno} & Aggiornamento Glossario e implementazione riferimenti ad esso & VI\_20251127.a4 & \\
+        \hline
+        \textbf{Bianca Zaghetto} & Stesura Verbale Interno & VI\_20251127.a5 & \#2\\
+        \hline
+        \textbf{Mattia Oliva Medin} & Stesura Verbale Esterno & VI\_20251127.a6 & \#1\\
+        \hline
+    \end{tabularx}
+}
+
+\end{document}
