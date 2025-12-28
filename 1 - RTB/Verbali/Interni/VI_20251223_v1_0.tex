@@ -1,0 +1,98 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+\setTitle{Verbale Interno 23/12/2025}
+\setAuthors{Andrea Masiero}
+\setVerificators{Bianca Zaghetto}
+\setApprovation{Sara Gioia Fichera}
+\setVersion{1.0}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16:00}
+\setDestination{Team Three Technologies}
+\setAbsents{Nessuno}
+
+\begin{document}
+\include{memoTitlepage}
+
+\newpage
+\section*{Registro delle modifiche}
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+\hline
+\textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+1.0 & 28/12/25 & Sara Gioia Fichera & Responsabile &  & Approvazione \\
+\hline
+0.3 & 28/12/25 & Andrea Masiero & Analista & Mattia Oliva Medin & Correzioni \\
+\hline
+0.2 & 27/12/25 & Andrea Masiero & Analista & Bianca Zaghetto & Correzioni \\
+\hline
+0.1 & 27/12/25 & Andrea Masiero & Analista & & Prima stesura \\
+\hline
+\end{tabularx}
+
+\newpage
+\tableofcontents
+
+\newpage
+\markright{}
+
+\newpage
+\section{Ordine del giorno}
+\begin{itemize}
+    \item Stato avanzamento Analisi dei Requisiti
+    \item Discussione sui rischi per il Piano di Progetto (PdP)
+    \item Pianificazione tecnica e funzionale del Proof of Concept (PoC)
+    \item Rotazione dei ruoli per il quinto periodo
+\end{itemize}
+
+\newpage
+\section{Svolgimento}
+\rowcolors{2}{white}{white}
+\begin{longtable}{p{5cm}|p{10cm}}
+\textbf{Stato avanzamento Analisi dei Requisiti} & Il gruppo espone le difficoltà nella gestione dei casi d'uso su Google Drive e comunica il passaggio a LaTeX per una migliore gestione della numerazione e dei riferimenti. Viene anche discussa la traduzione grafica in diagrammi. \\\\
+
+\textbf{Discussione sui rischi per il Piano di Progetto (PdP)} & Vengono identificati rischi specifici per il PDP, ovvero rischi: tecnologici, interpersonali, organizzativi, requisiti/stakeholder e costi/tempi. \\\\
+
+\textbf{Pianificazione tecnica e funzionale del Proof of Concept (PoC)} & È stata definita la creazione di una repository dedicata denominata "PoC". Le funzionalità primarie includeranno il caricamento di un pacchetto e la visualizzazione dei contenuti. \\\\
+
+\textbf{Rotazione dei ruoli per il quinto periodo} & Definiti i ruoli per il quinto sprint: Sara Gioia Fichera (Responsabile), Bianca Zaghetto (Amministratore), Andrea Masiero e Francesco Balestro (Analisti), Nenad Radulovic (Programmatore), Filippo Compagno e Mattia Oliva Medin (Verificatori). \\
+\end{longtable}
+
+\section{Decisioni}
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Identificativo} & \textbf{Descrizione} \\
+    \hline
+    VI\_20251223.d1 & Adozione di LaTeX per la documentazione tecnica dell'Analisi dei Requisiti. \\
+    \hline
+    VI\_20251223.d2 & Esclusione della funzionalità di ricerca nella prima versione del PoC. \\
+    \hline
+    VI\_20251223.d3 & Creazione della repository GitHub "PoC" entro l'inizio del prossimo sprint. \\
+    \hline
+\end{tabularx}
+
+\section{Attività}
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|X|l|}
+    \hline
+    \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+    \hline
+    \textbf{Andrea Masiero} & Stesura Verbale Interno & VI\_20251223.a1 \\
+    \hline
+    \textbf{Bianca Zaghetto} & Creazione repo PoC e stesura rischi nel PDP & VI\_20251223.a2 \\
+    \hline
+    \textbf{Nenad Radulovic} & Sviluppo bozze iniziali e architettura PoC & VI\_20251223.a3 \\
+    \hline
+    \textbf{Andrea Masiero, Francesco Balestro} & Completamento stesura testuale casi d'uso in LaTeX & VI\_20251223.a4 \\
+    \hline
+    \textbf{Mattia Oliva Medin} & Stesura Verbale Esterno & VI\_20251223.a5 \\
+    \hline
+\end{tabularx}
+
+\end{document}
