@@ -1,0 +1,68 @@
+\ProvidesPackage{usecase}
+
+\makeatletter
+
+\newcommand{\uc@code}{}
+\newcommand{\uc@title}{}
+\newcommand{\uc@short}{}
+\newcommand{\uc@actor}{}
+\newcommand{\uc@secactor}{}
+\newcommand{\uc@pre}{}
+\newcommand{\uc@post}{}
+\newcommand{\uc@main}{}
+\newcommand{\uc@alt}{}
+\newcommand{\uc@inc}{}
+\newcommand{\uc@ext}{}
+\newcommand{\uc@gen}{}
+
+\newcommand{\code}[1]{\gdef\uc@code{#1}\gdef\uc@short{#1}}
+\newcommand{\titleUC}[1]{\gdef\uc@title{#1}}
+\newcommand{\actor}[1]{\gdef\uc@actor{#1}}
+\newcommand{\secactor}[1]{\gdef\uc@secactor{#1}}
+\newcommand{\pre}[1]{\gdef\uc@pre{#1}}
+\newcommand{\post}[1]{\gdef\uc@post{#1}}
+\newcommand{\main}[1]{\gdef\uc@main{#1}}
+\newcommand{\alt}[1]{\gdef\uc@alt{#1}}
+\newcommand{\inc}[1]{\gdef\uc@inc{#1}}
+\newcommand{\ext}[1]{\gdef\uc@ext{#1}}
+\newcommand{\gen}[1]{\gdef\uc@gen{#1}}
+
+\newenvironment{usecase} {
+    \gdef\uc@code{}
+    \gdef\uc@title{}
+    \gdef\uc@short{}
+    \gdef\uc@actor{}
+    \gdef\uc@secactor{}
+    \gdef\uc@pre{}
+    \gdef\uc@post{}
+    \gdef\uc@main{}
+    \gdef\uc@alt{}
+    \gdef\uc@inc{}
+    \gdef\uc@ext{}
+    \gdef\uc@gen{}
+    \interlinepenalty=0
+    \widowpenalty=0
+    \clubpenalty=0
+}{
+    \edef\uc@shortexpanded{UC\uc@short}
+    \subsubsection{UC{\uc@code} - {\uc@title}}
+    \protected@edef\@currentlabelname{\uc@shortexpanded}
+    \label{uc:\uc@code}
+    \textbf{Attore principale:} \uc@actor\\
+    \ifx\uc@secactor\@empty\else\textbf{Attori secondari:} \uc@secactor\\\fi
+    \textbf{Pre-condizioni:}
+    \begin{itemize}\uc@pre\end{itemize}
+    \textbf{Post-condizioni:}
+    \begin{itemize}\uc@post\end{itemize}
+    \textbf{Scenario principale:}
+    \begin{enumerate}\uc@main\end{enumerate}
+    \ifx\uc@alt\@empty\else\textbf{Scenari alternativi:}
+    \begin{enumerate}\uc@alt\end{enumerate}\fi
+    \ifx\uc@inc\@empty\else\textbf{Inclusioni:} \uc@inc\\\fi
+    \ifx\uc@ext\@empty\else\textbf{Estensioni:} \uc@ext\\\fi
+    \ifx\uc@gen\@empty\else\textbf{Generalizzazione:} \uc@gen\fi
+}
+
+\newcommand{\ucref}[1]{\hyperref[#1]{\textbf{\nameref*{#1}} (\S\ref*{#1})}}%
+
+\makeatother
