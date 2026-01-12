@@ -1,0 +1,150 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{usecase}
+\usepackage{float}
+
+\setTitle{Analisi dei Requisiti}
+\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro}
+\setApprovation{}
+\setVersion{0.2}
+\setType{Esterno}
+\setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \begin{table}[h!]
+            \rowcolors{2}{lightgray}{white}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.2} & 20/11/25 & Filippo Compagno & Analista & Francesco Balestro & Caratteristiche degli utenti \\
+                \hline
+                \textbf{0.1} & 07/11/25 & Sara Gioia Fichera & Analista & Andrea Masiero & Struttura iniziale del documento \\
+                \hline
+            \end{tabularx}
+        \end{table}
+    }
+    \newpage
+    
+    \tableofcontents
+    \newpage
+
+    \listoffigures
+    \newpage
+    
+    \listoftables
+    \newpage
+
+    \section{Introduzione} {
+        \subsection{Scopo del documento} {        
+            Questo documento ha lo scopo di descrivere in maniera esaustivo e precisa i requisiti funzionali e non funzionali del sistema software da sviluppare per il progetto DIPReader. Per questo motivo integra un'attenta descizione dei casi d'uso, che sono fonte di requisiti.
+            Tale analisi è il risultato di un attento studio del capitolato, integrato con quanto concordato durante gli incontri svolti con Sanmarco Informatica, la proponente.
+        }
+        \subsection{Glossario} {
+            Si rimanda al documento Glossario per chiarire i termini nel dominio del progetto che possono risultare ambigui o di difficile comprensione. I vocaboli presenti nel glossario sono stati segnalati seguendo la notazione:
+            \begin{center}
+                parola\textsubscript{G}
+            \end{center}
+        }
+        \subsection{Riferimenti} {
+            \subsubsection{Riferimenti normativi} {
+                \begin{itemize}
+                    \item Norme di Progetto
+                    \item \hypertarget{capitolato}{Capitolato}
+                    \begin{itemize}
+                        \item {\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item Regolamento del Progetto Didattico
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item 830-1998 - IEEE Recommended Practice for Software Requirements Specifications
+                    \begin{itemize}
+                        \item \url{https://ieeexplore.ieee.org/document/720574/references#references}
+                        \item[] (Ultimo accesso: )
+                    \end{itemize}
+                \end{itemize}
+            }
+            \subsubsection{Riferimenti informativi} {
+                \begin{itemize}
+                    %\item Slide del corso: T4 - Gestione di progetto
+                    %\begin{itemize}
+                    %    \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T04.pdf}
+                    %    \item[] (Ultimo accesso: 2025/11/07)
+                    %\end{itemize}
+                    \item Slide del corso: T5 - Analisi dei requisiti
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item Slide del corso: P2 - Diagrammi dei Casi d'Uso
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi\%20Use\%20Case.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item Repository Github del Prof. Cardin
+                    \begin{itemize}
+                        \item \url{https://github.com/rcardin/swe-imdb}
+                        \item[] (Ultimo accesso: )
+                    \end{itemize}
+                    \item Glossario
+                \end{itemize}
+            }
+        }
+    }
+
+    \newpage
+    \section{Descrizione del prodotto} {
+        \subsection{Presentazione del prodotto} {
+            DIPReader ha lo scopo di supportare la gestione e la conservazione digitale dei documenti, consentendo una transizione strutturata da archivi cartacei a soluzioni cloud avanzate. Il sistema centralizza i documenti e ne assicura autenticità, integrità, leggibilità, reperibilità e sicurezza, offrendo funzionalità di acquisizione, estrazione dei dati e consultazione. Inoltre, permette di richiedere la disponibilità offline dei documenti, garantendo sempre la conformità ai requisiti normativi. 
+        }
+        \subsection{Funzioni del prodotto} {
+            Le funzioni del prodotto sono: 
+            \begin{itemize}
+                \item Rappresentazione semplificata del contenuto 
+                \item Ricerca dei documenti tramite metadati
+                \item Visualizzazione in anteprima di alcuni formati
+                \item Salvare documenti nel computer dell'Utente
+                \item Funzionamento offline
+            \end{itemize}
+        }
+        \subsection{Caratteristiche dell'utente} {
+            L’applicazione è destinata a un pubblico ampio e variegato, comprendente ricercatori, professionisti, cittadini interessati o chiunque abbia bisogno di consultare documenti archiviati. Gli utenti possono avere competenze tecniche e digitali molto diverse: dai non esperti, che desiderano trovare rapidamente informazioni, ai professionisti abituati a interpretare metadati complessi. \\
+            \\
+            Tutti gli utenti condividono l’esigenza di effettuare ricerche efficaci e mirate, utilizzando filtri sui metadati, consultare il contenuto dei documenti e scaricare informazioni in modo affidabile. L’interfaccia dovrà quindi garantire usabilità, chiarezza dei metadati principali e supportare la consultazione e l’estrazione dei documenti in maniera intuitiva.
+        }
+
+    }
+    \newpage
+    \section{Casi d'uso} {
+        \subsection{Scopo} {
+            Lo scopo di questa sezione è spiegare singolarmente ciascun Caso d'uso individuato.  
+        }
+        \subsection{Attori} {
+
+        }
+        \subsection{Casi d'uso} {
+
+        }
+    }
+    \newpage
+    \section{Requisiti} {
+       
+        \subsection{Requisiti Funzionali} {
+            
+        }
+        \subsection{Requisiti di Qualità} {
+           
+        }
+        \subsection{Requisiti di Vincolo} {
+           
+        }
+    }
+
+\end{document}
