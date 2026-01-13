@@ -7,7 +7,7 @@
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro}
 \setApprovation{}
-\setVersion{0.2}
+\setVersion{0.3}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -20,6 +20,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.3} & 24/11/25 & Sara Gioia Fichera & Analista & Francesco Balestro &  Definizione Attori \\
                 \hline
                 \textbf{0.2} & 20/11/25 & Filippo Compagno & Analista & Francesco Balestro & Caratteristiche degli utenti \\
                 \hline
@@ -127,7 +129,11 @@
             Lo scopo di questa sezione è spiegare singolarmente ciascun Caso d'uso individuato.  
         }
         \subsection{Attori} {
-
+            \begin{itemize}
+                \item Utente: in questo contesto è l'Attore principale, cioè colui che intergisce attivamente con il sistema e svolge le azioni indicate dal Caso d'Uso.
+                \item Motore semantico: si occupa di elaborare una ricerca semantica fatta dall'utente per produrre un risultato. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
+                \item Gestore di stampa SO: si occupa di gestire la richiesta di stampa di un documento da parte dell'utente. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
+            \end{itemize}
         }
         \subsection{Casi d'uso} {
 
