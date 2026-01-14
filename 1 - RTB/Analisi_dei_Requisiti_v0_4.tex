@@ -1,0 +1,434 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{usecase}
+\usepackage{float}
+
+\setTitle{Analisi dei Requisiti}
+\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto}
+\setApprovation{}
+\setVersion{0.4}
+\setType{Esterno}
+\setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
+
+% -- Obbligatori --
+\newcommand{\loaddip}{01}
+\newcommand{\remloaddip}{02}
+\newcommand{\errloaddip}{03}
+\newcommand{\removedip}{04}
+\newcommand{\viewdip}{05}
+\newcommand{\viewdetdoc}{06}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \begin{table}[h!]
+            \rowcolors{2}{lightgray}{white}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.4} & 01/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.3} & 24/11/25 & Sara Gioia Fichera & Analista & Francesco Balestro &  Definizione Attori \\
+                \hline
+                \textbf{0.2} & 20/11/25 & Filippo Compagno & Analista & Francesco Balestro & Caratteristiche degli utenti \\
+                \hline
+                \textbf{0.1} & 07/11/25 & Sara Gioia Fichera & Analista & Andrea Masiero & Struttura iniziale del documento \\
+                \hline
+            \end{tabularx}
+        \end{table}
+    }
+    \newpage
+    
+    \tableofcontents
+    \newpage
+
+    \listoffigures
+    \newpage
+    
+    \listoftables
+    \newpage
+
+    \section{Introduzione} {
+        \subsection{Scopo del documento} {        
+            Questo documento ha lo scopo di descrivere in maniera esaustivo e precisa i requisiti funzionali e non funzionali del sistema software da sviluppare per il progetto DIPReader. Per questo motivo integra un'attenta descizione dei casi d'uso, che sono fonte di requisiti.
+            Tale analisi è il risultato di un attento studio del capitolato, integrato con quanto concordato durante gli incontri svolti con Sanmarco Informatica, la proponente.
+        }
+        \subsection{Glossario} {
+            Si rimanda al documento Glossario per chiarire i termini nel dominio del progetto che possono risultare ambigui o di difficile comprensione. I vocaboli presenti nel glossario sono stati segnalati seguendo la notazione:
+            \begin{center}
+                parola\textsubscript{G}
+            \end{center}
+        }
+        \subsection{Riferimenti} {
+            \subsubsection{Riferimenti normativi} {
+                \begin{itemize}
+                    \item Norme di Progetto
+                    \item \hypertarget{capitolato}{Capitolato}
+                    \begin{itemize}
+                        \item {\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item Regolamento del Progetto Didattico
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item 830-1998 - IEEE Recommended Practice for Software Requirements Specifications
+                    \begin{itemize}
+                        \item \url{https://ieeexplore.ieee.org/document/720574/references#references}
+                        \item[] (Ultimo accesso: )
+                    \end{itemize}
+                \end{itemize}
+            }
+            \subsubsection{Riferimenti informativi} {
+                \begin{itemize}
+                    %\item Slide del corso: T4 - Gestione di progetto
+                    %\begin{itemize}
+                    %    \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T04.pdf}
+                    %    \item[] (Ultimo accesso: 2025/11/07)
+                    %\end{itemize}
+                    \item Slide del corso: T5 - Analisi dei requisiti
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item Slide del corso: P2 - Diagrammi dei Casi d'Uso
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi\%20Use\%20Case.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item Repository Github del Prof. Cardin
+                    \begin{itemize}
+                        \item \url{https://github.com/rcardin/swe-imdb}
+                        \item[] (Ultimo accesso: )
+                    \end{itemize}
+                    \item Glossario
+                \end{itemize}
+            }
+        }
+    }
+
+    \newpage
+    \section{Descrizione del prodotto} {
+        \subsection{Presentazione del prodotto} {
+            DIPReader ha lo scopo di supportare la gestione e la conservazione digitale dei documenti, consentendo una transizione strutturata da archivi cartacei a soluzioni cloud avanzate. Il sistema centralizza i documenti e ne assicura autenticità, integrità, leggibilità, reperibilità e sicurezza, offrendo funzionalità di acquisizione, estrazione dei dati e consultazione. Inoltre, permette di richiedere la disponibilità offline dei documenti, garantendo sempre la conformità ai requisiti normativi. 
+        }
+        \subsection{Funzioni del prodotto} {
+            Le funzioni del prodotto sono: 
+            \begin{itemize}
+                \item Rappresentazione semplificata del contenuto 
+                \item Ricerca dei documenti tramite metadati
+                \item Visualizzazione in anteprima di alcuni formati
+                \item Salvare documenti nel computer dell'Utente
+                \item Funzionamento offline
+            \end{itemize}
+        }
+        \subsection{Caratteristiche dell'utente} {
+            L’applicazione è destinata a un pubblico ampio e variegato, comprendente ricercatori, professionisti, cittadini interessati o chiunque abbia bisogno di consultare documenti archiviati. Gli utenti possono avere competenze tecniche e digitali molto diverse: dai non esperti, che desiderano trovare rapidamente informazioni, ai professionisti abituati a interpretare metadati complessi. \\
+            \\
+            Tutti gli utenti condividono l’esigenza di effettuare ricerche efficaci e mirate, utilizzando filtri sui metadati, consultare il contenuto dei documenti e scaricare informazioni in modo affidabile. L’interfaccia dovrà quindi garantire usabilità, chiarezza dei metadati principali e supportare la consultazione e l’estrazione dei documenti in maniera intuitiva.
+        }
+
+    }
+    \newpage
+    \section{Casi d'uso} {
+        \subsection{Scopo} {
+            Lo scopo di questa sezione è spiegare singolarmente ciascun Caso d'uso individuato.  
+        }
+        \subsection{Attori} {
+            \begin{itemize}
+                \item Utente: in questo contesto è l'Attore principale, cioè colui che intergisce attivamente con il sistema e svolge le azioni indicate dal Caso d'Uso.
+                \item Motore semantico: si occupa di elaborare una ricerca semantica fatta dall'utente per produrre un risultato. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
+                \item Gestore di stampa SO: si occupa di gestire la richiesta di stampa di un documento da parte dell'utente. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
+            \end{itemize}
+        }
+        \subsection{Casi d'uso} {
+            % Caricamento DIP
+            \begin{usecase}
+                \code{\loaddip}
+                \titleUC{Caricamento DIP}
+                \actor{Utente}
+                \pre{
+                    \item Nessun DIP è caricato nel sistema
+                }
+                \post{
+                    \item Il DIP è caricato nel sistema
+                }
+                \main{
+                    \item L'utente seleziona la funzione di caricamento
+                    \item L'utente seleziona il pacchetto (\textbf{UC\loaddip.1})
+                    \item L'utente visualizza la conferma dell'avvenuto caricamento
+                }
+                \alt{
+                    \item[2a.] L'utente cancella l'operazione
+                    \item[3a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
+                }
+                \inc{\ucref{uc:\loaddip.1}}
+                \ext{\ucref{uc:\errloaddip}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC01.png}
+                    \caption{UC01 - Caricamento DIP}
+            \end{figure}
+            
+            \begin{usecase}
+                \code{\loaddip.1}
+                \titleUC{Selezione pacchetto}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha selezionato la funzione di caricamento
+                }
+                \post{
+                    \item L'utente ha selezionato la funzione di caricamento
+                }
+                \main{
+                    \item Il sistema richiede il pacchetto all'utente
+                    \item L'utente seleziona il pacchetto dal proprio dispositivo
+                }
+            \end{usecase}
+            
+            % Caricamento DIP con DIP già caricato
+            \begin{usecase}
+                \code{\remloaddip}
+                \titleUC{Caricamento DIP con DIP già presente}
+                \actor{Utente}
+                \pre{
+                    \item Un DIP è caricato nel sistema
+                }
+                \post{
+                    \item Il DIP già caricato è rimosso dal sistema
+                    \item Il nuovo DIP è caricato nel sistema
+                }
+                \main{
+                    \item L'utente seleziona la funzione di caricamento
+                    \item L'utente vede un messaggio informativo sulla necessità di rimozione del DIP presente 
+                    \item L'utente rimuove il DIP presente nel sistema (\textbf{UC\removedip})
+                    \item L'utente seleziona il pacchetto (\textbf{UC\loaddip.1})
+                    \item L'utente visualizza la conferma dell'avvenuto caricamento
+                }
+                \alt{
+                    \item[4a.] L'utente cancella l'operazione
+                    \item[5a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
+                }
+                \inc{\ucref{uc:\loaddip.1}, \ucref{uc:\removedip}}
+                \ext{\ucref{uc:\errloaddip}}
+                \gen{\ucref{uc:\loaddip}}
+            \end{usecase}
+
+            % Errore struttura DIP
+            \begin{usecase}
+                \code{\errloaddip}
+                \titleUC{Errore struttura DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un pacchetto che non rappresenta un DIP
+                }
+                \post{
+                    \item Il DIP non viene caricato nel sistema
+                    \item L'utente vede un messaggio di errore
+                }
+                \main{
+                    \item L'utente vede un messaggio di errore relativo alla struttura non conforme del DIP
+                }
+            \end{usecase}
+         
+            % Rimozione DIP
+            \begin{usecase}
+                \code{\removedip}
+                \titleUC{Rimozione DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP nel sistema
+                }
+                \post{
+                    \item Il DIP caricato è rimosso dal sistema
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di chiusura
+                    \item Il sistema richiede la conferma
+                    \item L'utente conferma la chiusura del DIP
+                }
+                \alt{
+                    \item[3a.] L'utente cancella l'operazione
+                }
+            \end{usecase}
+            
+            % Visualizzazione DIP
+            \begin{usecase}
+                \code{\viewdip}
+                \titleUC{Visualizzazione contenuto DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP nel sistema
+                }
+                \post{
+                    \item L'utente vede le informazioni relative al DIP
+                    \item L'utente vede i documenti contenuti nel DIP
+                }
+                \main{
+                    \item L'utente visualizza le informazioni relative al DIP (\textbf{UC\viewdip.1})
+                    \item L'utente visualizza la lista dei documenti contenuti nel DIP (\textbf{UC\viewdip.2})
+                }
+                \inc{\ucref{uc:\viewdip.1}, \ucref{uc:\viewdip.2}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC05.png}
+                    \caption{UC05 - Visualizzazione contenuto DIP}
+            \end{figure}
+            \begin{usecase}
+                \code{\viewdip.1}
+                \titleUC{Visualizzazione informazioni DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il contenuto del DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni relative al DIP
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item La data di creazione del DIP
+                        \item Le informazioni del programma usato per la creazione del DIP, quali
+                        \begin{itemize}
+                            \item Nome
+                            \item Versione
+                            \item Produttore
+                            \item Il numero di documenti contenuti
+                        \end{itemize}
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2}
+                \titleUC{Visualizzazione lista documenti contenuti}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il contenuto del DIP
+                }
+                \post{
+                    \item L'utente vede la lista di documenti contenuti nel DIP
+                }
+                \main{
+                    \item L'utente visualizza i documenti contenuti nel DIP
+                }
+                \inc{\ucref{uc:\viewdip.2.1}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.1}
+                \titleUC{Visualizzazione singolo documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando la lista dei documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni principali di un documento contenuto nel DIP
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item Il nome del file
+                        \item Il suo formato
+                        \item Identificativo documentale
+                        \item Data in cui il documento è stato registrato
+                    \end{itemize}
+                }
+                \inc{\ucref{uc:\viewdetdoc}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.2}
+                \titleUC{Visualizzazione singolo documento con allegati}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando la lista dei documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni principali di un documento contenuto nel DIP
+                    \item L'utente vede la lista degli allegati del documento
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item Il nome del file
+                        \item Il suo formato
+                        \item Identificativo documentale
+                        \item Data in cui il documento è stato registrato
+                        \item La lista dei suoi allegati (\textbf{UC\viewdip.2.2.1})
+                    \end{itemize}
+                }
+                \inc{\ucref{uc:\viewdip.2.2.1}}
+                \gen{\ucref{uc:\viewdip.2.1}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.2.1}
+                \titleUC{Visualizzazione lista allegati documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando un documento contenuto nel DIP
+                }
+                \post{
+                    \item L'utente vede la lista degli allegati di un documento contenuto nel DIP
+                }
+                \main{
+                    \item L'utente visualizza gli allegati di un documento contenuto nel DIP
+                }
+                \inc{\ucref{uc:\viewdip.2.2.1.1}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.2.1.1}
+                \titleUC{Visualizzazione singolo allegato}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando la lista degli allegati di un documento contenuto nel DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni principali di un allegato di un documento contenuto nel DIP
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item Il nome dell'allegato
+                        \item Il suo formato
+                        \item Identificativo allegato
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            % Visualizzazione dettagli documento
+            \begin{usecase}
+                \code{\viewdetdoc}
+                \titleUC{Visualizzazione dettagli documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando un singolo documento
+                }
+                \post{
+                    \item L'utente vede i dettagli di un documento
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di visualizzazione dei dettagli di un documento
+                    \item L'utente visualizza i dettagli di un documento
+                }
+            \end{usecase}
+        }
+    }
+    \newpage
+    \section{Requisiti} {
+       
+        \subsection{Requisiti Funzionali} {
+            
+        }
+        \subsection{Requisiti di Qualità} {
+           
+        }
+        \subsection{Requisiti di Vincolo} {
+           
+        }
+    }
+
+\end{document}
