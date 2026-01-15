@@ -7,7 +7,7 @@
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
 \setApprovation{}
-\setVersion{0.5}
+\setVersion{0.6}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -34,6 +34,20 @@
 \newcommand{\mdparamOraReg}{15} % Ora registrazione
 \newcommand{\mdparamNumDoc}{16} % Numero documento
 \newcommand{\mdparamCodReg}{17} % Codice registro
+\newcommand{\mdparamRuolo}{18} % Ruolo
+\newcommand{\mdparamTipSog}{19} % Tipo soggetto
+\newcommand{\mdparamCog}{20} % Cognome (PF, AS)
+\newcommand{\mdparamNom}{21} % Nome (PF, AS)
+\newcommand{\mdparamCF}{22} % Codice fiscale (PF, PG, AS)
+\newcommand{\mdparamIndDig}{23} % Indirizzo digitale di riferimento (PF, PG, PAI, PAE, AS)
+\newcommand{\mdparamDenOrg}{24} % Denominazione Organizzazione (PG, AS)
+\newcommand{\mdparamCFPI}{25} % Partita IVA (PG)
+\newcommand{\mdparamDenUff}{26} % Denominazione ufficio (PG, PAE, AS)
+\newcommand{\mdparamDenAmm}{27} % Denominazione amministrazione (PAI, PAE)
+\newcommand{\mdparamIPA}{28} % Codice IPA (PAI)
+\newcommand{\mdparamDenAmmAOO}{29} % Denominazione amministrazione AOO (PAI)
+\newcommand{\mdparamIPAOOO}{30} % Codice IPA AOO (PAI)
+\newcommand{\mdparamDenAmmUOR}{31} % Denominazione amministrazione UOR (PAI)
 
 \begin{document}
     \include{docTitlepage}
@@ -44,6 +58,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.6} & 05/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
                 \hline
                 \textbf{0.5} & 04/12/25 & Andrea Masiero & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
                 \hline
@@ -731,6 +747,505 @@
                     \centering
                     \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC17.png}
                     \caption{UC17 - Inserimento criterio di ricerca ”Codice registro”}
+            \end{figure}
+
+             \begin{usecase}
+                \code{\mdparamRuolo}
+                \titleUC{Inserimento criterio di ricerca "Ruolo"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Ruolo"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Produttore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC18.png}
+                    \caption{UC18 - Inserimento criterio di ricerca ”Ruolo”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipSog}
+                \titleUC{Inserimento criterio di ricerca "Tipo soggetto"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo soggetto"
+                    \item L'utente seleziona il valore tra le opzioni disponibili
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PAI (Amministrazione pubblica italiana)"
+                        \item "PF (Persona Fisica)"
+                        \item "PG (Organizzazione)"
+                        \item "SW (Documenti prodotti automaticamente)"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC19.png}
+                    \caption{UC19 - Inserimento criterio di ricerca ”Tipo soggetto”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCog}
+                \titleUC{Inserimento criterio di ricerca "Cognome"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PF (Persona Fisica)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Cognome"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC20.png}
+                    \caption{UC20 - Inserimento criterio di ricerca ”Cognome”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNom}
+                \titleUC{Inserimento criterio di ricerca "Nome"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PF (Persona Fisica)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Nome"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC21.png}
+                    \caption{UC21 - Inserimento criterio di ricerca ”Nome”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCF}
+                \titleUC{Inserimento criterio di ricerca "Codice Fiscale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PF (Persona Fisica)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice Fiscale"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC22.png}
+                    \caption{UC22 - Inserimento criterio di ricerca ”Codice Fiscale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIndDig}
+                \titleUC{Inserimento criterio di ricerca "Indirizzo digitale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PAI (Amministrazione pubblica italiana)"
+                        \item "PF (Persona Fisica)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Indirizzo digitale"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC23.png}
+                    \caption{UC23 - Inserimento criterio di ricerca ”Indirizzo digitale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenOrg}
+                \titleUC{Inserimento criterio di ricerca "Denominazione organizzazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione organizzazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC24.png}
+                    \caption{UC24 - Inserimento criterio di ricerca ”Denominazione organizzazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCFPI}
+                \titleUC{Inserimento criterio di ricerca "Partita IVA"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Partita IVA"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC25.png}
+                    \caption{UC25 - Inserimento criterio di ricerca ”Partita IVA”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenUff}
+                \titleUC{Inserimento criterio di ricerca "Denominazione ufficio"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione ufficio"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC26.png}
+                    \caption{UC26 - Inserimento criterio di ricerca ”Denominazione ufficio”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenAmm}
+                \titleUC{Inserimento criterio di ricerca "Denominazione amministrazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PAI (Amministrazione pubblica italiana)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione amministrazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC27.png}
+                    \caption{UC27 - Inserimento criterio di ricerca ”Denominazione amministrazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIPA}
+                \titleUC{Inserimento criterio di ricerca "Codice IPA"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice IPA"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC28.png}
+                    \caption{UC28 - Inserimento criterio di ricerca ”Codice IPA”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenAmmAOO}
+                \titleUC{Inserimento criterio di ricerca "Denominazione amministrazione AOO"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione amministrazione AOO"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC29.png}
+                    \caption{UC29 - Inserimento criterio di ricerca ”Denominazione amministrazione AOO”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIPAOOO}
+                \titleUC{Inserimento criterio di ricerca "Codice IPA AOO"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice IPA AOO"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC30.png}
+                    \caption{UC30 - Inserimento criterio di ricerca ”Codice IPA AOO”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenAmmUOR}
+                \titleUC{Inserimento criterio di ricerca "Denominazione amministrazione UOR"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione amministrazione UOR"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC31.png}
+                    \caption{UC31 - Inserimento criterio di ricerca ”Denominazione amministrazione UOR”}
             \end{figure}
         }
     }
