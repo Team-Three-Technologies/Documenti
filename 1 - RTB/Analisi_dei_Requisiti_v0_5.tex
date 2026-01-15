@@ -4,10 +4,10 @@
 \usepackage{float}
 
 \setTitle{Analisi dei Requisiti}
-\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera}
-\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto}
+\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
 \setApprovation{}
-\setVersion{0.4}
+\setVersion{0.5}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -18,6 +18,22 @@
 \newcommand{\removedip}{04}
 \newcommand{\viewdip}{05}
 \newcommand{\viewdetdoc}{06}
+\newcommand{\viewconsinfo}{07}
+
+% IdDoc
+\newcommand{\mdparamImpCrit}{08} % Impronta crittografica - Hash - Algoritmo
+\newcommand{\mdparamIdDoc}{09} % Identificativo documento
+% ModalitàDiFormazione
+\newcommand{\mdparamModFor}{10} % Modalità di formazione
+% TipologiaDocumentale
+\newcommand{\mdparamTipDoc}{11} % Tipologia documentale
+% DatiDiRegistrazione
+\newcommand{\mdparamTipFlu}{12} % Tipologia di flusso
+\newcommand{\mdparamTipReg}{13} % Tipo registro
+\newcommand{\mdparamDatReg}{14} % Data registrazione
+\newcommand{\mdparamOraReg}{15} % Ora registrazione
+\newcommand{\mdparamNumDoc}{16} % Numero documento
+\newcommand{\mdparamCodReg}{17} % Codice registro
 
 \begin{document}
     \include{docTitlepage}
@@ -28,6 +44,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.5} & 04/12/25 & Andrea Masiero & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
                 \hline
                 \textbf{0.4} & 01/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
                 \hline
@@ -415,6 +433,305 @@
                     \item L'utente visualizza i dettagli di un documento
                 }
             \end{usecase}
+            
+            % Visualizzazione delle informazioni di conservazione
+            \begin{usecase}
+                \code{\viewconsinfo}
+                \titleUC{Visualizzazione informazioni di conservazione}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L’utente visualizza i dettagli relativi alla validità legale e allo stato del processo di conservazione dei documenti
+                }
+                \main{
+                    \item L'utente visualizza degli elementi grafici che gli indicano la validità e lo stato del processo di conservazione dei documenti
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC07.png}
+                    \caption{UC07 - Visualizzazione informazioni di conservazione}
+            \end{figure}
+
+            % Criteri di ricerca (metadati)
+            \begin{usecase}
+                \code{\mdparamImpCrit}
+                \titleUC{Inserimento criterio di ricerca "Impronta crittografica"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Impronta crittografica"
+                    \item L'utente inserisce l'hash del documento (\textbf{UC\mdparamImpCrit.1})
+                    \item L'utente seleziona l'algoritmo applicato (\textbf{UC\mdparamImpCrit.2})
+                }
+                \inc{\ucref{uc:\mdparamImpCrit.1}, \ucref{uc:\mdparamImpCrit.2}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC08.png}
+                    \caption{UC08 - Inserimento criterio di ricerca ”Impronta crittografica”}
+            \end{figure}
+            \begin{usecase}
+                \code{\mdparamImpCrit.1}
+                \titleUC{Inserimento hash del documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta configurando il criterio di ricerca "Impronta crittografica"
+                }
+                \post{
+                    \item L'utente ha inserito l'hash del documento
+                }
+                \main{
+                    \item L'utente inserisce l'hash del documento
+                }
+            \end{usecase}
+            \begin{usecase}
+                \code{\mdparamImpCrit.2}
+                \titleUC{Selezione algoritmo di hashing}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta configurando il criterio di ricerca "Impronta crittografica"
+                }
+                \post{
+                    \item L'utente ha selezionato l'algoritmo di hashing
+                }
+                \main{
+                    \item L'utente seleziona l'algoritmo di hashing applicato tra quelli disponibili
+                }
+            \end{usecase}
+
+            \begin{usecase}
+                \code{\mdparamIdDoc}
+                \titleUC{Inserimento criterio di ricerca "Identificativo documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Identificativo documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC09.png}
+                    \caption{UC09 - Inserimento criterio di ricerca ”Identificativo documento”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamModFor}
+                \titleUC{Inserimento criterio di ricerca "Modalità di formazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Modalità di formazione"
+                    \item L'utente seleziona i valori tra le opzioni
+                    \begin{itemize}
+                        \item "Creazione tramite l'utilizzo di strumenti software che assicurino la produzione di documenti nei formati previsti nell'Allegato 2 delle Linee Guida"
+                        \item "Acquisizione di un documento informatico per via telematica o su supporto informatico, acquisizione della copia per immagine su supporto informatico di un documento analogico, acquisizione della copia informatica di un documento analogico"
+                        \item "Memorizzazione su supporto informatico in formato digitale delle informazioni risultanti da transazioni o processi informatici o dalla presentazione telematica di dati attraverso moduli o formulari resi disponibili all'utente"
+                        \item "Generazione o raggruppamento anche in via automatica di un insieme di dati o registrazioni, provenienti da una o più banche dati, anche appartenenti a più soggetti interoperanti, secondo una struttura logica predeterminata e memorizzata in forma statica"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC10.png}
+                    \caption{UC10 - Inserimento criterio di ricerca ”Modalità di formazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipDoc}
+                \titleUC{Inserimento criterio di ricerca "Tipologia documentale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipologia documentale"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC11.png}
+                    \caption{UC11 - Inserimento criterio di ricerca ”Tipologia documentale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipFlu}
+                \titleUC{Inserimento criterio di ricerca "Tipologia di flusso"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipologia di flusso"
+                    \item L'utente seleziona i valori tra le opzioni
+                    \begin{itemize}
+                        \item "U (In uscita)"
+                        \item "E (In entrata)"
+                        \item "I (Interno)"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC12.png}
+                    \caption{UC12 - Inserimento criterio di ricerca ”Tipologia di flusso”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipReg}
+                \titleUC{Inserimento criterio di ricerca "Tipo registro"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo registro"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Nessuno"
+                        \item "Protocollo ordinario/Protocollo emergenza"
+                        \item "Repertorio/Registro"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC13.png}
+                    \caption{UC13 - Inserimento criterio di ricerca ”Tipo registro”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDatReg}
+                \titleUC{Inserimento criterio di ricerca "Data registrazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Data registrazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC14.png}
+                    \caption{UC14 - Inserimento criterio di ricerca ”Data registrazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamOraReg}
+                \titleUC{Inserimento criterio di ricerca "Ora registrazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Ora registrazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC15.png}
+                    \caption{UC15 - Inserimento criterio di ricerca ”Ora registrazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNumDoc}
+                \titleUC{Inserimento criterio di ricerca "Numero documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Numero documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC16.png}
+                    \caption{UC16 - Inserimento criterio di ricerca ”Numero documento”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCodReg}
+                \titleUC{Inserimento criterio di ricerca "Codice registro"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice registro"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC17.png}
+                    \caption{UC17 - Inserimento criterio di ricerca ”Codice registro”}
+            \end{figure}
         }
     }
     \newpage
