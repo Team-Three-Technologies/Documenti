@@ -7,7 +7,7 @@
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
 \setApprovation{}
-\setVersion{0.7}
+\setVersion{0.8}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -66,6 +66,25 @@
 \newcommand{\mdparamRis}{43} % Riservato
 % IdentificativoDelFormato
 \newcommand{\mdparamFor}{44} % Formato
+\newcommand{\mdparamNomPro}{45} % Nome prodotto (software)
+\newcommand{\mdparamVerPro}{46} % Versione prodotto (software)
+\newcommand{\mdparamProd}{47} % Produttore (software)
+% Verifica
+\newcommand{\mdparamFirDig}{48} % Firmato digitalmente
+\newcommand{\mdparamSigEle}{49} % Sigillato elettronicamente
+\newcommand{\mdparamMarTem}{50} % Marcatura temporale
+\newcommand{\mdparamConCop}{51} % Conformità copie su supporto informatico
+% Agg
+% IdAgg
+\newcommand{\mdparamTipAgg}{52} % Tipo aggregazione
+\newcommand{\mdparamIdAgg}{53} % Identificativo aggregazione
+% TipologiaFascicolo
+\newcommand{\mdparamTipFas}{54} % Tipologia fascicolo
+% NomeDelDocumento
+\newcommand{\mdparamNomDoc}{55} % Nome del documento
+% VersioneDelDocumento
+\newcommand{\mdparamVerDoc}{56} % Versione del documento
+% TracciaturaModificheDocumento
 
 \begin{document}
     \include{docTitlepage}
@@ -76,6 +95,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.8} & 10/12/25 & Filippo Compagno & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
                 \hline
                 \textbf{0.7} & 08/12/25 & Mattia Oliva Medin & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
                 \hline
@@ -1573,6 +1594,311 @@
                     \centering
                     \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC44.png}
                     \caption{UC44 - Inserimento criterio di ricerca ”Formato”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNomPro}
+                \titleUC{Inserimento criterio di ricerca "Nome prodotto software"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Nome prodotto software"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC45.png}
+                    \caption{UC45 - Inserimento criterio di ricerca ”Nome prodotto software”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamVerPro}
+                \titleUC{Inserimento criterio di ricerca "Versione prodotto software"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Versione prodotto software"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC46.png}
+                    \caption{UC46 - Inserimento criterio di ricerca ”Versione prodotto software”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamProd}
+                \titleUC{Inserimento criterio di ricerca "Produttore software"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Produttore software"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC47.png}
+                    \caption{UC47 - Inserimento criterio di ricerca ”Produttore software”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamFirDig}
+                \titleUC{Inserimento criterio di ricerca "Firmato digitalmente"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Firmato digitalmente"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC48.png}
+                    \caption{UC48 - Inserimento criterio di ricerca ”Firmato digitalmente”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamSigEle}
+                \titleUC{Inserimento criterio di ricerca "Sigillato elettronicamente"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Sigillato elettronicamente"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC49.png}
+                    \caption{UC49 - Inserimento criterio di ricerca ”Sigillato elettronicamente”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamMarTem}
+                \titleUC{Inserimento criterio di ricerca "Marcatura temporale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Marcatura temporale"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC50.png}
+                    \caption{UC50 - Inserimento criterio di ricerca ”Marcatura temporale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamConCop}
+                \titleUC{Inserimento criterio di ricerca "Conformità copie immagine su supporto informatico"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Conformità copie immagine su supporto informatico"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC51.png}
+                    \caption{UC51 - Inserimento criterio di ricerca ”Conformità copie immagine su supporto informatico”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipAgg}
+                \titleUC{Inserimento criterio di ricerca "Tipo aggregazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo aggregazione"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Fascicolo"
+                        \item "Serie documentale"
+                        \item "Serie di fascicoli"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC52.png}
+                    \caption{UC52 - Inserimento criterio di ricerca ”Tipo aggregazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIdAgg}
+                \titleUC{Inserimento criterio di ricerca "Identificativo aggregazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Identificativo aggregazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC53.png}
+                    \caption{UC53 - Inserimento criterio di ricerca ”Identificativo aggregazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipFas}
+                \titleUC{Inserimento criterio di ricerca "Tipologia fascicolo"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Tipo aggregazione" con valore "Fascicolo"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipologia fascicolo"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Affare"
+                        \item "Attività"
+                        \item "Persona fisica"
+                        \item "Persona giuridica"
+                        \item "Procedimento amministrativo"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC54.png}
+                    \caption{UC54 - Inserimento criterio di ricerca ”Tipologia fascicolo”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNomDoc}
+                \titleUC{Inserimento criterio di ricerca "Nome del documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Nome del documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC55.png}
+                    \caption{UC55 - Inserimento criterio di ricerca ”Nome del documento”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamVerDoc}
+                \titleUC{Inserimento criterio di ricerca "Versione del documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Versione del documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC56.png}
+                    \caption{UC56 - Inserimento criterio di ricerca ”Versione del documento”}
             \end{figure}
         }
     }
