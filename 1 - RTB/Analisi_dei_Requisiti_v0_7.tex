@@ -4,10 +4,10 @@
 \usepackage{float}
 
 \setTitle{Analisi dei Requisiti}
-\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero}
+\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
 \setApprovation{}
-\setVersion{0.6}
+\setVersion{0.7}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -48,6 +48,24 @@
 \newcommand{\mdparamDenAmmAOO}{29} % Denominazione amministrazione AOO (PAI)
 \newcommand{\mdparamIPAOOO}{30} % Codice IPA AOO (PAI)
 \newcommand{\mdparamDenAmmUOR}{31} % Denominazione amministrazione UOR (PAI)
+\newcommand{\mdparamIPAUOR}{32} % Codice IPA UOR (PAI)
+\newcommand{\mdparamDenSis}{33} % Denominazione Sistema (SW)
+% ChiaveDescrittiva
+\newcommand{\mdparamOgg}{34} % Oggetto
+\newcommand{\mdparamParChi}{35} % Parola chiave
+% Allegati
+\newcommand{\mdparamNumAll}{36} % Numero allegati
+\newcommand{\mdparamImpCritAll}{37} % Impronta crittografica allegato
+\newcommand{\mdparamIdDocAll}{38} % Identificativo allegato
+\newcommand{\mdparamDesAll}{39} % Descrizione allegato
+% Classificazione
+\newcommand{\mdparamIndCla}{40} % Indice di classificazione
+\newcommand{\mdparamDesCla}{41} % Descrizione (dell'indice di classificazione)
+\newcommand{\mdparamPiaCla}{42} % Piano di classificazione
+% Riservato
+\newcommand{\mdparamRis}{43} % Riservato
+% IdentificativoDelFormato
+\newcommand{\mdparamFor}{44} % Formato
 
 \begin{document}
     \include{docTitlepage}
@@ -58,6 +76,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.7} & 08/12/25 & Mattia Oliva Medin & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
                 \hline
                 \textbf{0.6} & 05/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
                 \hline
@@ -1246,6 +1266,313 @@
                     \centering
                     \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC31.png}
                     \caption{UC31 - Inserimento criterio di ricerca ”Denominazione amministrazione UOR”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIPAUOR}
+                \titleUC{Inserimento criterio di ricerca "Codice IPA UOR"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice IPA UOR"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC32.png}
+                    \caption{UC32 - Inserimento criterio di ricerca ”Codice IPA UOR”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenSis}
+                \titleUC{Inserimento criterio di ricerca "Denominazione sistema"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con valore "Produttore"
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "SW (Documenti prodotti automaticamente)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione sistema"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC33.png}
+                    \caption{UC33 - Inserimento criterio di ricerca ”Denominazione sistema”}
+            \end{figure}
+            
+            \begin{usecase}
+                \code{\mdparamOgg}
+                \titleUC{Inserimento criterio di ricerca "Oggetto"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Oggetto"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC34.png}
+                    \caption{UC34 - Inserimento criterio di ricerca ”Oggetto”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamParChi}
+                \titleUC{Inserimento criterio di ricerca "Parola chiave"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Parola chiave"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC35.png}
+                    \caption{UC35 - Inserimento criterio di ricerca ”Parola chiave”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNumAll}
+                \titleUC{Inserimento criterio di ricerca "Numero allegati"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Numero allegati"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC36.png}
+                    \caption{UC36 - Inserimento criterio di ricerca ”Numero allegati”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamImpCritAll}
+                \titleUC{Inserimento criterio di ricerca "Impronta crittografica allegato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Impronta crittografica allegato"
+                    \item L'utente inserisce il digest del documento (\textbf{UC\mdparamImpCrit.1})
+                    \item L'utente seleziona l'algoritmo applicato (\textbf{UC\mdparamImpCrit.2})
+                }
+                \inc{\ucref{uc:\mdparamImpCrit.1}, \ucref{uc:\mdparamImpCrit.2}}
+                \gen{\ucref{uc:\mdparamImpCrit}}
+            \end{usecase}
+
+            \begin{usecase}
+                \code{\mdparamIdDocAll}
+                \titleUC{Inserimento criterio di ricerca "Identificativo allegato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Identificativo allegato"
+                    \item L'utente inserisce il valore
+                }
+                \gen{\ucref{uc:\mdparamIdDoc}}
+            \end{usecase}
+
+            \begin{usecase}
+                \code{\mdparamDesAll}
+                \titleUC{Inserimento criterio di ricerca "Descrizione allegato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Descrizione allegato"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC39.png}
+                    \caption{UC39 - Inserimento criterio di ricerca ”Descrizione allegato”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIndCla}
+                \titleUC{Inserimento criterio di ricerca "Indice di classificazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Indice di classificazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC40.png}
+                    \caption{UC40 - Inserimento criterio di ricerca ”Indice di classificazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDesCla}
+                \titleUC{Inserimento criterio di ricerca "Descrizione dell'indice di classificazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Descrizione dell'indice di classificazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC41.png}
+                    \caption{UC41 - Inserimento criterio di ricerca ”Descrizione dell’indice di classificazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamPiaCla}
+                \titleUC{Inserimento criterio di ricerca "Piano di classificazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Piano di classificazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC42.png}
+                    \caption{UC42 - Inserimento criterio di ricerca ”Piano di classificazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamRis}
+                \titleUC{Inserimento criterio di ricerca "Riservato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Riservato"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC43.png}
+                    \caption{UC43 - Inserimento criterio di ricerca ”Riservato”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamFor}
+                \titleUC{Inserimento criterio di ricerca "Formato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Formato"
+                    \item L'utente seleziona il valore tra le opzioni disponibili
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC44.png}
+                    \caption{UC44 - Inserimento criterio di ricerca ”Formato”}
             \end{figure}
         }
     }
