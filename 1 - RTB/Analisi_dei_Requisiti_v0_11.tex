@@ -4,10 +4,10 @@
 \usepackage{float}
 
 \setTitle{Analisi dei Requisiti}
-\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic}
-\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
+\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic}
 \setApprovation{}
-\setVersion{0.10}
+\setVersion{0.11}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -98,6 +98,13 @@
 \newcommand{\nosearchres}{64}
 \newcommand{\docpreview}{65}
 \newcommand{\nodocpreview}{66}
+\newcommand{\exportdoc}{67}
+\newcommand{\exportdocfail}{68}
+\newcommand{\semparam}{69}
+\newcommand{\semsearch}{70}
+\newcommand{\printdoc}{71}
+\newcommand{\printdocfail}{72}
+\newcommand{\verdigsign}{73}
 
 \begin{document}
     \include{docTitlepage}
@@ -108,6 +115,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.11} & 19/12/25 & Bianca Zaghetto & Analista & Nenad Radulovic & Inserimento Casi d'Uso \\
                 \hline
                 \textbf{0.10} & 17/12/26 & Nenad Radulovic & Analista & Andrea Masiero & Correzioni Casi d'Uso \\
                 \hline
@@ -2172,6 +2181,223 @@
                 }
                 \main{
                     \item L'utente visualizza un messaggio di avviso sull'indisponibilità dell'anteprima
+                }
+            \end{usecase}
+
+            % Esportazione documento
+            \begin{usecase}
+                \code{\exportdoc}
+                \titleUC{Esportazione documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item Il documento selezionato è salvato sul dispositivo dell'utente
+                    \item L'utente vede un messaggio di conferma
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di esportazione del documento selezionato
+                    \item L'utente inserisce il percorso dove salvare il documento (\textbf{UC\exportdoc.1})
+                    \item L'utente visualizza un messaggio conferma dell'avvenuto salvataggio
+                }
+                \alt{
+                    \item[2a.] L'utente cancella l'operazione
+                    \item[3a.] L'operazione non ha successo (\textbf{UC\exportdocfail})
+                }
+                \inc{\ucref{uc:\exportdoc.1}}
+                \ext{\ucref{uc:\exportdocfail}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC67.png}
+                    \caption{UC67 - Esportazione documento}
+            \end{figure}
+            \begin{usecase}
+                \code{\exportdoc.1}
+                \titleUC{Inserimento percorso di esportazione}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha selezionato la funzionalità di esportazione di un documento
+                }
+                \post{
+                    \item L'utente ha inserito il percorso per il salvataggio del file
+                }
+                \main{
+                    \item Il sistema richiede il percorso per il salvataggio del file
+                    \item L'utente inserisce il percorso per il salvataggio del file
+                }
+            \end{usecase}
+
+            % Fallimento esportazione documento
+            \begin{usecase}
+                \code{\exportdocfail}
+                \titleUC{Fallimento esportazione documento}
+                \actor{Utente}
+                \pre{
+                    \item L'operazione di salvataggio non ha avuto successo
+                }
+                \post{
+                    \item L'utente vede un messaggio di errore
+                }
+                \main{
+                    \item L'utente visualizza un messaggio di errore riguardo il fallimento dell'esportazione
+                }
+            \end{usecase}
+
+            % Parametro di ricerca semantica
+            \begin{usecase}
+                \code{\semparam}
+                \titleUC{Configurazione ricerca semantica}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato la ricerca semantica
+                }
+                \main{
+                    \item L'utente seleziona la configurazione della ricerca semantica
+                    \item L'utente inserisce la query in linguaggio naturale (\textbf{UC\semparam.1})
+                }
+                \inc{\ucref{uc:\semparam.1}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC69.png}
+                    \caption{UC69 - Configurazione ricerca semantica}
+            \end{figure}
+            
+            \begin{usecase}
+                \code{\semparam.1}
+                \titleUC{Inserimento query in linguaggio naturale}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta configurando la ricerca semantica
+                }
+                \post{
+                    \item L'utente ha inserito la query in linguaggio naturale
+                }
+                \main{
+                    \item L'utente inserisce la query in linguaggio naturale
+                }
+            \end{usecase}
+
+            % Ricerca semantica
+            \begin{usecase}
+                \code{\semsearch}
+                \titleUC{Ricerca semantica}
+                \actor{Utente}
+                \secactor{Motore semantico}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato la ricerca semantica
+                }
+                \post{
+                    \item L'utente ha avviato una ricerca
+                }
+                \main{
+                    \item L'utente avvia la ricerca
+                    \item Il motore di ricerca semantica elabora la ricerca e produce un risultato
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC70.png}
+                    \caption{UC70 - Ricerca semantica}
+            \end{figure}
+
+            % Stampa documento
+            \begin{usecase}
+                \code{\printdoc}
+                \titleUC{Stampa documento}
+                \actor{Utente}
+                \secactor{Gestore di stampa SO}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item Il documento selezionato è inviato alla coda di stampa
+                    \item L'utente vede un messaggio di conferma
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di stampa per il documento selezionato
+                    \item Il gestore di stampa riceve il documento
+                    \item L'utente visualizza un messaggio relativo al completamento dell'operazione
+                }
+                \alt{
+                    \item[3a.] L'operazione di stampa non va a buon fine (\textbf{UC\printdocfail})
+                }
+                \ext{\ucref{uc:\printdocfail}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC71.png}
+                    \caption{UC71 - Stampa documento}
+            \end{figure}
+
+            % Fallimento stampa documento
+            \begin{usecase}
+                \code{\printdocfail}
+                \titleUC{Fallimento stampa documento}
+                \actor{Utente}
+                \secactor{Gestore di stampa SO}
+                \pre{
+                    \item L'operazione di stampa non ha avuto successo
+                }
+                \post{
+                    \item L'utente vede un messaggio di errore
+                }
+                \main{
+                    \item L'utente visualizza un messaggio di errore riguardo il fallimento della stampa
+                }
+            \end{usecase}
+
+            % Verifica firma digitale
+            \begin{usecase}
+                \code{\verdigsign}
+                \titleUC{Verifica firma digitale documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item L'utente vede il risultato della verifica della firma digitale 
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di verifica delle firma digitale del documento selezionato
+                    \item L'utente avvia la verifica
+                    \item L'utente vede il risultato della verifica della firma digitale (\textbf{UC\verdigsign.1})
+                }
+                \inc{\ucref{uc:\verdigsign.1}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC73.png}
+                    \caption{UC73 - Verifica firma digitale documento}
+            \end{figure}
+
+            % Visualizzazione risultato verifica firma digitale
+            \begin{usecase}
+                \code{\verdigsign.1}
+                \titleUC{Visualizzazione risultato verifica firma digitale documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta verificando la firma digitale di un documento
+                }
+                \post{
+                    \item L'utente vede il risultato della verifica della firma digitale 
+                }
+                \main{
+                    \item L'utente visualizza il risultato delle verifica della firma digitale (firma valida/non valida)
                 }
             \end{usecase}
         }
