@@ -7,7 +7,7 @@
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic}
 \setApprovation{}
-\setVersion{0.11}
+\setVersion{0.12}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -115,6 +115,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.12} & 21/12/25 &  Sara Gioia Fichera & Analista & Nenad Radulovic & Inserimento Requisiti Funzionali \\
                 \hline
                 \textbf{0.11} & 19/12/25 & Bianca Zaghetto & Analista & Nenad Radulovic & Inserimento Casi d'Uso \\
                 \hline
@@ -2404,9 +2406,150 @@
     }
     \newpage
     \section{Requisiti} {
-       
+        In questa sezione vengono illustrati i requisiti alla base di DIPReader. Essi sono suddivisi in:
+        \begin{itemize}
+            \item \textbf{Requisiti funzionali:} definiscono i servizi e le funzionalità che il sistema deve fornire.
+            \item \textbf{Requisiti di qualità:} descrivono le caratteristiche che il sistema deve soddisfare per accertarne la qualità.
+            \item \textbf{Requisiti di vincolo:} impongono delle restrizioni al Sistema, ad esempio riguardo le tecnologie da utilizzare.
+        \end{itemize}
+        Un ulteriore suddivisione dei requisiti, viene fatta sulla base dell'importanza della funzionalità, caratteristica, o vincolo che descrivono. In particolare possono essere:
+        \begin{itemize}
+            \item \textbf{Obbligatori:} sono essenziali, il sistema non può funzionare correttamente senza di essi.
+            \item \textbf{Desiderabili:} migliorano l’usabilità o l’efficienza del sistema, ma la mancanza di questi non impedisce al sistema di funzionare.
+            \item \textbf{Opzionali:} sono caratteristiche aggiuntive e negoziabili che possono essere implementate in futuro, in quanto relativamente utili o per circostanze di limitata disponibilità di tempo e risorse.
+        \end{itemize}
+        Ogni requisito viene identificato univocamente da un codice nel formato \textbf{RX-Y-Z}:
+        \begin{itemize}
+            \item \textbf{X} rappresenta il numero del requisito.
+            \item \textbf{Y} può assumere i valori \textbf{F}, \textbf{Q}, \textbf{V}, per rappresentare, rispettivamente, un requisito \textbf{Funzionale}, di \textbf{Qualità} o di \textbf{Vincolo}.
+            \item \textbf{Z} può assumere i valori \textbf{Ob}, \textbf{De}, \textbf{Op}, per rappresentare, rispettivamente, un requisito \textbf{Obbligatorio}, \textbf{Desiderabile} o \textbf{Opzionale}.
+        \end{itemize}
         \subsection{Requisiti Funzionali} {
-            
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|l|P{0.5\linewidth}|P{0.3\linewidth}|}
+                \caption{Requisiti Funzionali} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endhead
+                
+                \textbf{R1-F-Ob} & L'utente deve poter selezionare un DIP da caricare nel Sistema & 
+                \ucref{uc:\loaddip} \newline
+                \ucref{uc:\loaddip.1} \\
+                \hline
+                \textbf{R2-F-Ob} & L'utente deve ricevere un messaggio di errore se il caricamento del DIP non avviene correttamente & 
+                \ucref{uc:\remloaddip} \newline
+                \ucref{uc:\errloaddip} \\
+                \hline
+                \textbf{R3-F-Ob} & L'utente deve poter rimuovere un DIP dal Sistema & 
+                \ucref{uc:\removedip} \\
+                \hline
+                \textbf{R4-F-Ob} & L'utente deve poter visualizzare il contenuto e le informazioni del DIP & \ucref{uc:\viewdip} \newline
+                \ucref{uc:\viewdip.1} \newline
+                \ucref{uc:\viewdip.2} \\
+                \hline
+                \textbf{R5-F-Ob} & L'utente deve poter visualizzare i singoli documenti, e la lista dei loro allegati, contenuti nel DIP & 
+                \ucref{uc:\viewdip} \newline
+                \ucref{uc:\viewdip.2.1} \newline
+                \ucref{uc:\viewdip.2.2} \newline
+                \ucref{uc:\viewdip.2.2.1} \\
+                \hline
+                \textbf{R6-F-Ob} & L'utente deve poter visualizzare i singoli allegati di un documento & \ucref{uc:\viewdip} \newline
+                \ucref{uc:\viewdip.2.2.1} \newline
+                \ucref{uc:\viewdip.2.2.1.1} \\
+                \hline
+                \textbf{R7-F-Ob} & L'utente deve poter visualizzare i dettagli di un documento & \ucref{uc:\viewdetdoc} \\
+                \hline
+                \textbf{R8-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R9-F-Ob} & Devono essere fatti dei controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R10-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
+                \ucref{uc:\mdparamImpCrit} \newline
+                \ucref{uc:\mdparamImpCrit.1} \newline
+                \ucref{uc:\mdparamImpCrit.2} \\
+                \hline
+                \textbf{R11-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
+                \ucref{uc:\mdparamIdDoc} \\
+                \hline
+                \textbf{R12-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
+                \ucref{uc:\mdparamModFor} \\
+                \hline
+                \textbf{R13-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
+                \ucref{uc:\mdparamTipDoc} \\
+                \hline
+                \textbf{R14-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
+                \ucref{uc:\mdparamTipFlu} \\
+                \hline
+                \textbf{R15-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
+                \ucref{uc:\mdparamTipReg} \\
+                \hline
+                \textbf{R16-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
+                \ucref{uc:\mdparamDatReg} \\
+                \hline
+                \textbf{R17-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
+                \ucref{uc:\mdparamOraReg} \\
+                \hline
+                \textbf{R18-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
+                \ucref{uc:\mdparamNumDoc} \\
+                \hline
+                \textbf{R19-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
+                \ucref{uc:\mdparamCodReg} \\
+                \hline
+                \textbf{R20-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
+                \ucref{uc:\mdparamRuolo} \\
+                \hline
+                \textbf{R21-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
+                \ucref{uc:\mdparamTipSog} \\
+                \hline
+                \textbf{R22-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
+                \ucref{uc:\mdparamCog} \\
+                \hline
+                \textbf{R23-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
+                \ucref{uc:\mdparamNom} \\
+                \hline
+                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
+                \ucref{uc:\mdparamCF} \\
+                \hline
+                \textbf{R25-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
+                \ucref{uc:\mdparamIndDig} \\
+                \hline
+                \textbf{R26-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
+                \ucref{uc:\mdparamDenOrg} \\
+                \hline
+                \textbf{R27-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
+                \ucref{uc:\mdparamCFPI} \\
+                \hline
+                \textbf{R28-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
+                \ucref{uc:\mdparamDenUff} \\
+                \hline
+                \textbf{R29-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
+                \ucref{uc:\mdparamDenAmm} \\
+                \hline
+                \textbf{R30-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
+                \ucref{uc:\mdparamIPA} \\
+                \hline
+                \textbf{R31-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
+                \ucref{uc:\mdparamDenAmmAOO} \\
+                \hline
+                \textbf{R32-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
+                \ucref{uc:\mdparamIPAOOO} \\
+                \hline
+                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
+                \ucref{uc:\mdparamDenAmmUOR} \\
+                \hline
+                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
+                \ucref{uc:\mdparamIPAUOR} \\
+                \hline
+            \end{longtable}
         }
         \subsection{Requisiti di Qualità} {
            
