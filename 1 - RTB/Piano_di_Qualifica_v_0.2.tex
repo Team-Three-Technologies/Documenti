@@ -1,0 +1,261 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{eurosym}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\setTitle{Piano di Qualifica}
+\setAuthors{Mattia Oliva Medin \\ & Sara Gioia Fichera}
+\setVerificators{Nenad Radulovic }
+\setApprovation{ }
+\setVersion{0.2}
+\setType{Esterno}
+\setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Team Three Technologies}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \begin{table}[h!]
+            \rowcolors{2}{lightgray}{white}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{0.2} & 19/12/2025 & Mattia Oliva Medin & Amministratore & Nenad Radulovic & Stesura metriche\\
+                \hline
+                \textbf{0.1} & 18/12/2025 & Sara Gioia Fichera & Analista & Nenad Radulovic & Struttura del documento \\
+                \hline
+            \end{tabularx}
+        \end{table}
+    }
+    \newpage
+    
+    \tableofcontents
+    \newpage
+
+    \listoftables
+    \newpage
+
+    \listoffigures
+    \newpage
+    
+    \section{Introduzione} {
+        \subsection{Scopo del documento}
+            Il presente documento ha lo scopo di definire le strategie, le metodologie e le metriche adottate per garantire la qualità del prodotto software e l'efficienza dei processi di sviluppo.
+
+        \subsection{Glossario}
+            Si rimanda al documento Glossario per chiarire i termini nel dominio del progetto che possono risultare ambigui o di difficile comprensione. I vocabili presenti nel glossario sono stati segnalati seguendo la notazione:
+            \begin{center}
+                parola\textsubscript{G}
+            \end{center}
+        \subsection{Riferimenti}
+            \subsubsection{Riferimenti normativi}
+                \begin{itemize}
+                    \item Norme di progetto
+                    \item Capitolato
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}
+                         \item[] (Ultimo accesso: 2026/01/05)
+                    \end{itemize}
+                    \item Regolamento del Progetto Didattico
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}
+                         \item[] (Ultimo accesso: 2026/01/05)
+                    \end{itemize}
+                \end{itemize}
+            \subsubsection{Riferimenti informativi}
+                \begin{itemize}
+                    \item Norme di Progetto
+                    \item Verbali interni e esterni
+                    \item Analisi dei requisiti
+                    \item Slide del corso: T7 - Qualità di prodotto
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T07.pdf}
+                         \item[] (Ultimo accesso: 2026/01/05)
+                    \end{itemize}
+                    \item Slide del corso: T8 - Qualità di processo
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T08.pdf}
+                        \item[] (Ultimo accesso: 2026/01/05)
+                    \end{itemize}
+                    \item Standard ISO/IEC 12207
+                        \item[] (Ultimo accesso: 2026/01/05)
+                    \item Glossario
+                \end{itemize}
+    }
+
+    \newpage
+
+    \section{Obiettivi di qualità}
+    La presente sezione definisce gli obiettivi di qualità del progetto, specificando per ciascuna metrica definita nel documento Norme di Progetto i range di accettazione e i valori ideali prefissati dal gruppo. La classificazione segue la distinzione tra:
+    \begin{itemize}
+        \item Metriche di processo
+        \item Metriche di prodotto
+    \end{itemize}
+    
+        \subsection{Qualità di processo}
+            In questa sezione le metriche vengono riorganizzate seguendo questa divisione: 
+            \begin{itemize}
+                \item Processi Primari: Obiettivi legati alla fornitura, allo sviluppo e al controllo dei costi/tempi.
+                \item Processi di Supporto: Obiettivi trasversali legati alla documentazione, alla verifica e alla gestione della configurazione.
+                \item Processi Organizzativi: Obiettivi legati alla gestione delle risorse e al miglioramento continuo.
+            \end{itemize}
+            
+            \subsubsection{Processi Primari}
+                \paragraph{Fornitura} \mbox{}
+                    \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                        \caption{Valori metriche processo di fornitura} \\
+                        \hline
+                        \rowcolor{gray!40}
+                        \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                        \hline
+                        \endhead
+
+                        MPC01 & Metriche soddisfatte & $\ge 75\%$ & $100\%$ \\
+                        \hline
+
+                        MPC02 & Earned Value & $\ge 0$ & $\le EAC$ \\
+                        \hline
+                        
+                        MPC03 & Planned Value & $\ge 0$ & $\le BAC$ \\
+                        \hline
+                        
+                        MPC04 & Actual Cost & $\ge 0$ & $\le EAC$\\
+                        \hline
+                        
+                        MPC05 & Estimated to Completion & $\ge 0$ & $\le EAC$ \\
+                        \hline
+
+                        MPC06 & Estimated at Completion & $\le BAC + 5\%$ & $\le BAC$ \\
+                        \hline
+
+                        MPC07 & Cost Variance & $\ge -5\%$ & $\ge 0\%$\\
+                        \hline
+
+                        MPC08 & Schedule Variance & &\\
+                        \hline
+
+                        MPC09 & Cost Performance Variance & & \\
+                        \hline
+
+                    \end{longtable}
+
+                    \paragraph{Sviluppo} \mbox{}
+
+                        \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                        \caption{Valori metriche processo di sviluppo} \\
+                        \hline
+                        \rowcolor{gray!40}
+                        \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                        \hline
+                        \endhead
+
+                        MPC10 & Requirements Stability Index & &  \\
+                        \hline
+
+                    \end{longtable}
+
+
+            \subsubsection{Processi di Supporto}
+                \paragraph{Documentazione} \mbox{}
+                    \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                        \caption{Valori metriche processo di documentazione} \\
+                        \hline
+                        \rowcolor{gray!40}
+                        \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                        \hline
+                        \endhead
+
+                        MPC11 & Indice Gulpease & $\ge 60\%$ & $\ge 80\%$ \\
+                        \hline
+
+                        MPC12 & Correttezza Ortografica & $0$ & $0$ \\
+                        \hline
+
+                    \end{longtable}
+
+                \paragraph{Gestione della qualità} \mbox{}
+                    \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                        \caption{Valori metriche processo di gestione della qualità} \\
+                        \hline
+                        \rowcolor{gray!40}
+                        \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                        \hline
+                        \endhead
+
+                        MPC13 & Metriche non soddisfatte & $\le 2$ & $0$ \\
+                        \hline
+
+                        MPC14 & Test Pass Rate & $-$ & $-$ \\
+                        \hline
+
+                    \end{longtable}
+
+
+            \subsubsection{Processi organizzativi}
+                \paragraph{Gestione} \mbox{}
+
+
+
+        \subsection{Qualità di prodotto}
+            \subsubsection{Funzionalità}
+                \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                    \caption{Valori metriche funzionalità di prodotto} \\
+                    \hline
+                    \rowcolor{gray!40}
+                    \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                    \hline
+                    \endhead
+
+                    MPD01 & Copertura dei requisiti obbligatori & $100\%$ & $100\%$ \\
+                    \hline
+
+                    MPD02 & Copertura dei requisiti desiderabili & $0\%$ & $100\%$ \\
+                    \hline
+
+                    MPD03 & Copertura dei requisiti opzionali & $0\%$ & $100\%$ \\
+                    \hline
+
+                \end{longtable}
+
+            \subsubsection{Affidabilità}
+
+
+            \subsubsection{Usabilità}
+
+
+            \subsubsection{Efficienza}
+            
+\newpage
+    \section{Testing}
+        \subsection{Test di Unità}
+
+        \subsection{Test di Integrazione}
+
+        \subsection{Test di Sistema}
+
+        \subsection{Test di Accettazione}
+        
+
+
+        \subsection{Checklist}
+            \subsubsection{Documentazione}
+
+
+
+            \subsubsection{Analisi dei Requisiti}
+        
+
+
+    \section{Cruscotto}
+        \subsection{M1}
+
+        \subsection{M2}
+
+
+
+\end{document}
