@@ -18,9 +18,9 @@
 \setAuthors{Bianca Zaghetto}
 \setVerificators{Mattia Oliva
 Medin \\ & Sara Gioia
-Fichera}
+Fichera \\ & Andrea Masiero}
 \setApprovation{}
-\setVersion{0.3}
+\setVersion{0.4}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 \setcounter{secnumdepth}{4}
@@ -37,6 +37,8 @@ Fichera}
 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
 \hline
 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+\textbf{0.4} & 15/12/25 & Bianca Zaghetto & Verificatore & Andrea Masiero & Sezione orario previsto e stima costi \\
 \hline
 \textbf{0.3} & 09/12/25 & Bianca Zaghetto & Verificatore & Sara Gioia Fichera & Sezione calendario \\
 \hline
@@ -175,6 +177,46 @@ Fichera}
             \caption{Rischi su tempi e costi}
         \end{table}
 
+    \subsection{Tabella riassuntiva}
+        Nella seguente tabella vengono valutati i rischi sopra elencati in base alla loro probabilità di occorrenza e alla loro pericolosità. Entrambe le caratteristiche si suddividono in tre livelli:
+        \begin{itemize}
+            \item Alto
+            \item Medio
+            \item Basso
+        \end{itemize}
+
+        \begin{table}[H]
+        \rowcolors{1}{lightgray}{white}
+        \centering
+        \label{tab:riass_rischi}
+            \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Codice} & \textbf{Livello occorrenza} & \textbf{Livello pericolosità}\\
+            \hline
+            \textbf{R1-1} & Alto & Medio \\
+            \hline
+            \textbf{R1-2} & Basso & Medio \\
+            \hline
+            \textbf{R2-1} & Medio & Basso \\
+            \hline
+            \textbf{R2-2} & Basso & Medio \\
+            \hline
+            \textbf{R2-3} & Basso & Alto \\
+            \hline
+            \textbf{R3-1} & Medio & Basso \\
+            \hline
+            \textbf{R3-2} & Basso & Alto \\
+            \hline
+            \textbf{R4-1} & Alto & Medio \\
+            \hline
+            \textbf{R5-1} & Alto & Alto \\
+            \hline
+            \textbf{R5-2} & Alto & Medio \\
+            \hline
+            \end{tabular}
+            \caption{Tabella riassuntiva dei rischi}
+        \end{table}
+
 \newpage
 \section{Calendario di massima del progetto}
     \subsection{Introduzione}
@@ -213,7 +255,47 @@ Fichera}
 \newpage
 \section{Impegno orario previsto e stima dei costi totali}
     \subsection{Introduzione}
+        I contenuti di questa sezione si basano su quanto affrontato in \href{sec:rischi}{\textit{Rischi attesi e loro mitigazione}} e nei paragrafi "Preventivo" della sezione \href{sec:prev}{\textit{Pianificazione}}. Gli argomenti cardine sono i seguenti:
+        \begin{itemize}
+            \item l'impegno orario preventivato, suddiviso per ruoli
+            \item la conseguente stima dei costi totali 
+        \end{itemize}
     \subsection{Stesura iniziale}
+        \begin{table}[H]
+        \centering
+        \label{tab:costi1}
+        \begin{tabular}{|l|c|c|c|}
+        \hline
+            \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Costo}} & {\textbf{Ore previste}} & {\textbf{Costo totale}} \\
+        \hline
+            Responsabile & 30\euro{}/h & 64 & 1920\euro{} \\
+        \hline
+            Amministratore & 20\euro{}/h & 64 & 1280\euro{} \\
+        \hline
+            Analista & 25\euro{}/h & 80 & 2000\euro{} \\
+        \hline
+            Progettista & 25\euro{}/h & 124 & 3100\euro{} \\
+        \hline
+            Programmatore & 15\euro{}/h & 164 & 2460\euro{} \\
+        \hline
+            Verificatore & 15\euro{}/h & 148 & 2220\euro{} \\
+        \hline
+            \textbf{Totale} & & 644 & 12980\euro{} \\
+        \hline
+        \end{tabular}
+        \caption{Impegno orario e costi previsti}
+        \end{table}
+
+        \begin{figure}[H]
+            \centering
+            \label{fig:costi1}
+            \begin{tikzpicture}
+            \pie [polar, explode=0.1, text=legend] { 9.94/Responsabile, 9.94/Amministratore, 12.42/Analista, 19.25/Progettista, 25.47/Programmatore, 22.98/Verificatore }
+            \end{tikzpicture}
+            \caption{Suddivisione delle ore dei ruoli in percentuale}
+        \end{figure}
+
+    La stima per il costo totale del progetto è di 12980\euro{}.
 
 \newpage
 \section{Pianificazione}
