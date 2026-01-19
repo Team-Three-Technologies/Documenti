@@ -20,7 +20,7 @@
 Medin \\ & Sara Gioia
 Fichera \\ & Andrea Masiero \\ & Nenad Radulovic}
 \setApprovation{}
-\setVersion{0.7}
+\setVersion{0.8}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 \setcounter{secnumdepth}{4}
@@ -37,6 +37,8 @@ Fichera \\ & Andrea Masiero \\ & Nenad Radulovic}
 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
 \hline
 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+\textbf{0.8} & 30/12/25 & Bianca Zaghetto & Verificatore & Nenad Radulovic & Aggiunta pianificazione quarto periodo \\
 \hline
 \textbf{0.7} & 23/12/25 & Bianca Zaghetto & Verificatore & Nenad Radulovic & Aggiunta pianificazione terzo periodo \\
 \hline
@@ -761,6 +763,149 @@ Fichera \\ & Andrea Masiero \\ & Nenad Radulovic}
 
     % QUARTO PERIODO --------------------------
         \subsubsection{15/12/2025 - 28/12/2025 - Quarto periodo}
+            \paragraph{Panoramica e obiettivi}
+            Nel corso del quarto periodo ci si è concentrati nella creazione dei diagrammi dei casi d'uso. I principali obiettivi sono stati:
+            \begin{itemize}
+                \item Traduzione dell'Analisi dei Requisiti in diagrammi dei casi d'uso
+                \item Aggiornamento del Piano di Progetto
+            \end{itemize}
+            \paragraph{Gestione rischi}
+            \paragraph*{Rischi attesi}
+                \begin{itemize}
+                    \item\hyperref[tab:r4]{[R4-1] Malcomprensione requisiti}
+                \end{itemize}
+                Il rischio di malcomprensione dei requisiti è rimasto nelle previsioni del gruppo, poiché la creazione dei diagrammi dei casi d'uso poteva portare potenzialmente a nuovi dubbi.
+
+            \paragraph*{Rischi incontrati}
+            Come previsto, i diagrammi dei casi d'uso hanno fatto sorgere nuovi dubbi, che tuttavia sono stati risolti prontamente grazie alla riunione periodica con la proponente.
+            
+            \paragraph{Ruoli assegnati}
+            I ruoli assegnati per il quarto periodo sono i seguenti:
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Membro}} \\
+                \hline
+                    Responsabile & Filippo Compagno \\
+                \hline
+                    Amministratore & Mattia Oliva Medin \\
+                \hline
+                    Analista & \makecell[l]{Francesco Balestro \\ Sara Gioia Fichera \\ Bianca Zaghetto} \\
+                \hline
+                    Progettista & - \\
+                \hline
+                    Programmatore & - \\
+                \hline
+                    Verificatore & \makecell[l]{Andrea Masiero \\ Nenad Radulovic} \\
+                \hline
+                \end{tabular}
+                \caption{Ruoli quarto periodo}
+                \end{table}
+                
+            \paragraph{Preventivo}
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
+                \hline
+                    Balestro & & & 4 & & & & 4\\
+                \hline
+                    Compagno & 9 & & & & & & 9\\
+                \hline
+                    Fichera & & & 4 & & & & 4\\
+                \hline
+                    Masiero & & & & & & 8 & 8\\
+                \hline
+                    Oliva Medin & & 7 & & & & & 7\\
+                \hline
+                    Radulovic & & & & & & 8 & 8\\
+                \hline
+                    Zaghetto & & & 4 & & & & 4\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 9 & 7 & 12 & 0 & 0 & 16 & 44\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale costi} & 270 & 140 & 300 & 0 & 0 & 240 & 950\\
+                \hline
+                \end{tabular}
+                \caption{Preventivo orario quarto periodo}
+                \end{table}
+
+                \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [polar, explode=0.1, text=legend] { 20.45/Responsabile, 15.90/Amministratore, 27.28/Analista, 36.37/Verificatore }
+                \end{tikzpicture}
+                \caption{Preventivo orario in percentuale - Quarto periodo}
+                \end{figure}
+                
+            \paragraph{Consuntivo}
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
+                \hline
+                    Balestro & & & 3 & & & & 3\\
+                \hline
+                    Compagno & 7 & & & & & & 7\\
+                \hline
+                    Fichera & & & 3 & & & & 3\\
+                \hline
+                    Masiero & & & & & & 10 & 10\\
+                \hline
+                    Oliva Medin & & 7 & & & & & 7\\
+                \hline
+                    Radulovic & & & & & & 6 & 6\\
+                \hline
+                    Zaghetto & & & 6 & & & & 6\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 7 & 7 & 12 & 0 & 0 & 16 & 42\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale costi} & 210 & 140 & 300 & 0 & 0 & 240 & 890\\
+                \hline
+                \end{tabular}
+                \caption{Consuntivo orario quarto periodo}
+                \end{table}
+
+                \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [polar, explode=0.1, text=legend] { 16.67/Responsabile, 16.67/Amministratore, 28.57/Analista, 38.09/Verificatore }
+                \end{tikzpicture}
+                \caption{Consuntivo orario in percentuale - Quarto periodo}
+                \end{figure}
+                
+            \paragraph{Risorse rimanenti}
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Ore}} & {\textbf{Costo}}\\
+                \hline
+                    Responsabile & 7 & 210\\
+                \hline
+                    Amministratore & 7 & 140\\
+                \hline
+                    Analista & 12 & 30\\
+                \hline
+                    Progettista & 0 & 0\\
+                \hline
+                    Programmatore & 0 & 0\\
+                \hline
+                    Verificatore & 16 & 240\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale} & 42 & 890\\
+                \hline
+                    \rowcolor{lightgray}\textit{Rimanenti} & 466 & 9100\\
+                \hline
+                \end{tabular}
+                \caption{Risorse economiche rimanenti dal consuntivo orario}
+                \end{table}
+                
+            \paragraph{Retrospettiva}
+            Il quarto periodo, essendo precedente alle festività, ha visto alcuni rallentamenti nello svolgimento dei lavori. Tuttavia l'impegno, seppur ridotto, è rimasto costante. Le riunioni fissate sono state rispettate e la comunicazione è rimasta attiva tramite i canali asincroni.
 
     % QUINTO PERIODO --------------------------
         \subsubsection{29/12/2025 - 11/01/2026 - Quinto periodo}
