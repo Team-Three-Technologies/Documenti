@@ -20,7 +20,7 @@
 Medin \\ & Sara Gioia
 Fichera \\ & Andrea Masiero}
 \setApprovation{}
-\setVersion{0.4}
+\setVersion{0.5}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 \setcounter{secnumdepth}{4}
@@ -37,6 +37,8 @@ Fichera \\ & Andrea Masiero}
 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
 \hline
 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+\textbf{0.5} & 20/12/25 & Bianca Zaghetto & Verificatore & Andrea Masiero & Aggiunta pianificazione primo periodo \\
 \hline
 \textbf{0.4} & 15/12/25 & Bianca Zaghetto & Verificatore & Andrea Masiero & Sezione orario previsto e stima costi \\
 \hline
@@ -301,11 +303,157 @@ Fichera \\ & Andrea Masiero}
 \section{Pianificazione}
 \label{sec:pianificazione}
     \subsection{Introduzione}
+    Questa sezione raccoglie tutte le informazioni relative ad ogni periodo di lavoro svolto dal gruppo, offrendone una rappresentazione chiara e completa.
     \subsection{Requirements and Technology Baseline}
 
     % PRIMO PERIODO ----------------------------
         \subsubsection{04/11/2025 - 16/11/2025 - Primo periodo}
+            \paragraph{Panoramica e obiettivi}
+            L'inizio del primo periodo coincide con l'aggiudicazione dell'appalto per il capitolato, a cui è seguita una riunione interna per fissare gli obiettivi di lavoro per le due settimane successive, ovvero:
+                \begin{itemize}
+                    \item Correzioni alla documentazione
+                    \item Inizio stesura Glossario
+                    \item Studio delle tecnologie proposte dall'azienda
+                \end{itemize}
+            Inoltre si è svolta una riunione esterna con la proponente, la quale ha permesso un'organizzazione chiara fin dal principio - modalità di comunicazione sincrona/asincrona e calendarizzazione incontri.
+            \paragraph{Gestione rischi}
+            \paragraph*{Rischi attesi}
+                \begin{itemize}
+                    \item\hyperref[tab:r1]{[R1-1] Inesperienza nelle tecnologie da utilizzare}
+                    \item\hyperref[tab:r2]{[R2-1] Divergenze di pensiero}
+                \end{itemize}
+                Per il primo periodo, il gruppo ha previsto un'iniziale inesperienza nelle tecnologie da utilizzare e possibili divergenze di pensiero riguardo le attività da svolgere e la loro suddivisione.
+
+            \paragraph*{Rischi incontrati}
+                Si è solamente riscontrata inesperienza nelle tecnologie da utilizzare (R2-1). I membri del gruppo hanno provveduto ad aiutarsi vicendevolmente nel migliorare la dimestichezza con gli strumenti di lavoro.                
+            \paragraph{Ruoli assegnati}
+            I ruoli assegnati per il primo periodo sono i seguenti:
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Membro}} \\
+                \hline
+                    Responsabile & Bianca Zaghetto \\
+                \hline
+                    Amministratore & Filippo Compagno \\
+                \hline
+                    Analista & \makecell[l]{Nenad Radulovic \\ Sara Gioia Fichera \\ Francesco Balestro} \\
+                \hline
+                    Progettista & - \\
+                \hline
+                    Programmatore & - \\
+                \hline
+                    Verificatore & \makecell[l]{Mattia Oliva Medin \\ Andrea Masiero} \\
+                \hline
+                \end{tabular}
+                \caption{Ruoli primo periodo}
+                \end{table}
+            
+            \paragraph{Preventivo}
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
+                \hline
+                    Balestro & & & 5 & & & & 5\\
+                \hline
+                    Compagno & & 8 & & & & & 8\\
+                \hline
+                    Fichera & & & 5 & & & & 5\\
+                \hline
+                    Masiero & & & & & & 6 & 6\\
+                \hline
+                    Oliva Medin & & & & & & 6 & 6\\
+                \hline
+                    Radulovic & & & 5 & & & & 5\\
+                \hline
+                    Zaghetto & 10 & & & & & & 10\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 10 & 8 & 15 & 0 & 0 & 12 & 45\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale costi} & 300 & 160 & 375 & 0 & 0 & 180 & 1015\\
+                \hline
+                \end{tabular}
+                \caption{Preventivo orario primo periodo}
+                \end{table}
+
+                \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [polar, explode=0.1, text=legend] { 22.22/Responsabile, 17.78/Amministratore, 33.33/Analista, 26.67/Verificatore }
+                \end{tikzpicture}
+                \caption{Preventivo orario in percentuale - Primo periodo}
+                \end{figure}
         
+            \paragraph{Consuntivo}
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
+                \hline
+                    Balestro & & & 6 & & & & 6\\
+                \hline
+                    Compagno & & 6 & & & & & 6\\
+                \hline
+                    Fichera & & & 4 & & & & 4\\
+                \hline
+                    Masiero & & & & & & 8 & 8\\
+                \hline
+                    Oliva Medin & & & & & & 5 & 5\\
+                \hline
+                    Radulovic & & & 4 & & & & 4\\
+                \hline
+                    Zaghetto & 9 & & & & & & 9\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 9 & 6 & 14 & 0 & 0 & 13 & 42\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale costi} & 270 & 120 & 350 & 0 & 0 & 195 & 935\\
+                \hline
+                \end{tabular}
+                \caption{Consuntivo orario primo periodo}
+                \end{table}
+
+                \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [polar, explode=0.1, text=legend] { 21.43/Responsabile, 14.29/Amministratore, 33.33/Analista, 30.95/Verificatore }
+                \end{tikzpicture}
+                \caption{Consuntivo orario in percentuale - Primo periodo}
+                \end{figure}
+                
+            \paragraph{Risorse rimanenti}
+                \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Ore}} & {\textbf{Costo}}\\
+                \hline
+                    Responsabile & 9 & 270\\
+                \hline
+                    Amministratore & 6 & 120\\
+                \hline
+                    Analista & 14 & 350\\
+                \hline
+                    Progettista & 0 & 0\\
+                \hline
+                    Programmatore & 0 & 0\\
+                \hline
+                    Verificatore & 13 & 195\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale} & 42 & 935\\
+                \hline
+                    \rowcolor{lightgray}\textit{Rimanenti} & 602 & 12045\\
+                \hline
+                \end{tabular}
+                \caption{Risorse economiche rimanenti dal consuntivo orario}
+                \end{table}
+                
+            \paragraph{Retrospettiva}
+            Durante il primo periodo il gruppo si è concentrato nello svolgimento degli obiettivi fissati. La documentazione è stata corretta e aggiornata con costanza. Inoltre, si sono svolte riunioni interne per monitorare insieme l'andamento dello studio individuale e delle task assegnate.
+
     % SECONDO PERIODO --------------------------
         \subsubsection{17/11/2025 - 30/11/2025 - Secondo periodo}
 
