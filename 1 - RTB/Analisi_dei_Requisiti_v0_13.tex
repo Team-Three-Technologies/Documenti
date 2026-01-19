@@ -5,9 +5,9 @@
 
 \setTitle{Analisi dei Requisiti}
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
-\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno}
 \setApprovation{}
-\setVersion{0.12}
+\setVersion{0.13}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -115,6 +115,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.13} & 03/01/26 & Andrea Masiero & Analista & Filippo Compagno & Inserimento Requisiti Funzionali \\
                 \hline
                 \textbf{0.12} & 21/12/25 &  Sara Gioia Fichera & Analista & Nenad Radulovic & Inserimento Requisiti Funzionali \\
                 \hline
@@ -2548,6 +2550,141 @@
                 \hline
                 \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
                 \ucref{uc:\mdparamIPAUOR} \\
+                \hline
+                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
+                \ucref{uc:\mdparamDenSis} \\
+                \hline
+                \textbf{R36-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
+                \ucref{uc:\mdparamOgg} \\
+                \hline
+                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
+                \ucref{uc:\mdparamParChi} \\
+                \hline
+                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
+                \ucref{uc:\mdparamNumAll} \\
+                \hline
+                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
+                \ucref{uc:\mdparamImpCritAll} \\
+                \hline
+                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
+                \ucref{uc:\mdparamIdDocAll} \\
+                \hline
+                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
+                \ucref{uc:\mdparamDesAll} \\
+                \hline
+                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
+                \ucref{uc:\mdparamIndCla} \\
+                \hline
+                \textbf{R43-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
+                \ucref{uc:\mdparamDesCla} \\
+                \hline
+                \textbf{R44-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
+                \ucref{uc:\mdparamPiaCla} \\
+                \hline
+                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
+                \ucref{uc:\mdparamRis} \\
+                \hline
+                \textbf{R46-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
+                \ucref{uc:\mdparamFor} \\
+                \hline
+                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
+                \ucref{uc:\mdparamNomPro} \\
+                \hline
+                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
+                \ucref{uc:\mdparamVerPro} \\
+                \hline
+                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
+                \ucref{uc:\mdparamProd} \\
+                \hline
+                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
+                \ucref{uc:\mdparamFirDig} \\
+                \hline
+                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
+                \ucref{uc:\mdparamSigEle} \\
+                \hline
+                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
+                \ucref{uc:\mdparamMarTem} \\
+                \hline
+                \textbf{R53-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
+                \ucref{uc:\mdparamConCop} \\
+                \hline
+                \textbf{R54-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
+                \ucref{uc:\mdparamTipAgg} \\
+                \hline
+                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
+                \ucref{uc:\mdparamIdAgg} \\
+                \hline
+                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
+                \ucref{uc:\mdparamTipFas} \\
+                \hline
+                \textbf{R57-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
+                \ucref{uc:\mdparamNomDoc} \\
+                \hline
+                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
+                \ucref{uc:\mdparamVerDoc} \\
+                \hline
+                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
+                \ucref{uc:\mdparamTipMod} \\
+                \hline
+                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
+                \ucref{uc:\mdparamDatMod} \\
+                \hline
+                \textbf{R61-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
+                \ucref{uc:\mdparamOraMod} \\
+                \hline
+                \textbf{R62-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
+                \ucref{uc:\mdparamTemCon} \\
+                \hline
+                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
+                \ucref{uc:\mdparamNot} \\
+                \hline
+                \textbf{R64-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
+                \ucref{uc:\mdsearch} \\
+                \hline
+                \textbf{R65-F-Ob} & L'utente deve poter visualizzare i riusltati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
+                \ucref{uc:\searchres} \\
+                \hline
+                \textbf{66-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
+                \ucref{uc:\searchres} \newline
+                \ucref{uc:\searchres.1} \\
+                \hline
+                \textbf{67-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
+                \ucref{uc:\searchres} \newline
+                \ucref{uc:\nosearchres} \\
+                \hline
+                \textbf{68-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
+                \ucref{uc:\docpreview} \\
+                \hline
+                \textbf{69-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
+                \ucref{uc:\docpreview} \newline
+                \ucref{uc:\nodocpreview} \\
+                \hline
+                \textbf{70-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
+                \ucref{uc:\exportdoc} \newline
+                \ucref{uc:\exportdoc.1} \\
+                \hline
+                \textbf{71-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
+                \ucref{uc:\exportdoc} \newline
+                \ucref{uc:\exportdocfail} \\
+                \hline
+                \textbf{72-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
+                \ucref{uc:\semparam} \newline
+                \ucref{uc:\semparam.1} \\
+                \hline
+                \textbf{73-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
+                \ucref{uc:\semparam} \newline
+                \ucref{uc:\semsearch} \\
+                \hline
+                \textbf{74-F-Op} & L'utente deve poter stampare un documento selezionato & 
+                \ucref{uc:\printdoc} \\
+                \hline
+                \textbf{75-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
+                \ucref{uc:\printdoc} \newline
+                \ucref{uc:\printdocfail} \\
+                \hline
+                \textbf{76-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
+                \ucref{uc:\verdigsign} \newline
+                \ucref{uc:\verdigsign.1} \\
                 \hline
             \end{longtable}
         }
