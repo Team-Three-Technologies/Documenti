@@ -1,0 +1,222 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage[official]{eurosym}
+\usepackage{pgf-pie}
+\usepackage{makecell}
+
+\usepackage{titlesec}
+
+\titleformat{\paragraph}[block]
+  {\normalfont\normalsize\bfseries}
+  {\theparagraph}{1em}{}
+
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex}
+
+\setTitle{Piano di Progetto}
+\setAuthors{Bianca Zaghetto}
+\setVerificators{Mattia Oliva
+Medin \\ & Sara Gioia
+Fichera}
+\setApprovation{}
+\setVersion{0.2}
+\setType{Esterno}
+\setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\begin{document}
+\include{docTitlepage}
+
+\newpage
+\section*{Registro delle modifiche}
+
+\begin{table}[h!]
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+\hline
+\textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+\textbf{0.2} & 02/12/25 & Bianca Zaghetto & Verificatore & Sara Gioia Fichera & Sezione introduttiva e sezione rischi attesi \\
+\hline
+\textbf{0.1} & 27/11/25 & Bianca Zaghetto & Verificatore & Mattia Oliva Medin & Prima stesura: struttura documento \\
+\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+\newpage
+
+\section{Introduzione}
+    \subsection{Scopo del documento}
+        Il presente documento ha lo scopo di tenere traccia e definire le modalità di svolgimento delle attività nonché la suddivisione delle risorse in esse impiegate.
+        Per la stesura del Piano di Progetto viene applicato un approccio incrementale, integrando informazioni fino al termine del progetto. Il documento tratta i seguenti temi:
+        \begin{itemize}
+            \item Rischi attesi e loro mitigazione
+            \item Calendario di massima del progetto
+            \item Impegno orario previsto e stima dei costi totali
+            \item Periodi di avanzamento
+            \item Consuntivo di periodo
+            \item Preventivo
+        \end{itemize}
+    \subsection{Glossario}
+        Per definizioni esaustive dei termini utilizzati in questo documento, si rimanda al Glossario disponibile nella documentazione. Tutti i termini che si possono trovare in esso vengono identificati da una G a pedice.
+    \subsection{Riferimenti}
+        \subsubsection{Riferimenti normativi}
+            \begin{itemize}
+                \item \href{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Norme_di_progetto_v0_4.pdf}{Norme di Progetto} (Ultimo accesso: 11/01/2026)
+                \item \href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}{Regolamento del progetto didattico} (Ultimo accesso: 11/01/2026)
+            \end{itemize}
+        \subsubsection{Riferimenti informativi}
+            \begin{itemize}
+                \item \href{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Analisi_dei_Requisiti_v0_1.pdf}{Analisi dei Requisiti} (Ultimo accesso: 08/01/2026)
+                \item Verbali interni
+                \item Verbali esterni
+                \item \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}{Capitolato C3} (Ultimo accesso: 10/01/2026)
+                \item \href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T02.pdf}{Processi di ciclo di vita del \textit{software}} (Ultimo accesso: 05/01/2026)
+                \item \href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T04.pdf}{Gestione di progetto} (Ultimo accesso: 07/01/2026)
+            \end{itemize}
+
+\newpage
+\section{Rischi attesi e loro mitigazione}
+\label{sec:rischi}
+    \subsection{Introduzione}
+        In questa sezione vengono elencati i rischi che si potrebbero incontrare durante lo svolgimento del progetto, corredati dalla possibile mitigazione relativa.
+        
+        Per rendere facilmente fruibile il documento, viene associato un codice identificativo univoco ad ogni rischio.
+    \subsection{R1 - Tecnologie di lavoro e di produzione SW}
+        \begin{table}[H]
+        \rowcolors{2}{lightgray}{white}
+        \label{tab:r1} 
+            \begin{tabularx}{\textwidth}{|l|L|L|L|}
+            \hline
+            \textbf{Codice} & \textbf{Oggetto} & \textbf{Descrizione} & \textbf{Mitigazione}\\
+            \hline
+            \textbf{R1-1} & Inesperienza nelle tecnologie da utilizzare & Uno o più membri del gruppo si trovano in difficoltà nell'utilizzo delle tecnologie scelte & Studio personale e condivisione delle conoscenze\\
+            \hline
+            \textbf{R1-2} & Problemi tecnici software o hardware & Uno o più membri del gruppo riscontrano problemi tecnici con strumenti software o hardware & Si provvederà ad aggiornare il gruppo sul problema riscontrato. Qualora il membro o i membri siano impossibilitati a portare a termine un obiettivo, dovranno trovare una soluzione alternativa o cedere l'incarico a qualcun altro finché non avranno risolto il problema.\\            
+            \hline
+            \end{tabularx}
+            \caption{Rischi sulle tecnologie di lavoro e di produzione SW}
+        \end{table}
+        
+    \subsection{R2 - Rapporti interpersonali}
+        \begin{table}[H]
+        \rowcolors{2}{lightgray}{white}
+        \label{tab:r2}
+            \begin{tabularx}{\textwidth}{|l|L|L|L|}
+            \hline
+            \textbf{Codice} & \textbf{Oggetto} & \textbf{Descrizione} & \textbf{Mitigazione}\\
+            \hline
+            \textbf{R2-1} & Divergenze di pensiero & Il gruppo non riesce a giungere ad una decisione unanime per divergenze di pensiero & Utilizzo di sondaggi gestiti dal responsabile o, in casi estremi, richiesta di intervento da parte del docente/proponente\\
+            \hline
+            \textbf{R2-2} & Mancanza di riscontro & Uno o più membri del gruppo non danno riscontro rispetto agli incarichi assegnati & Promemoria regolari, se necessario per canali privati o in presenza. In casi estremi verrà contattato il docente.\\
+            \hline
+            \textbf{R2-3} & Abbandono del progetto & Uno o più membri del gruppo decidono di abbandonare il progetto per motivi personali & Verrà contattato il docente per rendere nota la situazione e si provvederà, se necessario, a valutare insieme alla proponente una negoziazione dei requisiti richiesti \\
+            \hline
+            \end{tabularx}
+            \caption{Rischi sui rapporti interpersonali}
+        \end{table}
+        
+    \subsection{R3 - Organizzazione del lavoro}
+        \begin{table}[H]
+        \rowcolors{2}{lightgray}{white}
+        \label{tab:r3}
+            \begin{tabularx}{\textwidth}{|l|L|L|L|}
+            \hline
+            \textbf{Codice} & \textbf{Oggetto} & \textbf{Descrizione} & \textbf{Mitigazione}\\
+            \hline
+            \textbf{R3-1} & Assenze alle riunioni esterne/interne & Uno o più membri del gruppo non presenziano alle riunioni interne/esterne & Condivisione appunti e registrazioni delle riunioni per permettere il recupero di quanto svolto\\
+            \hline
+            \textbf{R3-2} & Isolamento & Un membro si isola dal gruppo, non risponde alle comunicazioni, non presenzia costantemente alle riunioni e non svolge gli incarichi previsti & Confronto diretto sulle cause dell'isolamento, analisi delle possibili soluzioni ed eventuale riorganizzazione. In casi gravi, si provvederà a contattare il docente per decidere come procedere\\
+            \hline
+            \end{tabularx}
+            \caption{Rischi sull'organizzazione del lavoro}
+        \end{table}
+        
+    \subsection{R4 - Requisiti e rapporti con gli stakeholder}
+        \begin{table}[H]
+        \rowcolors{2}{lightgray}{white}
+        \label{tab:r4}
+            \begin{tabularx}{\textwidth}{|l|L|L|L|}
+            \hline
+            \textbf{Codice} & \textbf{Oggetto} & \textbf{Descrizione} & \textbf{Mitigazione}\\
+            \hline
+            \textbf{R4-1} & Malcomprensione requisiti & Il gruppo non comprende appieno i requisiti richiesti o li comprende in modo sbagliato & Utilizzo del form per la comunicazione asincrona con la proponente, ponendo dubbi e domande. Analisi dettagliata dei requisiti con la proponente nel corso delle riunioni. In casi eccezionali, richiesta di riunioni aggiuntive.\\
+            \hline
+            \end{tabularx}
+            \caption{Rischi sui requisiti e rapporti con gli stakeholder}
+        \end{table}
+        
+    \subsection{R5 - Tempi e costi}
+        \begin{table}[H]
+        \rowcolors{2}{lightgray}{white}
+        \label{tab:r5}
+            \begin{tabularx}{\textwidth}{|l|L|L|L|}
+            \hline
+            \textbf{Codice} & \textbf{Oggetto} & \textbf{Descrizione} & \textbf{Mitigazione}\\
+            \hline
+            \textbf{R5-1} & Ritardo di consegna & Uno o più membri del gruppo non riescono a completare una consegna nei tempi previsti & Qualora possibile, si concederà del tempo aggiuntivo per completare la consegna. Altrimenti si procederà ad affiancare un membro del gruppo disponibile o, in casi estremi, ad effettuare una sostituzione\\
+            \hline
+            \textbf{R5-2} & Superamento budget & Per il completamento del progetto è richiesto un budget superiore a quello preventivato & Negoziazione al ribasso sui requisiti del progetto con il proponente \\
+            \hline
+            \end{tabularx}
+            \caption{Rischi su tempi e costi}
+        \end{table}
+
+\newpage
+\section{Calendario di massima del progetto}
+    \subsection{Introduzione}
+    \subsection{Stesura iniziale}
+
+    % \subsection{Prima Revisione}
+    %     \begin{table}[H]
+    %         \centering
+    %         \begin{tabular}{|c|c|}
+    %         \hline
+    %             \rowcolor{lightgray}{\textbf{Revisione}} & {\textbf{Data}}  \\
+    %         \hline
+    %             Product Baseline & ???\\
+    %         \hline
+    %         \end{tabular}
+    %         \caption{Data di consegna prevista aggiornata a seguito della RTB}
+    %         \label{tab:cal2}
+    %     \end{table}
+
+\newpage
+\section{Impegno orario previsto e stima dei costi totali}
+    \subsection{Introduzione}
+    \subsection{Stesura iniziale}
+
+\newpage
+\section{Pianificazione}
+\label{sec:pianificazione}
+    \subsection{Introduzione}
+    \subsection{Requirements and Technology Baseline}
+
+    % PRIMO PERIODO ----------------------------
+        \subsubsection{04/11/2025 - 16/11/2025 - Primo periodo}
+        
+    % SECONDO PERIODO --------------------------
+        \subsubsection{17/11/2025 - 30/11/2025 - Secondo periodo}
+
+    % TERZO PERIODO --------------------------
+        \subsubsection{01/12/2025 - 14/12/2025 - Terzo periodo}
+
+    % QUARTO PERIODO --------------------------
+        \subsubsection{15/12/2025 - 28/12/2025 - Quarto periodo}
+
+    % QUINTO PERIODO --------------------------
+        \subsubsection{29/12/2025 - 11/01/2026 - Quinto periodo}
+    
+    %\subsection{Product Baseline}
+\end{document}
