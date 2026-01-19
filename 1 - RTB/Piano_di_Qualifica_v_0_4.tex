@@ -8,7 +8,7 @@
 \setAuthors{Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
 \setVerificators{Filippo Compagno \\ & Nenad Radulovic }
 \setApprovation{ }
-\setVersion{0.3}
+\setVersion{0.4}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Team Three Technologies}
 
@@ -19,6 +19,11 @@
         \begin{table}[h!]
             \rowcolors{2}{lightgray}{white}
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.4} & 3/01/2026 & Bianca Zaghetto & Amministratore & Filippo Compagno & Stesura checklist \\
+                \hline
                 \textbf{0.3} & 2/01/2026 & Bianca Zaghetto & Amministratore & Filippo Compagno & Aggiunta sezione test di Accettazione \\
                 \hline
                 \textbf{0.2} & 19/12/2025 & Mattia Oliva Medin & Amministratore & Nenad Radulovic & Stesura metriche\\
@@ -30,16 +35,15 @@
     }
     \newpage
     
-   
-    \tableofcontents
+   \tableofcontents
+    \newpage
+
+    \listoffigures
     \newpage
 
     \listoftables
     \newpage
 
-    \listoffigures
-    \newpage
-    
     \section{Introduzione} {
         \subsection{Scopo del documento}
             Il presente documento ha lo scopo di definire le strategie, le metodologie e le metriche adottate per garantire la qualità del prodotto software e l'efficienza dei processi di sviluppo.
@@ -287,10 +291,81 @@
 
         \subsection{Checklist}
             \subsubsection{Documentazione}
+                \begin{longtable}{|M{3.5cm}|M{8.5cm}|}
 
+                    \caption{Checklist documentazione} \\
+                    \hline
+                    \rowcolor{gray!40}
+                    \textbf{Nome} & \textbf{Descrizione} \\
+                    \hline
+                    \endhead
 
+                    Immagini e tabelle & Tutte le immagini e le tabelle devono essere numerate e corredate da un titolo \\
+                    \hline
+
+                    Riferimento a risorse online & Dato che le risorse online mutano continuamente è opportuno indicare accanto al link della risorsa la data di ultima consultazione \\
+                    \hline
+
+                    Termine del glossario & Ogni volta che in un documento prodotto dal gruppo compare un termine descritto nel glossario deve essere segnalato con l’apposito stile deciso, parola\textsubscript{G}.\\
+                    \hline
+
+                    Formato delle date & Tutte le date che compaiono nel nome di un documento o nella tabella di versionamento devono avere il formato AAAA-MM-GG \\
+                    \hline
+
+                    Sezioni vuote & Tutte le sezioni dei documenti prodotti devono essere compilate \\
+                    \hline
+
+                    Cambiamento di versione & Ad ogni modifica al documento prodotta deve corrispondere un aggiornamento di versione e una riga nella tabella di versionamento \\
+                    \hline
+
+                    Errori di sintassi & Non devono essere presenti errori di sintassi \\
+                    \hline
+
+                    Forma impersonale & La forma impersonale dei verbi nei verbali è da preferire \\
+                    \hline
+
+                    Acronimi in maiuscolo & Gli acronimi devono essere in maiuscolo (es. DIP) \\
+                    \hline
+
+                    Formattazione titoli & I titoli dei documenti devono avere la prima lettera maiuscola \\
+                    \hline
+
+                    Denominazione titoli dei verbali & Il titolo dei Verbali deve essere così composto: Verbale Tipologia (Interno/Esterno) Data (nel formato DD/MM/AAAA) \\
+                    \hline
+
+                    Ordine dei nomi dei componenti & I nomi dei componenti del gruppo, all’interno dei documenti prodotti, devono essere riportati in ordine alfabetico \\
+                    \hline
+
+                    Ruoli in maiuscolo & Tutti i nomi dei ruoli devono avere la prima lettera maiuscola \\
+                    \hline
+
+                    Decisioni dei verbali & Tutte le decisioni riportate nell’apposita sezione dei verbali devono essere corredate da un identificativo univoco \\
+                    \hline
+
+                \end{longtable}
 
             \subsubsection{Analisi dei Requisiti}
+
+                \begin{longtable}{|M{3.5cm}|M{8.5cm}|}
+                    
+                    \caption{Checklist Analisi dei requisiti} \\
+                    \hline
+                    \rowcolor{gray!40}
+                    \textbf{Nome} & \textbf{Descrizione} \\
+                    \hline
+                    \endhead
+
+                    Relazione tra casi d’uso e requisiti & Per ogni requisito deve corrispondere almeno un caso d’uso \\
+                    \hline
+
+                    Numerazione dei casi d’uso & I casi d’uso devono essere numerati in ordine crescente e nel caso di sotto-casi viene preso il numero del caso d’uso principale e viene aggiunta accanto un’altra cifra partendo da 1 \\
+                    \hline
+
+                    Diagrammi UML & Estensioni, inclusioni e generalizzazioni di un caso d’uso devono essere rappresentati in unico diagramma \\
+                    \hline
+
+                \end{longtable}
+
         
 
 
@@ -298,7 +373,5 @@
         \subsection{M1}
 
         \subsection{M2}
-
-
 
 \end{document}
