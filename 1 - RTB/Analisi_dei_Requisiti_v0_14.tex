@@ -5,9 +5,9 @@
 
 \setTitle{Analisi dei Requisiti}
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
-\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno \\ & Mattia Oliva Medin}
 \setApprovation{}
-\setVersion{0.13}
+\setVersion{0.14}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -115,6 +115,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.14} & 07/01/26 & Francesco Balestro & Analista & Mattia Oliva Medin & Inserimento Requisiti di Qualità e di Vincolo e correzioni varie \\
                 \hline
                 \textbf{0.13} & 03/01/26 & Andrea Masiero & Analista & Filippo Compagno & Inserimento Requisiti Funzionali \\
                 \hline
@@ -2689,10 +2691,75 @@
             \end{longtable}
         }
         \subsection{Requisiti di Qualità} {
-           
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|l|P{0.5\linewidth}|P{0.3\linewidth}|}
+                \caption{Requisiti di Qualità} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endhead
+
+                \textbf{R1-Q-Ob} & Vengono richiesti i test di unità e di integrazione per il reperimento e l’elaborazione dei dati & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Raccomandazioni esplicite" \\
+                \hline
+                \textbf{R2-Q-Ob} & Sono richiesti i diagrammi UML relativi agli use cases di progetto & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+                \textbf{R3-Q-Op} & È richiesto lo schema design relativo alla base dati (se utilizzata) o alle API richiamate (se utilizzate) & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+                \textbf{R4-Q-Ob} & È richiesta la documentazione relativa ai casi di test gestiti e la relativa reportistica & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+                \textbf{R5-Q-Ob} & È richiesta la lista dei bug risolti durante le fasi di sviluppo & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+            \end{longtable}
         }
         \subsection{Requisiti di Vincolo} {
-           
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|l|P{0.5\linewidth}|P{0.3\linewidth}|}
+                \caption{Requisiti di Vincolo} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endhead
+                
+                \textbf{R1-V-Ob} & È richiesto che il sistema funzioni anche in assenza di connettività & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Obiettivo" \\
+                \hline
+                \textbf{R2-V-Ob} & È richiesto che il sistema sia autoconsistente, cioè non deve essere necessario installare nulla sul dispositivo dell’utente & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Raccomandazioni esplicite" \\
+                \hline
+                \textbf{R3-V-Op} & È richiesto l'utilizzo di SQLite come database relazionale & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Tecnologie consigliate" \\
+                \hline
+                \textbf{R4-V-Op} & È richiesto l'utilizzo di Faiss come libreria per la ricerca dei documenti & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Tecnologie consigliate" \\
+                \hline
+                \textbf{R5-V-Ob} & È richiesto l'utilizzo di Angular o React come framework frontend & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Tecnologie consigliate" \\
+                \hline
+                \textbf{R6-V-Ob} & È richiesto l'utilizzo di Github o Bitbucket come sistema di versionamento del codice & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+            \end{longtable}
         }
     }
 
