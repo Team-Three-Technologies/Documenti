@@ -5,10 +5,10 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \setTitle{Piano di Qualifica}
-\setAuthors{Anrea Masiero \\ & Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
+\setAuthors{Andrea Masiero \\ & Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
 \setVerificators{ Mattia Oliva Medin \\ & Filippo Compagno \\ & Nenad Radulovic }
 \setApprovation{ }
-\setVersion{0.6}
+\setVersion{0.7}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Team Three Technologies}
 
@@ -21,6 +21,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.7} & 12/01/2026 & Sara Gioia Fichera & Amministratore & Mattia Oliva Medin & Correzione errori e completamento metriche \\
                 \hline
                 \textbf{0.6} & 7/01/2026 & Andrea Masiero & Analista & Filippo Compagno & Correzione test \\
                 \hline
@@ -42,10 +44,10 @@
     \tableofcontents
     \newpage
 
-    \listoftables
+    \listoffigures
     \newpage
 
-    \listoffigures
+    \listoftables
     \newpage
     
     \section{Introduzione} {
@@ -171,7 +173,7 @@
                 \paragraph{Documentazione} \mbox{}
                     \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
 
-                        \caption{Valori metriche processo di documetnazione} \\
+                        \caption{Valori metriche processo di documentazione} \\
                         \hline
                         \rowcolor{gray!40}
                         \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
@@ -219,6 +221,9 @@
                         MPC15 & Rischi non calcolati & $\le 2$ & $0$ \\
                         \hline
 
+                        MPC16 & Efficienza Oraria & $50\%$ & $100\%$ \\
+                        \hline
+
                     \end{longtable}
 
 
@@ -227,7 +232,7 @@
             \subsubsection{Funzionalità}
                 \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
 
-                    \caption{Valori metiche funzionalità di prodotto} \\
+                    \caption{Valori metriche funzionalità di prodotto} \\
                     \hline
                     \rowcolor{gray!40}
                     \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
@@ -240,7 +245,7 @@
                     MPD02 & Copertura dei requisiti desiderabili & $0\%$ & $100\%$ \\
                     \hline
 
-                    MPD03 & Copertura dei requisiti opzionali & $0\%$ & \\
+                    MPD03 & Copertura dei requisiti opzionali & $0\%$ & $100\%$ \\
                     \hline
 
                 \end{longtable}
@@ -261,7 +266,7 @@
                     MPD05 & Branch Coverage & $\ge60\%$ & $\ge80\%$ \\
                     \hline
 
-                    MPD06 & Statement Coverage & &  \\
+                    MPD06 & Statement Coverage & $\ge60\%$ & $\ge80\%$ \\
                     \hline
 
             \end{longtable}
@@ -278,7 +283,7 @@
                 \hline
                 \endhead
 
-                    MPD07 & Error rate &  & $0$ \\
+                    MPD07 & Error rate & $\le2$ & $0$ \\
                     \hline
 
                     MPD08 & Tempo di apprendimento & $ - $ & $ - $ \\
@@ -313,6 +318,9 @@
                 \endhead
 
                     MPD10 & Accoppiamento tra classi & $\le4$ & $\le2$ \\
+                    \hline
+
+                    MPD11 & Complessità ciclomatica & $\le15$ & $\le10$ \\
                     \hline
 
             \end{longtable}
