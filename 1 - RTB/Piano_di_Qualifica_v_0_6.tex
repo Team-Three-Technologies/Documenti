@@ -5,10 +5,10 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \setTitle{Piano di Qualifica}
-\setAuthors{Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
+\setAuthors{Anrea Masiero \\ & Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
 \setVerificators{ Mattia Oliva Medin \\ & Filippo Compagno \\ & Nenad Radulovic }
 \setApprovation{ }
-\setVersion{0.5}
+\setVersion{0.6}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Team Three Technologies}
 
@@ -19,9 +19,10 @@
         \begin{table}[h!]
             \rowcolors{2}{lightgray}{white}
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
-                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.6} & 7/01/2026 & Andrea Masiero & Analista & Filippo Compagno & Correzione test \\
                 \hline
                 \textbf{0.5} & 3/01/2026 & Sara Gioia Fichera & Responsabile & Mattia Oliva Medin & Aggiunta sezione test di Sistema \\
                 \hline
@@ -41,10 +42,10 @@
     \tableofcontents
     \newpage
 
-    \listoffigures
+    \listoftables
     \newpage
 
-    \listoftables
+    \listoffigures
     \newpage
     
     \section{Introduzione} {
@@ -141,10 +142,10 @@
                         MPC07 & Cost Variance & $\ge -5\%$ & $\ge 0\%$\\
                         \hline
 
-                        MPC08 & Schedule Variance & &\\
+                        MPC08 & Schedule Variance & $\ge -5\%$ & $\ge 0\%$\\
                         \hline
 
-                        MPC09 & Cost Performance Variance & & \\
+                        MPC09 & Cost Performance Variance & $\ge 0.90$ & 1 \\
                         \hline
 
                     \end{longtable}
@@ -160,7 +161,7 @@
                         \hline
                         \endhead
 
-                        MPC10 & Requirements Stability Index & &  \\
+                        MPC10 & Requirements Stability Index & $\ge 60\%$ & $100\%$ \\
                         \hline
 
                     \end{longtable}
@@ -170,7 +171,7 @@
                 \paragraph{Documentazione} \mbox{}
                     \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
 
-                        \caption{Valori metriche processo di documentazione} \\
+                        \caption{Valori metriche processo di documetnazione} \\
                         \hline
                         \rowcolor{gray!40}
                         \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
@@ -206,6 +207,19 @@
 
             \subsubsection{Processi organizzativi}
                 \paragraph{Gestione} \mbox{}
+                    \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                        \caption{Valori metriche gestione} \\
+                        \hline
+                        \rowcolor{gray!40}
+                        \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                        \hline
+                        \endhead
+
+                        MPC15 & Rischi non calcolati & $\le 2$ & $0$ \\
+                        \hline
+
+                    \end{longtable}
 
 
 
@@ -213,7 +227,7 @@
             \subsubsection{Funzionalità}
                 \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
 
-                    \caption{Valori metriche funzionalità di prodotto} \\
+                    \caption{Valori metiche funzionalità di prodotto} \\
                     \hline
                     \rowcolor{gray!40}
                     \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
@@ -226,18 +240,82 @@
                     MPD02 & Copertura dei requisiti desiderabili & $0\%$ & $100\%$ \\
                     \hline
 
-                    MPD03 & Copertura dei requisiti opzionali & $0\%$ & $100\%$ \\
+                    MPD03 & Copertura dei requisiti opzionali & $0\%$ & \\
                     \hline
 
                 \end{longtable}
 
             \subsubsection{Affidabilità}
+            \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                \caption{Valori metriche affidabilità di prodotto} \\
+                \hline
+                \rowcolor{gray!40}
+                \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                \hline
+                \endhead
+
+                    MPD04 & Code coverage & $\ge80\%$ & $\ge90\%$ \\
+                    \hline
+
+                    MPD05 & Branch Coverage & $\ge60\%$ & $\ge80\%$ \\
+                    \hline
+
+                    MPD06 & Statement Coverage & &  \\
+                    \hline
+
+            \end{longtable}
+
 
 
             \subsubsection{Usabilità}
+            \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
 
+                \caption{Valori metriche usabilità di prodotto} \\
+                \hline
+                \rowcolor{gray!40}
+                \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                \hline
+                \endhead
+
+                    MPD07 & Error rate &  & $0$ \\
+                    \hline
+
+                    MPD08 & Tempo di apprendimento & $ - $ & $ - $ \\
+                    \hline
+
+            \end{longtable}
 
             \subsubsection{Efficienza}
+            \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
+
+                \caption{Valori metriche efficienza di prodotto} \\
+                \hline
+                \rowcolor{gray!40}
+                \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                \hline
+                \endhead
+
+                    MPD09 & Response time & $\le 1sec $ & $\le 1sec $  \\
+                    \hline
+
+            \end{longtable}
+
+
+            \subsubsection{Manutenibilità}
+            \begin{longtable}{|M{1.5cm}|M{5cm}|M{2.5cm}|M{2.5cm}|}
+
+                \caption{Valori metriche manutenibilità di prodotto} \\
+                \hline
+                \rowcolor{gray!40}
+                \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
+                \hline
+                \endhead
+
+                    MPD10 & Accoppiamento tra classi & $\le4$ & $\le2$ \\
+                    \hline
+
+            \end{longtable}
             
 \newpage
     \section{Testing}
@@ -246,7 +324,8 @@
         \subsection{Test di Integrazione}
 
         \subsection{Test di Sistema}
-                   \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
+
+            \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
                 
                 \caption{Test di Sistema} \\
                 \hline
@@ -270,7 +349,7 @@
                 TS05 & Verificare che l'utente possa visualizzare i documenti e la relativa lista degli allegati & R5-F-Ob & NI \\
                 \hline
 
-                TS06 & Verificare che l'utente possa viaulizzare ciascun allegato di ogni documento & R6-F-Ob & NI \\
+                TS06 & Verificare che l'utente possa visualizzare ciascun allegato di ogni documento & R6-F-Ob & NI \\
                 \hline
 
                 TS07 & Verificare che il sistema possa mostrare le informazioni di conservazione di un DIP & R7-F-Ob & NI \\
@@ -465,7 +544,7 @@
                 TS70 & Verificare che l'utente possa esportare un documento selezionato, specificando il percorso dove salvarlo & R70-F-Ob & NI \\
                 \hline
                                 
-                TS71 & Verificare che il sistema mostri un messaggio di errore se l'esportazione fallisce & R7c-F-Ob & NI \\
+                TS71 & Verificare che il sistema mostri un messaggio di errore se l'esportazione fallisce & R71-F-Ob & NI \\
                 \hline
                                 
                 TS72 & Verificare che l'utente possa configurare la ricerca semantica inserendo una query in linguaggio naturale & R72-F-Op & NI \\
@@ -474,13 +553,16 @@
                 TS73 & Verificare che il sistema mostri i risultati della ricerca semantica configurata & R73-F-Op & NI \\
                 \hline
                                 
-                TS74 & Verificare che il sistema permetta la stampa di un documento selzionato & R74-F-Op & NI \\
+                TS74 & Verificare che il sistema permetta la stampa di un documento selezionato & R74-F-Op & NI \\
+                \hline
+                                
+                TS75 & Verificare che l'utente possa verificare la firma digitale di un documento selezionato & R75-F-Op & NI \\
                 \hline
             \end{longtable}
 
-
         \subsection{Test di Accettazione}
-        \begin{longtable}{|M{1.5cm}|M{8.5cm}|M{2cm}|}
+        
+            \begin{longtable}{|M{1.5cm}|M{8.5cm}|M{2cm}|}
 
                 \caption{Test di Accettazione} \\
                 \hline
@@ -519,13 +601,12 @@
                 TA10 & Verificare che l’utente possa selezionare un documento firmato digitalmente e avviare la procedura di verifica, la quale, al termine dell’elaborazione, restituisce l’esito della validazione & NI \\
                 \hline
 
-        \end{longtable}
-
-        
+            \end{longtable}
 
 
         \subsection{Checklist}
             \subsubsection{Documentazione}
+
                 \begin{longtable}{|M{3.5cm}|M{8.5cm}|}
 
                     \caption{Checklist documentazione} \\
@@ -600,7 +681,6 @@
                     \hline
 
                 \end{longtable}
-
         
 
 
@@ -608,5 +688,7 @@
         \subsection{M1}
 
         \subsection{M2}
+
+
 
 \end{document}
