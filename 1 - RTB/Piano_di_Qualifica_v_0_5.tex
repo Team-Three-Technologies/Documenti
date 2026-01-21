@@ -6,9 +6,9 @@
 
 \setTitle{Piano di Qualifica}
 \setAuthors{Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
-\setVerificators{Filippo Compagno \\ & Nenad Radulovic }
+\setVerificators{ Mattia Oliva Medin \\ & Filippo Compagno \\ & Nenad Radulovic }
 \setApprovation{ }
-\setVersion{0.4}
+\setVersion{0.5}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Team Three Technologies}
 
@@ -19,8 +19,11 @@
         \begin{table}[h!]
             \rowcolors{2}{lightgray}{white}
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.5} & 3/01/2026 & Sara Gioia Fichera & Responsabile & Mattia Oliva Medin & Aggiunta sezione test di Sistema \\
                 \hline
                 \textbf{0.4} & 3/01/2026 & Bianca Zaghetto & Amministratore & Filippo Compagno & Stesura checklist \\
                 \hline
@@ -35,7 +38,7 @@
     }
     \newpage
     
-   \tableofcontents
+    \tableofcontents
     \newpage
 
     \listoffigures
@@ -43,7 +46,7 @@
 
     \listoftables
     \newpage
-
+    
     \section{Introduzione} {
         \subsection{Scopo del documento}
             Il presente documento ha lo scopo di definire le strategie, le metodologie e le metriche adottate per garantire la qualità del prodotto software e l'efficienza dei processi di sviluppo.
@@ -243,6 +246,238 @@
         \subsection{Test di Integrazione}
 
         \subsection{Test di Sistema}
+                   \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
+                
+                \caption{Test di Sistema} \\
+                \hline
+                \rowcolor{gray!40}
+                \textbf{ID} & \textbf{Descrizione} & \textbf{Requisito} & \textbf{Stato} \\
+                \hline
+                \endhead
+
+                TS01 & Verificare che il Sistema permetta all'utente di selezionare un DIP da caricare& R1-F-Ob & NI \\
+                \hline
+
+                TS02 & Verificare che il Sistema mostri un errore se il caricamento del DIP non avviene correttamente & R2-F-Ob & NI \\
+                \hline
+
+                TS03 & Verificare che l'utente possa rimuovere un DIP dal Sistema & R3-F-Ob & NI \\
+                \hline
+
+                TS04 & Verificare che l'utente sia in grado di visualizzare il contenuto e le informazioni del DIP & R4-F-Ob & NI \\
+                \hline
+
+                TS05 & Verificare che l'utente possa visualizzare i documenti e la relativa lista degli allegati & R5-F-Ob & NI \\
+                \hline
+
+                TS06 & Verificare che l'utente possa viaulizzare ciascun allegato di ogni documento & R6-F-Ob & NI \\
+                \hline
+
+                TS07 & Verificare che il sistema possa mostrare le informazioni di conservazione di un DIP & R7-F-Ob & NI \\
+                \hline
+
+                TS08 & Verificare che l'utente sia in grado di selezionare uno o più documenti contenuti nel DIP & R8-F-Ob & NI \\
+                \hline
+
+                TS09 & Verificare che l'utente sia in grado di deselezionare uno o più documenti precedentemente selezionati & R9-F-Ob & NI \\
+                \hline
+
+                TS10 & Verificare che l'utente possa selezionare "Impronta crittografica" come criterio di ricerca & R10-F-De & NI \\
+                \hline
+
+                TS11 & Verificare che l'utente possa selezionare "Identificativo documento" come criterio di ricerca & R11-F-De & NI \\
+                \hline
+
+                TS12 & Verificare che l'utente possa selezionare "Modalità di formazione" come criterio di ricerca & R12-F-De & NI \\
+                \hline
+
+                TS13 & Verificare che l'utente possa selezionare "Tipologia documentale" come criterio di ricerca & R13-F-Ob & NI \\
+                \hline
+
+                TS14 & Verificare che l'utente possa selezionare "Tipologia di flusso" come criterio di ricerca & R14-F-De & NI \\
+                \hline
+
+                TS15 & Verificare che l'utente possa selezionare "Tipo registro" come criterio di ricerca & R15-F-De & NI \\
+                \hline
+               
+                TS16 & Verificare che l'utente possa selezionare "Data registrazione" come criterio di ricerca & R16-F-Ob & NI \\
+                \hline
+                
+                TS17 & Verificare che l'utente possa selezionare "Ora registrazione" come criterio di ricerca & R17-F-De & NI \\
+                \hline
+                
+                TS18 & Verificare che l'utente possa selezionare "Numero documento" come criterio di ricerca & R18-F-Ob & NI \\
+                \hline
+
+                TS19 & Verificare che l'utente possa selezionare "Codice registro" come criterio di ricerca & R19-F-Ob & NI \\
+                \hline
+                
+                TS20 & Verificare che l'utente possa selezionare "Ruolo" come criterio di ricerca & R20-F-De & NI \\
+                \hline
+                
+                TS21 & Verificare che l'utente possa selezionare "Tipo soggetto" come criterio di ricerca & R21-F-De & NI \\
+                \hline
+                
+                TS22 & Verificare che l'utente possa selezionare "Cognome" come criterio di ricerca & R22-F-De & NI \\
+                \hline
+                
+                TS23 & Verificare che l'utente possa selezionare "Nome" come criterio di ricerca & R23-F-De & NI \\
+                \hline
+                
+                TS24 & Verificare che l'utente possa selezionare "Codice Fiscale" come criterio di ricerca & R24-F-De & NI \\
+                \hline
+                
+                TS25 & Verificare che l'utente possa selezionare "Indirizzo digitale" come criterio di ricerca & R25-F-De & NI \\
+                \hline
+                
+                TS26 & Verificare che l'utente possa selezionare "Denominazione Organizzazione" come criterio di ricerca & R26-F-De & NI \\
+                \hline
+                
+                TS27 & Verificare che l'utente possa selezionare "Partita IVA" come criterio di ricerca & R27-F-De & NI \\
+                \hline
+
+                TS28 & Verificare che l'utente possa selezionare "Denominazione ufficio" come criterio di ricerca & R28-F-De & NI \\
+                \hline
+                
+                TS29 & Verificare che l'utente possa selezionare "Denominazione amministrazione" come criterio di ricerca & R29-F-De & NI \\
+                \hline
+
+                TS30 & Verificare che l'utente possa selezionare "Codice IPA" come criterio di ricerca & R30-F-De & NI \\
+                \hline
+
+                TS31 & Verificare che l'utente possa selezionare "Denominazione amministrazione AOO" come criterio di ricerca & R31-F-De & NI \\
+                \hline
+
+                TS32 & Verificare che l'utente possa selezionare "Codice IPA AOO" come criterio di ricerca & R32-F-De & NI \\
+                \hline
+
+                TS33 & Verificare che l'utente possa selezionare "Denominazione amministrazione UOR" come criterio di ricerca & R33-F-De & NI \\
+                \hline
+
+                TS34 & Verificare che l'utente possa selezionare "Codice IPA UOR" come criterio di ricerca & R34-F-De & NI \\
+                \hline
+                
+                TS35 & Verificare che l'utente possa selezionare "Denominazione sistema" come criterio di ricerca & R35-F-De & NI \\
+                \hline
+                
+                TS36 & Verificare che l'utente possa selezionare "Oggetto" come criterio di ricerca & R36-F-Ob & NI \\
+                \hline
+                
+                TS37 & Verificare che l'utente possa selezionare "Parola chiave" come criterio di ricerca & R37-F-De & NI \\
+                \hline
+                
+                TS38 & Verificare che l'utente possa selezionare "Numero allegati" come criterio di ricerca & R38-F-De & NI \\
+                \hline
+                
+                TS39 & Verificare che l'utente possa selezionare "Impronta crittografica allegato" come criterio di ricerca & R39-F-De & NI \\
+                \hline
+                
+                TS40 & Verificare che l'utente possa selezionare "Identificativo allegato" come criterio di ricerca & R40-F-De & NI \\
+                \hline
+                
+                TS41 & Verificare che l'utente possa selezionare "Descrizione allegato" come criterio di ricerca & R41-F-De & NI \\
+                \hline
+                
+                TS42 & Verificare che l'utente possa selezionare "Indice di classificazione" come criterio di ricerca & R42-F-De & NI \\
+                \hline
+                
+                TS43 & Verificare che l'utente possa selezionare "Descrizione dell'indice di classificazione" come criterio di ricerca & R43-F-De & NI \\
+                \hline
+
+                TS44 & Verificare che l'utente possa selezionare "Piano di classificazione" come criterio di ricerca & R44-F-De & NI \\
+                \hline
+            
+                TS45 & Verificare che l'utente possa selezionare "Riservato" come criterio di ricerca & R45-F-De & NI \\
+                \hline
+                
+                TS46 & Verificare che l'utente possa selezionare "Formato" come criterio di ricerca & R46-F-Ob & NI \\
+                \hline
+                
+                TS47 & Verificare che l'utente possa selezionare "Nome prodotto software" come criterio di ricerca & R47-F-De & NI \\
+                \hline
+                                
+                TS48 & Verificare che l'utente possa selezionare "Versione prodotto software" come criterio di ricerca & R48-F-De & NI \\
+                \hline
+                                
+                TS49 & Verificare che l'utente possa selezionare "Produttore software" come criterio di ricerca & R49-F-De & NI \\
+                \hline
+                                
+                TS50 & Verificare che l'utente possa selezionare "Firmato digitalmente" come criterio di ricerca & R50-F-De & NI \\
+                \hline
+                                
+                TS51 & Verificare che l'utente possa selezionare "Sigillato elettronicamente" come criterio di ricerca & R51-F-De & NI \\
+                \hline
+                                
+                TS52 & Verificare che l'utente possa selezionare "Marcatura temporale" come criterio di ricerca & R52-F-De & NI \\
+                \hline
+                                
+                TS53 & Verificare che l'utente possa selezionare "Conformità coppie immagine su supporto informatico" come criterio di ricerca & R53-F-De & NI \\
+                \hline
+                                
+                TS54 & Verificare che l'utente possa selezionare "Tipo aggregazione" come criterio di ricerca & R54-F-Ob & NI \\
+                \hline
+                                
+                TS55 & Verificare che l'utente possa selezionare "Identificativo aggregazione" come criterio di ricerca & R55-F-De & NI \\
+                \hline
+                                
+                TS56 & Verificare che l'utente possa selezionare "Tipologia fascicolo" come criterio di ricerca & R56-F-De & NI \\
+                \hline
+                                
+                TS57 & Verificare che l'utente possa selezionare "Nome del documento" come criterio di ricerca & R57-F-Ob & NI \\
+                \hline
+                                
+                TS58 & Verificare che l'utente possa selezionare "Versione del documento" come criterio di ricerca & R58-F-De & NI \\
+                \hline
+                                
+                TS59 & Verificare che l'utente possa selezionare "Tipo modifica" come criterio di ricerca & R59-F-De & NI \\
+                \hline
+                                
+                TS60 & Verificare che l'utente possa selezionare "Data modifica" come criterio di ricerca & R60-F-De & NI \\
+                \hline
+                                
+                TS61 & Verificare che l'utente possa selezionare "Ora modifica" come criterio di ricerca & R61-F-De & NI \\
+                \hline
+                                
+                TS62 & Verificare che l'utente possa selezionare "Tempo di conservazione" come criterio di ricerca & R62-F-De & NI \\
+                \hline
+                                
+                TS63 & Verificare che l'utente possa selezionare "Note" come criterio di ricerca & R63-F-De & NI \\
+                \hline
+                                
+                TS64 & Verificare che il Sistema permetta di effettuare una ricerca impostando uno o più criteri di ricerca & R64-F-Ob & NI \\
+                \hline
+                                
+                TS65 & Verificare che il Sistema mostri come risultato della ricerca i documenti che soddisfano i criteri di ricerca impostati& R65-F-Ob & NI \\
+                \hline
+                                
+                TS66 & Verificare che l'utente possa visualizzare le informazioni relative ai documenti risultanti dalla ricerca & R66-F-Ob & NI \\
+                \hline
+                                
+                TS67 & Verificare che il sistema mostri un messaggio informativo se il risultato della ricerca è vuoto & R67-F-Ob & NI \\
+                \hline
+                                
+                TS68 & Verificare che l'utente possa visualizzare l'anteprima di un documento selezionato & R68-F-Ob & NI \\
+                \hline
+                                
+                TS69 & Verificare che il sistema mostri un messaggio di avviso se non è possibile visualizzare l'anteprima di un documento selezionato & R69-F-Ob & NI \\
+                \hline
+                                
+                TS70 & Verificare che l'utente possa esportare un documento selezionato, specificando il percorso dove salvarlo & R70-F-Ob & NI \\
+                \hline
+                                
+                TS71 & Verificare che il sistema mostri un messaggio di errore se l'esportazione fallisce & R7c-F-Ob & NI \\
+                \hline
+                                
+                TS72 & Verificare che l'utente possa configurare la ricerca semantica inserendo una query in linguaggio naturale & R72-F-Op & NI \\
+                \hline
+                                
+                TS73 & Verificare che il sistema mostri i risultati della ricerca semantica configurata & R73-F-Op & NI \\
+                \hline
+                                
+                TS74 & Verificare che il sistema permetta la stampa di un documento selzionato & R74-F-Op & NI \\
+                \hline
+            \end{longtable}
+
 
         \subsection{Test di Accettazione}
         \begin{longtable}{|M{1.5cm}|M{8.5cm}|M{2cm}|}
