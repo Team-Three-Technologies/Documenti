@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+\setTitle{Verbale Interno 08/01/2026}
+\setAuthors{Filippo Compagno}
+\setVerificators{Mattia Oliva Medin}
+\setApprovation{Sara Gioia Fichera}
+\setVersion{1.0}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16:00}
+\setDestination{Team Three Technologies}
+\setAbsents{Nessuno}
+
+\begin{document}
+\include{memoTitlepage}
+
+\newpage
+\section*{Registro delle modifiche}
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+\hline
+\textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+\hline
+1.0 & 10/01/26 & Sara Gioia Fichera & Responsabile & & Approvazione documento \\
+\hline
+0.1 & 10/01/26 & Filippo Compagno & Verificatore & Mattia Oliva Medin & Prima stesura \\
+\hline
+\end{tabularx}
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Ordine del giorno}
+\begin{itemize}
+    \item Requisito non funzionale di autoconsistenza del prodotto
+    \item Aggiunta requisiti funzionali legati a procedimenti automatici
+    \item Stato avanzamento documenti
+    \item Rotazione ruoli per il sesto periodo
+\end{itemize}
+
+\newpage
+\section{Svolgimento}
+\rowcolors{2}{white}{white}
+\begin{longtable}{p{5cm}|p{10cm}}
+\textbf{Requisito non funzionale di autoconsistenza del prodotto} & In seguito alla riunione esterna con la proponente, svolta nella stessa giornata di questo incontro, il gruppo discute rispetto al requisito di autoconsistenza, cioè che il prodotto non richieda installazione di altro software, e soprattutto riguardo alla problematica dei permessi legati all'apertura di porte per far comunicare il front-end con il back-end locale. Viene deciso di informarsi meglio sull'argomento. \\\\ 
+
+\textbf{Aggiunta requisiti funzionali legati a procedimenti automatici} & Viene discussa l'aggiunta di requisiti funzionali legati a procedimenti automatici, non coperti dai casi d'uso, che avvengono dopo interazioni dell'utente. In seguito alla discussione e al chiarimento ricevuto durante l'ultimo diario di bordo si è deciso di aggiungere suddetti requisiti. \\\\
+
+\textbf{Stato avanzamento documenti} & Viene esposto dai membri lo stato di avanzamento dei documenti in previsione della revisione RTB e viene discusso il completamento delle parti mancanti. \\\\
+
+\textbf{Rotazione dei ruoli per il sesto periodo} & Definiti i ruoli per il sesto sprint: Mattia Oliva Medin (Responsabile), Sara Gioia Fichera (Amministratore), Nenad Radulovic (Analista), Francesco Balestro e Andrea Masiero (Programmatori), Filippo Compagno e Bianca Zaghetto (Progettisti), Sara Gioia Fichera, Mattia Oliva Medin e Nenad Radulovic (Verificatori). \\
+\end{longtable}
+
+\section{Decisioni}
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Identificativo} & \textbf{Descrizione} \\
+    \hline
+    VI\_20260108.d1 & Ricerca necessità permessi apertura porte HTTP \\
+    \hline
+    VI\_20260108.d2 & Aggiunta requisiti funzionali di verifica informazioni di conservazione \\
+    \hline
+\end{tabularx}
+
+\section{Attività}
+\rowcolors{2}{lightgray}{white}
+\begin{tabularx}{\textwidth}{|l|X|l|l|}
+    \hline
+    \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+    \hline
+    \textbf{Filippo Compagno} & Stesura Verbale Interno 08/01/2026 & VI\_20260108.a1 \\
+    \hline
+    \textbf{Sara Gioia Fichera} & Stesura Verbale Esterno 08/01/2026 & VI\_20260108.a2 \\
+    \hline
+    \textbf{Analisit} & Correzione requisiti & VI\_20260108.a3  \\
+    \hline
+    \textbf{Programmatori e Progettisti} & Continuo PoC & VI\_20260108.a4 \\
+    \hline
+    \textbf{Tutti} & Ricerca su permessi aperture porte HTTP & VI\_20260108.a5 \\
+    \hline
+\end{tabularx}
+
+\end{document}
