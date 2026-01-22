@@ -1,0 +1,98 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 22/01/2026}
+\setAuthors{Francesco Balestro}
+\setVerificators{}
+\setApprovation{Francesco Balestro}
+\setVersion{0.1}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16.00}
+\setDestination{Team Three Technologies}
+\setAbsents{Nessuno}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \section*{Registro delle modifiche}
+
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+            \hline
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \textbf{1.0} &  & Francesco Balestro & Responsabile & & Approvazione \\
+            \hline
+            \textbf{0.1} & 22/01/2026 & Francesco Balestro & Responsabile &  & Prima stesura \\
+        \hline
+        \end{tabularx}
+    \end{table}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno} {
+        \begin{itemize}
+            \item Stato avanzamento dei documenti
+            \item Organizzazione della continuazione del PoC
+            \item Rotazione dei ruoli
+        \end{itemize}
+    }
+
+    \section{Svolgimento} {
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Stato avanzamento dei documenti} & 
+            È stato esposto dai membri lo stato di avanzamento dei documenti ed è stato discusso il completamento delle parti mancanti. Sono stati assegnati dei compiti per portare avanti la stesura delle Norme di Progetto e il Piano di Progetto.\\\\
+            \textbf{Organizzazione della continuazione del PoC} & Il gruppo si è confrontato su come procedere con il PoC, in particolare è stato fissato il giorno 10/02/2026 come data indicativa di completamento di quest'ultimo.\\\\
+            \textbf{Rotazione dei ruoli} & Sono stati stabiliti i ruoli dei membri per il settimo sprint.
+            \begin{itemize}
+                \item \textbf{Responsabile}: Francesco Balestro
+                \item \textbf{Amministratore}: Andrea Masiero
+                \item \textbf{Analista}: Bianca Zaghetto
+                \item \textbf{Progettista}: Mattia Oliva Medin
+                \item \textbf{Programmatore}: Sara Gioia Fichera, Nenad Radulovic
+                \item \textbf{Verificatore}: Filippo Compagno
+            \end{itemize}\\\\
+        \end{longtable}
+    }
+
+    \section{Decisioni} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20260122.d1 & Data indicativa di completamento del PoC: 10/02/2026\\
+            \hline
+            VI\_20260122.d2 & Aggiornare le Norme di Progetto\\
+            \hline
+            VI\_20260122.d3 & Aggiornare il Piano di Progetto\\
+            \hline
+        \end{tabularx}
+    }
+
+    \section{Attività} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{Programmatori e Progettisti} & Continuare il PoC & VI\_20260122.a1 \\
+            \hline
+            \textbf{Filippo Compagno e Sara Gioia Fichera} & Aggiornamento delle Norme di Progetto & VI\_20260122.a2 \\
+            \hline
+            \textbf{Mattia Oliva Medin} & Aggiornamento del Piano di Progetto & VI\_20260122.a3 \\
+            \hline
+            \textbf{Francesco Balestro} & Stesura Verbale Interno & VI\_20260122.a4 \\
+            \hline
+            \textbf{Bianca Zaghetto} & Stesura Verbale Esterno & VI\_20260122.a5 \\
+            \hline
+        \end{tabularx}
+    }
+
+\end{document}
