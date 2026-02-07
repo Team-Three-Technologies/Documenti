@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 05/02/2026}
+\setAuthors{Francesco Balestro}
+\setVerificators{}
+\setApprovation{}
+\setVersion{0.1}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16.00}
+\setDestination{Team Three Technologies}
+\setAbsents{Sara Gioia Fichera \\ 
+& Bianca Zaghetto}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \section*{Registro delle modifiche}
+
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+            \hline
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \textbf{0.1} & 07/02/2026 & Francesco Balestro & Responsabile &  & Prima stesura \\
+        \hline
+        \end{tabularx}
+    \end{table}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno} {
+        \begin{itemize}
+            \item Correzione Analisi dei Requisiti
+            \item Stato avanzamento del PoC
+            \item Rotazione dei ruoli
+        \end{itemize}
+    }
+
+    \section{Svolgimento} {
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Correzione Analisi dei Requisiti} & 
+            Sono stati individuati e discussi degli errori nell'Analisi dei Requisiti. In particolare si è deciso di modificare, nella scrittura dei Casi d'Uso, il metodo di rappresentazione delle generalizzazioni.\\\\
+            \textbf{Stato avanzamento del PoC} & Il gruppo si è confrontato sullo stato di avanzamento del PoC ed è stato proposto l'utilizzo dei framework Tauri o Electron, per separare il frontend dal backend.\\\\
+            \textbf{Rotazione dei ruoli} & Sono stati stabiliti i ruoli dei membri per l'ottavo sprint.
+            \begin{itemize}
+                \item \textbf{Responsabile}: Bianca Zaghetto
+                \item \textbf{Amministratore}: Filippo Compagno
+                \item \textbf{Progettista}: Sara Gioia Fichera, Mattia Oliva Medin
+                \item \textbf{Programmatore}: Nenad Radulovic, Andrea Masiero
+                \item \textbf{Verificatore}: Francesco Balestro
+            \end{itemize}\\\\
+        \end{longtable}
+    }
+
+    \section{Decisioni} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20260205.d1 & Correzione Analisi dei Requisiti\\
+            \hline
+            VI\_20260205.d2 & Utilizzo di Tauri o Electron\\
+            \hline
+        \end{tabularx}
+    }
+
+    \section{Attività} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{Francesco Balestro} & Correggere l'Analisi dei Requisiti & VI\_20260205.a1 \\
+            \hline
+            \textbf{Programmatori e Progettisti} & Continuare il PoC & VI\_20260205.a2 \\
+            \hline
+            \textbf{Francesco Balestro} & Stesura Verbale Interno & VI\_20260205.a3 \\
+            \hline
+            \textbf{Andrea Masiero} & Stesura Verbale Esterno & VI\_20260205.a4 \\
+            \hline
+        \end{tabularx}
+    }
+
+\end{document}
