@@ -8,7 +8,7 @@
 \setAuthors{Andrea Masiero \\ & Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera}
 \setVerificators{ Mattia Oliva Medin \\ & Filippo Compagno \\ & Nenad Radulovic }
 \setApprovation{ }
-\setVersion{0.7}
+\setVersion{0.8}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Team Three Technologies}
 
@@ -21,6 +21,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.8} & 3/02/2026 & Sara Gioia Fichera & Programmatore & Francesco Balestro & Modifica test di Sistema\\
                 \hline
                 \textbf{0.7} & 12/01/2026 & Sara Gioia Fichera & Amministratore & Mattia Oliva Medin & Correzione errori e completamento metriche \\
                 \hline
@@ -98,7 +100,7 @@
     \newpage
 
     \section{Obiettivi di qualità}
-    La presente sezione definisce gli obiettivi di qualità del progetto, specificando per ciascuna metrica definita nel documento Norme di Progetto i range di accettazione e i valori ideali prefissati dal gruppo. La classificazione segue la distinzione tra:
+    La presente sezione definisce gli obiettivi di qualità del progetto, specificando per ciascuna metrica definita all'interno della sezione 5 del documento di Norme di Progetto v1.0 i range di accettazione e i valori ideali prefissati dal gruppo. La classificazione segue la distinzione tra:
     \begin{itemize}
         \item Metriche di processo
         \item Metriche di prodotto
@@ -211,7 +213,7 @@
                 \paragraph{Gestione} \mbox{}
                     \begin{longtable}{|M{0.15\linewidth}|M{0.35\linewidth}|M{0.2\linewidth}|M{0.2\linewidth}|}
 
-                        \caption{Valori metriche gestione} \\
+                        \caption{Valori metriche processi di gestione} \\
                         \hline
                         \rowcolor{gray!40}
                         \textbf{ID} & \textbf{Nome Metrica} & \textbf{Valore Accettabile} & \textbf{Valore Ideale} \\
@@ -327,11 +329,22 @@
             
 \newpage
     \section{Testing}
+
+    Questa sezione descrive la strategia di verifica e validazione adottata dal gruppo per garantire la qualità del prodotto software.
+    L'attività di testing è concepita come un processo continuo e fondamentale per rilevare tempestivamente eventuali difetti, assicurando che il sistema soddisfi tutti i requisiti concordati.
+
         \subsection{Test di Unità}
+
+        In accordo con la pianificazione temporale del progetto e lo stato attuale di avanzamento, la definizione puntuale dei casi di test per questa categoria verrà eseguita in seguito alla fase di RTB.
 
         \subsection{Test di Integrazione}
 
+        In accordo con la pianificazione temporale del progetto e lo stato attuale di avanzamento, la definizione puntuale dei casi di test per questa categoria verrà eseguita in seguito alla fase di RTB.
+
         \subsection{Test di Sistema}
+
+        I test di sistema hanno lo scopo di validare il prodotto software, verificandone la conformità rispetto ai requisiti funzionali e prestazionali specificati.
+        Questi test fanno riferimento ai requisiti riportati nella sezione 4 del documento di Analisi dei Requisiti v1.0.
 
             \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
                 
@@ -342,10 +355,10 @@
                 \hline
                 \endhead
 
-                TS01 & Verificare che il Sistema permetta all'utente di selezionare un DIP da caricare& R1-F-Ob & NI \\
+                TS01 & Verificare che il sistema permetta all'utente di selezionare un DIP da caricare& R1-F-Ob & NI \\
                 \hline
 
-                TS02 & Verificare che il Sistema mostri un errore se il caricamento del DIP non avviene correttamente & R2-F-Ob & NI \\
+                TS02 & Verificare che il sistema mostri un messaggio di errore se il caricamento del DIP non avviene correttamente & R2-F-Ob & NI \\
                 \hline
 
                 TS03 & Verificare che l'utente possa rimuovere un DIP dal Sistema & R3-F-Ob & NI \\
@@ -563,9 +576,16 @@
                                 
                 TS74 & Verificare che il sistema permetta la stampa di un documento selezionato & R74-F-Op & NI \\
                 \hline
-                                
-                TS75 & Verificare che l'utente possa verificare la firma digitale di un documento selezionato & R75-F-Op & NI \\
+
+                TS75 & Verificare che il sistema mostri un messaggio di errore se la stampa fallisce & R75-F-Ob & NI \\
                 \hline
+                                
+                TS76 & Verificare che l'utente possa verificare la firma digitale di un documento selezionato & R76-F-Op & NI \\
+                \hline
+
+                TS77 & Verificare che l'utente veda il risultato a seguito della verifica della firma digitale & R77-F-Op & NI \\
+                \hline
+
             \end{longtable}
 
         \subsection{Test di Accettazione}
