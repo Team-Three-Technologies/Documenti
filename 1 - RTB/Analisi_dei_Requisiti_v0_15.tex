@@ -7,7 +7,7 @@
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno \\ & Mattia Oliva Medin}
 \setApprovation{}
-\setVersion{0.14}
+\setVersion{0.15}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
@@ -105,6 +105,7 @@
 \newcommand{\printdoc}{71}
 \newcommand{\printdocfail}{72}
 \newcommand{\verdigsign}{73}
+\newcommand{\viewverdigsign}{74}
 
 \begin{document}
     \include{docTitlepage}
@@ -115,6 +116,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.15} & 07/02/26 & Francesco Balestro & Analista & Filippo Compagno & Correzioni varie \\
                 \hline
                 \textbf{0.14} & 07/01/26 & Francesco Balestro & Analista & Mattia Oliva Medin & Inserimento Requisiti di Qualità e di Vincolo e correzioni varie \\
                 \hline
@@ -275,6 +278,7 @@
                 }
                 \inc{\ucref{uc:\loaddip.1}}
                 \ext{\ucref{uc:\errloaddip}}
+                \gen{\ucref{uc:\remloaddip}}
             \end{usecase}
             \begin{figure}[H]
                     \centering
@@ -321,9 +325,7 @@
                     \item[4a.] L'utente cancella l'operazione
                     \item[5a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
                 }
-                \inc{\ucref{uc:\loaddip.1}, \ucref{uc:\removedip}}
-                \ext{\ucref{uc:\errloaddip}}
-                \gen{\ucref{uc:\loaddip}}
+                \inc{\ucref{uc:\removedip}}
             \end{usecase}
 
             % Errore struttura DIP
@@ -446,6 +448,7 @@
                     \end{itemize}
                 }
                 \inc{\ucref{uc:\viewdetdoc}}
+                \gen{\ucref{uc:\viewdip.2.2}}
             \end{usecase}
             \begin{usecase}
                 \code{\viewdip.2.2}
@@ -469,7 +472,6 @@
                     \end{itemize}
                 }
                 \inc{\ucref{uc:\viewdip.2.2.1}}
-                \gen{\ucref{uc:\viewdip.2.1}}
             \end{usecase}
             \begin{usecase}
                 \code{\viewdip.2.2.1}
@@ -564,6 +566,7 @@
                     \item L'utente seleziona l'algoritmo applicato (\textbf{UC\mdparamImpCrit.2})
                 }
                 \inc{\ucref{uc:\mdparamImpCrit.1}, \ucref{uc:\mdparamImpCrit.2}}
+                \gen{\ucref{uc:\mdparamImpCritAll}}
             \end{usecase}
             \begin{figure}[H]
                     \centering
@@ -615,6 +618,7 @@
                     \item L'utente seleziona il criterio "Identificativo documento"
                     \item L'utente inserisce il valore
                 }
+                \gen{\ucref{uc:\mdparamIdDocAll}}
             \end{usecase}
             \begin{figure}[H]
                     \centering
@@ -1463,8 +1467,6 @@
                     \item L'utente inserisce il digest del documento (\textbf{UC\mdparamImpCrit.1})
                     \item L'utente seleziona l'algoritmo applicato (\textbf{UC\mdparamImpCrit.2})
                 }
-                \inc{\ucref{uc:\mdparamImpCrit.1}, \ucref{uc:\mdparamImpCrit.2}}
-                \gen{\ucref{uc:\mdparamImpCrit}}
             \end{usecase}
 
             \begin{usecase}
@@ -1483,7 +1485,6 @@
                     \item L'utente seleziona il criterio "Identificativo allegato"
                     \item L'utente inserisce il valore
                 }
-                \gen{\ucref{uc:\mdparamIdDoc}}
             \end{usecase}
 
             \begin{usecase}
@@ -2376,14 +2377,13 @@
                     \item L'utente ha selezionato un documento dalla lista
                 }
                 \post{
-                    \item L'utente vede il risultato della verifica della firma digitale 
+                    \item L'utente ha verificato la validità della firma digitale
                 }
                 \main{
                     \item L'utente seleziona la funzionalità di verifica delle firma digitale del documento selezionato
                     \item L'utente avvia la verifica
-                    \item L'utente vede il risultato della verifica della firma digitale (\textbf{UC\verdigsign.1})
+                    \item L'utente ha verificato la validità della firma digitale
                 }
-                \inc{\ucref{uc:\verdigsign.1}}
             \end{usecase}
             \begin{figure}[H]
                     \centering
@@ -2393,11 +2393,11 @@
 
             % Visualizzazione risultato verifica firma digitale
             \begin{usecase}
-                \code{\verdigsign.1}
+                \code{\viewverdigsign}
                 \titleUC{Visualizzazione risultato verifica firma digitale documento}
                 \actor{Utente}
                 \pre{
-                    \item L'utente sta verificando la firma digitale di un documento
+                    \item L'utente ha verificato la validità della firma digitale
                 }
                 \post{
                     \item L'utente vede il risultato della verifica della firma digitale 
@@ -2406,6 +2406,11 @@
                     \item L'utente visualizza il risultato delle verifica della firma digitale (firma valida/non valida)
                 }
             \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC74.png}
+                    \caption{UC74 - Visualizzazione risultato verifica firma digitale documento}
+            \end{figure}
         }
     }
     \newpage
@@ -2474,7 +2479,7 @@
                 \hline
                 \textbf{R8-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
                 \hline
-                \textbf{R9-F-Ob} & Devono essere fatti dei controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
+                \textbf{R9-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
                 \hline
                 \textbf{R10-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
                 \ucref{uc:\mdparamImpCrit} \newline
@@ -2685,8 +2690,10 @@
                 \ucref{uc:\printdocfail} \\
                 \hline
                 \textbf{76-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
-                \ucref{uc:\verdigsign} \newline
-                \ucref{uc:\verdigsign.1} \\
+                \ucref{uc:\verdigsign} \\
+                \hline
+                \textbf{77-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
+                \ucref{uc:\viewverdigsign} \\
                 \hline
             \end{longtable}
         }
