@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 19/02/2026}
+\setAuthors{Mattia Oliva Medin}
+\setVerificators{Filippo Compagno}
+\setApprovation{Bianca Zaghetto}
+\setVersion{1.0}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16:00}
+\setDestination{Team Three Technologies}
+\setAbsents{Francesco Balestro \\ 
+& Bianca Zaghetto}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \section*{Registro delle modifiche}
+
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+            \hline
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \textbf{1.0} & 21/02/2026 & Bianca Zaghetto & Responsabile &  & Approvazione \\
+            \hline
+            \textbf{0.1} & 20/02/2026 & Mattia Oliva Medin & Progettista & Filippo Compagno & Prima stesura \\
+            \hline
+        \end{tabularx}
+    \end{table}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno} {
+        \begin{itemize}
+            \item Stato avanzamento del PoC
+            \item Discussione in preparazione della RTB
+            \item Rotazione dei ruoli
+        \end{itemize}
+    }
+
+    \section{Svolgimento} {
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Stato avanzamento del PoC} & Dopo essersi confrontati sull'avanzamento del PoC il gruppo ha confermato l'utilizzo di Electron e delle altre tecnologie precedentemente discusse, inoltre sono state divise tra i vari componenti le ultime implementazioni da fare per terminare il PoC.\\\\
+            \textbf{Discussione in preparazione della RTB} & Il gruppo ha individuato le attività da terminare in vista della RTB e prevede di effettuare la revisione di avanzamento durante lo sprint successivo.\\\\
+            \textbf{Rotazione dei ruoli} & Sono stati stabiliti i ruoli dei membri per il nono sprint.
+            \begin{itemize}
+                \item \textbf{Responsabile}: Andrea Masiero
+                \item \textbf{Amministratore}: Nenad Radulovic
+                \item \textbf{Progettista}: Francesco Balestro, Bianca Zaghetto
+                \item \textbf{Programmatore}: Filippo Compagno, Mattia Oliva Medin
+                \item \textbf{Verificatore}: Sara Gioia Fichera
+            \end{itemize}\\\\
+        \end{longtable}
+    }
+
+    \section{Decisioni} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20260219.d1 & Utilizzo di Electron\\
+            \hline
+            VI\_20260219.d2 & Effettuare la revisione RTB durante il prossimo sprint\\
+            \hline
+        \end{tabularx}
+    }
+    \newpage
+    \section{Attività} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{Programmatori e Progettisti} & Terminare il PoC & VI\_20260219.a1\\
+            \textbf{Mattia Oliva Medin} & Stesura Verbale Interno & VI\_20260219.a2\\
+            \textbf{Sara Gioia Fichera} & Stesura Verbale Esterno & VI\_20260219.a3\\
+            \hline
+        \end{tabularx}
+    }
+
+\end{document}
