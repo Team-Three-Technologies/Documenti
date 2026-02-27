@@ -14,6 +14,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Evidenzia termini del glossario
+        run: |
+          # Esegui lo script di evidenziazione (auto-detect del glossario)
+          python scripts/glossary.py --exclude-files "Glossario*.tex" "templates/*" "scripts/*" "assets/*" ".git/*" ".github/*" "0 - Candidatura/*" "Verbali/*"
+          
+          # Mostra statistiche modifiche
+          echo "Modifiche apportate:"
+          git diff --stat || echo "Nessuna modifica"
 
       - name: Compile LaTeX documents
         run: |
