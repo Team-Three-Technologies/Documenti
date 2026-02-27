@@ -444,10 +444,9 @@
                         \item Il nome del file
                         \item Il suo formato
                         \item Identificativo documentale
-                        \item Data in cui il documento è stato registrato
+                        \item Data e ora in cui il documento è stato registrato
                     \end{itemize}
                 }
-                \inc{\ucref{uc:\viewdetdoc}}
                 \gen{\ucref{uc:\viewdip.2.2}}
             \end{usecase}
             \begin{usecase}
@@ -467,7 +466,7 @@
                         \item Il nome del file
                         \item Il suo formato
                         \item Identificativo documentale
-                        \item Data in cui il documento è stato registrato
+                        \item Data e ora in cui il documento è stato registrato
                         \item La lista dei suoi allegati (\textbf{UC\viewdip.2.2.1})
                     \end{itemize}
                 }
@@ -509,6 +508,11 @@
             \end{usecase}
 
             % Visualizzazione dettagli documento
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC06.png}
+                    \caption{UC06 - Visualizzazione dettagli documento}
+            \end{figure
             \begin{usecase}
                 \code{\viewdetdoc}
                 \titleUC{Visualizzazione dettagli documento}
@@ -523,6 +527,7 @@
                     \item L'utente seleziona la funzionalità di visualizzazione dei dettagli di un documento
                     \item L'utente visualizza i dettagli di un documento
                 }
+                \inc{\ucref{uc:\viewdetdoc.1}, \ucref{uc:\viewdetdoc.2}, \ucref{uc:\viewdetdoc.3}, \ucref{uc:\viewdetdoc.4}}
             \end{usecase}
             
             %Visualizza Tipologia documentale
