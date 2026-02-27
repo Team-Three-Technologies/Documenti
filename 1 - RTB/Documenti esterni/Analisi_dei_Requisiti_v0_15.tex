@@ -508,11 +508,6 @@
             \end{usecase}
 
             % Visualizzazione dettagli documento
-            \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC06.png}
-                    \caption{UC06 - Visualizzazione dettagli documento}
-            \end{figure}
             \begin{usecase}
                 \code{\viewdetdoc}
                 \titleUC{Visualizzazione dettagli documento}
@@ -529,6 +524,11 @@
                 }
                 \inc{\ucref{uc:\viewdetdoc.1}, \ucref{uc:\viewdetdoc.2}, \ucref{uc:\viewdetdoc.3}, \ucref{uc:\viewdetdoc.4}, \ucref{uc:\viewdetdoc.5}, \ucref{uc:\viewdetdoc.6}}
             \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC06.png}
+                    \caption{UC06 - Visualizzazione dettagli documento}
+            \end{figure}
             
             %Visualizza Tipologia documentale
             \begin{usecase}
@@ -2755,222 +2755,245 @@
                 \hline
                 \textbf{R7-F-Ob} & L'utente deve poter visualizzare i dettagli di un documento & \ucref{uc:\viewdetdoc} \\
                 \hline
-                \textbf{R8-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
+                \textbf{R8-F-Ob} & L'utente deve poter visualizzare la tipologia documentale di un documento & \ucref{uc:\viewdetdoc.1} \\
                 \hline
-                \textbf{R9-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
+                \textbf{R9-F-Ob} & L'utente deve poter visualizzare il numero di un documento & \ucref{uc:\viewdetdoc.2} \\
                 \hline
-                \textbf{R10-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
+                \textbf{R10-F-Ob} & L'utente deve poter visualizzare il codice registro di un documento & \ucref{uc:\viewdetdoc.3} \\
+                \hline
+                \textbf{R11-F-Ob} & L'utente deve poter visualizzare la lista dei soggetti coinvolti in un documento & \ucref{uc:\viewdetdoc.4} \\
+                \hline
+                \textbf{R12-F-Ob} & L'utente deve poter visualizzare il singolo soggetto coinvolto in un documento & 
+                \ucref{uc:\viewdetdoc.4.1} \newline 
+                \ucref{uc:\viewdetdoc.4.2} \newline
+                \ucref{uc:\viewdetdoc.4.3} \newline 
+                \ucref{uc:\viewdetdoc.4.4} \newline 
+                \ucref{uc:\viewdetdoc.4.5} \newline 
+                \ucref{uc:\viewdetdoc.4.6} \newline 
+                \ucref{uc:\viewdetdoc.4.7} \newline \\
+                \hline
+                \textbf{R13-F-Ob} & L'utente deve poter visualizzare il ruolo di un soggetto coinvolto in un documento & \ucref{uc:\viewdetdoc.4.1.1} \\
+                \hline
+                \textbf{R14-F-Ob} & L'utente deve poter visualizzare l'oggetto di un documento & \ucref{uc:\viewdetdoc.5} \\
+                \hline
+                \textbf{R15-F-Ob} & L'utente deve poter visualizzare il tipo aggregazione di un documento & \ucref{uc:\viewdetdoc.6} \\
+                \hline
+                \textbf{R16-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R17-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R18-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
                 \ucref{uc:\mdparamImpCrit} \newline
                 \ucref{uc:\mdparamImpCrit.1} \newline
                 \ucref{uc:\mdparamImpCrit.2} \\
                 \hline
-                \textbf{R11-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
+                \textbf{R19-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
                 \ucref{uc:\mdparamIdDoc} \\
                 \hline
-                \textbf{R12-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
+                \textbf{R20-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
                 \ucref{uc:\mdparamModFor} \\
                 \hline
-                \textbf{R13-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
+                \textbf{R21-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
                 \ucref{uc:\mdparamTipDoc} \\
                 \hline
-                \textbf{R14-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
+                \textbf{R22-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
                 \ucref{uc:\mdparamTipFlu} \\
                 \hline
-                \textbf{R15-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
+                \textbf{R23-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
                 \ucref{uc:\mdparamTipReg} \\
                 \hline
-                \textbf{R16-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
+                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
                 \ucref{uc:\mdparamDatReg} \\
                 \hline
-                \textbf{R17-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
+                \textbf{R25-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
                 \ucref{uc:\mdparamOraReg} \\
                 \hline
-                \textbf{R18-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
+                \textbf{R26-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
                 \ucref{uc:\mdparamNumDoc} \\
                 \hline
-                \textbf{R19-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
+                \textbf{R27-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
                 \ucref{uc:\mdparamCodReg} \\
                 \hline
-                \textbf{R20-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
+                \textbf{R28-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
                 \ucref{uc:\mdparamRuolo} \\
                 \hline
-                \textbf{R21-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
+                \textbf{R29-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
                 \ucref{uc:\mdparamTipSog} \\
                 \hline
-                \textbf{R22-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
+                \textbf{R30-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
                 \ucref{uc:\mdparamCog} \\
                 \hline
-                \textbf{R23-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
+                \textbf{R31-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
                 \ucref{uc:\mdparamNom} \\
                 \hline
-                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
+                \textbf{R32-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
                 \ucref{uc:\mdparamCF} \\
                 \hline
-                \textbf{R25-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
+                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
                 \ucref{uc:\mdparamIndDig} \\
                 \hline
-                \textbf{R26-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
+                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
                 \ucref{uc:\mdparamDenOrg} \\
                 \hline
-                \textbf{R27-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
+                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
                 \ucref{uc:\mdparamCFPI} \\
                 \hline
-                \textbf{R28-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
+                \textbf{R36-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
                 \ucref{uc:\mdparamDenUff} \\
                 \hline
-                \textbf{R29-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
+                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
                 \ucref{uc:\mdparamDenAmm} \\
                 \hline
-                \textbf{R30-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
+                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
                 \ucref{uc:\mdparamIPA} \\
                 \hline
-                \textbf{R31-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
+                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
                 \ucref{uc:\mdparamDenAmmAOO} \\
                 \hline
-                \textbf{R32-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
+                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
                 \ucref{uc:\mdparamIPAOOO} \\
                 \hline
-                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
+                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
                 \ucref{uc:\mdparamDenAmmUOR} \\
                 \hline
-                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
+                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
                 \ucref{uc:\mdparamIPAUOR} \\
                 \hline
-                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
+                \textbf{R43-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
                 \ucref{uc:\mdparamDenSis} \\
                 \hline
-                \textbf{R36-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
+                \textbf{R44-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
                 \ucref{uc:\mdparamOgg} \\
                 \hline
-                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
+                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
                 \ucref{uc:\mdparamParChi} \\
                 \hline
-                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
+                \textbf{R46-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
                 \ucref{uc:\mdparamNumAll} \\
                 \hline
-                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
+                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
                 \ucref{uc:\mdparamImpCritAll} \\
                 \hline
-                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
+                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
                 \ucref{uc:\mdparamIdDocAll} \\
                 \hline
-                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
+                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
                 \ucref{uc:\mdparamDesAll} \\
                 \hline
-                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
+                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
                 \ucref{uc:\mdparamIndCla} \\
                 \hline
-                \textbf{R43-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
+                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
                 \ucref{uc:\mdparamDesCla} \\
                 \hline
-                \textbf{R44-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
+                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
                 \ucref{uc:\mdparamPiaCla} \\
                 \hline
-                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
+                \textbf{R53-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
                 \ucref{uc:\mdparamRis} \\
                 \hline
-                \textbf{R46-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
+                \textbf{R54-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
                 \ucref{uc:\mdparamFor} \\
                 \hline
-                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
+                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
                 \ucref{uc:\mdparamNomPro} \\
                 \hline
-                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
+                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
                 \ucref{uc:\mdparamVerPro} \\
                 \hline
-                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
+                \textbf{R57-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
                 \ucref{uc:\mdparamProd} \\
                 \hline
-                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
+                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
                 \ucref{uc:\mdparamFirDig} \\
                 \hline
-                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
+                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
                 \ucref{uc:\mdparamSigEle} \\
                 \hline
-                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
+                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
                 \ucref{uc:\mdparamMarTem} \\
                 \hline
-                \textbf{R53-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
+                \textbf{R61-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
                 \ucref{uc:\mdparamConCop} \\
                 \hline
-                \textbf{R54-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
+                \textbf{R62-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
                 \ucref{uc:\mdparamTipAgg} \\
                 \hline
-                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
+                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
                 \ucref{uc:\mdparamIdAgg} \\
                 \hline
-                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
+                \textbf{R64-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
                 \ucref{uc:\mdparamTipFas} \\
                 \hline
-                \textbf{R57-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
+                \textbf{R65-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
                 \ucref{uc:\mdparamNomDoc} \\
                 \hline
-                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
+                \textbf{R66-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
                 \ucref{uc:\mdparamVerDoc} \\
                 \hline
-                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
+                \textbf{R67-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
                 \ucref{uc:\mdparamTipMod} \\
                 \hline
-                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
+                \textbf{R68-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
                 \ucref{uc:\mdparamDatMod} \\
                 \hline
-                \textbf{R61-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
+                \textbf{R69-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
                 \ucref{uc:\mdparamOraMod} \\
                 \hline
-                \textbf{R62-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
+                \textbf{R70-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
                 \ucref{uc:\mdparamTemCon} \\
                 \hline
-                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
+                \textbf{R71-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
                 \ucref{uc:\mdparamNot} \\
                 \hline
-                \textbf{R64-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
+                \textbf{R72-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
                 \ucref{uc:\mdsearch} \\
                 \hline
-                \textbf{R65-F-Ob} & L'utente deve poter visualizzare i riusltati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
+                \textbf{R73-F-Ob} & L'utente deve poter visualizzare i riusltati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
                 \ucref{uc:\searchres} \\
                 \hline
-                \textbf{R66-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
+                \textbf{R74-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
                 \ucref{uc:\searchres} \newline
                 \ucref{uc:\searchres.1} \\
                 \hline
-                \textbf{R67-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
+                \textbf{R75-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
                 \ucref{uc:\searchres} \newline
                 \ucref{uc:\nosearchres} \\
                 \hline
-                \textbf{R68-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
+                \textbf{R76-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
                 \ucref{uc:\docpreview} \\
                 \hline
-                \textbf{R69-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
+                \textbf{R77-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
                 \ucref{uc:\docpreview} \newline
                 \ucref{uc:\nodocpreview} \\
                 \hline
-                \textbf{R70-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
+                \textbf{R78-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
                 \ucref{uc:\exportdoc} \newline
                 \ucref{uc:\exportdoc.1} \\
                 \hline
-                \textbf{R71-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
+                \textbf{R79-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
                 \ucref{uc:\exportdoc} \newline
                 \ucref{uc:\exportdocfail} \\
                 \hline
-                \textbf{R72-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
+                \textbf{R80-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
                 \ucref{uc:\semparam} \newline
                 \ucref{uc:\semparam.1} \\
                 \hline
-                \textbf{R73-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
+                \textbf{R81-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
                 \ucref{uc:\semparam} \newline
                 \ucref{uc:\semsearch} \\
                 \hline
-                \textbf{R74-F-Op} & L'utente deve poter stampare un documento selezionato & 
+                \textbf{R82-F-Op} & L'utente deve poter stampare un documento selezionato & 
                 \ucref{uc:\printdoc} \\
                 \hline
-                \textbf{R75-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
+                \textbf{R83-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
                 \ucref{uc:\printdoc} \newline
                 \ucref{uc:\printdocfail} \\
                 \hline
-                \textbf{R76-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
+                \textbf{R84-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
                 \ucref{uc:\verdigsign} \\
                 \hline
-                \textbf{R77-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
+                \textbf{R85-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
                 \ucref{uc:\viewverdigsign} \\
                 \hline
             \end{longtable}
