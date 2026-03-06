@@ -1,0 +1,90 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 05/03/2026}
+\setAuthors{Francesco Balestro}
+\setVerificators{}
+\setApprovation{}
+\setVersion{0.1}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{16.00}
+\setDestination{Team Three Technologies}
+\setAbsents{Bianca Zaghetto}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \section*{Registro delle modifiche}
+
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+            \hline
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \textbf{0.1} & 06/03/2026 & Francesco Balestro & Amministratore &  & Prima stesura \\
+        \hline
+        \end{tabularx}
+    \end{table}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno} {
+        \begin{itemize}
+            \item Discussione in preparazione della RTB
+            \item Rotazione dei ruoli
+        \end{itemize}
+    }
+
+    \section{Svolgimento} {
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Discussione in preparazione della RTB} & Il gruppo ha concluso lo sviluppo del PoC e ha individuato le prossime attività da svolgere per procedere alla candidatura alla RTB: verifica di correttezza dei documenti richiesti per la candidatura e preparazione della presentazione del PoC.\\\\
+            \textbf{Rotazione dei ruoli} & Sono stati stabiliti i ruoli dei membri per il decimo sprint.
+            \begin{itemize}
+                \item \textbf{Responsabile}:  Nenad Radulovic
+                \item \textbf{Amministratore}: Francesco Balestro
+                \item \textbf{Progettista}: Filippo Compagno, Mattia Oliva Medin
+                \item \textbf{Programmatore}: Sara Gioia Fichera, Bianca Zaghetto
+                \item \textbf{Verificatore}: Andrea Masiero
+            \end{itemize}\\\\
+        \end{longtable}
+    }
+
+    \section{Decisioni} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20260305.d1 & Verifica correttezza dei documenti richiesti per la RTB\\
+            \hline
+            VI\_20260305.d2 & Preparazione presentazione per la RTB\\
+            \hline
+            VI\_20260305.d3 & Candidatura alla RTB\\
+            \hline
+        \end{tabularx}
+    }
+
+    \section{Attività} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{Tutti} & Verificare la correttezza dei documenti richiesti per la RTB & VI\_20260305.a1 \\
+            \hline
+            \textbf{Tutti} & Preparare la presentazione per la RTB & VI\_20260305.a2 \\
+            \hline
+            \textbf{Francesco Balestro} & Stesura Verbale Interno & VI\_20260305.a3 \\
+            \hline
+            \textbf{Sara Gioia Fichera} & Stesura Verbale Esterno & VI\_20260305.a4 \\
+            \hline
+        \end{tabularx}
+    }
+
+\end{document}
