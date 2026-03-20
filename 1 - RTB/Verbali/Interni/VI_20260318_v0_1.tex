@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 18/03/2026}
+\setAuthors{Francesco Balestro}
+\setVerificators{}
+\setApprovation{}
+\setVersion{0.1}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{15.30}
+\setDestination{Team Three Technologies}
+\setAbsents{Bianca Zaghetto \\ 
+& Sara Gioia Fichera}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \section*{Registro delle modifiche}
+
+    \begin{table}[h!]
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|X|}
+            \hline
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \textbf{0.1} & 20/03/2026 & Francesco Balestro & Amministratore &  & Prima stesura \\
+        \hline
+        \end{tabularx}
+    \end{table}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno} {
+        \begin{itemize}
+            \item Modifica organizzazione degli sprint
+            \item Modifica data di consegna del MVP
+            \item Discussione in preparazione della seconda parte della RTB
+            \item Rotazione dei ruoli
+        \end{itemize}
+    }
+
+    \section{Svolgimento} {
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Modifica organizzazione degli sprint} & Il gruppo ha deciso di ridurre la durata degli sprint da due a una settimana, per poter allinearsi e confrontarsi più costantemente sullo stato di avanzamento del progetto.\\\\
+            \textbf{Modifica data di consegna del MVP} & È stato deciso di posticipare la data di consegna del MVP, a fronte del lavoro da svolgere per completarlo.\\\\
+            \textbf{Discussione in preparazione della seconda parte della RTB} & Il gruppo ha deciso di verificare la correttezza dei documenti necessari per la candidatura alla seconda parte della RTB, prima di inviare la mail per effettuare la candidatura.\\\\
+            \textbf{Rotazione dei ruoli} & Sono stati stabiliti i ruoli dei membri per l'undicesimo sprint.
+            \begin{itemize}
+                \item \textbf{Responsabile}: Filippo Compagno
+                \item \textbf{Amministratore}: Mattia Oliva Medin
+                \item \textbf{Progettista}: Sara Gioia Fichera, Nenad Radulovic
+                \item \textbf{Programmatore}: Francesco Balestro, Andrea Masiero
+                \item \textbf{Verificatore}: Bianca Zaghetto
+            \end{itemize}\\\\
+        \end{longtable}
+    }
+
+    \section{Decisioni} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20260318.d1 & Riduzione durata degli sprint da due a una settimana\\
+            \hline
+            VI\_20260318.d2 & Posticipo della data di consegna del MVP al 10 aprile\\
+            \hline
+            VI\_20260318.d3 & Verifica correttezza dei documenti richiesti per la seconda parte della RTB\\
+            \hline
+            VI\_20260318.d4 & Invio della mail per la candidatura alla seconda parte della RTB\\
+            \hline
+        \end{tabularx}
+    }
+
+    \section{Attività} {
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{Tutti} & Verificare la correttezza dei documenti richiesti per la seconda parte della RTB & VI\_20260318.a1 \\
+            \hline
+            \textbf{Nenad Radulovic} & Inviare la mail di candidatura alla seconda parte della RTB & VI\_20260318.a2 \\
+            \hline
+            \textbf{Francesco Balestro} & Stesura Verbale Interno & VI\_20260318.a3 \\
+            \hline
+            \textbf{Nenad Radulovic} & Stesura Verbale Esterno & VI\_20260318.a4 \\
+            \hline
+        \end{tabularx}
+    }
+
+\end{document}
