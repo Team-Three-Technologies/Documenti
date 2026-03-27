@@ -25,7 +25,7 @@ jobs:
       - name: Evidenzia termini del glossario
         run: |
           # Esegui lo script di evidenziazione (auto-detect del glossario)
-          python scripts/glossary.py --exclude-files "Glossario*.tex" "templates/*" "scripts/*" "assets/*" ".git/*" ".github/*" "0 - Candidatura/*" "Verbali/*" "Documenti vuoti/*"
+          python scripts/glossary.py --exclude-files "Glossario*.tex" "templates/*" "scripts/*" "assets/*" ".git/*" ".github/*" "0 - Candidatura/*" "Verbali/*" "Documenti vuoti/*" "Lettera_di_Presentazione.tex"
           
           # Mostra statistiche modifiche
           echo "Modifiche apportate:"
