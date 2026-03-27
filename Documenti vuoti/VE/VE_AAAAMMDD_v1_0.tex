@@ -1,0 +1,58 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Esterno DD/MM/2026}
+\setAuthors{Nome Cognome}
+\setVerificators{Nome Cognome}
+\setApprovation{Nome Cognome}
+\setVersion{1.0}
+\setType{Esterno}
+\setPlace{Google Meet}
+\setTime{XX:00}
+\setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
+\setAbsents{Nome Cognome}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno}
+        \begin{itemize}
+            \item ...
+        \end{itemize}
+
+    \section{Svolgimento}
+        \begin{longtable}{p{5cm}|p{10cm}}
+            \textbf{...} & ... \\\\
+        \end{longtable}
+
+    \section{Decisioni}
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione} \\
+            \hline
+            VE\_AAAAMMDD.d1 & ... \\
+            \hline
+        \end{tabularx}
+
+    \section{Attività}
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{...} & ... & VI\_AAAAMMDD.a1 \\
+            \hline
+        \end{tabularx}
+
+    \bigskip
+    \bigskip
+    \bigskip
+
+    \noindent Firma del referente Sanmarco Informatica SpA: \rule{6cm}{0.4pt}
+\end{document}

@@ -1,0 +1,78 @@
+\ProvidesPackage{ppTemplate}
+
+\useinnertheme{default}
+\useoutertheme{default}
+\usecolortheme{default}
+
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{xstring}
+\RequirePackage{etoolbox}
+
+\setbeamertemplate{navigation symbols} {}
+
+\definecolor{primary}{RGB}{79, 174, 248}
+\setbeamercolor{structure}{fg=primary}
+\setbeamercolor{frametitle}{bg=primary!10,fg=primary}
+\setbeamertemplate{itemize item}[circle]
+
+\setbeamertemplate{title page} {
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[primary!60, rotate around={-15:(current page.south west)}]
+            ([xshift=-1cm,yshift=-1cm]current page.south west)
+            rectangle
+            ([xshift=4cm,yshift=2.5cm]current page.south west);
+
+        \fill[primary!60, rotate around={-15:(current page.north east)}]
+            ([xshift=1cm,yshift=1cm]current page.north east)
+            rectangle
+            ([xshift=-4cm,yshift=-2.5cm]current page.north east);
+    \end{tikzpicture}
+
+    \vspace{2em}
+    \begin{center}
+        \includegraphics[height=3cm]{images/logo.png}
+    \end{center}
+    \begin{center}
+        {\usebeamerfont{title}\textbf{\inserttitle}\par}
+        {\usebeamerfont{subtitle}\insertsubtitle\par}
+        {\usebeamerfont{date}\insertdate\par}
+        \vspace{0.5em}
+        {\usebeamerfont{author}\insertauthor\par}
+        {\usebeamerfont{institute}\textbf{\insertinstitute}\par}
+    \end{center}
+}
+
+\setbeamertemplate{footline} {
+    \leavevmode
+    \vspace{0.7ex}
+    \hbox to \paperwidth {
+        \begin{minipage}[c]{0.33\paperwidth}
+            \raisebox{-.5\height}{\includegraphics[width=0.7cm]{images/logo.png}}
+            \raisebox{-.5\height}{\usebeamerfont{footline}\insertshortauthor}
+        \end{minipage}
+        \begin{minipage}[c]{0.33\paperwidth}
+            \centering\raisebox{-.5\height}{\usebeamerfont{footline}\insertshorttitle{}, \insertdate{}}
+        \end{minipage}
+        \begin{minipage}[c]{0.33\paperwidth}
+            \raggedleft\raisebox{-.5\height}{\usebeamerfont{footline}\insertframenumber{} di \inserttotalframenumber}
+            \hspace*{1.0em}
+        \end{minipage}
+    }
+    \vspace{0.7ex}
+}
+
+\setbeamertemplate{background}{
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[primary!60, rotate around={-15:(current page.south east)}]
+            ([xshift=1.5cm,yshift=-2cm]current page.south east)
+            rectangle
+            ([xshift=-3.5cm,yshift=1.5cm]current page.south east);
+
+        \fill[primary!30, rotate around={-15:(current page.south east)}]
+            ([xshift=1cm,yshift=-1.5cm]current page.south east)
+            rectangle
+            ([xshift=-2cm,yshift=0.5cm]current page.south east);
+
+    \end{tikzpicture}
+}

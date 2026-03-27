@@ -25,7 +25,7 @@ jobs:
       - name: Evidenzia termini del glossario
         run: |
           # Esegui lo script di evidenziazione (auto-detect del glossario)
-          python scripts/glossary.py --exclude-files "Glossario*.tex" "templates/*" "scripts/*" "assets/*" ".git/*" ".github/*" "0 - Candidatura/*" "Verbali/*"
+          python scripts/glossary.py --exclude-files "Glossario*.tex" "templates/*" "scripts/*" "assets/*" ".git/*" ".github/*" "0 - Candidatura/*" "Verbali/*" "Documenti vuoti/*"
           
           # Mostra statistiche modifiche
           echo "Modifiche apportate:"
@@ -33,7 +33,7 @@ jobs:
 
       - name: Compile LaTeX documents
         run: |
-          find . -name "*.tex" -type f ! -path "*/templates/*" | while IFS= read -r texfile; do
+          find "./1 - RTB" -type f -name "*.tex" | while IFS= read -r texfile; do
             texdir=$(dirname "$texfile")
             texbase=$(basename "$texfile" .tex)
             
@@ -57,7 +57,7 @@ jobs:
             [ -d "$d" ] && cp -r "$d" public/
           done
 
-          find . -name "*.pdf" -type f | while read f; do
+          find "./1 - RTB" -name "*.pdf" -type f | while read f; do
             target="public/${f#./}"
             mkdir -p "$(dirname "$target")"
             cp "$f" "$target"
