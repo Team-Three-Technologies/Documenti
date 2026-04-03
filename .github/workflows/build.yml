@@ -33,7 +33,7 @@ jobs:
 
       - name: Compile LaTeX documents
         run: |
-          find "./1 - RTB" -type f -name "*.tex" | while IFS= read -r texfile; do
+          find "./0 - Candidatura" "./1 - RTB" "./2 - PB" -type f -name "*.tex" | while IFS= read -r texfile; do
             texdir=$(dirname "$texfile")
             texbase=$(basename "$texfile" .tex)
             
@@ -57,7 +57,7 @@ jobs:
             [ -d "$d" ] && cp -r "$d" public/
           done
 
-          find "./1 - RTB" -name "*.pdf" -type f | while read f; do
+          find "./0 - Candidatura" "./1 - RTB" "./2 - PB" -name "*.pdf" -type f | while read f; do
             target="public/${f#./}"
             mkdir -p "$(dirname "$target")"
             cp "$f" "$target"

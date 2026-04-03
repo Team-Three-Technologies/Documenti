@@ -1,0 +1,67 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Esterno 02/04/2026}
+\setAuthors{Filippo Compagno}
+\setVerificators{Bianca Zaghetto}
+\setApprovation{Filippo Compagno}
+\setVersion{1.0}
+\setType{Esterno}
+\setPlace{Google Meet}
+\setTime{15:30}
+\setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
+\setAbsents{Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno}
+        \begin{itemize}
+            \item Aggiornamento stato di avanzamento
+            \item Utilizzo file .xml
+            \item Visualizzazione principale
+            \item Formato visualizzazione date
+            \item Data prossima riunione
+        \end{itemize}
+
+    \section{Svolgimento}
+        \begin{longtable}{p{5cm}|p{10cm}}
+            \textbf{Aggiornamento stato di avanzamento} & Il gruppo ha comunicato di aver completato la revisione RTB del progetto e di aver iniziato la fase di progettazione e codifica del prodotto. \\\\
+            \textbf{Utilizzo file .xml} & Il gruppo ha chiesto alla proponente se l'uso dei soli file \verb|DipIndex.AAAAMMDD.uuid.xml| e \verb|uuid.metadata.xml| per estrarre i dati necessari fosse corretto ed ha ottenuto conferma. \\\\
+            \textbf{Visualizzazione principale} & Il gruppo ha chiesto nuovamente alla proponente se ci fosse una preferenza per il tipo di visualizzazione del contenuto del DiP ed è stato confermato che la scelta è completamente responsabilità del gruppo. \\\\
+            \textbf{Formato visualizzazione date} & Il gruppo ha chiesto se ci fossero necessità particolari per la visualizzazione delle date nel prodotto. È stato comunicato che è preferibile il formato italiano (GG/MM/AAAA) e che è preferibile convertire al fuso orario italiano le timestamp in fuso orario UTC. \\\\
+            \textbf{Data prossima riunione} & Vista la mancanze di successive riunioni calendarizzate è stata fatta notare la necessità di fissare una nuova riunione, la cui data verrà discussa internamente dal gruppo e confermata in una mail alla proponente. \\\\
+        \end{longtable}
+
+    \section{Decisioni}
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione} \\
+            \hline
+            VE\_20260402.d1 & Utilizzare il formato GG/MM/AAAA per le date visualizzate nell'applicazione \\
+            \hline
+            VE\_20260402.d2 & Invio mail per calendarizzare riunione successiva \\
+            \hline
+        \end{tabularx}
+
+    \section{Attività}
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+        \end{tabularx}
+
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+
+    \noindent Firma del referente Sanmarco Informatica SpA: \rule{6cm}{0.4pt}
+\end{document}
