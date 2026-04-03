@@ -97,7 +97,7 @@ jobs:
             fi
           }
 
-          for main_folder in "0 - Candidatura" "1 - RTB" "2 - PB"; do
+          for main_folder in "2 - PB"; do
             folder_path="public/$main_folder"
             if [ -d "$folder_path" ]; then
               folder_content=$(generate_folder_content "$folder_path")
