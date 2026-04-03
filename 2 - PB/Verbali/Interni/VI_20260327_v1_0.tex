@@ -1,0 +1,108 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{longtable}
+
+\setTitle{Verbale Interno 27/03/2026}
+\setAuthors{Nenad Radulovic}
+\setVerificators{Bianca Zaghetto}
+\setApprovation{Filippo Compagno}
+\setVersion{1.0}
+\setType{Interno}
+\setPlace{Discord}
+\setTime{14.00}
+\setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin}
+\setAbsents{Nessuno}
+
+\begin{document}
+    \include{memoTitlepage}
+
+    \newpage
+    \tableofcontents
+    \newpage
+
+    \section{Ordine del giorno}
+        \begin{itemize}
+            \item Richiesta riunione con il prof. Cardin
+            \item Miglioramenti alla documentazione 
+            \item Cadenza degli incontri 
+            \item Progettazione del renderer Angular
+            \item Inizio stesura Specifica Tecnica
+        \end{itemize}
+
+    \section{Svolgimento}
+        \begin{longtable}{P{5cm}|P{10cm}} 
+            \textbf{Richiesta riunione con il prof. Cardin} & Si è deciso di richiedere al professor Cardin un 
+            colloquio per chiarire dei dubbi che sono sorti durante la prima fase di progettazione.
+            È stato incentivato l'uso del canale Telegram apposito per segnalare ulteriori dubbi qualora
+            sorgessero nel periodo di attesa al colloquio.\\\\
+
+            \textbf{Miglioramenti alla documentazione} & Basandosi sulla correzione del RTB si è deciso di apportare una serie di modifiche ai 
+            documenti e al metodo di lavoro:
+            \begin{itemize}
+                \item Aggiungere un riferimento preciso ai verbali esterni e interni nei punti in cui non viene 
+                    indicato con precisione a quale dei verbali ci si riferisce.
+                \item Rimuovere il registro delle modifiche per i prossimi verbali
+                \item Cambio della logica di esposizione della vista web del repo documentale, da concentrarsi
+                    solo sulla baseline più recente di progetto.
+                \item Aggiunta di un versionamento più rigido dei template dei verbali e delle presentazioni tramite
+                    l'aggiunta degli stessi alla repository Github dedicata alla documentazione.
+            \end{itemize}\\\\
+
+            \textbf{Cadenza degli incontri} & Accogliendo i suggerimenti del professor Vardanega, durante la presentazione
+            del RTB, sono stati decisi i seguenti provvedimenti:
+            \begin{itemize}
+                \item Fissare settimanalmente una riunione interna con tutto il gruppo per stabilire gli obbiettivi per 
+                    il periodo a venire e per discutere le questioni che non si è riusciti a risolvere durante il periodo
+                    trascorso. L'incontro è stato fissato per ogni venerdì alle 14:00.
+                \item Il gruppo ha deciso di ritrovarsi quotidianamente, due volte al giorno per lavorare in sincrono sulle
+                    attività, in modo che i membri possano supportasi e imparare tra di loro. Per venire incontro alle 
+                    esigenze dei membri si è deciso di programmare due incotri, il primo alle 09:00 e il secondo alle 14:00, in modo da permettere a ogni membro di partecipare ad almeno una "sessione di lavoro" al giorno. 
+                    I membri del gruppo si impegnano a partecipare alle "sessioni di lavoro" per almeno tre ore, in modo da riuscire ad ottenere dei progressi tangibili per ogni sessione.
+            \end{itemize}\\\\
+
+            \textbf{Progettazione del renderer Angular} & Alcuni membri del gruppo hanno preso in carico il compito di iniziare la progettazione
+                        del renderer Angular. Si è resa nota la necessità di approfondire
+                        al meglio le soluzioni offerte dal framework per implementare lo use case di visualizzazione dell'anteprima 
+                        di documenti e allegati.\\\\
+            \textbf{Inizio stesura Specifica Tecnica} & Si è ritenuto necessario iniziare con la stesura del documento
+            delle Specifica Tecnica, in quanto i membri del gruppo si sono suddivisi in due sottogruppi per lavorare
+            in parallelo ad aspetti diversi e si vuole avere fin dall'inizio un tracciamento delle scelte tecniche fatte, in modo da permettere a qualsiasi componente del gruppo di avere una chiara visione anche degli aspetti del progetto a cui non si è dedicato personalmente.\\\\
+        \end{longtable}
+
+
+    \section{Decisioni}
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|l|X|l|}
+            \hline
+            \textbf{Identificativo} & \textbf{Descrizione}\\
+            \hline
+            VI\_20260327.d1 & Richiedere un colloquio con il professor Cardin \\
+            \hline
+            VI\_20260327.d2 & Rimuovere dai verbali il registro delle modifiche  \\
+            \hline
+            VI\_20260327.d3 & Riunione interna a cadenza settimanale il venerdì alle 14:00\\
+            \hline
+            VI\_20260327.d4 & Sessione di lavoro giornaliera alle 09:00 e alle 14:00 \\
+            \hline
+            VI\_20260327.d5 & Inizio progettazione renderer Angular\\
+            \hline
+            VI\_20260327.d6 & Inizio stesura Specifica Tecnica\\
+            \hline
+        \end{tabularx}
+
+    \section{Attività}
+        \rowcolors{2}{lightgray}{white}
+        \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{4cm}|X|l|}
+            \hline
+            \textbf{Incaricato} & \textbf{Task Todo} & \textbf{Identificativo} \\
+            \hline
+            \textbf{} & Correggere i riferimenti ai verbali esterni/interni & VI\_20260327.a1 \\
+            \hline
+            \textbf{Filippo Compagno} & Cambio logica esposizione del repo documentale & VI\_20260327.a2 \\
+            \hline
+            \textbf{Francesco Balestro, Sara Gioia Fichera, Andrea Masiero, Mattia Olivia Medin} & Progettazione renderer Angular& VI\_20260327.a3 \\
+            \hline
+            \textbf{Filippo Compagno, Nenad Radulovic} & Inizio stesura Specifica Tecnica & VI\_20260327.a4 \\
+            \hline
+        \end{tabularx}
+\end{document}

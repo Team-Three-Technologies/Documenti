@@ -1,0 +1,3078 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{usecase}
+\usepackage{float}
+
+\setTitle{Analisi dei Requisiti}
+\setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
+\setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno \\ & Mattia Oliva Medin}
+\setApprovation{Andrea Masiero}
+\setVersion{1.0}
+\setType{Esterno}
+\setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
+
+% -- Obbligatori --
+\newcommand{\loaddip}{01}
+\newcommand{\remloaddip}{02}
+\newcommand{\errloaddip}{03}
+\newcommand{\removedip}{04}
+\newcommand{\viewdip}{05}
+\newcommand{\viewdetdoc}{06}
+\newcommand{\viewconsinfo}{07}
+
+% IdDoc
+\newcommand{\mdparamImpCrit}{08} % Impronta crittografica - Hash - Algoritmo
+\newcommand{\mdparamIdDoc}{09} % Identificativo documento
+% ModalitàDiFormazione
+\newcommand{\mdparamModFor}{10} % Modalità di formazione
+% TipologiaDocumentale
+\newcommand{\mdparamTipDoc}{11} % Tipologia documentale
+% DatiDiRegistrazione
+\newcommand{\mdparamTipFlu}{12} % Tipologia di flusso
+\newcommand{\mdparamTipReg}{13} % Tipo registro
+\newcommand{\mdparamDatReg}{14} % Data registrazione
+\newcommand{\mdparamOraReg}{15} % Ora registrazione
+\newcommand{\mdparamNumDoc}{16} % Numero documento
+\newcommand{\mdparamCodReg}{17} % Codice registro
+\newcommand{\mdparamRuolo}{18} % Ruolo
+\newcommand{\mdparamTipSog}{19} % Tipo soggetto
+\newcommand{\mdparamCog}{20} % Cognome (PF, AS)
+\newcommand{\mdparamNom}{21} % Nome (PF, AS)
+\newcommand{\mdparamCF}{22} % Codice fiscale (PF, PG, AS)
+\newcommand{\mdparamIndDig}{23} % Indirizzo digitale di riferimento (PF, PG, PAI, PAE, AS)
+\newcommand{\mdparamDenOrg}{24} % Denominazione Organizzazione (PG, AS)
+\newcommand{\mdparamCFPI}{25} % Partita IVA (PG)
+\newcommand{\mdparamDenUff}{26} % Denominazione ufficio (PG, PAE, AS)
+\newcommand{\mdparamDenAmm}{27} % Denominazione amministrazione (PAI, PAE)
+\newcommand{\mdparamIPA}{28} % Codice IPA (PAI)
+\newcommand{\mdparamDenAmmAOO}{29} % Denominazione amministrazione AOO (PAI)
+\newcommand{\mdparamIPAOOO}{30} % Codice IPA AOO (PAI)
+\newcommand{\mdparamDenAmmUOR}{31} % Denominazione amministrazione UOR (PAI)
+\newcommand{\mdparamIPAUOR}{32} % Codice IPA UOR (PAI)
+\newcommand{\mdparamDenSis}{33} % Denominazione Sistema (SW)
+% ChiaveDescrittiva
+\newcommand{\mdparamOgg}{34} % Oggetto
+\newcommand{\mdparamParChi}{35} % Parola chiave
+% Allegati
+\newcommand{\mdparamNumAll}{36} % Numero allegati
+\newcommand{\mdparamImpCritAll}{37} % Impronta crittografica allegato
+\newcommand{\mdparamIdDocAll}{38} % Identificativo allegato
+\newcommand{\mdparamDesAll}{39} % Descrizione allegato
+% Classificazione
+\newcommand{\mdparamIndCla}{40} % Indice di classificazione
+\newcommand{\mdparamDesCla}{41} % Descrizione (dell'indice di classificazione)
+\newcommand{\mdparamPiaCla}{42} % Piano di classificazione
+% Riservato
+\newcommand{\mdparamRis}{43} % Riservato
+% IdentificativoDelFormato
+\newcommand{\mdparamFor}{44} % Formato
+\newcommand{\mdparamNomPro}{45} % Nome prodotto (software)
+\newcommand{\mdparamVerPro}{46} % Versione prodotto (software)
+\newcommand{\mdparamProd}{47} % Produttore (software)
+% Verifica
+\newcommand{\mdparamFirDig}{48} % Firmato digitalmente
+\newcommand{\mdparamSigEle}{49} % Sigillato elettronicamente
+\newcommand{\mdparamMarTem}{50} % Marcatura temporale
+\newcommand{\mdparamConCop}{51} % Conformità copie su supporto informatico
+% Agg
+% IdAgg
+\newcommand{\mdparamTipAgg}{52} % Tipo aggregazione
+\newcommand{\mdparamIdAgg}{53} % Identificativo aggregazione
+% TipologiaFascicolo
+\newcommand{\mdparamTipFas}{54} % Tipologia fascicolo
+% NomeDelDocumento
+\newcommand{\mdparamNomDoc}{55} % Nome del documento
+% VersioneDelDocumento
+\newcommand{\mdparamVerDoc}{56} % Versione del documento
+% TracciaturaModificheDocumento
+\newcommand{\mdparamTipMod}{57} % Tipo modifica
+\newcommand{\mdparamDatMod}{58} % Data modifica
+\newcommand{\mdparamOraMod}{59} % Ora modifica
+% TempoDiConservazione
+\newcommand{\mdparamTemCon}{60} % Tempo di conservazione
+% Note
+\newcommand{\mdparamNot}{61} % Note
+
+\newcommand{\mdsearch}{62}
+\newcommand{\searchres}{63}
+\newcommand{\nosearchres}{64}
+\newcommand{\docpreview}{65}
+\newcommand{\nodocpreview}{66}
+\newcommand{\exportdoc}{67}
+\newcommand{\exportdocfail}{68}
+\newcommand{\semparam}{69}
+\newcommand{\semsearch}{70}
+\newcommand{\printdoc}{71}
+\newcommand{\printdocfail}{72}
+\newcommand{\verdigsign}{73}
+\newcommand{\viewverdigsign}{74}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \begin{table}[h!]
+            \rowcolors{2}{lightgray}{white}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{1.0} & 06/03/26 & Andrea Masiero & Responsabile & - & Approvazione e rilascio \\
+                \hline
+                \textbf{0.15} & 07/02/26 & Francesco Balestro & Analista & Filippo Compagno & Correzioni varie \\
+                \hline
+                \textbf{0.14} & 07/01/26 & Francesco Balestro & Analista & Mattia Oliva Medin & Inserimento Requisiti di Qualità e di Vincolo e correzioni varie \\
+                \hline
+                \textbf{0.13} & 03/01/26 & Andrea Masiero & Analista & Filippo Compagno & Inserimento Requisiti Funzionali \\
+                \hline
+                \textbf{0.12} & 21/12/25 &  Sara Gioia Fichera & Analista & Nenad Radulovic & Inserimento Requisiti Funzionali \\
+                \hline
+                \textbf{0.11} & 19/12/25 & Bianca Zaghetto & Analista & Nenad Radulovic & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.10} & 17/12/25 & Nenad Radulovic & Analista & Andrea Masiero & Correzioni Casi d'Uso \\
+                \hline
+                \textbf{0.9} & 16/12/25 & Francesco Balestro & Analista & Andrea Masiero & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.8} & 10/12/25 & Filippo Compagno & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.7} & 08/12/25 & Mattia Oliva Medin & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.6} & 05/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.5} & 04/12/25 & Andrea Masiero & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.4} & 01/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+                \hline
+                \textbf{0.3} & 24/11/25 & Sara Gioia Fichera & Analista & Francesco Balestro &  Definizione Attori \\
+                \hline
+                \textbf{0.2} & 20/11/25 & Filippo Compagno & Analista & Francesco Balestro & Caratteristiche degli utenti \\
+                \hline
+                \textbf{0.1} & 07/11/25 & Sara Gioia Fichera & Analista & Andrea Masiero & Struttura iniziale del documento \\
+                \hline
+            \end{tabularx}
+        \end{table}
+    }
+    \newpage
+    
+    \tableofcontents
+    \newpage
+
+    \listoffigures
+    \newpage
+    
+    \listoftables
+    \newpage
+
+    \section{Introduzione} {
+        \subsection{Scopo del documento} {        
+            Questo documento ha lo scopo di descrivere in maniera esaustiva e precisa i requisiti funzionali e non funzionali del sistema software da sviluppare per il progetto DIPReader. Per questo motivo integra un'attenta descrizione dei casi d'uso, che sono fonte di requisiti.
+            Tale analisi è il risultato di un attento studio del capitolato, integrato con quanto concordato durante gli incontri svolti con Sanmarco Informatica, la proponente.
+        }
+        \subsection{Glossario} {
+            Si rimanda al documento Glossario per chiarire i termini nel dominio del progetto che possono risultare ambigui o di difficile comprensione. I vocaboli presenti nel glossario sono stati segnalati seguendo la notazione:
+            \begin{center}
+                parola\textsubscript{G}
+            \end{center}
+        }
+        \subsection{Riferimenti} {
+            \subsubsection{Riferimenti normativi} {
+                \begin{itemize}
+                    \item \textit{Norme di Progetto v1.0}
+                    \begin{itemize}
+                        \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Norme_di_Progetto_v1_0.pdf}
+                        \item[] (Ultimo accesso: 2026/03/04)
+                    \end{itemize}
+                    \item Capitolato C3
+                    \begin{itemize}
+                        \item {\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}}
+                        \item[] (Ultimo accesso: 2026/02/07)
+                    \end{itemize}
+                    \item Regolamento del Progetto Didattico
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}
+                        \item[] (Ultimo accesso: 2025/11/07)
+                    \end{itemize}
+                    \item 830-1998 - IEEE Recommended Practice for Software Requirements Specifications
+                    \begin{itemize}
+                        \item \url{https://ieeexplore.ieee.org/document/720574/references#references}
+                        \item[] (Ultimo accesso: 2025/19/12)
+                    \end{itemize}
+                \end{itemize}
+            }
+            \subsubsection{Riferimenti informativi} {
+                \begin{itemize}
+                    \item Slide del corso: T5 - Analisi dei requisiti
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}
+                        \item[] (Ultimo accesso: 2025/12/21)
+                    \end{itemize}
+                    \item Slide del corso: P2 - Diagrammi dei Casi d'Uso
+                    \begin{itemize}
+                        \item \url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi\%20Use\%20Case.pdf}
+                        \item[] (Ultimo accesso: 2025/12/20)
+                    \end{itemize}
+                    \item Repository Github del Prof. Cardin
+                    \begin{itemize}
+                        \item \url{https://github.com/rcardin/swe-imdb}
+                        \item[] (Ultimo accesso: 2026/01/07)
+                    \end{itemize}
+                    \item \textit{Glossario v0.5}
+                    \begin{itemize}
+                        \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Glossario_v0_5.pdf}
+                        \item[] (Ultimo accesso: 2026/03/17)
+                    \end{itemize}
+                \end{itemize}
+            }
+        }
+    }
+
+    \newpage
+    \section{Descrizione del prodotto} {
+        \subsection{Scopo del prodotto} {
+            Lo scopo di DIPReader è fornire un sistema software per la consultazione e la conservazione digitale dei documenti. L'applicazione permette all'utente di caricare localmente i pacchetti informativi (DIP) per esplorarne i file, gli allegati e i relativi metadati. L'obiettivo principale è garantire un accesso offline rapido e sicuro alle informazioni, assicurando allo stesso tempo l'autenticità, la leggibilità e la totale conformità ai requisiti normativi di archiviazione. }
+        \subsection{Funzioni del prodotto} {
+            Le funzioni del prodotto sono: 
+            \begin{itemize}
+                \item Rappresentazione semplificata del contenuto 
+                \item Ricerca dei documenti tramite metadati
+                \item Visualizzazione in anteprima di alcuni formati
+                \item Salvare documenti nel computer dell'Utente
+                \item Funzionamento offline
+            \end{itemize}
+        }
+        \subsection{Caratteristiche dell'utente} {
+            L’applicazione è destinata a un pubblico ampio e variegato, comprendente ricercatori, professionisti, cittadini interessati o chiunque abbia bisogno di consultare documenti archiviati. Gli utenti possono avere competenze tecniche e digitali molto diverse: dai non esperti, che desiderano trovare rapidamente informazioni, ai professionisti abituati a interpretare metadati complessi. \\
+            \\
+            Tutti gli utenti condividono l’esigenza di effettuare ricerche efficaci e mirate, utilizzando filtri sui metadati, consultare il contenuto dei documenti e scaricare informazioni in modo affidabile. L’interfaccia dovrà quindi garantire usabilità, chiarezza dei metadati principali e supportare la consultazione e l’estrazione dei documenti in maniera intuitiva.
+        }
+
+    }
+    \newpage
+    \section{Casi d'uso} {
+        \subsection{Scopo} {
+            Lo scopo di questa sezione è spiegare singolarmente ciascun Caso d'uso individuato.  
+        }
+        \subsection{Attori} {
+            \begin{itemize}
+                \item Utente: in questo contesto è l'Attore principale, cioè colui che intergisce attivamente con il sistema e svolge le azioni indicate dal Caso d'Uso.
+                \item Motore semantico: si occupa di elaborare una ricerca semantica fatta dall'utente per produrre un risultato. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
+                \item Gestore di stampa SO: si occupa di gestire la richiesta di stampa di un documento da parte dell'utente. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
+            \end{itemize}
+        }
+        \subsection{Casi d'uso} {
+            % Caricamento DIP
+            \begin{usecase}
+                \code{\loaddip}
+                \titleUC{Caricamento DIP}
+                \actor{Utente}
+                \pre{
+                    \item Nessun DIP è caricato nel sistema
+                }
+                \post{
+                    \item Il DIP è caricato nel sistema
+                }
+                \main{
+                    \item L'utente seleziona la funzione di caricamento
+                    \item L'utente seleziona il pacchetto (\textbf{UC\loaddip.1})
+                    \item L'utente visualizza la conferma dell'avvenuto caricamento
+                }
+                \alt{
+                    \item[2a.] L'utente cancella l'operazione
+                    \item[3a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
+                }
+                \inc{\ucref{uc:\loaddip.1}}
+                \ext{\ucref{uc:\errloaddip}}
+                \gen{\ucref{uc:\remloaddip}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC01.png}
+                    \caption{UC01 - Caricamento DIP}
+            \end{figure}
+            
+            \begin{usecase}
+                \code{\loaddip.1}
+                \titleUC{Selezione pacchetto}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha selezionato la funzione di caricamento
+                }
+                \post{
+                    \item L'utente ha selezionato la funzione di caricamento
+                }
+                \main{
+                    \item Il sistema richiede il pacchetto all'utente
+                    \item L'utente seleziona il pacchetto dal proprio dispositivo
+                }
+            \end{usecase}
+            
+            % Caricamento DIP con DIP già caricato
+            \begin{usecase}
+                \code{\remloaddip}
+                \titleUC{Caricamento DIP con DIP già presente}
+                \actor{Utente}
+                \pre{
+                    \item Un DIP è caricato nel sistema
+                }
+                \post{
+                    \item Il DIP già caricato è rimosso dal sistema
+                    \item Il nuovo DIP è caricato nel sistema
+                }
+                \main{
+                    \item L'utente seleziona la funzione di caricamento
+                    \item L'utente vede un messaggio informativo sulla necessità di rimozione del DIP presente 
+                    \item L'utente rimuove il DIP presente nel sistema (\textbf{UC\removedip})
+                    \item L'utente seleziona il pacchetto (\textbf{UC\loaddip.1})
+                    \item L'utente visualizza la conferma dell'avvenuto caricamento
+                }
+                \alt{
+                    \item[4a.] L'utente cancella l'operazione
+                    \item[5a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
+                }
+                \inc{\ucref{uc:\removedip}}
+            \end{usecase}
+
+            % Errore struttura DIP
+            \begin{usecase}
+                \code{\errloaddip}
+                \titleUC{Errore struttura DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un pacchetto che non rappresenta un DIP
+                }
+                \post{
+                    \item Il DIP non viene caricato nel sistema
+                    \item L'utente vede un messaggio di errore
+                }
+                \main{
+                    \item L'utente vede un messaggio di errore relativo alla struttura non conforme del DIP
+                }
+            \end{usecase}
+         
+            % Rimozione DIP
+            \begin{usecase}
+                \code{\removedip}
+                \titleUC{Rimozione DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP nel sistema
+                }
+                \post{
+                    \item Il DIP caricato è rimosso dal sistema
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di chiusura
+                    \item Il sistema richiede la conferma
+                    \item L'utente conferma la chiusura del DIP
+                }
+                \alt{
+                    \item[3a.] L'utente cancella l'operazione
+                }
+            \end{usecase}
+            
+            % Visualizzazione DIP
+            \begin{usecase}
+                \code{\viewdip}
+                \titleUC{Visualizzazione contenuto DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP nel sistema
+                }
+                \post{
+                    \item L'utente vede le informazioni relative al DIP
+                    \item L'utente vede i documenti contenuti nel DIP
+                }
+                \main{
+                    \item L'utente visualizza le informazioni relative al DIP (\textbf{UC\viewdip.1})
+                    \item L'utente visualizza la lista dei documenti contenuti nel DIP (\textbf{UC\viewdip.2})
+                }
+                \inc{\ucref{uc:\viewdip.1}, \ucref{uc:\viewdip.2}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC05.png}
+                    \caption{UC05 - Visualizzazione contenuto DIP}
+            \end{figure}
+            \begin{usecase}
+                \code{\viewdip.1}
+                \titleUC{Visualizzazione informazioni DIP}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il contenuto del DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni relative al DIP
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item La data di creazione del DIP
+                        \item Le informazioni del programma usato per la creazione del DIP, quali
+                        \begin{itemize}
+                            \item Nome
+                            \item Versione
+                            \item Produttore
+                            \item Il numero di documenti contenuti
+                        \end{itemize}
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2}
+                \titleUC{Visualizzazione lista documenti contenuti}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il contenuto del DIP
+                }
+                \post{
+                    \item L'utente vede la lista di documenti contenuti nel DIP
+                }
+                \main{
+                    \item L'utente visualizza i documenti contenuti nel DIP
+                }
+                \inc{\ucref{uc:\viewdip.2.1}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.1}
+                \titleUC{Visualizzazione singolo documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando la lista dei documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni principali di un documento contenuto nel DIP
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item Il nome del file
+                        \item Il suo formato
+                        \item Identificativo documentale
+                        \item Data e ora in cui il documento è stato registrato
+                    \end{itemize}
+                }
+                \gen{\ucref{uc:\viewdip.2.2}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.2}
+                \titleUC{Visualizzazione singolo documento con allegati}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando la lista dei documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni principali di un documento contenuto nel DIP
+                    \item L'utente vede la lista degli allegati del documento
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item Il nome del file
+                        \item Il suo formato
+                        \item Identificativo documentale
+                        \item Data e ora in cui il documento è stato registrato
+                        \item La lista dei suoi allegati (\textbf{UC\viewdip.2.2.1})
+                    \end{itemize}
+                }
+                \inc{\ucref{uc:\viewdip.2.2.1}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.2.1}
+                \titleUC{Visualizzazione lista allegati documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando un documento contenuto nel DIP
+                }
+                \post{
+                    \item L'utente vede la lista degli allegati di un documento contenuto nel DIP
+                }
+                \main{
+                    \item L'utente visualizza gli allegati di un documento contenuto nel DIP
+                }
+                \inc{\ucref{uc:\viewdip.2.2.1.1}}
+            \end{usecase}
+            \begin{usecase}
+                \code{\viewdip.2.2.1.1}
+                \titleUC{Visualizzazione singolo allegato}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando la lista degli allegati di un documento contenuto nel DIP
+                }
+                \post{
+                    \item L'utente vede le informazioni principali di un allegato di un documento contenuto nel DIP
+                }
+                \main{
+                    \item L'utente visualizza
+                    \begin{itemize}
+                        \item Il nome dell'allegato
+                        \item Il suo formato
+                        \item Identificativo allegato
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            % Visualizzazione dettagli documento
+            \begin{usecase}
+                \code{\viewdetdoc}
+                \titleUC{Visualizzazione dettagli documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando un singolo documento
+                }
+                \post{
+                    \item L'utente vede i dettagli di un documento
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di visualizzazione dei dettagli di un documento
+                    \item L'utente visualizza i dettagli di un documento
+                }
+                \inc{\ucref{uc:\viewdetdoc.1}, \ucref{uc:\viewdetdoc.2}, \ucref{uc:\viewdetdoc.3}, \ucref{uc:\viewdetdoc.4}, \ucref{uc:\viewdetdoc.5}, \ucref{uc:\viewdetdoc.6}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC06.png}
+                    \caption{UC06 - Visualizzazione dettagli documento}
+            \end{figure}
+            
+            %Visualizza Tipologia documentale
+            \begin{usecase}
+                \code{\viewdetdoc.1}
+                \titleUC{Visualizzazione tipologia documentale}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L’utente visualizza la tipologia documentale di un documento
+                }
+                \main{
+                    \item L’utente visualizza la tipologia documentale di un documento
+                }
+            \end{usecase}
+
+            %Visualizza Numero documento
+            \begin{usecase}
+                \code{\viewdetdoc.2}
+                \titleUC{Visualizzazione numero documento}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L’utente visualizza il numero di un documento
+                }
+                \main{
+                    \item L’utente visualizza il numero di un documento
+                }
+            \end{usecase}
+            
+            %Visualizza Codice registro
+            \begin{usecase}
+                \code{\viewdetdoc.3}
+                \titleUC{Visualizzazione codice registro}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L'utente visualizza il codice del registro
+                }
+                \main{
+                    \item L'utente visualizza il codice del registro
+                }
+            \end{usecase}
+
+            %Visualizza lista soggetti
+            \begin{usecase}
+                \code{\viewdetdoc.4}
+                \titleUC{Visualizzazione lista soggetti}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L'utente visualizza la lista dei soggetti coinvolti in un documento
+                }
+                \main{
+                    \item L'utente visualizza la lista dei soggetti coinvolti in un documento
+                }
+                \inc{\ucref{uc:\viewdetdoc.4.1}}
+            \end{usecase}
+
+            %Visualizza singolo soggetto
+            \begin{usecase}
+                \code{\viewdetdoc.4.1}
+                \titleUC{Visualizzazione singolo soggetto}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando la lista dei soggetti coinvolti in un documento
+                }
+                \post{
+                    \item L'utente visualizza il singolo soggetto coinvolto in un documento
+                }
+                \main{
+                    \item L'utente visualizza il singolo soggetto coinvolto in un documento
+                }
+                \inc{\ucref{uc:\viewdetdoc.4.1.1}}
+                \gen{\ucref{uc:\viewdetdoc.4.2}, \ucref{uc:\viewdetdoc.4.3}, \ucref{uc:\viewdetdoc.4.4}, \ucref{uc:\viewdetdoc.4.5}, \ucref{uc:\viewdetdoc.4.6}, \ucref{uc:\viewdetdoc.4.7}}
+            \end{usecase}
+            
+            %Visualizza ruolo
+            \begin{usecase}
+                \code{\viewdetdoc.4.1.1}
+                \titleUC{Visualizzazione ruolo}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L’utente visualizza il ruolo di tutti i soggetti coinvolti in un documento
+                }
+                \main{
+                    \item L’utente visualizza il ruolo di tutti i soggetti coinvolti in un documento. I ruoli possibili sono:
+                    \begin{itemize}
+                        \item Assegnatario
+                        \item Autore
+                        \item Destinatario
+                        \item Mittente
+                        \item Operatore
+                        \item Produttore
+                        \item RGD (Responsabile della Gestione Documentale)
+                        \item RSP (Responsabile del Servizio di Protocollo)
+                        \item Soggetto che effettua la registrazione
+                        \item Altro
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            %Visualizza persona fisica
+            \begin{usecase}
+                \code{\viewdetdoc.4.2}
+                \titleUC{Visualizzazione persona fisica (PF)}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il singolo soggetto coinvolto in un documento
+                }
+                \post{
+                    \item L'utente visualizza le informazioni della persona fisica coinvolta in un documento
+                }
+                \main{
+                    \item L’utente visualizza le informazioni della persona fisica coinvolta in un documento:
+                    \begin{itemize}
+                        \item Nome
+                        \item Cognome
+                        \item Codice Fiscale
+                        \item Indirizzi digitali di riferimento
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            %Visualizza Organizzazione
+            \begin{usecase}
+                \code{\viewdetdoc.4.3}
+                \titleUC{Visualizzazione organizzazione (PG)}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il singolo soggetto coinvolto in un documento
+                }
+                \post{
+                    \item L'utente visualizza le informazioni dell'organizzazione coinvolta in un documento
+                }
+                \main{
+                    \item L'utente visualizza le informazioni dell'organizzazione coinvolta in un documento:
+                    \begin{itemize}
+                        \item Denominazione Organizzazione
+                        \item Codice fiscale / Partita Iva
+                        \item Denominazione Ufficio
+                        \item Indirizzi Digitali Di Riferimento
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            %Visualizza Amministrazione Pubblica Estera
+            \begin{usecase}
+                \code{\viewdetdoc.4.4}
+                \titleUC{Visualizzazione amministrazione pubblica estera (PAE)}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il singolo soggetto coinvolto in un documento
+                }
+                \post{
+                    \item L'utente visualizza le informazioni dell'amministrazione pubblica estera coinvolta in un documento
+                }
+                \main{
+                    \item L'utente visualizza le informazioni dell'amministrazione pubblica estera coinvolta in un documento:
+                    \begin{itemize}
+                        \item Denominazione Amministrazione
+                        \item Denominazione Ufficio
+                        \item Indirizzi Digitali Di Riferimento
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            %Visualizza amministrazione pubblica italiana
+            \begin{usecase}
+                \code{\viewdetdoc.4.5}
+                \titleUC{Visualizzazione amministrazione pubblica italiana (PAI)}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il singolo soggetto coinvolto in un documento
+                }
+                \post{
+                    \item L’utente visualizza le informazioni dell'amministrazione pubblica italiana coinvolta in un documento
+                }
+                \main{
+                    \item L’utente visualizza le informazioni dell'amministrazione pubblica italiana coinvolta in un documento:
+                    \begin{itemize}
+                        \item Denominazione Amministrazione / Codice IPA
+                        \item Denominazione Amministrazione AOO / Codice IPA AOO
+                        \item Denominazione Amministrazione UOR / Codice IPA UOR
+                        \item Indirizzi Digitali Di Riferimento
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            %Visualizza Assegnatario
+            \begin{usecase}
+                \code{\viewdetdoc.4.6}
+                \titleUC{Visualizzazione assegnatario (AS)}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il singolo soggetto coinvolto in un documento
+                }
+                \post{
+                    \item L'utente visualizza le informazioni dell'assegnatario coinvolto in un documento
+                }
+                \main{
+                    \item L'utente visualizza le informazioni dell'assegnatario coinvolto in un documento:
+                    \begin{itemize}
+                        \item Cognome
+                        \item Nome
+                        \item Codice Fiscale
+                        \item Denominazione Organizzazione
+                        \item Denominazione Ufficio
+                        \item Indirizzi Digitali Di Riferimento
+                    \end{itemize}
+                }
+            \end{usecase}  
+            
+            %Visualizza Software
+            \begin{usecase}
+                \code{\viewdetdoc.4.7}
+                \titleUC{Visualizzazione software (SW)}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando il singolo soggetto coinvolto in un documento
+                }
+                \post{
+                    \item L'utente visualizza le informazioni del software coinvolto in un documento
+                }
+                \main{
+                    \item L'utente visualizza le informazioni del software coinvolto in un documento:
+                    \begin{itemize}
+                        \item Denominazione Sistema
+                    \end{itemize}
+                }
+            \end{usecase}  
+            
+            %Visualizza Oggetto
+            \begin{usecase}
+                \code{\viewdetdoc.5}
+                \titleUC{Visualizzazione oggetto}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L'utente visualizza l'oggetto
+                }
+                \main{
+                    \item L'utente visualizza l'oggetto
+                }
+            \end{usecase}
+        
+            %Visualizza Tipo Aggregazione
+            \begin{usecase}
+                \code{\viewdetdoc.6}
+                \titleUC{Visualizzazione tipo aggregazione}
+                \actor{Utente}
+                \pre{
+                    \item L’utente sta visualizzando i dettagli di un singolo documento
+                }
+                \post{
+                    \item L'utente visualizza il tipo di aggregazione
+                }
+                \main{
+                    \item L'utente visualizza il tipo di aggregazione
+                }
+            \end{usecase}
+            
+            % Visualizzazione delle informazioni di conservazione
+            \begin{usecase}
+                \code{\viewconsinfo}
+                \titleUC{Visualizzazione informazioni di conservazione}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L’utente visualizza i dettagli relativi alla validità legale e allo stato del processo di conservazione dei documenti
+                }
+                \main{
+                    \item L'utente visualizza degli elementi grafici che gli indicano la validità e lo stato del processo di conservazione dei documenti
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC07.png}
+                    \caption{UC07 - Visualizzazione informazioni di conservazione}
+            \end{figure}
+
+            % Criteri di ricerca (metadati)
+            \begin{usecase}
+                \code{\mdparamImpCrit}
+                \titleUC{Inserimento criterio di ricerca "Impronta crittografica"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Impronta crittografica"
+                    \item L'utente inserisce l'hash del documento (\textbf{UC\mdparamImpCrit.1})
+                    \item L'utente seleziona l'algoritmo applicato (\textbf{UC\mdparamImpCrit.2})
+                }
+                \inc{\ucref{uc:\mdparamImpCrit.1}, \ucref{uc:\mdparamImpCrit.2}}
+                \gen{\ucref{uc:\mdparamImpCritAll}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC08.png}
+                    \caption{UC08 - Inserimento criterio di ricerca ”Impronta crittografica”}
+            \end{figure}
+            \begin{usecase}
+                \code{\mdparamImpCrit.1}
+                \titleUC{Inserimento hash del documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta configurando il criterio di ricerca "Impronta crittografica"
+                }
+                \post{
+                    \item L'utente ha inserito l'hash del documento
+                }
+                \main{
+                    \item L'utente inserisce l'hash del documento
+                }
+            \end{usecase}
+            \begin{usecase}
+                \code{\mdparamImpCrit.2}
+                \titleUC{Selezione algoritmo di hashing}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta configurando il criterio di ricerca "Impronta crittografica"
+                }
+                \post{
+                    \item L'utente ha selezionato l'algoritmo di hashing
+                }
+                \main{
+                    \item L'utente seleziona l'algoritmo di hashing applicato tra quelli disponibili
+                }
+            \end{usecase}
+
+            \begin{usecase}
+                \code{\mdparamIdDoc}
+                \titleUC{Inserimento criterio di ricerca "Identificativo documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Identificativo documento"
+                    \item L'utente inserisce il valore
+                }
+                \gen{\ucref{uc:\mdparamIdDocAll}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC09.png}
+                    \caption{UC09 - Inserimento criterio di ricerca ”Identificativo documento”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamModFor}
+                \titleUC{Inserimento criterio di ricerca "Modalità di formazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Modalità di formazione"
+                    \item L'utente seleziona i valori tra le opzioni
+                    \begin{itemize}
+                        \item "Creazione tramite l'utilizzo di strumenti software che assicurino la produzione di documenti nei formati previsti nell'Allegato 2 delle Linee Guida"
+                        \item "Acquisizione di un documento informatico per via telematica o su supporto informatico, acquisizione della copia per immagine su supporto informatico di un documento analogico, acquisizione della copia informatica di un documento analogico"
+                        \item "Memorizzazione su supporto informatico in formato digitale delle informazioni risultanti da transazioni o processi informatici o dalla presentazione telematica di dati attraverso moduli o formulari resi disponibili all'utente"
+                        \item "Generazione o raggruppamento anche in via automatica di un insieme di dati o registrazioni, provenienti da una o più banche dati, anche appartenenti a più soggetti interoperanti, secondo una struttura logica predeterminata e memorizzata in forma statica"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC10.png}
+                    \caption{UC10 - Inserimento criterio di ricerca ”Modalità di formazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipDoc}
+                \titleUC{Inserimento criterio di ricerca "Tipologia documentale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipologia documentale"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC11.png}
+                    \caption{UC11 - Inserimento criterio di ricerca ”Tipologia documentale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipFlu}
+                \titleUC{Inserimento criterio di ricerca "Tipologia di flusso"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipologia di flusso"
+                    \item L'utente seleziona i valori tra le opzioni
+                    \begin{itemize}
+                        \item "U (In uscita)"
+                        \item "E (In entrata)"
+                        \item "I (Interno)"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC12.png}
+                    \caption{UC12 - Inserimento criterio di ricerca ”Tipologia di flusso”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipReg}
+                \titleUC{Inserimento criterio di ricerca "Tipo registro"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo registro"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Nessuno"
+                        \item "Protocollo ordinario/Protocollo emergenza"
+                        \item "Repertorio/Registro"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC13.png}
+                    \caption{UC13 - Inserimento criterio di ricerca ”Tipo registro”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDatReg}
+                \titleUC{Inserimento criterio di ricerca "Data registrazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Data registrazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC14.png}
+                    \caption{UC14 - Inserimento criterio di ricerca ”Data registrazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamOraReg}
+                \titleUC{Inserimento criterio di ricerca "Ora registrazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Ora registrazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC15.png}
+                    \caption{UC15 - Inserimento criterio di ricerca ”Ora registrazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNumDoc}
+                \titleUC{Inserimento criterio di ricerca "Numero documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Numero documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC16.png}
+                    \caption{UC16 - Inserimento criterio di ricerca ”Numero documento”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCodReg}
+                \titleUC{Inserimento criterio di ricerca "Codice registro"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice registro"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC17.png}
+                    \caption{UC17 - Inserimento criterio di ricerca ”Codice registro”}
+            \end{figure}
+
+             \begin{usecase}
+                \code{\mdparamRuolo}
+                \titleUC{Inserimento criterio di ricerca "Ruolo"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Ruolo"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Produttore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC18.png}
+                    \caption{UC18 - Inserimento criterio di ricerca ”Ruolo”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipSog}
+                \titleUC{Inserimento criterio di ricerca "Tipo soggetto"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo soggetto"
+                    \item L'utente seleziona il valore tra le opzioni disponibili
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PAI (Amministrazione pubblica italiana)"
+                        \item "PF (Persona Fisica)"
+                        \item "PG (Organizzazione)"
+                        \item "SW (Documenti prodotti automaticamente)"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC19.png}
+                    \caption{UC19 - Inserimento criterio di ricerca ”Tipo soggetto”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCog}
+                \titleUC{Inserimento criterio di ricerca "Cognome"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PF (Persona Fisica)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Cognome"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC20.png}
+                    \caption{UC20 - Inserimento criterio di ricerca ”Cognome”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNom}
+                \titleUC{Inserimento criterio di ricerca "Nome"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PF (Persona Fisica)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Nome"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC21.png}
+                    \caption{UC21 - Inserimento criterio di ricerca ”Nome”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCF}
+                \titleUC{Inserimento criterio di ricerca "Codice Fiscale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PF (Persona Fisica)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice Fiscale"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC22.png}
+                    \caption{UC22 - Inserimento criterio di ricerca ”Codice Fiscale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIndDig}
+                \titleUC{Inserimento criterio di ricerca "Indirizzo digitale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Operatore"
+                        \item "Responsabile del Servizio Protocollo"
+                        \item "Responsabile della Gestione Documentale"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PAI (Amministrazione pubblica italiana)"
+                        \item "PF (Persona Fisica)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Indirizzo digitale"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC23.png}
+                    \caption{UC23 - Inserimento criterio di ricerca ”Indirizzo digitale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenOrg}
+                \titleUC{Inserimento criterio di ricerca "Denominazione organizzazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione organizzazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC24.png}
+                    \caption{UC24 - Inserimento criterio di ricerca ”Denominazione organizzazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamCFPI}
+                \titleUC{Inserimento criterio di ricerca "Partita IVA"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Partita IVA"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC25.png}
+                    \caption{UC25 - Inserimento criterio di ricerca ”Partita IVA”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenUff}
+                \titleUC{Inserimento criterio di ricerca "Denominazione ufficio"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Assegnatario"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                        \item "Soggetto che effettua la registrazione"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "AS (Assegnatario)"
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PG (Organizzazione)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione ufficio"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC26.png}
+                    \caption{UC26 - Inserimento criterio di ricerca ”Denominazione ufficio”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenAmm}
+                \titleUC{Inserimento criterio di ricerca "Denominazione amministrazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con un valore tra
+                    \begin{itemize}
+                        \item "PAE (Amministrazione pubblica estera)"
+                        \item "PAI (Amministrazione pubblica italiana)"
+                    \end{itemize}
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione amministrazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC27.png}
+                    \caption{UC27 - Inserimento criterio di ricerca ”Denominazione amministrazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIPA}
+                \titleUC{Inserimento criterio di ricerca "Codice IPA"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice IPA"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC28.png}
+                    \caption{UC28 - Inserimento criterio di ricerca ”Codice IPA”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenAmmAOO}
+                \titleUC{Inserimento criterio di ricerca "Denominazione amministrazione AOO"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione amministrazione AOO"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC29.png}
+                    \caption{UC29 - Inserimento criterio di ricerca ”Denominazione amministrazione AOO”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIPAOOO}
+                \titleUC{Inserimento criterio di ricerca "Codice IPA AOO"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice IPA AOO"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC30.png}
+                    \caption{UC30 - Inserimento criterio di ricerca ”Codice IPA AOO”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenAmmUOR}
+                \titleUC{Inserimento criterio di ricerca "Denominazione amministrazione UOR"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione amministrazione UOR"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC31.png}
+                    \caption{UC31 - Inserimento criterio di ricerca ”Denominazione amministrazione UOR”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIPAUOR}
+                \titleUC{Inserimento criterio di ricerca "Codice IPA UOR"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con un valore tra
+                    \begin{itemize}
+                        \item "Altro"
+                        \item "Autore"
+                        \item "Destinatario"
+                        \item "Mittente"
+                    \end{itemize}
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "PAI (Amministrazione pubblica italiana)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Codice IPA UOR"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC32.png}
+                    \caption{UC32 - Inserimento criterio di ricerca ”Codice IPA UOR”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDenSis}
+                \titleUC{Inserimento criterio di ricerca "Denominazione sistema"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Ruolo" con valore "Produttore"
+                    \item L'utente ha configurato il criterio di ricerca "Tipo soggetto" con il valore "SW (Documenti prodotti automaticamente)"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Denominazione sistema"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC33.png}
+                    \caption{UC33 - Inserimento criterio di ricerca ”Denominazione sistema”}
+            \end{figure}
+            
+            \begin{usecase}
+                \code{\mdparamOgg}
+                \titleUC{Inserimento criterio di ricerca "Oggetto"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Oggetto"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC34.png}
+                    \caption{UC34 - Inserimento criterio di ricerca ”Oggetto”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamParChi}
+                \titleUC{Inserimento criterio di ricerca "Parola chiave"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Parola chiave"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC35.png}
+                    \caption{UC35 - Inserimento criterio di ricerca ”Parola chiave”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNumAll}
+                \titleUC{Inserimento criterio di ricerca "Numero allegati"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Numero allegati"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC36.png}
+                    \caption{UC36 - Inserimento criterio di ricerca ”Numero allegati”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamImpCritAll}
+                \titleUC{Inserimento criterio di ricerca "Impronta crittografica allegato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Impronta crittografica allegato"
+                    \item L'utente inserisce il digest del documento (\textbf{UC\mdparamImpCrit.1})
+                    \item L'utente seleziona l'algoritmo applicato (\textbf{UC\mdparamImpCrit.2})
+                }
+            \end{usecase}
+
+            \begin{usecase}
+                \code{\mdparamIdDocAll}
+                \titleUC{Inserimento criterio di ricerca "Identificativo allegato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Identificativo allegato"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+
+            \begin{usecase}
+                \code{\mdparamDesAll}
+                \titleUC{Inserimento criterio di ricerca "Descrizione allegato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Descrizione allegato"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC39.png}
+                    \caption{UC39 - Inserimento criterio di ricerca ”Descrizione allegato”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIndCla}
+                \titleUC{Inserimento criterio di ricerca "Indice di classificazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Indice di classificazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC40.png}
+                    \caption{UC40 - Inserimento criterio di ricerca ”Indice di classificazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDesCla}
+                \titleUC{Inserimento criterio di ricerca "Descrizione dell'indice di classificazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Descrizione dell'indice di classificazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC41.png}
+                    \caption{UC41 - Inserimento criterio di ricerca ”Descrizione dell’indice di classificazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamPiaCla}
+                \titleUC{Inserimento criterio di ricerca "Piano di classificazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Piano di classificazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC42.png}
+                    \caption{UC42 - Inserimento criterio di ricerca ”Piano di classificazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamRis}
+                \titleUC{Inserimento criterio di ricerca "Riservato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Riservato"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC43.png}
+                    \caption{UC43 - Inserimento criterio di ricerca ”Riservato”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamFor}
+                \titleUC{Inserimento criterio di ricerca "Formato"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Formato"
+                    \item L'utente seleziona il valore tra le opzioni disponibili
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC44.png}
+                    \caption{UC44 - Inserimento criterio di ricerca ”Formato”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNomPro}
+                \titleUC{Inserimento criterio di ricerca "Nome prodotto software"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Nome prodotto software"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC45.png}
+                    \caption{UC45 - Inserimento criterio di ricerca ”Nome prodotto software”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamVerPro}
+                \titleUC{Inserimento criterio di ricerca "Versione prodotto software"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Versione prodotto software"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC46.png}
+                    \caption{UC46 - Inserimento criterio di ricerca ”Versione prodotto software”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamProd}
+                \titleUC{Inserimento criterio di ricerca "Produttore software"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Produttore software"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC47.png}
+                    \caption{UC47 - Inserimento criterio di ricerca ”Produttore software”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamFirDig}
+                \titleUC{Inserimento criterio di ricerca "Firmato digitalmente"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Firmato digitalmente"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC48.png}
+                    \caption{UC48 - Inserimento criterio di ricerca ”Firmato digitalmente”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamSigEle}
+                \titleUC{Inserimento criterio di ricerca "Sigillato elettronicamente"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Sigillato elettronicamente"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC49.png}
+                    \caption{UC49 - Inserimento criterio di ricerca ”Sigillato elettronicamente”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamMarTem}
+                \titleUC{Inserimento criterio di ricerca "Marcatura temporale"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Marcatura temporale"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC50.png}
+                    \caption{UC50 - Inserimento criterio di ricerca ”Marcatura temporale”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamConCop}
+                \titleUC{Inserimento criterio di ricerca "Conformità copie immagine su supporto informatico"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Conformità copie immagine su supporto informatico"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Vero"
+                        \item "Falso"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC51.png}
+                    \caption{UC51 - Inserimento criterio di ricerca ”Conformità copie immagine su supporto informatico”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipAgg}
+                \titleUC{Inserimento criterio di ricerca "Tipo aggregazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo aggregazione"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Fascicolo"
+                        \item "Serie documentale"
+                        \item "Serie di fascicoli"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC52.png}
+                    \caption{UC52 - Inserimento criterio di ricerca ”Tipo aggregazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamIdAgg}
+                \titleUC{Inserimento criterio di ricerca "Identificativo aggregazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Identificativo aggregazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC53.png}
+                    \caption{UC53 - Inserimento criterio di ricerca ”Identificativo aggregazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTipFas}
+                \titleUC{Inserimento criterio di ricerca "Tipologia fascicolo"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato il criterio di ricerca "Tipo aggregazione" con valore "Fascicolo"
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipologia fascicolo"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Affare"
+                        \item "Attività"
+                        \item "Persona fisica"
+                        \item "Persona giuridica"
+                        \item "Procedimento amministrativo"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC54.png}
+                    \caption{UC54 - Inserimento criterio di ricerca ”Tipologia fascicolo”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNomDoc}
+                \titleUC{Inserimento criterio di ricerca "Nome del documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Nome del documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC55.png}
+                    \caption{UC55 - Inserimento criterio di ricerca ”Nome del documento”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamVerDoc}
+                \titleUC{Inserimento criterio di ricerca "Versione del documento"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Versione del documento"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC56.png}
+                    \caption{UC56 - Inserimento criterio di ricerca ”Versione del documento”}
+            \end{figure}
+
+             \begin{usecase}
+                \code{\mdparamTipMod}
+                \titleUC{Inserimento criterio di ricerca "Tipo modifica"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tipo modifica"
+                    \item L'utente seleziona il valore tra le opzioni
+                    \begin{itemize}
+                        \item "Annulamento"
+                        \item "Annotazione"
+                        \item "Integrazione"
+                        \item "Rettifica"
+                    \end{itemize}
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC57.png}
+                    \caption{UC57 - Inserimento criterio di ricerca ”Tipo modifica”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamDatMod}
+                \titleUC{Inserimento criterio di ricerca "Data modifica"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Data modifica"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC58.png}
+                    \caption{UC58 - Inserimento criterio di ricerca ”Data modifica”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamOraMod}
+                \titleUC{Inserimento criterio di ricerca "Ora modifica"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Ora modifica"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC59.png}
+                    \caption{UC59 - Inserimento criterio di ricerca ”Ora modifica”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamTemCon}
+                \titleUC{Inserimento criterio di ricerca "Tempo di conservazione"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Tempo di conservazione"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC60.png}
+                    \caption{UC60 - Inserimento criterio di ricerca ”Tempo di conservazione”}
+            \end{figure}
+
+            \begin{usecase}
+                \code{\mdparamNot}
+                \titleUC{Inserimento criterio di ricerca "Note"}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato un criterio di ricerca
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
+                    \item L'utente seleziona il criterio "Note"
+                    \item L'utente inserisce il valore
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC61.png}
+                    \caption{UC61 - Inserimento criterio di ricerca ”Note”}
+            \end{figure}
+
+            % Ricerca tramite metadati
+            \begin{usecase}
+                \code{\mdsearch}
+                \titleUC{Ricerca tramite metadati}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato uno o più criteri di ricerca tra quelli disponibili
+                }
+                \post{
+                    \item L'utente ha avviato una ricerca
+                }
+                \main{
+                    \item L'utente avvia la ricerca
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC62.png}
+                    \caption{UC62 - Ricerca tramite metadati}
+            \end{figure}
+
+            % Visualizzazione risultati ricerca
+            \begin{usecase}
+                \code{\searchres}
+                \titleUC{Visualizzazione risultati ricerca}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente ha configurato un insieme di criteri di ricerca 
+                    \item L'utente ha eseguito una ricerca
+                }
+                \post{
+                    \item L'utente vede la lista dei documenti che corrispondono ai criteri di ricerca
+                }
+                \main{
+                    \item L'utente visualizza i documenti corrispondenti ai criteri di ricerca
+                }
+                \alt{
+                    \item[1a.] Nessun documento corrisponde ai criteri di ricerca (\textbf{UC\nosearchres})
+                }
+                \inc{\ucref{uc:\searchres.1}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC63.png}
+                    \caption{UC63 - Visualizzazione risultati ricerca}
+            \end{figure}
+            \begin{usecase}
+                \code{\searchres.1}
+                \titleUC{Visualizzazione singolo risultato ricerca}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta visualizzando i risultati della ricerca
+                }
+                \post{
+                    \item L'utente vede e informazioni principali di un documento che corrisponde ai criteri di ricerca
+                }
+                \main{
+                    \item L'utente visualizza le informazioni principali di un documento che corrisponde ai criteri di ricerca, quali
+                    \begin{itemize}
+                        \item Il nome del file
+                        \item Il suo formato
+                        \item Identificativo documentale
+                        \item Data in cui il documento è stato registrato
+                    \end{itemize}
+                }
+            \end{usecase}
+
+            % Risultato ricerca vuoto
+            \begin{usecase}
+                \code{\nosearchres}
+                \titleUC{Risultato ricerca vuoto}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha immesso dei criteri di ricerca che non hanno prodotto risultati
+                }
+                \post{
+                    \item L'utente vede un messaggio di avviso
+                }
+                \main{
+                    \item L'utente visualizza un messaggio informativo sull'assenza di risultati
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC64.png}
+                    \caption{UC64 - Risultato ricerca vuoto}
+            \end{figure}
+
+            % Anteprima documento
+            \begin{usecase}
+                \code{\docpreview}
+                \titleUC{Visualizzazione anteprima documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item L'utente vede l'anteprima del documento selezionato
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di anteprima del documento selezionato
+                    \item L'utente visualizza l'anteprima del documento selezionato
+                }
+                \alt{
+                    \item[2a.] L'utente seleziona un documento con un formato per cui l'anteprima non è supportata (\textbf{UC\nodocpreview})
+                }
+                \ext{\ucref{uc:\nodocpreview}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC65.png}
+                    \caption{UC65 - Visualizzazione anteprima documento}
+            \end{figure}
+
+            % Anteprima documento non supportata
+            \begin{usecase}
+                \code{\nodocpreview}
+                \titleUC{Anteprima documento non supportata}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha selezionato la funzione di anteprima per un documento con formato non supportato
+                }
+                \post{
+                    \item L'utente non vede nessuna anteprima
+                    \item L'utente vede un messaggio di avviso
+                }
+                \main{
+                    \item L'utente visualizza un messaggio di avviso sull'indisponibilità dell'anteprima
+                }
+            \end{usecase}
+
+            % Esportazione documento
+            \begin{usecase}
+                \code{\exportdoc}
+                \titleUC{Esportazione documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item Il documento selezionato è salvato sul dispositivo dell'utente
+                    \item L'utente vede un messaggio di conferma
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di esportazione del documento selezionato
+                    \item L'utente inserisce il percorso dove salvare il documento (\textbf{UC\exportdoc.1})
+                    \item L'utente visualizza un messaggio conferma dell'avvenuto salvataggio
+                }
+                \alt{
+                    \item[2a.] L'utente cancella l'operazione
+                    \item[3a.] L'operazione non ha successo (\textbf{UC\exportdocfail})
+                }
+                \inc{\ucref{uc:\exportdoc.1}}
+                \ext{\ucref{uc:\exportdocfail}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC67.png}
+                    \caption{UC67 - Esportazione documento}
+            \end{figure}
+            \begin{usecase}
+                \code{\exportdoc.1}
+                \titleUC{Inserimento percorso di esportazione}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha selezionato la funzionalità di esportazione di un documento
+                }
+                \post{
+                    \item L'utente ha inserito il percorso per il salvataggio del file
+                }
+                \main{
+                    \item Il sistema richiede il percorso per il salvataggio del file
+                    \item L'utente inserisce il percorso per il salvataggio del file
+                }
+            \end{usecase}
+
+            % Fallimento esportazione documento
+            \begin{usecase}
+                \code{\exportdocfail}
+                \titleUC{Fallimento esportazione documento}
+                \actor{Utente}
+                \pre{
+                    \item L'operazione di salvataggio non ha avuto successo
+                }
+                \post{
+                    \item L'utente vede un messaggio di errore
+                }
+                \main{
+                    \item L'utente visualizza un messaggio di errore riguardo il fallimento dell'esportazione
+                }
+            \end{usecase}
+
+            % Parametro di ricerca semantica
+            \begin{usecase}
+                \code{\semparam}
+                \titleUC{Configurazione ricerca semantica}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                }
+                \post{
+                    \item L'utente ha configurato la ricerca semantica
+                }
+                \main{
+                    \item L'utente seleziona la configurazione della ricerca semantica
+                    \item L'utente inserisce la query in linguaggio naturale (\textbf{UC\semparam.1})
+                }
+                \inc{\ucref{uc:\semparam.1}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC69.png}
+                    \caption{UC69 - Configurazione ricerca semantica}
+            \end{figure}
+            
+            \begin{usecase}
+                \code{\semparam.1}
+                \titleUC{Inserimento query in linguaggio naturale}
+                \actor{Utente}
+                \pre{
+                    \item L'utente sta configurando la ricerca semantica
+                }
+                \post{
+                    \item L'utente ha inserito la query in linguaggio naturale
+                }
+                \main{
+                    \item L'utente inserisce la query in linguaggio naturale
+                }
+            \end{usecase}
+
+            % Ricerca semantica
+            \begin{usecase}
+                \code{\semsearch}
+                \titleUC{Ricerca semantica}
+                \actor{Utente}
+                \secactor{Motore semantico}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha configurato la ricerca semantica
+                }
+                \post{
+                    \item L'utente ha avviato una ricerca
+                }
+                \main{
+                    \item L'utente avvia la ricerca
+                    \item Il motore di ricerca semantica elabora la ricerca e produce un risultato
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC70.png}
+                    \caption{UC70 - Ricerca semantica}
+            \end{figure}
+
+            % Stampa documento
+            \begin{usecase}
+                \code{\printdoc}
+                \titleUC{Stampa documento}
+                \actor{Utente}
+                \secactor{Gestore di stampa SO}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item Il documento selezionato è inviato alla coda di stampa
+                    \item L'utente vede un messaggio di conferma
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di stampa per il documento selezionato
+                    \item Il gestore di stampa riceve il documento
+                    \item L'utente visualizza un messaggio relativo al completamento dell'operazione
+                }
+                \alt{
+                    \item[3a.] L'operazione di stampa non va a buon fine (\textbf{UC\printdocfail})
+                }
+                \ext{\ucref{uc:\printdocfail}}
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC71.png}
+                    \caption{UC71 - Stampa documento}
+            \end{figure}
+
+            % Fallimento stampa documento
+            \begin{usecase}
+                \code{\printdocfail}
+                \titleUC{Fallimento stampa documento}
+                \actor{Utente}
+                \secactor{Gestore di stampa SO}
+                \pre{
+                    \item L'operazione di stampa non ha avuto successo
+                }
+                \post{
+                    \item L'utente vede un messaggio di errore
+                }
+                \main{
+                    \item L'utente visualizza un messaggio di errore riguardo il fallimento della stampa
+                }
+            \end{usecase}
+
+            % Verifica firma digitale
+            \begin{usecase}
+                \code{\verdigsign}
+                \titleUC{Verifica firma digitale documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha caricato un DIP
+                    \item L'utente sta visualizzando una lista di documenti contenuti nel DIP
+                    \item L'utente ha selezionato un documento dalla lista
+                }
+                \post{
+                    \item L'utente ha verificato la validità della firma digitale
+                }
+                \main{
+                    \item L'utente seleziona la funzionalità di verifica delle firma digitale del documento selezionato
+                    \item L'utente avvia la verifica
+                    \item L'utente ha verificato la validità della firma digitale
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC73.png}
+                    \caption{UC73 - Verifica firma digitale documento}
+            \end{figure}
+
+            % Visualizzazione risultato verifica firma digitale
+            \begin{usecase}
+                \code{\viewverdigsign}
+                \titleUC{Visualizzazione risultato verifica firma digitale documento}
+                \actor{Utente}
+                \pre{
+                    \item L'utente ha verificato la validità della firma digitale
+                }
+                \post{
+                    \item L'utente vede il risultato della verifica della firma digitale 
+                }
+                \main{
+                    \item L'utente visualizza il risultato delle verifica della firma digitale (firma valida/non valida)
+                }
+            \end{usecase}
+            \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC74.png}
+                    \caption{UC74 - Visualizzazione risultato verifica firma digitale documento}
+            \end{figure}
+        }
+    }
+    \newpage
+    \section{Requisiti} {
+        In questa sezione vengono illustrati i requisiti alla base di DIPReader. Essi sono suddivisi in:
+        \begin{itemize}
+            \item \textbf{Requisiti funzionali:} definiscono i servizi e le funzionalità che il sistema deve fornire.
+            \item \textbf{Requisiti di qualità:} descrivono le caratteristiche che il sistema deve soddisfare per accertarne la qualità.
+            \item \textbf{Requisiti di vincolo:} impongono delle restrizioni al Sistema, ad esempio riguardo le tecnologie da utilizzare.
+        \end{itemize}
+        Un ulteriore suddivisione dei requisiti, viene fatta sulla base dell'importanza della funzionalità, caratteristica, o vincolo che descrivono. In particolare possono essere:
+        \begin{itemize}
+            \item \textbf{Obbligatori:} sono essenziali, il sistema non può funzionare correttamente senza di essi.
+            \item \textbf{Desiderabili:} migliorano l’usabilità o l’efficienza del sistema, ma la mancanza di questi non impedisce al sistema di funzionare.
+            \item \textbf{Opzionali:} sono caratteristiche aggiuntive e negoziabili che possono essere implementate in futuro, in quanto relativamente utili o per circostanze di limitata disponibilità di tempo e risorse.
+        \end{itemize}
+        Ogni requisito viene identificato univocamente da un codice nel formato \textbf{RX-Y-Z}:
+        \begin{itemize}
+            \item \textbf{X} rappresenta il numero del requisito.
+            \item \textbf{Y} può assumere i valori \textbf{F}, \textbf{Q}, \textbf{V}, per rappresentare, rispettivamente, un requisito \textbf{Funzionale}, di \textbf{Qualità} o di \textbf{Vincolo}.
+            \item \textbf{Z} può assumere i valori \textbf{Ob}, \textbf{De}, \textbf{Op}, per rappresentare, rispettivamente, un requisito \textbf{Obbligatorio}, \textbf{Desiderabile} o \textbf{Opzionale}.
+        \end{itemize}
+        \subsection{Requisiti Funzionali} {
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|l|P{0.5\linewidth}|P{0.3\linewidth}|}
+                \caption{Requisiti Funzionali} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endhead
+                
+                \textbf{R1-F-Ob} & L'utente deve poter selezionare un DIP da caricare nel Sistema & 
+                \ucref{uc:\loaddip} \newline
+                \ucref{uc:\loaddip.1} \\
+                \hline
+                \textbf{R2-F-Ob} & L'utente deve ricevere un messaggio di errore se il caricamento del DIP non avviene correttamente & 
+                \ucref{uc:\remloaddip} \newline
+                \ucref{uc:\errloaddip} \\
+                \hline
+                \textbf{R3-F-Ob} & L'utente deve poter rimuovere un DIP dal Sistema & 
+                \ucref{uc:\removedip} \\
+                \hline
+                \textbf{R4-F-Ob} & L'utente deve poter visualizzare il contenuto e le informazioni del DIP & \ucref{uc:\viewdip} \newline
+                \ucref{uc:\viewdip.1} \newline
+                \ucref{uc:\viewdip.2} \\
+                \hline
+                \textbf{R5-F-Ob} & L'utente deve poter visualizzare i singoli documenti, e la lista dei loro allegati, contenuti nel DIP & 
+                \ucref{uc:\viewdip} \newline
+                \ucref{uc:\viewdip.2.1} \newline
+                \ucref{uc:\viewdip.2.2} \newline
+                \ucref{uc:\viewdip.2.2.1} \\
+                \hline
+                \textbf{R6-F-Ob} & L'utente deve poter visualizzare i singoli allegati di un documento & \ucref{uc:\viewdip} \newline
+                \ucref{uc:\viewdip.2.2.1} \newline
+                \ucref{uc:\viewdip.2.2.1.1} \\
+                \hline
+                \textbf{R7-F-Ob} & L'utente deve poter visualizzare i dettagli di un documento & \ucref{uc:\viewdetdoc} \\
+                \hline
+                \textbf{R8-F-Ob} & L'utente deve poter visualizzare la tipologia documentale di un documento & \ucref{uc:\viewdetdoc.1} \\
+                \hline
+                \textbf{R9-F-Ob} & L'utente deve poter visualizzare il numero di un documento & \ucref{uc:\viewdetdoc.2} \\
+                \hline
+                \textbf{R10-F-Ob} & L'utente deve poter visualizzare il codice registro di un documento & \ucref{uc:\viewdetdoc.3} \\
+                \hline
+                \textbf{R11-F-Ob} & L'utente deve poter visualizzare la lista dei soggetti coinvolti in un documento & \ucref{uc:\viewdetdoc.4} \\
+                \hline
+                \textbf{R12-F-Ob} & L'utente deve poter visualizzare il singolo soggetto coinvolto in un documento & 
+                \ucref{uc:\viewdetdoc.4.1} \newline 
+                \ucref{uc:\viewdetdoc.4.2} \newline
+                \ucref{uc:\viewdetdoc.4.3} \newline 
+                \ucref{uc:\viewdetdoc.4.4} \newline 
+                \ucref{uc:\viewdetdoc.4.5} \newline 
+                \ucref{uc:\viewdetdoc.4.6} \newline 
+                \ucref{uc:\viewdetdoc.4.7} \newline \\
+                \hline
+                \textbf{R13-F-Ob} & L'utente deve poter visualizzare il ruolo di un soggetto coinvolto in un documento & \ucref{uc:\viewdetdoc.4.1.1} \\
+                \hline
+                \textbf{R14-F-Ob} & L'utente deve poter visualizzare l'oggetto di un documento & \ucref{uc:\viewdetdoc.5} \\
+                \hline
+                \textbf{R15-F-Ob} & L'utente deve poter visualizzare il tipo aggregazione di un documento & \ucref{uc:\viewdetdoc.6} \\
+                \hline
+                \textbf{R16-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R17-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R18-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
+                \ucref{uc:\mdparamImpCrit} \newline
+                \ucref{uc:\mdparamImpCrit.1} \newline
+                \ucref{uc:\mdparamImpCrit.2} \\
+                \hline
+                \textbf{R19-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
+                \ucref{uc:\mdparamIdDoc} \\
+                \hline
+                \textbf{R20-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
+                \ucref{uc:\mdparamModFor} \\
+                \hline
+                \textbf{R21-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
+                \ucref{uc:\mdparamTipDoc} \\
+                \hline
+                \textbf{R22-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
+                \ucref{uc:\mdparamTipFlu} \\
+                \hline
+                \textbf{R23-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
+                \ucref{uc:\mdparamTipReg} \\
+                \hline
+                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
+                \ucref{uc:\mdparamDatReg} \\
+                \hline
+                \textbf{R25-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
+                \ucref{uc:\mdparamOraReg} \\
+                \hline
+                \textbf{R26-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
+                \ucref{uc:\mdparamNumDoc} \\
+                \hline
+                \textbf{R27-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
+                \ucref{uc:\mdparamCodReg} \\
+                \hline
+                \textbf{R28-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
+                \ucref{uc:\mdparamRuolo} \\
+                \hline
+                \textbf{R29-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
+                \ucref{uc:\mdparamTipSog} \\
+                \hline
+                \textbf{R30-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
+                \ucref{uc:\mdparamCog} \\
+                \hline
+                \textbf{R31-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
+                \ucref{uc:\mdparamNom} \\
+                \hline
+                \textbf{R32-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
+                \ucref{uc:\mdparamCF} \\
+                \hline
+                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
+                \ucref{uc:\mdparamIndDig} \\
+                \hline
+                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
+                \ucref{uc:\mdparamDenOrg} \\
+                \hline
+                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
+                \ucref{uc:\mdparamCFPI} \\
+                \hline
+                \textbf{R36-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
+                \ucref{uc:\mdparamDenUff} \\
+                \hline
+                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
+                \ucref{uc:\mdparamDenAmm} \\
+                \hline
+                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
+                \ucref{uc:\mdparamIPA} \\
+                \hline
+                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
+                \ucref{uc:\mdparamDenAmmAOO} \\
+                \hline
+                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
+                \ucref{uc:\mdparamIPAOOO} \\
+                \hline
+                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
+                \ucref{uc:\mdparamDenAmmUOR} \\
+                \hline
+                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
+                \ucref{uc:\mdparamIPAUOR} \\
+                \hline
+                \textbf{R43-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
+                \ucref{uc:\mdparamDenSis} \\
+                \hline
+                \textbf{R44-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
+                \ucref{uc:\mdparamOgg} \\
+                \hline
+                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
+                \ucref{uc:\mdparamParChi} \\
+                \hline
+                \textbf{R46-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
+                \ucref{uc:\mdparamNumAll} \\
+                \hline
+                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
+                \ucref{uc:\mdparamImpCritAll} \\
+                \hline
+                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
+                \ucref{uc:\mdparamIdDocAll} \\
+                \hline
+                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
+                \ucref{uc:\mdparamDesAll} \\
+                \hline
+                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
+                \ucref{uc:\mdparamIndCla} \\
+                \hline
+                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
+                \ucref{uc:\mdparamDesCla} \\
+                \hline
+                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
+                \ucref{uc:\mdparamPiaCla} \\
+                \hline
+                \textbf{R53-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
+                \ucref{uc:\mdparamRis} \\
+                \hline
+                \textbf{R54-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
+                \ucref{uc:\mdparamFor} \\
+                \hline
+                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
+                \ucref{uc:\mdparamNomPro} \\
+                \hline
+                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
+                \ucref{uc:\mdparamVerPro} \\
+                \hline
+                \textbf{R57-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
+                \ucref{uc:\mdparamProd} \\
+                \hline
+                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
+                \ucref{uc:\mdparamFirDig} \\
+                \hline
+                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
+                \ucref{uc:\mdparamSigEle} \\
+                \hline
+                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
+                \ucref{uc:\mdparamMarTem} \\
+                \hline
+                \textbf{R61-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
+                \ucref{uc:\mdparamConCop} \\
+                \hline
+                \textbf{R62-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
+                \ucref{uc:\mdparamTipAgg} \\
+                \hline
+                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
+                \ucref{uc:\mdparamIdAgg} \\
+                \hline
+                \textbf{R64-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
+                \ucref{uc:\mdparamTipFas} \\
+                \hline
+                \textbf{R65-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
+                \ucref{uc:\mdparamNomDoc} \\
+                \hline
+                \textbf{R66-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
+                \ucref{uc:\mdparamVerDoc} \\
+                \hline
+                \textbf{R67-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
+                \ucref{uc:\mdparamTipMod} \\
+                \hline
+                \textbf{R68-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
+                \ucref{uc:\mdparamDatMod} \\
+                \hline
+                \textbf{R69-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
+                \ucref{uc:\mdparamOraMod} \\
+                \hline
+                \textbf{R70-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
+                \ucref{uc:\mdparamTemCon} \\
+                \hline
+                \textbf{R71-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
+                \ucref{uc:\mdparamNot} \\
+                \hline
+                \textbf{R72-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
+                \ucref{uc:\mdsearch} \\
+                \hline
+                \textbf{R73-F-Ob} & L'utente deve poter visualizzare i risultati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
+                \ucref{uc:\searchres} \\
+                \hline
+                \textbf{R74-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
+                \ucref{uc:\searchres} \newline
+                \ucref{uc:\searchres.1} \\
+                \hline
+                \textbf{R75-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
+                \ucref{uc:\searchres} \newline
+                \ucref{uc:\nosearchres} \\
+                \hline
+                \textbf{R76-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
+                \ucref{uc:\docpreview} \\
+                \hline
+                \textbf{R77-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
+                \ucref{uc:\docpreview} \newline
+                \ucref{uc:\nodocpreview} \\
+                \hline
+                \textbf{R78-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
+                \ucref{uc:\exportdoc} \newline
+                \ucref{uc:\exportdoc.1} \\
+                \hline
+                \textbf{R79-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
+                \ucref{uc:\exportdoc} \newline
+                \ucref{uc:\exportdocfail} \\
+                \hline
+                \textbf{R80-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
+                \ucref{uc:\semparam} \newline
+                \ucref{uc:\semparam.1} \\
+                \hline
+                \textbf{R81-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
+                \ucref{uc:\semparam} \newline
+                \ucref{uc:\semsearch} \\
+                \hline
+                \textbf{R82-F-Op} & L'utente deve poter stampare un documento selezionato & 
+                \ucref{uc:\printdoc} \\
+                \hline
+                \textbf{R83-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
+                \ucref{uc:\printdoc} \newline
+                \ucref{uc:\printdocfail} \\
+                \hline
+                \textbf{R84-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
+                \ucref{uc:\verdigsign} \\
+                \hline
+                \textbf{R85-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
+                \ucref{uc:\viewverdigsign} \\
+                \hline
+            \end{longtable}
+        }
+        \subsection{Requisiti di Qualità} {
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|l|P{0.5\linewidth}|P{0.3\linewidth}|}
+                \caption{Requisiti di Qualità} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endhead
+
+                \textbf{R1-Q-Ob} & Vengono richiesti i test di unità e di integrazione per il reperimento e l’elaborazione dei dati & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Raccomandazioni esplicite" \\
+                \hline
+                \textbf{R2-Q-Ob} & Sono richiesti i diagrammi UML relativi agli use cases di progetto & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+                \textbf{R3-Q-Op} & È richiesto lo schema design relativo alla base dati (se utilizzata) o alle API richiamate (se utilizzate) & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+                \textbf{R4-Q-Ob} & È richiesta la documentazione relativa ai casi di test gestiti e la relativa reportistica & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+                \textbf{R5-Q-Ob} & È richiesta la lista dei bug risolti durante le fasi di sviluppo & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+            \end{longtable}
+        }
+        \subsection{Requisiti di Vincolo} {
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|l|P{0.5\linewidth}|P{0.3\linewidth}|}
+                \caption{Requisiti di Vincolo} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+                \hline
+                \endhead
+                
+                \textbf{R1-V-Ob} & È richiesto che il sistema funzioni anche in assenza di connettività & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Obiettivo" \\
+                \hline
+                \textbf{R2-V-Ob} & È richiesto che il sistema sia autoconsistente, cioè non deve essere necessario installare nulla sul dispositivo dell’utente & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Raccomandazioni esplicite" \\
+                \hline
+                \textbf{R3-V-Op} & È richiesto l'utilizzo di SQLite come database relazionale & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Tecnologie consigliate" \\
+                \hline
+                \textbf{R4-V-Op} & È richiesto l'utilizzo di Faiss come libreria per la ricerca dei documenti & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Tecnologie consigliate" \\
+                \hline
+                \textbf{R5-V-Ob} & È richiesto l'utilizzo di Angular o React come framework frontend & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Tecnologie consigliate" \\
+                \hline
+                \textbf{R6-V-Ob} & È richiesto l'utilizzo di Github o Bitbucket come sistema di versionamento del codice & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
+            \end{longtable}
+        }
+    }
+
+\end{document}
