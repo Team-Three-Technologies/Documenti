@@ -6,151 +6,158 @@
 \setTitle{Analisi dei Requisiti}
 \setAuthors{Filippo Compagno \\ & Sara Gioia Fichera \\ & Andrea Masiero \\ & Mattia Oliva Medin \\ & Francesco Balestro \\ & Nenad Radulovic \\ & Bianca Zaghetto}
 \setVerificators{Andrea Masiero \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno \\ & Mattia Oliva Medin}
-\setApprovation{Andrea Masiero}
-\setVersion{1.0}
+\setApprovation{}
+\setVersion{1.1}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 
 % -- Obbligatori --
 \newcommand{\loaddip}{01}
-\newcommand{\remloaddip}{02}
-\newcommand{\errloaddip}{03}
-\newcommand{\removedip}{04}
-\newcommand{\viewdip}{05}
-\newcommand{\viewdetdoc}{06}
-\newcommand{\viewconsinfo}{07}
+\newcommand{\errloaddip}{02}
+\newcommand{\viewdip}{03}
+\newcommand{\viewdetdoc}{04}
+\newcommand{\viewconsinfo}{05}
 
 % IdDoc
-\newcommand{\mdparamImpCrit}{08} % Impronta crittografica - Hash - Algoritmo
-\newcommand{\mdparamIdDoc}{09} % Identificativo documento
+\newcommand{\mdparamImpCrit}{06} % Impronta crittografica - Hash - Algoritmo
+\newcommand{\mdparamIdDoc}{07} % Identificativo documento
 % ModalitàDiFormazione
-\newcommand{\mdparamModFor}{10} % Modalità di formazione
+\newcommand{\mdparamModFor}{08} % Modalità di formazione
 % TipologiaDocumentale
-\newcommand{\mdparamTipDoc}{11} % Tipologia documentale
+\newcommand{\mdparamTipDoc}{09} % Tipologia documentale
 % DatiDiRegistrazione
-\newcommand{\mdparamTipFlu}{12} % Tipologia di flusso
-\newcommand{\mdparamTipReg}{13} % Tipo registro
-\newcommand{\mdparamDatReg}{14} % Data registrazione
-\newcommand{\mdparamOraReg}{15} % Ora registrazione
-\newcommand{\mdparamNumDoc}{16} % Numero documento
-\newcommand{\mdparamCodReg}{17} % Codice registro
-\newcommand{\mdparamRuolo}{18} % Ruolo
-\newcommand{\mdparamTipSog}{19} % Tipo soggetto
-\newcommand{\mdparamCog}{20} % Cognome (PF, AS)
-\newcommand{\mdparamNom}{21} % Nome (PF, AS)
-\newcommand{\mdparamCF}{22} % Codice fiscale (PF, PG, AS)
-\newcommand{\mdparamIndDig}{23} % Indirizzo digitale di riferimento (PF, PG, PAI, PAE, AS)
-\newcommand{\mdparamDenOrg}{24} % Denominazione Organizzazione (PG, AS)
-\newcommand{\mdparamCFPI}{25} % Partita IVA (PG)
-\newcommand{\mdparamDenUff}{26} % Denominazione ufficio (PG, PAE, AS)
-\newcommand{\mdparamDenAmm}{27} % Denominazione amministrazione (PAI, PAE)
-\newcommand{\mdparamIPA}{28} % Codice IPA (PAI)
-\newcommand{\mdparamDenAmmAOO}{29} % Denominazione amministrazione AOO (PAI)
-\newcommand{\mdparamIPAOOO}{30} % Codice IPA AOO (PAI)
-\newcommand{\mdparamDenAmmUOR}{31} % Denominazione amministrazione UOR (PAI)
-\newcommand{\mdparamIPAUOR}{32} % Codice IPA UOR (PAI)
-\newcommand{\mdparamDenSis}{33} % Denominazione Sistema (SW)
+\newcommand{\mdparamTipFlu}{10} % Tipologia di flusso
+\newcommand{\mdparamTipReg}{11} % Tipo registro
+\newcommand{\mdparamDatReg}{12} % Data registrazione
+\newcommand{\mdparamOraReg}{13} % Ora registrazione
+\newcommand{\mdparamNumDoc}{14} % Numero documento
+\newcommand{\mdparamCodReg}{15} % Codice registro
+\newcommand{\mdparamRuolo}{16} % Ruolo
+\newcommand{\mdparamTipSog}{17} % Tipo soggetto
+\newcommand{\mdparamCog}{18} % Cognome (PF, AS)
+\newcommand{\mdparamNom}{19} % Nome (PF, AS)
+\newcommand{\mdparamCF}{20} % Codice fiscale (PF, PG, AS)
+\newcommand{\mdparamIndDig}{21} % Indirizzo digitale di riferimento (PF, PG, PAI, PAE, AS)
+\newcommand{\mdparamDenOrg}{22} % Denominazione Organizzazione (PG, AS)
+\newcommand{\mdparamCFPI}{23} % Partita IVA (PG)
+\newcommand{\mdparamDenUff}{24} % Denominazione ufficio (PG, PAE, AS)
+\newcommand{\mdparamDenAmm}{25} % Denominazione amministrazione (PAI, PAE)
+\newcommand{\mdparamIPA}{26} % Codice IPA (PAI)
+\newcommand{\mdparamDenAmmAOO}{27} % Denominazione amministrazione AOO (PAI)
+\newcommand{\mdparamIPAOOO}{28} % Codice IPA AOO (PAI)
+\newcommand{\mdparamDenAmmUOR}{29} % Denominazione amministrazione UOR (PAI)
+\newcommand{\mdparamIPAUOR}{30} % Codice IPA UOR (PAI)
+\newcommand{\mdparamDenSis}{31} % Denominazione Sistema (SW)
 % ChiaveDescrittiva
-\newcommand{\mdparamOgg}{34} % Oggetto
-\newcommand{\mdparamParChi}{35} % Parola chiave
+\newcommand{\mdparamOgg}{32} % Oggetto
+\newcommand{\mdparamParChi}{33} % Parola chiave
 % Allegati
-\newcommand{\mdparamNumAll}{36} % Numero allegati
-\newcommand{\mdparamImpCritAll}{37} % Impronta crittografica allegato
-\newcommand{\mdparamIdDocAll}{38} % Identificativo allegato
-\newcommand{\mdparamDesAll}{39} % Descrizione allegato
+\newcommand{\mdparamNumAll}{34} % Numero allegati
+\newcommand{\mdparamImpCritAll}{35} % Impronta crittografica allegato
+\newcommand{\mdparamIdDocAll}{36} % Identificativo allegato
+\newcommand{\mdparamDesAll}{37} % Descrizione allegato
 % Classificazione
-\newcommand{\mdparamIndCla}{40} % Indice di classificazione
-\newcommand{\mdparamDesCla}{41} % Descrizione (dell'indice di classificazione)
-\newcommand{\mdparamPiaCla}{42} % Piano di classificazione
+\newcommand{\mdparamIndCla}{38} % Indice di classificazione
+\newcommand{\mdparamDesCla}{39} % Descrizione (dell'indice di classificazione)
+\newcommand{\mdparamPiaCla}{40} % Piano di classificazione
 % Riservato
-\newcommand{\mdparamRis}{43} % Riservato
+\newcommand{\mdparamRis}{41} % Riservato
 % IdentificativoDelFormato
-\newcommand{\mdparamFor}{44} % Formato
-\newcommand{\mdparamNomPro}{45} % Nome prodotto (software)
-\newcommand{\mdparamVerPro}{46} % Versione prodotto (software)
-\newcommand{\mdparamProd}{47} % Produttore (software)
+\newcommand{\mdparamFor}{42} % Formato
+\newcommand{\mdparamNomPro}{43} % Nome prodotto (software)
+\newcommand{\mdparamVerPro}{44} % Versione prodotto (software)
+\newcommand{\mdparamProd}{45} % Produttore (software)
 % Verifica
-\newcommand{\mdparamFirDig}{48} % Firmato digitalmente
-\newcommand{\mdparamSigEle}{49} % Sigillato elettronicamente
-\newcommand{\mdparamMarTem}{50} % Marcatura temporale
-\newcommand{\mdparamConCop}{51} % Conformità copie su supporto informatico
+\newcommand{\mdparamFirDig}{46} % Firmato digitalmente
+\newcommand{\mdparamSigEle}{47} % Sigillato elettronicamente
+\newcommand{\mdparamMarTem}{48} % Marcatura temporale
+\newcommand{\mdparamConCop}{49} % Conformità copie su supporto informatico
 % Agg
 % IdAgg
-\newcommand{\mdparamTipAgg}{52} % Tipo aggregazione
-\newcommand{\mdparamIdAgg}{53} % Identificativo aggregazione
+\newcommand{\mdparamTipAgg}{50} % Tipo aggregazione
+\newcommand{\mdparamIdAgg}{51} % Identificativo aggregazione
 % TipologiaFascicolo
-\newcommand{\mdparamTipFas}{54} % Tipologia fascicolo
+\newcommand{\mdparamTipFas}{52} % Tipologia fascicolo
 % NomeDelDocumento
-\newcommand{\mdparamNomDoc}{55} % Nome del documento
+\newcommand{\mdparamNomDoc}{53} % Nome del documento
 % VersioneDelDocumento
-\newcommand{\mdparamVerDoc}{56} % Versione del documento
+\newcommand{\mdparamVerDoc}{54} % Versione del documento
 % TracciaturaModificheDocumento
-\newcommand{\mdparamTipMod}{57} % Tipo modifica
-\newcommand{\mdparamDatMod}{58} % Data modifica
-\newcommand{\mdparamOraMod}{59} % Ora modifica
+\newcommand{\mdparamTipMod}{55} % Tipo modifica
+\newcommand{\mdparamDatMod}{56} % Data modifica
+\newcommand{\mdparamOraMod}{57} % Ora modifica
 % TempoDiConservazione
-\newcommand{\mdparamTemCon}{60} % Tempo di conservazione
+\newcommand{\mdparamTemCon}{58} % Tempo di conservazione
 % Note
-\newcommand{\mdparamNot}{61} % Note
+\newcommand{\mdparamNot}{59} % Note
 
-\newcommand{\mdsearch}{62}
-\newcommand{\searchres}{63}
-\newcommand{\nosearchres}{64}
-\newcommand{\docpreview}{65}
-\newcommand{\nodocpreview}{66}
-\newcommand{\exportdoc}{67}
-\newcommand{\exportdocfail}{68}
-\newcommand{\semparam}{69}
-\newcommand{\semsearch}{70}
-\newcommand{\printdoc}{71}
-\newcommand{\printdocfail}{72}
-\newcommand{\verdigsign}{73}
-\newcommand{\viewverdigsign}{74}
+\newcommand{\mdsearch}{60}
+\newcommand{\searchres}{61}
+\newcommand{\nosearchres}{62}
+\newcommand{\docpreview}{63}
+\newcommand{\nodocpreview}{64}
+\newcommand{\exportdoc}{65}
+\newcommand{\exportdocfail}{66}
+\newcommand{\semparam}{67}
+\newcommand{\semsearch}{68}
+\newcommand{\printdoc}{69}
+\newcommand{\printdocfail}{70}
+\newcommand{\verdigsign}{71}
+\newcommand{\viewverdigsign}{72}
 
 \begin{document}
     \include{docTitlepage}
 
     \section*{Registro delle modifiche} {
-        \begin{table}[h!]
-            \rowcolors{2}{lightgray}{white}
-                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
-                \hline
-                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
-                \hline
-                \textbf{1.0} & 06/03/26 & Andrea Masiero & Responsabile & - & Approvazione e rilascio \\
-                \hline
-                \textbf{0.15} & 07/02/26 & Francesco Balestro & Analista & Filippo Compagno & Correzioni varie \\
-                \hline
-                \textbf{0.14} & 07/01/26 & Francesco Balestro & Analista & Mattia Oliva Medin & Inserimento Requisiti di Qualità e di Vincolo e correzioni varie \\
-                \hline
-                \textbf{0.13} & 03/01/26 & Andrea Masiero & Analista & Filippo Compagno & Inserimento Requisiti Funzionali \\
-                \hline
-                \textbf{0.12} & 21/12/25 &  Sara Gioia Fichera & Analista & Nenad Radulovic & Inserimento Requisiti Funzionali \\
-                \hline
-                \textbf{0.11} & 19/12/25 & Bianca Zaghetto & Analista & Nenad Radulovic & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.10} & 17/12/25 & Nenad Radulovic & Analista & Andrea Masiero & Correzioni Casi d'Uso \\
-                \hline
-                \textbf{0.9} & 16/12/25 & Francesco Balestro & Analista & Andrea Masiero & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.8} & 10/12/25 & Filippo Compagno & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.7} & 08/12/25 & Mattia Oliva Medin & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.6} & 05/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.5} & 04/12/25 & Andrea Masiero & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.4} & 01/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
-                \hline
-                \textbf{0.3} & 24/11/25 & Sara Gioia Fichera & Analista & Francesco Balestro &  Definizione Attori \\
-                \hline
-                \textbf{0.2} & 20/11/25 & Filippo Compagno & Analista & Francesco Balestro & Caratteristiche degli utenti \\
-                \hline
-                \textbf{0.1} & 07/11/25 & Sara Gioia Fichera & Analista & Andrea Masiero & Struttura iniziale del documento \\
-                \hline
-            \end{tabularx}
-        \end{table}
+        \rowcolors{2}{white}{lightgray}
+        \begin{longtable}{|p{1cm}|p{1.7cm}|p{3.5cm}|p{2.5cm}|p{2.5cm}|p{3.2cm}|}
+            \hline
+            \rowcolor{lightgray}
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \endfirsthead
+            
+            \hline
+            \rowcolor{lightgray}
+            \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+            \hline
+            \endhead
+
+            \textbf{1.1} & 16/03/26 & Francesco Balestro & Analista & Andrea Masiero & Correzione di alcuni requisiti \\
+            \hline
+            \textbf{1.0} & 06/03/26 & Andrea Masiero & Responsabile & - & Approvazione e rilascio \\
+            \hline
+            \textbf{0.15} & 07/02/26 & Francesco Balestro & Analista & Filippo Compagno & Correzioni varie \\
+            \hline
+            \textbf{0.14} & 07/01/26 & Francesco Balestro & Analista & Mattia Oliva Medin & Inserimento Requisiti di Qualità e di Vincolo e correzioni varie \\
+            \hline
+            \textbf{0.13} & 03/01/26 & Andrea Masiero & Analista & Filippo Compagno & Inserimento Requisiti Funzionali \\
+            \hline
+            \textbf{0.12} & 21/12/25 &  Sara Gioia Fichera & Analista & Nenad Radulovic & Inserimento Requisiti Funzionali \\
+            \hline
+            \textbf{0.11} & 19/12/25 & Bianca Zaghetto & Analista & Nenad Radulovic & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.10} & 17/12/25 & Nenad Radulovic & Analista & Andrea Masiero & Correzioni Casi d'Uso \\
+            \hline
+            \textbf{0.9} & 16/12/25 & Francesco Balestro & Analista & Andrea Masiero & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.8} & 10/12/25 & Filippo Compagno & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.7} & 08/12/25 & Mattia Oliva Medin & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.6} & 05/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.5} & 04/12/25 & Andrea Masiero & Analista & Sara Gioia Fichera & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.4} & 01/12/25 & Filippo Compagno & Analista & Bianca Zaghetto & Inserimento Casi d'Uso \\
+            \hline
+            \textbf{0.3} & 24/11/25 & Sara Gioia Fichera & Analista & Francesco Balestro &  Definizione Attori \\
+            \hline
+            \textbf{0.2} & 20/11/25 & Filippo Compagno & Analista & Francesco Balestro & Caratteristiche degli utenti \\
+            \hline
+            \textbf{0.1} & 07/11/25 & Sara Gioia Fichera & Analista & Andrea Masiero & Struttura iniziale del documento \\
+            \hline
+        \end{longtable}
     }
     \newpage
     
@@ -254,7 +261,7 @@
         }
         \subsection{Attori} {
             \begin{itemize}
-                \item Utente: in questo contesto è l'Attore principale, cioè colui che intergisce attivamente con il sistema e svolge le azioni indicate dal Caso d'uso.
+                \item Utente: in questo contesto è l'Attore principale, cioè colui che intergisce attivamente con il sistema e svolge le azioni indicate dal Caso d'Uso.
                 \item Motore semantico: si occupa di elaborare una ricerca semantica fatta dall'utente per produrre un risultato. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
                 \item Gestore di stampa SO: si occupa di gestire la richiesta di stampa di un documento da parte dell'utente. In questo contesto è un Attore secondario, in quanto interagisce passivamente con il sistema.
             \end{itemize}
@@ -266,71 +273,26 @@
                 \titleUC{Caricamento DIP}
                 \actor{Utente}
                 \pre{
-                    \item Nessun DIP è caricato nel sistema
+                    \item L'utente si trova nel DIP che vuole caricare nel sistema
                 }
                 \post{
                     \item Il DIP è caricato nel sistema
                 }
                 \main{
-                    \item L'utente seleziona la funzione di caricamento
-                    \item L'utente seleziona il pacchetto (\textbf{UC\loaddip.1})
+                    \item L'utente si trova nel DIP estratto che vuole caricare nel sistema
+                    \item L'utente avvia il sistema
                     \item L'utente visualizza la conferma dell'avvenuto caricamento
                 }
                 \alt{
-                    \item[2a.] L'utente cancella l'operazione
-                    \item[3a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
+                    \item[1a.] L'utente si trova in un DIP con struttura non conforme (\textbf{UC\errloaddip})
                 }
-                \inc{\ucref{uc:\loaddip.1}}
                 \ext{\ucref{uc:\errloaddip}}
-                \gen{\ucref{uc:\remloaddip}}
             \end{usecase}
             \begin{figure}[H]
                     \centering
                     \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC01.png}
                     \caption{UC01 - Caricamento DIP}
             \end{figure}
-            
-            \begin{usecase}
-                \code{\loaddip.1}
-                \titleUC{Selezione pacchetto}
-                \actor{Utente}
-                \pre{
-                    \item L'utente ha selezionato la funzione di caricamento
-                }
-                \post{
-                    \item L'utente ha selezionato la funzione di caricamento
-                }
-                \main{
-                    \item Il sistema richiede il pacchetto all'utente
-                    \item L'utente seleziona il pacchetto dal proprio dispositivo
-                }
-            \end{usecase}
-            
-            % Caricamento DIP con DIP già caricato
-            \begin{usecase}
-                \code{\remloaddip}
-                \titleUC{Caricamento DIP con DIP già presente}
-                \actor{Utente}
-                \pre{
-                    \item Un DIP è caricato nel sistema
-                }
-                \post{
-                    \item Il DIP già caricato è rimosso dal sistema
-                    \item Il nuovo DIP è caricato nel sistema
-                }
-                \main{
-                    \item L'utente seleziona la funzione di caricamento
-                    \item L'utente vede un messaggio informativo sulla necessità di rimozione del DIP presente 
-                    \item L'utente rimuove il DIP presente nel sistema (\textbf{UC\removedip})
-                    \item L'utente seleziona il pacchetto (\textbf{UC\loaddip.1})
-                    \item L'utente visualizza la conferma dell'avvenuto caricamento
-                }
-                \alt{
-                    \item[4a.] L'utente cancella l'operazione
-                    \item[5a.] L'utente inserisce un pacchetto con struttura non conforme (\textbf{UC\errloaddip})
-                }
-                \inc{\ucref{uc:\removedip}}
-            \end{usecase}
 
             % Errore struttura DIP
             \begin{usecase}
@@ -346,27 +308,6 @@
                 }
                 \main{
                     \item L'utente vede un messaggio di errore relativo alla struttura non conforme del DIP
-                }
-            \end{usecase}
-         
-            % Rimozione DIP
-            \begin{usecase}
-                \code{\removedip}
-                \titleUC{Rimozione DIP}
-                \actor{Utente}
-                \pre{
-                    \item L'utente ha caricato un DIP nel sistema
-                }
-                \post{
-                    \item Il DIP caricato è rimosso dal sistema
-                }
-                \main{
-                    \item L'utente seleziona la funzionalità di chiusura
-                    \item Il sistema richiede la conferma
-                    \item L'utente conferma la chiusura del DIP
-                }
-                \alt{
-                    \item[3a.] L'utente cancella l'operazione
                 }
             \end{usecase}
             
@@ -390,8 +331,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC05.png}
-                    \caption{UC05 - Visualizzazione contenuto DIP}
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC03.png}
+                    \caption{UC03 - Visualizzazione contenuto DIP}
             \end{figure}
             \begin{usecase}
                 \code{\viewdip.1}
@@ -530,8 +471,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC06.png}
-                    \caption{UC06 - Visualizzazione dettagli documento}
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC04.png}
+                    \caption{UC04 - Visualizzazione dettagli documento}
             \end{figure}
             
             %Visualizza Tipologia documentale
@@ -825,8 +766,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC07.png}
-                    \caption{UC07 - Visualizzazione informazioni di conservazione}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC05.png}
+                    \caption{UC05 - Visualizzazione informazioni di conservazione}
             \end{figure}
 
             % Criteri di ricerca (metadati)
@@ -852,8 +793,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC08.png}
-                    \caption{UC08 - Inserimento criterio di ricerca ”Impronta crittografica”}
+                    \includegraphics[width=0.6\textwidth]{Use_Case_Diagrams/UC06.png}
+                    \caption{UC06 - Inserimento criterio di ricerca ”Impronta crittografica”}
             \end{figure}
             \begin{usecase}
                 \code{\mdparamImpCrit.1}
@@ -880,7 +821,12 @@
                     \item L'utente ha selezionato l'algoritmo di hashing
                 }
                 \main{
-                    \item L'utente seleziona l'algoritmo di hashing applicato tra quelli disponibili
+                    \item L'utente seleziona l'algoritmo di hashing applicato tra quelli disponibili. La famiglia utilizzata principalmente è SHA-2 che comprende:
+                    \begin{itemize}
+                        \item SHA-256 (default)
+                        \item SHA-384
+                        \item SHA-512
+                    \end{itemize}
                 }
             \end{usecase}
 
@@ -904,8 +850,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC09.png}
-                    \caption{UC09 - Inserimento criterio di ricerca ”Identificativo documento”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC07.png}
+                    \caption{UC07 - Inserimento criterio di ricerca ”Identificativo documento”}
             \end{figure}
 
             \begin{usecase}
@@ -933,8 +879,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC10.png}
-                    \caption{UC10 - Inserimento criterio di ricerca ”Modalità di formazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC08.png}
+                    \caption{UC8 - Inserimento criterio di ricerca ”Modalità di formazione”}
             \end{figure}
 
             \begin{usecase}
@@ -956,8 +902,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC11.png}
-                    \caption{UC11 - Inserimento criterio di ricerca ”Tipologia documentale”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC09.png}
+                    \caption{UC09 - Inserimento criterio di ricerca ”Tipologia documentale”}
             \end{figure}
 
             \begin{usecase}
@@ -984,8 +930,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC12.png}
-                    \caption{UC12 - Inserimento criterio di ricerca ”Tipologia di flusso”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC10.png}
+                    \caption{UC10 - Inserimento criterio di ricerca ”Tipologia di flusso”}
             \end{figure}
 
             \begin{usecase}
@@ -1012,8 +958,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC13.png}
-                    \caption{UC13 - Inserimento criterio di ricerca ”Tipo registro”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC11.png}
+                    \caption{UC11 - Inserimento criterio di ricerca ”Tipo registro”}
             \end{figure}
 
             \begin{usecase}
@@ -1030,13 +976,13 @@
                 \main{
                     \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
                     \item L'utente seleziona il criterio "Data registrazione"
-                    \item L'utente inserisce il valore
+                    \item L'utente inserisce il valore nel formato YYYY-MM-DD
                 }
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC14.png}
-                    \caption{UC14 - Inserimento criterio di ricerca ”Data registrazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC12.png}
+                    \caption{UC12 - Inserimento criterio di ricerca ”Data registrazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1053,13 +999,13 @@
                 \main{
                     \item L'utente seleziona la funzionalità di aggiunta criterio di ricerca
                     \item L'utente seleziona il criterio "Ora registrazione"
-                    \item L'utente inserisce il valore
+                    \item L'utente inserisce il valore nel formato HH:mm:ss
                 }
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC15.png}
-                    \caption{UC15 - Inserimento criterio di ricerca ”Ora registrazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC13.png}
+                    \caption{UC13 - Inserimento criterio di ricerca ”Ora registrazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1081,8 +1027,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC16.png}
-                    \caption{UC16 - Inserimento criterio di ricerca ”Numero documento”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC14.png}
+                    \caption{UC14 - Inserimento criterio di ricerca ”Numero documento”}
             \end{figure}
 
             \begin{usecase}
@@ -1104,8 +1050,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC17.png}
-                    \caption{UC17 - Inserimento criterio di ricerca ”Codice registro”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC15.png}
+                    \caption{UC15 - Inserimento criterio di ricerca ”Codice registro”}
             \end{figure}
 
              \begin{usecase}
@@ -1139,8 +1085,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC18.png}
-                    \caption{UC18 - Inserimento criterio di ricerca ”Ruolo”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC16.png}
+                    \caption{UC16 - Inserimento criterio di ricerca ”Ruolo”}
             \end{figure}
 
             \begin{usecase}
@@ -1170,8 +1116,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC19.png}
-                    \caption{UC19 - Inserimento criterio di ricerca ”Tipo soggetto”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC17.png}
+                    \caption{UC17 - Inserimento criterio di ricerca ”Tipo soggetto”}
             \end{figure}
 
             \begin{usecase}
@@ -1210,8 +1156,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC20.png}
-                    \caption{UC20 - Inserimento criterio di ricerca ”Cognome”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC18.png}
+                    \caption{UC28 - Inserimento criterio di ricerca ”Cognome”}
             \end{figure}
 
             \begin{usecase}
@@ -1250,8 +1196,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC21.png}
-                    \caption{UC21 - Inserimento criterio di ricerca ”Nome”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC19.png}
+                    \caption{UC19 - Inserimento criterio di ricerca ”Nome”}
             \end{figure}
 
             \begin{usecase}
@@ -1291,8 +1237,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC22.png}
-                    \caption{UC22 - Inserimento criterio di ricerca ”Codice Fiscale”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC20.png}
+                    \caption{UC20 - Inserimento criterio di ricerca ”Codice Fiscale”}
             \end{figure}
 
             \begin{usecase}
@@ -1334,8 +1280,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC23.png}
-                    \caption{UC23 - Inserimento criterio di ricerca ”Indirizzo digitale”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC21.png}
+                    \caption{UC21 - Inserimento criterio di ricerca ”Indirizzo digitale”}
             \end{figure}
 
             \begin{usecase}
@@ -1371,8 +1317,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC24.png}
-                    \caption{UC24 - Inserimento criterio di ricerca ”Denominazione organizzazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC22.png}
+                    \caption{UC22 - Inserimento criterio di ricerca ”Denominazione organizzazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1406,8 +1352,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC25.png}
-                    \caption{UC25 - Inserimento criterio di ricerca ”Partita IVA”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC23.png}
+                    \caption{UC23 - Inserimento criterio di ricerca ”Partita IVA”}
             \end{figure}
 
             \begin{usecase}
@@ -1444,8 +1390,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC26.png}
-                    \caption{UC26 - Inserimento criterio di ricerca ”Denominazione ufficio”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC24.png}
+                    \caption{UC24 - Inserimento criterio di ricerca ”Denominazione ufficio”}
             \end{figure}
 
             \begin{usecase}
@@ -1479,8 +1425,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC27.png}
-                    \caption{UC27 - Inserimento criterio di ricerca ”Denominazione amministrazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC25.png}
+                    \caption{UC25 - Inserimento criterio di ricerca ”Denominazione amministrazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1510,8 +1456,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC28.png}
-                    \caption{UC28 - Inserimento criterio di ricerca ”Codice IPA”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC26.png}
+                    \caption{UC26 - Inserimento criterio di ricerca ”Codice IPA”}
             \end{figure}
 
             \begin{usecase}
@@ -1541,8 +1487,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC29.png}
-                    \caption{UC29 - Inserimento criterio di ricerca ”Denominazione amministrazione AOO”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC27.png}
+                    \caption{UC27 - Inserimento criterio di ricerca ”Denominazione amministrazione AOO”}
             \end{figure}
 
             \begin{usecase}
@@ -1572,8 +1518,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC30.png}
-                    \caption{UC30 - Inserimento criterio di ricerca ”Codice IPA AOO”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC28.png}
+                    \caption{UC28 - Inserimento criterio di ricerca ”Codice IPA AOO”}
             \end{figure}
 
             \begin{usecase}
@@ -1603,8 +1549,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC31.png}
-                    \caption{UC31 - Inserimento criterio di ricerca ”Denominazione amministrazione UOR”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC29.png}
+                    \caption{UC29 - Inserimento criterio di ricerca ”Denominazione amministrazione UOR”}
             \end{figure}
 
             \begin{usecase}
@@ -1634,8 +1580,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC32.png}
-                    \caption{UC32 - Inserimento criterio di ricerca ”Codice IPA UOR”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC30.png}
+                    \caption{UC30 - Inserimento criterio di ricerca ”Codice IPA UOR”}
             \end{figure}
 
             \begin{usecase}
@@ -1659,8 +1605,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC33.png}
-                    \caption{UC33 - Inserimento criterio di ricerca ”Denominazione sistema”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC31.png}
+                    \caption{UC31 - Inserimento criterio di ricerca ”Denominazione sistema”}
             \end{figure}
             
             \begin{usecase}
@@ -1682,8 +1628,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC34.png}
-                    \caption{UC34 - Inserimento criterio di ricerca ”Oggetto”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC32.png}
+                    \caption{UC32 - Inserimento criterio di ricerca ”Oggetto”}
             \end{figure}
 
             \begin{usecase}
@@ -1705,8 +1651,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC35.png}
-                    \caption{UC35 - Inserimento criterio di ricerca ”Parola chiave”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC33.png}
+                    \caption{UC33 - Inserimento criterio di ricerca ”Parola chiave”}
             \end{figure}
 
             \begin{usecase}
@@ -1728,8 +1674,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC36.png}
-                    \caption{UC36 - Inserimento criterio di ricerca ”Numero allegati”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC34.png}
+                    \caption{UC34 - Inserimento criterio di ricerca ”Numero allegati”}
             \end{figure}
 
             \begin{usecase}
@@ -1788,8 +1734,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC39.png}
-                    \caption{UC39 - Inserimento criterio di ricerca ”Descrizione allegato”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC37.png}
+                    \caption{UC37 - Inserimento criterio di ricerca ”Descrizione allegato”}
             \end{figure}
 
             \begin{usecase}
@@ -1811,8 +1757,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC40.png}
-                    \caption{UC40 - Inserimento criterio di ricerca ”Indice di classificazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC38.png}
+                    \caption{UC38 - Inserimento criterio di ricerca ”Indice di classificazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1834,8 +1780,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC41.png}
-                    \caption{UC41 - Inserimento criterio di ricerca ”Descrizione dell’indice di classificazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC39.png}
+                    \caption{UC39 - Inserimento criterio di ricerca ”Descrizione dell’indice di classificazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1857,8 +1803,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC42.png}
-                    \caption{UC42 - Inserimento criterio di ricerca ”Piano di classificazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC40.png}
+                    \caption{UC40 - Inserimento criterio di ricerca ”Piano di classificazione”}
             \end{figure}
 
             \begin{usecase}
@@ -1884,8 +1830,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC43.png}
-                    \caption{UC43 - Inserimento criterio di ricerca ”Riservato”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC41.png}
+                    \caption{UC41 - Inserimento criterio di ricerca ”Riservato”}
             \end{figure}
 
             \begin{usecase}
@@ -1907,8 +1853,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC44.png}
-                    \caption{UC44 - Inserimento criterio di ricerca ”Formato”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC42.png}
+                    \caption{UC42 - Inserimento criterio di ricerca ”Formato”}
             \end{figure}
 
             \begin{usecase}
@@ -1930,8 +1876,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC45.png}
-                    \caption{UC45 - Inserimento criterio di ricerca ”Nome prodotto software”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC43.png}
+                    \caption{UC43 - Inserimento criterio di ricerca ”Nome prodotto software”}
             \end{figure}
 
             \begin{usecase}
@@ -1953,8 +1899,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC46.png}
-                    \caption{UC46 - Inserimento criterio di ricerca ”Versione prodotto software”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC44.png}
+                    \caption{UC44 - Inserimento criterio di ricerca ”Versione prodotto software”}
             \end{figure}
 
             \begin{usecase}
@@ -1976,8 +1922,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC47.png}
-                    \caption{UC47 - Inserimento criterio di ricerca ”Produttore software”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC45.png}
+                    \caption{UC45 - Inserimento criterio di ricerca ”Produttore software”}
             \end{figure}
 
             \begin{usecase}
@@ -2003,8 +1949,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC48.png}
-                    \caption{UC48 - Inserimento criterio di ricerca ”Firmato digitalmente”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC46.png}
+                    \caption{UC46 - Inserimento criterio di ricerca ”Firmato digitalmente”}
             \end{figure}
 
             \begin{usecase}
@@ -2030,8 +1976,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC49.png}
-                    \caption{UC49 - Inserimento criterio di ricerca ”Sigillato elettronicamente”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC47.png}
+                    \caption{UC47 - Inserimento criterio di ricerca ”Sigillato elettronicamente”}
             \end{figure}
 
             \begin{usecase}
@@ -2057,8 +2003,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC50.png}
-                    \caption{UC50 - Inserimento criterio di ricerca ”Marcatura temporale”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC48.png}
+                    \caption{UC48 - Inserimento criterio di ricerca ”Marcatura temporale”}
             \end{figure}
 
             \begin{usecase}
@@ -2084,8 +2030,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC51.png}
-                    \caption{UC51 - Inserimento criterio di ricerca ”Conformità copie immagine su supporto informatico”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC49.png}
+                    \caption{UC49 - Inserimento criterio di ricerca ”Conformità copie immagine su supporto informatico”}
             \end{figure}
 
             \begin{usecase}
@@ -2112,8 +2058,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC52.png}
-                    \caption{UC52 - Inserimento criterio di ricerca ”Tipo aggregazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC50.png}
+                    \caption{UC50 - Inserimento criterio di ricerca ”Tipo aggregazione”}
             \end{figure}
 
             \begin{usecase}
@@ -2135,8 +2081,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC53.png}
-                    \caption{UC53 - Inserimento criterio di ricerca ”Identificativo aggregazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC51.png}
+                    \caption{UC51 - Inserimento criterio di ricerca ”Identificativo aggregazione”}
             \end{figure}
 
             \begin{usecase}
@@ -2166,8 +2112,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC54.png}
-                    \caption{UC54 - Inserimento criterio di ricerca ”Tipologia fascicolo”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC52.png}
+                    \caption{UC52 - Inserimento criterio di ricerca ”Tipologia fascicolo”}
             \end{figure}
 
             \begin{usecase}
@@ -2189,8 +2135,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC55.png}
-                    \caption{UC55 - Inserimento criterio di ricerca ”Nome del documento”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC53.png}
+                    \caption{UC53 - Inserimento criterio di ricerca ”Nome del documento”}
             \end{figure}
 
             \begin{usecase}
@@ -2212,8 +2158,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC56.png}
-                    \caption{UC56 - Inserimento criterio di ricerca ”Versione del documento”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC54.png}
+                    \caption{UC54 - Inserimento criterio di ricerca ”Versione del documento”}
             \end{figure}
 
              \begin{usecase}
@@ -2241,8 +2187,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC57.png}
-                    \caption{UC57 - Inserimento criterio di ricerca ”Tipo modifica”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC55.png}
+                    \caption{UC55 - Inserimento criterio di ricerca ”Tipo modifica”}
             \end{figure}
 
             \begin{usecase}
@@ -2264,8 +2210,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC58.png}
-                    \caption{UC58 - Inserimento criterio di ricerca ”Data modifica”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC56.png}
+                    \caption{UC56 - Inserimento criterio di ricerca ”Data modifica”}
             \end{figure}
 
             \begin{usecase}
@@ -2287,8 +2233,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC59.png}
-                    \caption{UC59 - Inserimento criterio di ricerca ”Ora modifica”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC57.png}
+                    \caption{UC57 - Inserimento criterio di ricerca ”Ora modifica”}
             \end{figure}
 
             \begin{usecase}
@@ -2310,8 +2256,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC60.png}
-                    \caption{UC60 - Inserimento criterio di ricerca ”Tempo di conservazione”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC58.png}
+                    \caption{UC58 - Inserimento criterio di ricerca ”Tempo di conservazione”}
             \end{figure}
 
             \begin{usecase}
@@ -2333,8 +2279,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC61.png}
-                    \caption{UC61 - Inserimento criterio di ricerca ”Note”}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC59.png}
+                    \caption{UC59 - Inserimento criterio di ricerca ”Note”}
             \end{figure}
 
             % Ricerca tramite metadati
@@ -2356,8 +2302,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC62.png}
-                    \caption{UC62 - Ricerca tramite metadati}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC60.png}
+                    \caption{UC60 - Ricerca tramite metadati}
             \end{figure}
 
             % Visualizzazione risultati ricerca
@@ -2380,11 +2326,12 @@
                     \item[1a.] Nessun documento corrisponde ai criteri di ricerca (\textbf{UC\nosearchres})
                 }
                 \inc{\ucref{uc:\searchres.1}}
+                \gen{\ucref{uc:\nosearchres}}
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC63.png}
-                    \caption{UC63 - Visualizzazione risultati ricerca}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC61.png}
+                    \caption{UC61 - Visualizzazione risultati ricerca}
             \end{figure}
             \begin{usecase}
                 \code{\searchres.1}
@@ -2394,7 +2341,7 @@
                     \item L'utente sta visualizzando i risultati della ricerca
                 }
                 \post{
-                    \item L'utente vede e informazioni principali di un documento che corrisponde ai criteri di ricerca
+                    \item L'utente vede le informazioni principali di un documento che corrisponde ai criteri di ricerca
                 }
                 \main{
                     \item L'utente visualizza le informazioni principali di un documento che corrisponde ai criteri di ricerca, quali
@@ -2422,11 +2369,6 @@
                     \item L'utente visualizza un messaggio informativo sull'assenza di risultati
                 }
             \end{usecase}
-            \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC64.png}
-                    \caption{UC64 - Risultato ricerca vuoto}
-            \end{figure}
 
             % Anteprima documento
             \begin{usecase}
@@ -2452,8 +2394,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC65.png}
-                    \caption{UC65 - Visualizzazione anteprima documento}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC63.png}
+                    \caption{UC63 - Visualizzazione anteprima documento}
             \end{figure}
 
             % Anteprima documento non supportata
@@ -2476,7 +2418,7 @@
             % Esportazione documento
             \begin{usecase}
                 \code{\exportdoc}
-                \titleUC{Esportazione documento}
+                \titleUC{Salvataggio in locale del documento}
                 \actor{Utente}
                 \pre{
                     \item L'utente ha caricato un DIP
@@ -2488,7 +2430,7 @@
                     \item L'utente vede un messaggio di conferma
                 }
                 \main{
-                    \item L'utente seleziona la funzionalità di esportazione del documento selezionato
+                    \item L'utente seleziona la funzionalità di salvataggio del documento selezionato
                     \item L'utente inserisce il percorso dove salvare il documento (\textbf{UC\exportdoc.1})
                     \item L'utente visualizza un messaggio conferma dell'avvenuto salvataggio
                 }
@@ -2501,29 +2443,29 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC67.png}
-                    \caption{UC67 - Esportazione documento}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC65.png}
+                    \caption{UC65 - Salvataggio in locale del documento}
             \end{figure}
             \begin{usecase}
                 \code{\exportdoc.1}
-                \titleUC{Inserimento percorso di esportazione}
+                \titleUC{Inserimento percorso di salvataggio}
                 \actor{Utente}
                 \pre{
-                    \item L'utente ha selezionato la funzionalità di esportazione di un documento
+                    \item L'utente ha selezionato la funzionalità di salvataggio di un documento
                 }
                 \post{
-                    \item L'utente ha inserito il percorso per il salvataggio del file
+                    \item L'utente ha inserito il percorso per il salvataggio del documento
                 }
                 \main{
-                    \item Il sistema richiede il percorso per il salvataggio del file
-                    \item L'utente inserisce il percorso per il salvataggio del file
+                    \item Il sistema richiede il percorso per il salvataggio del documento
+                    \item L'utente inserisce il percorso per il salvataggio del documento
                 }
             \end{usecase}
 
             % Fallimento esportazione documento
             \begin{usecase}
                 \code{\exportdocfail}
-                \titleUC{Fallimento esportazione documento}
+                \titleUC{Fallimento salvataggio documento}
                 \actor{Utente}
                 \pre{
                     \item L'operazione di salvataggio non ha avuto successo
@@ -2532,7 +2474,7 @@
                     \item L'utente vede un messaggio di errore
                 }
                 \main{
-                    \item L'utente visualizza un messaggio di errore riguardo il fallimento dell'esportazione
+                    \item L'utente visualizza un messaggio di errore riguardo il fallimento del salvataggio
                 }
             \end{usecase}
 
@@ -2556,8 +2498,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC69.png}
-                    \caption{UC69 - Configurazione ricerca semantica}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC67.png}
+                    \caption{UC67 - Configurazione ricerca semantica}
             \end{figure}
             
             \begin{usecase}
@@ -2596,8 +2538,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC70.png}
-                    \caption{UC70 - Ricerca semantica}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC68.png}
+                    \caption{UC68 - Ricerca semantica}
             \end{figure}
 
             % Stampa documento
@@ -2627,8 +2569,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC71.png}
-                    \caption{UC71 - Stampa documento}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC69.png}
+                    \caption{UC69 - Stampa documento}
             \end{figure}
 
             % Fallimento stampa documento
@@ -2669,8 +2611,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC73.png}
-                    \caption{UC73 - Verifica firma digitale documento}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC71.png}
+                    \caption{UC71 - Verifica firma digitale documento}
             \end{figure}
 
             % Visualizzazione risultato verifica firma digitale
@@ -2690,8 +2632,8 @@
             \end{usecase}
             \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC74.png}
-                    \caption{UC74 - Visualizzazione risultato verifica firma digitale documento}
+                    \includegraphics[width=0.5\textwidth]{Use_Case_Diagrams/UC72.png}
+                    \caption{UC72 - Visualizzazione risultato verifica firma digitale documento}
             \end{figure}
         }
     }
@@ -2732,42 +2674,37 @@
                 \hline
                 \endhead
                 
-                \textbf{R1-F-Ob} & L'utente deve poter selezionare un DIP da caricare nel Sistema & 
-                \ucref{uc:\loaddip} \newline
-                \ucref{uc:\loaddip.1} \\
+                \textbf{R1-F-Ob} & L'utente deve poter caricare un DIP nel sistema avviando l'applicazione all'interno del DIP estratto & 
+                \ucref{uc:\loaddip} \\
                 \hline
                 \textbf{R2-F-Ob} & L'utente deve ricevere un messaggio di errore se il caricamento del DIP non avviene correttamente & 
-                \ucref{uc:\remloaddip} \newline
                 \ucref{uc:\errloaddip} \\
                 \hline
-                \textbf{R3-F-Ob} & L'utente deve poter rimuovere un DIP dal Sistema & 
-                \ucref{uc:\removedip} \\
-                \hline
-                \textbf{R4-F-Ob} & L'utente deve poter visualizzare il contenuto e le informazioni del DIP & \ucref{uc:\viewdip} \newline
+                \textbf{R3-F-Ob} & L'utente deve poter visualizzare il contenuto e le informazioni del DIP & \ucref{uc:\viewdip} \newline
                 \ucref{uc:\viewdip.1} \newline
                 \ucref{uc:\viewdip.2} \\
                 \hline
-                \textbf{R5-F-Ob} & L'utente deve poter visualizzare i singoli documenti, e la lista dei loro allegati, contenuti nel DIP & 
+                \textbf{R4-F-Ob} & L'utente deve poter visualizzare i singoli documenti, e la lista dei loro allegati, contenuti nel DIP & 
                 \ucref{uc:\viewdip} \newline
                 \ucref{uc:\viewdip.2.1} \newline
                 \ucref{uc:\viewdip.2.2} \newline
                 \ucref{uc:\viewdip.2.2.1} \\
                 \hline
-                \textbf{R6-F-Ob} & L'utente deve poter visualizzare i singoli allegati di un documento & \ucref{uc:\viewdip} \newline
+                \textbf{R5-F-Ob} & L'utente deve poter visualizzare i singoli allegati di un documento & \ucref{uc:\viewdip} \newline
                 \ucref{uc:\viewdip.2.2.1} \newline
                 \ucref{uc:\viewdip.2.2.1.1} \\
                 \hline
-                \textbf{R7-F-Ob} & L'utente deve poter visualizzare i dettagli di un documento & \ucref{uc:\viewdetdoc} \\
+                \textbf{R6-F-Ob} & L'utente deve poter visualizzare i dettagli di un documento & \ucref{uc:\viewdetdoc} \\
                 \hline
-                \textbf{R8-F-Ob} & L'utente deve poter visualizzare la tipologia documentale di un documento & \ucref{uc:\viewdetdoc.1} \\
+                \textbf{R7-F-Ob} & L'utente deve poter visualizzare la tipologia documentale di un documento & \ucref{uc:\viewdetdoc.1} \\
                 \hline
-                \textbf{R9-F-Ob} & L'utente deve poter visualizzare il numero di un documento & \ucref{uc:\viewdetdoc.2} \\
+                \textbf{R8-F-Ob} & L'utente deve poter visualizzare il numero di un documento & \ucref{uc:\viewdetdoc.2} \\
                 \hline
-                \textbf{R10-F-Ob} & L'utente deve poter visualizzare il codice registro di un documento & \ucref{uc:\viewdetdoc.3} \\
+                \textbf{R9-F-Ob} & L'utente deve poter visualizzare il codice registro di un documento & \ucref{uc:\viewdetdoc.3} \\
                 \hline
-                \textbf{R11-F-Ob} & L'utente deve poter visualizzare la lista dei soggetti coinvolti in un documento & \ucref{uc:\viewdetdoc.4} \\
+                \textbf{R10-F-Ob} & L'utente deve poter visualizzare la lista dei soggetti coinvolti in un documento & \ucref{uc:\viewdetdoc.4} \\
                 \hline
-                \textbf{R12-F-Ob} & L'utente deve poter visualizzare il singolo soggetto coinvolto in un documento & 
+                \textbf{R11-F-Ob} & L'utente deve poter visualizzare il singolo soggetto coinvolto in un documento & 
                 \ucref{uc:\viewdetdoc.4.1} \newline 
                 \ucref{uc:\viewdetdoc.4.2} \newline
                 \ucref{uc:\viewdetdoc.4.3} \newline 
@@ -2776,228 +2713,228 @@
                 \ucref{uc:\viewdetdoc.4.6} \newline 
                 \ucref{uc:\viewdetdoc.4.7} \newline \\
                 \hline
-                \textbf{R13-F-Ob} & L'utente deve poter visualizzare il ruolo di un soggetto coinvolto in un documento & \ucref{uc:\viewdetdoc.4.1.1} \\
+                \textbf{R12-F-Ob} & L'utente deve poter visualizzare il ruolo di un soggetto coinvolto in un documento & \ucref{uc:\viewdetdoc.4.1.1} \\
                 \hline
-                \textbf{R14-F-Ob} & L'utente deve poter visualizzare l'oggetto di un documento & \ucref{uc:\viewdetdoc.5} \\
+                \textbf{R13-F-Ob} & L'utente deve poter visualizzare l'oggetto di un documento & \ucref{uc:\viewdetdoc.5} \\
                 \hline
-                \textbf{R15-F-Ob} & L'utente deve poter visualizzare il tipo aggregazione di un documento & \ucref{uc:\viewdetdoc.6} \\
+                \textbf{R14-F-Ob} & L'utente deve poter visualizzare il tipo aggregazione di un documento & \ucref{uc:\viewdetdoc.6} \\
                 \hline
-                \textbf{R16-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
+                \textbf{R15-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & \ucref{uc:\viewconsinfo} \\
                 \hline
-                \textbf{R17-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
+                \textbf{R16-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & \ucref{uc:\viewconsinfo} \\
                 \hline
-                \textbf{R18-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
+                \textbf{R17-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
                 \ucref{uc:\mdparamImpCrit} \newline
                 \ucref{uc:\mdparamImpCrit.1} \newline
                 \ucref{uc:\mdparamImpCrit.2} \\
                 \hline
-                \textbf{R19-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
+                \textbf{R18-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
                 \ucref{uc:\mdparamIdDoc} \\
                 \hline
-                \textbf{R20-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
+                \textbf{R19-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
                 \ucref{uc:\mdparamModFor} \\
                 \hline
-                \textbf{R21-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
+                \textbf{R20-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
                 \ucref{uc:\mdparamTipDoc} \\
                 \hline
-                \textbf{R22-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
+                \textbf{R21-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
                 \ucref{uc:\mdparamTipFlu} \\
                 \hline
-                \textbf{R23-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
+                \textbf{R22-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
                 \ucref{uc:\mdparamTipReg} \\
                 \hline
-                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
+                \textbf{R23-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
                 \ucref{uc:\mdparamDatReg} \\
                 \hline
-                \textbf{R25-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
+                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
                 \ucref{uc:\mdparamOraReg} \\
                 \hline
-                \textbf{R26-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
+                \textbf{R25-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
                 \ucref{uc:\mdparamNumDoc} \\
                 \hline
-                \textbf{R27-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
+                \textbf{R26-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
                 \ucref{uc:\mdparamCodReg} \\
                 \hline
-                \textbf{R28-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
+                \textbf{R27-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
                 \ucref{uc:\mdparamRuolo} \\
                 \hline
-                \textbf{R29-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
+                \textbf{R28-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
                 \ucref{uc:\mdparamTipSog} \\
                 \hline
-                \textbf{R30-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
+                \textbf{R29-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
                 \ucref{uc:\mdparamCog} \\
                 \hline
-                \textbf{R31-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
+                \textbf{R30-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
                 \ucref{uc:\mdparamNom} \\
                 \hline
-                \textbf{R32-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
+                \textbf{R31-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
                 \ucref{uc:\mdparamCF} \\
                 \hline
-                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
+                \textbf{R32-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
                 \ucref{uc:\mdparamIndDig} \\
                 \hline
-                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
+                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
                 \ucref{uc:\mdparamDenOrg} \\
                 \hline
-                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
+                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
                 \ucref{uc:\mdparamCFPI} \\
                 \hline
-                \textbf{R36-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
+                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
                 \ucref{uc:\mdparamDenUff} \\
                 \hline
-                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
+                \textbf{R36-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
                 \ucref{uc:\mdparamDenAmm} \\
                 \hline
-                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
+                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
                 \ucref{uc:\mdparamIPA} \\
                 \hline
-                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
+                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
                 \ucref{uc:\mdparamDenAmmAOO} \\
                 \hline
-                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
+                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
                 \ucref{uc:\mdparamIPAOOO} \\
                 \hline
-                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
+                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
                 \ucref{uc:\mdparamDenAmmUOR} \\
                 \hline
-                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
+                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
                 \ucref{uc:\mdparamIPAUOR} \\
                 \hline
-                \textbf{R43-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
+                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
                 \ucref{uc:\mdparamDenSis} \\
                 \hline
-                \textbf{R44-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
+                \textbf{R43-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
                 \ucref{uc:\mdparamOgg} \\
                 \hline
-                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
+                \textbf{R44-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
                 \ucref{uc:\mdparamParChi} \\
                 \hline
-                \textbf{R46-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
+                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
                 \ucref{uc:\mdparamNumAll} \\
                 \hline
-                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
+                \textbf{R46-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
                 \ucref{uc:\mdparamImpCritAll} \\
                 \hline
-                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
+                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
                 \ucref{uc:\mdparamIdDocAll} \\
                 \hline
-                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
+                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
                 \ucref{uc:\mdparamDesAll} \\
                 \hline
-                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
+                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
                 \ucref{uc:\mdparamIndCla} \\
                 \hline
-                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
+                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
                 \ucref{uc:\mdparamDesCla} \\
                 \hline
-                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
+                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
                 \ucref{uc:\mdparamPiaCla} \\
                 \hline
-                \textbf{R53-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
+                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
                 \ucref{uc:\mdparamRis} \\
                 \hline
-                \textbf{R54-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
+                \textbf{R53-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
                 \ucref{uc:\mdparamFor} \\
                 \hline
-                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
+                \textbf{R54-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
                 \ucref{uc:\mdparamNomPro} \\
                 \hline
-                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
+                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
                 \ucref{uc:\mdparamVerPro} \\
                 \hline
-                \textbf{R57-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
+                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
                 \ucref{uc:\mdparamProd} \\
                 \hline
-                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
+                \textbf{R57-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
                 \ucref{uc:\mdparamFirDig} \\
                 \hline
-                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
+                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
                 \ucref{uc:\mdparamSigEle} \\
                 \hline
-                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
+                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
                 \ucref{uc:\mdparamMarTem} \\
                 \hline
-                \textbf{R61-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
+                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
                 \ucref{uc:\mdparamConCop} \\
                 \hline
-                \textbf{R62-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
+                \textbf{R61-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
                 \ucref{uc:\mdparamTipAgg} \\
                 \hline
-                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
+                \textbf{R62-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
                 \ucref{uc:\mdparamIdAgg} \\
                 \hline
-                \textbf{R64-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
+                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
                 \ucref{uc:\mdparamTipFas} \\
                 \hline
-                \textbf{R65-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
+                \textbf{R64-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
                 \ucref{uc:\mdparamNomDoc} \\
                 \hline
-                \textbf{R66-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
+                \textbf{R65-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
                 \ucref{uc:\mdparamVerDoc} \\
                 \hline
-                \textbf{R67-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
+                \textbf{R66-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
                 \ucref{uc:\mdparamTipMod} \\
                 \hline
-                \textbf{R68-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
+                \textbf{R67-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
                 \ucref{uc:\mdparamDatMod} \\
                 \hline
-                \textbf{R69-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
+                \textbf{R68-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
                 \ucref{uc:\mdparamOraMod} \\
                 \hline
-                \textbf{R70-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
+                \textbf{R69-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
                 \ucref{uc:\mdparamTemCon} \\
                 \hline
-                \textbf{R71-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
+                \textbf{R70-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
                 \ucref{uc:\mdparamNot} \\
                 \hline
-                \textbf{R72-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
+                \textbf{R71-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
                 \ucref{uc:\mdsearch} \\
                 \hline
-                \textbf{R73-F-Ob} & L'utente deve poter visualizzare i risultati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
+                \textbf{R72-F-Ob} & L'utente deve poter visualizzare i risultati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
                 \ucref{uc:\searchres} \\
                 \hline
-                \textbf{R74-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
+                \textbf{R73-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
                 \ucref{uc:\searchres} \newline
                 \ucref{uc:\searchres.1} \\
                 \hline
-                \textbf{R75-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
+                \textbf{R74-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
                 \ucref{uc:\searchres} \newline
                 \ucref{uc:\nosearchres} \\
                 \hline
-                \textbf{R76-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
+                \textbf{R75-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
                 \ucref{uc:\docpreview} \\
                 \hline
-                \textbf{R77-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
+                \textbf{R76-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
                 \ucref{uc:\docpreview} \newline
                 \ucref{uc:\nodocpreview} \\
                 \hline
-                \textbf{R78-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
+                \textbf{R77-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
                 \ucref{uc:\exportdoc} \newline
                 \ucref{uc:\exportdoc.1} \\
                 \hline
-                \textbf{R79-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
+                \textbf{R78-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
                 \ucref{uc:\exportdoc} \newline
                 \ucref{uc:\exportdocfail} \\
                 \hline
-                \textbf{R80-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
+                \textbf{R79-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
                 \ucref{uc:\semparam} \newline
                 \ucref{uc:\semparam.1} \\
                 \hline
-                \textbf{R81-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
+                \textbf{R80-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
                 \ucref{uc:\semparam} \newline
                 \ucref{uc:\semsearch} \\
                 \hline
-                \textbf{R82-F-Op} & L'utente deve poter stampare un documento selezionato & 
+                \textbf{R81-F-Op} & L'utente deve poter stampare un documento selezionato & 
                 \ucref{uc:\printdoc} \\
                 \hline
-                \textbf{R83-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
+                \textbf{R82-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
                 \ucref{uc:\printdoc} \newline
                 \ucref{uc:\printdocfail} \\
                 \hline
-                \textbf{R84-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
+                \textbf{R83-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
                 \ucref{uc:\verdigsign} \\
                 \hline
-                \textbf{R85-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
+                \textbf{R84-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
                 \ucref{uc:\viewverdigsign} \\
                 \hline
             \end{longtable}
@@ -3034,6 +2971,9 @@
                 \textbf{R5-Q-Ob} & È richiesta la lista dei bug risolti durante le fasi di sviluppo & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
                 Sez. "Materiale da consegnare" \\
                 \hline
+                \textbf{R6-Q-Ob} & È richiesto l'utilizzo di Github o Bitbucket come sistema di versionamento del codice & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
+                Sez. "Materiale da consegnare" \\
+                \hline
             \end{longtable}
         }
         \subsection{Requisiti di Vincolo} {
@@ -3068,8 +3008,337 @@
                 \textbf{R5-V-Ob} & È richiesto l'utilizzo di Angular o React come framework frontend & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
                 Sez. "Tecnologie consigliate" \\
                 \hline
-                \textbf{R6-V-Ob} & È richiesto l'utilizzo di Github o Bitbucket come sistema di versionamento del codice & \hyperlink{capitolato}{Capitolato di Progetto}, \newline 
-                Sez. "Materiale da consegnare" \\
+            \end{longtable}
+        }
+
+        \subsection{Tracciamento dei Casi d’Uso e Riepilogo} {
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{| >{\centering\arraybackslash}p{0.47\linewidth} | >{\centering\arraybackslash}p{0.47\linewidth} |}
+                \caption{Tracciamento dei Casi d’Uso} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Requisito} & \textbf{Casi d'Uso} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Requisito} & \textbf{Casi d'Uso} \\
+                \hline
+                \endhead
+                
+                \textbf{R1-F-Ob} & 
+                \ucref{uc:\loaddip} \\
+                \hline
+                \textbf{R2-F-Ob} & 
+                \ucref{uc:\errloaddip} \\
+                \hline
+                \textbf{R3-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\viewdip} \\
+                \ucref{uc:\viewdip.1} \\
+                \ucref{uc:\viewdip.2}
+                } \\
+                \hline
+                \textbf{R4-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\viewdip} \\
+                \ucref{uc:\viewdip.2.1} \\
+                \ucref{uc:\viewdip.2.2} \\
+                \ucref{uc:\viewdip.2.2.1}
+                } \\
+                \hline
+                \textbf{R5-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\viewdip} \\
+                \ucref{uc:\viewdip.2.2.1} \\
+                \ucref{uc:\viewdip.2.2.1.1} 
+                } \\
+                \hline
+                \textbf{R6-F-Ob} & \ucref{uc:\viewdetdoc} \\
+                \hline
+                \textbf{R7-F-Ob} & \ucref{uc:\viewdetdoc.1} \\
+                \hline
+                \textbf{R8-F-Ob} & \ucref{uc:\viewdetdoc.2} \\
+                \hline
+                \textbf{R9-F-Ob} & \ucref{uc:\viewdetdoc.3} \\
+                \hline
+                \textbf{R10-F-Ob} & \ucref{uc:\viewdetdoc.4} \\
+                \hline
+                \textbf{R11-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\viewdetdoc.4.1} \\ 
+                \ucref{uc:\viewdetdoc.4.2} \\
+                \ucref{uc:\viewdetdoc.4.3} \\ 
+                \ucref{uc:\viewdetdoc.4.4} \\ 
+                \ucref{uc:\viewdetdoc.4.5} \\
+                \ucref{uc:\viewdetdoc.4.6} \\ 
+                \ucref{uc:\viewdetdoc.4.7}  
+                } \\
+                \hline
+                \textbf{R12-F-Ob} & \ucref{uc:\viewdetdoc.4.1.1} \\
+                \hline
+                \textbf{R13-F-Ob} & \ucref{uc:\viewdetdoc.5} \\
+                \hline
+                \textbf{R14-F-Ob} & \ucref{uc:\viewdetdoc.6} \\
+                \hline
+                \textbf{R15-F-Ob} & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R16-F-Ob} & \ucref{uc:\viewconsinfo} \\
+                \hline
+                \textbf{R17-F-De} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\mdparamImpCrit} \\
+                \ucref{uc:\mdparamImpCrit.1} \\
+                \ucref{uc:\mdparamImpCrit.2} 
+                } \\
+                \hline
+                \textbf{R18-F-Ob} & 
+                \ucref{uc:\mdparamIdDoc} \\
+                \hline
+                \textbf{R19-F-De} & 
+                \ucref{uc:\mdparamModFor} \\
+                \hline
+                \textbf{R20-F-Ob} & 
+                \ucref{uc:\mdparamTipDoc} \\
+                \hline
+                \textbf{R21-F-De} & 
+                \ucref{uc:\mdparamTipFlu} \\
+                \hline
+                \textbf{R22-F-De} & 
+                \ucref{uc:\mdparamTipReg} \\
+                \hline
+                \textbf{R23-F-Ob} & 
+                \ucref{uc:\mdparamDatReg} \\
+                \hline
+                \textbf{R24-F-Ob} & 
+                \ucref{uc:\mdparamOraReg} \\
+                \hline
+                \textbf{R25-F-Ob} & 
+                \ucref{uc:\mdparamNumDoc} \\
+                \hline
+                \textbf{R26-F-Ob} & 
+                \ucref{uc:\mdparamCodReg} \\
+                \hline
+                \textbf{R27-F-Ob} & 
+                \ucref{uc:\mdparamRuolo} \\
+                \hline
+                \textbf{R28-F-Ob} & 
+                \ucref{uc:\mdparamTipSog} \\
+                \hline
+                \textbf{R29-F-Ob} & 
+                \ucref{uc:\mdparamCog} \\
+                \hline
+                \textbf{R30-F-Ob} & 
+                \ucref{uc:\mdparamNom} \\
+                \hline
+                \textbf{R31-F-Ob} & 
+                \ucref{uc:\mdparamCF} \\
+                \hline
+                \textbf{R32-F-De} & 
+                \ucref{uc:\mdparamIndDig} \\
+                \hline
+                \textbf{R33-F-De} & 
+                \ucref{uc:\mdparamDenOrg} \\
+                \hline
+                \textbf{R34-F-De} & 
+                \ucref{uc:\mdparamCFPI} \\
+                \hline
+                \textbf{R35-F-De} & 
+                \ucref{uc:\mdparamDenUff} \\
+                \hline
+                \textbf{R36-F-De} & 
+                \ucref{uc:\mdparamDenAmm} \\
+                \hline
+                \textbf{R37-F-De} & 
+                \ucref{uc:\mdparamIPA} \\
+                \hline
+                \textbf{R38-F-De} & 
+                \ucref{uc:\mdparamDenAmmAOO} \\
+                \hline
+                \textbf{R39-F-De} & 
+                \ucref{uc:\mdparamIPAOOO} \\
+                \hline
+                \textbf{R40-F-De} & 
+                \ucref{uc:\mdparamDenAmmUOR} \\
+                \hline
+                \textbf{R41-F-De} & 
+                \ucref{uc:\mdparamIPAUOR} \\
+                \hline
+                \textbf{R42-F-De} & 
+                \ucref{uc:\mdparamDenSis} \\
+                \hline
+                \textbf{R43-F-Ob} & 
+                \ucref{uc:\mdparamOgg} \\
+                \hline
+                \textbf{R44-F-De} & 
+                \ucref{uc:\mdparamParChi} \\
+                \hline
+                \textbf{R45-F-De} & 
+                \ucref{uc:\mdparamNumAll} \\
+                \hline
+                \textbf{R46-F-De} & 
+                \ucref{uc:\mdparamImpCritAll} \\
+                \hline
+                \textbf{R47-F-De} & 
+                \ucref{uc:\mdparamIdDocAll} \\
+                \hline
+                \textbf{R48-F-De} & 
+                \ucref{uc:\mdparamDesAll} \\
+                \hline
+                \textbf{R49-F-De} & 
+                \ucref{uc:\mdparamIndCla} \\
+                \hline
+                \textbf{R50-F-De} & 
+                \ucref{uc:\mdparamDesCla} \\
+                \hline
+                \textbf{R51-F-De} & 
+                \ucref{uc:\mdparamPiaCla} \\
+                \hline
+                \textbf{R52-F-De} & 
+                \ucref{uc:\mdparamRis} \\
+                \hline
+                \textbf{R53-F-Ob} & 
+                \ucref{uc:\mdparamFor} \\
+                \hline
+                \textbf{R54-F-De} & 
+                \ucref{uc:\mdparamNomPro} \\
+                \hline
+                \textbf{R55-F-De} & 
+                \ucref{uc:\mdparamVerPro} \\
+                \hline
+                \textbf{R56-F-De} & 
+                \ucref{uc:\mdparamProd} \\
+                \hline
+                \textbf{R57-F-De} & 
+                \ucref{uc:\mdparamFirDig} \\
+                \hline
+                \textbf{R58-F-De} & 
+                \ucref{uc:\mdparamSigEle} \\
+                \hline
+                \textbf{R59-F-De} & 
+                \ucref{uc:\mdparamMarTem} \\
+                \hline
+                \textbf{R60-F-De} & 
+                \ucref{uc:\mdparamConCop} \\
+                \hline
+                \textbf{R61-F-Ob} & 
+                \ucref{uc:\mdparamTipAgg} \\
+                \hline
+                \textbf{R62-F-De} & 
+                \ucref{uc:\mdparamIdAgg} \\
+                \hline
+                \textbf{R63-F-De} & 
+                \ucref{uc:\mdparamTipFas} \\
+                \hline
+                \textbf{R64-F-Ob} & 
+                \ucref{uc:\mdparamNomDoc} \\
+                \hline
+                \textbf{R65-F-De} & 
+                \ucref{uc:\mdparamVerDoc} \\
+                \hline
+                \textbf{R66-F-De} & 
+                \ucref{uc:\mdparamTipMod} \\
+                \hline
+                \textbf{R67-F-De} & 
+                \ucref{uc:\mdparamDatMod} \\
+                \hline
+                \textbf{R68-F-De} & 
+                \ucref{uc:\mdparamOraMod} \\
+                \hline
+                \textbf{R69-F-De} & 
+                \ucref{uc:\mdparamTemCon} \\
+                \hline
+                \textbf{R70-F-De} & 
+                \ucref{uc:\mdparamNot} \\
+                \hline
+                \textbf{R71-F-Ob} & 
+                \ucref{uc:\mdsearch} \\
+                \hline
+                \textbf{R72-F-Ob} & 
+                \ucref{uc:\searchres} \\
+                \hline
+                \textbf{R73-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\searchres} \\
+                \ucref{uc:\searchres.1} 
+                } \\
+                \hline
+                \textbf{R74-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\searchres} \\
+                \ucref{uc:\nosearchres} 
+                } \\
+                \hline
+                \textbf{R75-F-Ob} & 
+                \ucref{uc:\docpreview} \\
+                \hline
+                \textbf{R76-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\docpreview} \\
+                \ucref{uc:\nodocpreview} 
+                } \\
+                \hline
+                \textbf{R77-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\exportdoc} \\
+                \ucref{uc:\exportdoc.1} 
+                } \\
+                \hline
+                \textbf{R78-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\exportdoc} \\
+                \ucref{uc:\exportdocfail} 
+                } \\
+                \hline
+                \textbf{R79-F-Op} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\semparam} \\
+                \ucref{uc:\semparam.1} 
+                } \\
+                \hline
+                \textbf{R80-F-Op} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\semparam} \\
+                \ucref{uc:\semsearch} 
+                } \\
+                \hline
+                \textbf{R81-F-Op} & 
+                \ucref{uc:\printdoc} \\
+                \hline
+                \textbf{R82-F-Ob} & \parbox{\linewidth}{
+                \centering
+                \ucref{uc:\printdoc} \\
+                \ucref{uc:\printdocfail} 
+                } \\
+                \hline
+                \textbf{R83-F-Op} & 
+                \ucref{uc:\verdigsign} \\
+                \hline
+                \textbf{R84-F-Op} & 
+                \ucref{uc:\viewverdigsign} \\
+                \hline
+            \end{longtable}
+
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{| >{\centering\arraybackslash}p{0.225\linewidth} | >{\centering\arraybackslash}p{0.22\linewidth} | >{\centering\arraybackslash}p{0.22\linewidth} | >{\centering\arraybackslash}p{0.22\linewidth} |}
+                \caption{Riepilogo dei Requisiti} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} \\ \\
+                \hline
+                \endhead
+                
+                \textbf{Funzionali} & 40 & 39 & 5 \\
+                \textbf{Qualità} & 5 & 0 & 1 \\
+                \textbf{Vincolo} & 3 & 0 & 2 \\
                 \hline
             \end{longtable}
         }
