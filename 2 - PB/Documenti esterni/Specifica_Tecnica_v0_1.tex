@@ -1,0 +1,389 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage[official]{eurosym}
+\usepackage{pgf-pie}
+\usepackage{makecell}
+\usepackage{xltabular}
+\usepackage{amsmath}
+\setTitle{Specifica Tecnica}
+\setAuthors{}
+\setVerificators{}
+\setApprovation{}
+\setVersion{0.0}
+\setType{Esterno}
+\setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \begin{table}[h!]
+            \rowcolors{2}{lightgray}{white}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.1} & 11/04/26 & Mattia Oliva Medin & Programmatore & Nenad Radulovic & Prima stesura \\
+                \hline
+            \end{tabularx}
+        \end{table}
+    }
+    \newpage
+    
+    \tableofcontents
+    \newpage
+
+    \listoffigures
+    \newpage
+    
+    \listoftables
+    \newpage
+
+    \section{Introduzione} {
+        \subsection{Scopo del documento} {        
+            ...
+        }
+
+        \subsection{Glossario} {
+            Si rimanda al documento Glossario per chiarire i termini nel dominio del progetto che possono risultare ambigui o di difficile comprensione. I vocaboli presenti nel glossario sono stati segnalati seguendo la notazione:
+            \begin{center}
+                parola\textsubscript{G}
+            \end{center}
+        }
+        
+        \subsection{Riferimenti} {
+            \subsubsection{Riferimenti normativi} {
+                \begin{itemize}
+                    \item
+                \end{itemize}
+            }
+            \subsubsection{Riferimenti informativi} {
+                \begin{itemize}
+                    \item \textit{Glossario v0.5}
+                    \begin{itemize}
+                        \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Glossario_v0_5.pdf}
+                        \item[] (Ultimo accesso: 2026/MM/DD)
+                    \end{itemize}
+                \end{itemize}
+            }
+        }
+    }
+
+    \section{Tecnologie} {
+
+    }
+
+    \section{Architettura} {
+        \subsection{Architettura di deployment} {
+
+        }
+
+        \subsection{Architettura logica} {
+            
+        }
+
+        \subsection{Design pattern} {
+            \subsubsection{Dependency injection} {
+                
+            }
+        }
+    }
+
+    \section{Stato dei requisiti funzionali} {
+        \subsection{Stato per requisito} {
+            \rowcolors{2}{lightgray}{white}
+            \begin{longtable}{|>{\centering\arraybackslash}m{0.15\textwidth}|>{\centering\arraybackslash}m{0.5\textwidth}|>{\centering\arraybackslash}m{0.2\textwidth}|}
+                \caption{Requisiti Funzionali} \\
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+                \hline
+                \endfirsthead
+                
+                \hline
+                \rowcolor{lightgray}
+                \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+                \hline
+                \endhead
+                
+                \textbf{R1-F-Ob} & L'utente deve poter caricare un DIP nel sistema avviando l'applicazione all'interno del DIP estratto & 
+                Soddisfatto \\
+                \hline
+                \textbf{R2-F-Ob} & L'utente deve ricevere un messaggio di errore se il caricamento del DIP non avviene correttamente & 
+                Soddisfatto \\
+                \hline
+                \textbf{R3-F-Ob} & L'utente deve poter visualizzare il contenuto e le informazioni del DIP & Soddisfatto \\ 
+                \hline
+                \textbf{R4-F-Ob} & L'utente deve poter visualizzare i singoli documenti, e la lista dei loro allegati, contenuti nel DIP & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R5-F-Ob} & L'utente deve poter visualizzare i singoli allegati di un documento & Soddisfatto \\ 
+                \hline
+                \textbf{R6-F-Ob} & L'utente deve poter visualizzare i dettagli di un documento & Soddisfatto \\ 
+                \hline
+                \textbf{R7-F-Ob} & L'utente deve poter visualizzare la tipologia documentale di un documento & Soddisfatto \\
+                \hline
+                \textbf{R8-F-Ob} & L'utente deve poter visualizzare il numero di un documento & Soddisfatto \\
+                \hline
+                \textbf{R9-F-Ob} & L'utente deve poter visualizzare il codice registro di un documento & Soddisfatto \\
+                \hline
+                \textbf{R10-F-Ob} & L'utente deve poter visualizzare la lista dei soggetti coinvolti in un documento & Soddisfatto \\ 
+                \hline
+                \textbf{R11-F-Ob} & L'utente deve poter visualizzare il singolo soggetto coinvolto in un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R12-F-Ob} & L'utente deve poter visualizzare il ruolo di un soggetto coinvolto in un documento & Soddisfatto \\ 
+                \hline
+                \textbf{R13-F-Ob} & L'utente deve poter visualizzare l'oggetto di un documento & Soddisfatto \\ 
+                \hline
+                \textbf{R14-F-Ob} & L'utente deve poter visualizzare il tipo aggregazione di un documento & Soddisfatto \\ 
+                \hline
+                \textbf{R15-F-Ob} & L'utente deve poter visualizzare le informazioni di conservazione di un DIP & Soddisfatto \\ 
+                \hline
+                \textbf{R16-F-Ob} & Il Sistema deve eseguire i controlli sulla validità e lo stato del processo di conservazione & Soddisfatto \\ 
+                \hline
+                \textbf{R17-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R18-F-Ob} & L'utente deve poter impostare il criterio "Identificativo documento" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R19-F-De} & L'utente deve poter impostare il criterio "Modalità di formazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R20-F-Ob} & L'utente deve poter impostare il criterio "Tipologia documentale" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R21-F-De} & L'utente deve poter impostare il criterio "Tipologia di flusso" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R22-F-De} & L'utente deve poter impostare il criterio "Tipo registro" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R23-F-Ob} & L'utente deve poter impostare il criterio "Data registrazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R24-F-Ob} & L'utente deve poter impostare il criterio "Ora registrazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R25-F-Ob} & L'utente deve poter impostare il criterio "Numero documento" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R26-F-Ob} & L'utente deve poter impostare il criterio "Codice registro" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R27-F-Ob} & L'utente deve poter impostare il criterio "Ruolo" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R28-F-Ob} & L'utente deve poter impostare il criterio "Tipo soggetto" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R29-F-Ob} & L'utente deve poter impostare il criterio "Cognome" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R30-F-Ob} & L'utente deve poter impostare il criterio "Nome" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R31-F-Ob} & L'utente deve poter impostare il criterio "Codice Fiscale" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R32-F-De} & L'utente deve poter impostare il criterio "Indirizzo digitale" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R33-F-De} & L'utente deve poter impostare il criterio "Denominazione organizzazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R34-F-De} & L'utente deve poter impostare il criterio "Partita IVA" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R35-F-De} & L'utente deve poter impostare il criterio "Denominazione ufficio" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R36-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R37-F-De} & L'utente deve poter impostare il criterio "Codice IPA" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R38-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione AOO" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R39-F-De} & L'utente deve poter impostare il criterio "Codice IPA AOO" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R40-F-De} & L'utente deve poter impostare il criterio "Denominazione amministrazione UOR" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R41-F-De} & L'utente deve poter impostare il criterio "Codice IPA UOR" per cercare un documento & 
+                Soddisfatto \\
+                \hline
+                \textbf{R42-F-De} & L'utente deve poter impostare il criterio "Denominazione sistema" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R43-F-Ob} & L'utente deve poter impostare il criterio "Oggetto" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R44-F-De} & L'utente deve poter impostare il criterio "Parola chiave" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R45-F-De} & L'utente deve poter impostare il criterio "Numero allegati" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R46-F-De} & L'utente deve poter impostare il criterio "Impronta crittografica allegato" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R47-F-De} & L'utente deve poter impostare il criterio "Identificativo allegato" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R48-F-De} & L'utente deve poter impostare il criterio "Descrizione allegato" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R49-F-De} & L'utente deve poter impostare il criterio "Indice di classificazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R50-F-De} & L'utente deve poter impostare il criterio "Descrizione dell'indice di classificazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R51-F-De} & L'utente deve poter impostare il criterio "Piano di classificazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R52-F-De} & L'utente deve poter impostare il criterio "Riservato" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R53-F-Ob} & L'utente deve poter impostare il criterio "Formato" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R54-F-De} & L'utente deve poter impostare il criterio "Nome prodotto software" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R55-F-De} & L'utente deve poter impostare il criterio "Versione prodotto software" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R56-F-De} & L'utente deve poter impostare il criterio "Produttore software" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R57-F-De} & L'utente deve poter impostare il criterio "Firmato digitalmente" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R58-F-De} & L'utente deve poter impostare il criterio "Sigillato elettronicamente" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R59-F-De} & L'utente deve poter impostare il criterio "Marcatura temporale" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R60-F-De} & L'utente deve poter impostare il criterio "Conformità copie immagine su supporto informatico" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R61-F-Ob} & L'utente deve poter impostare il criterio "Tipo aggregazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R62-F-De} & L'utente deve poter impostare il criterio "Identificativo aggregazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R63-F-De} & L'utente deve poter impostare il criterio "Tipologia fascicolo" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R64-F-Ob} & L'utente deve poter impostare il criterio "Nome del documento" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R65-F-De} & L'utente deve poter impostare il criterio "Versione del documento" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R66-F-De} & L'utente deve poter impostare il criterio "Tipo modifica" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R67-F-De} & L'utente deve poter impostare il criterio "Data modifica" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R68-F-De} & L'utente deve poter impostare il criterio "Ora modifica" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R69-F-De} & L'utente deve poter impostare il criterio "Tempo di conservazione" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R70-F-De} & L'utente deve poter impostare il criterio "Note" per cercare un documento & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R71-F-Ob} & L'utente deve poter cercare un documento impostando uno o più criteri di ricerca & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R72-F-Ob} & L'utente deve poter visualizzare i risultati della ricerca, cioè i documenti che soddisfano i criteri di ricerca impostati & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R73-F-Ob} & L'utente deve poter visualizzare le informazioni relative ai singoli documenti che rappresentano il risultato della ricerca & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R74-F-Ob} & L'utente deve ricevere un messaggio informativo se il risultato della ricerca è vuoto, cioè se nessun documento soddisfa i criteri di ricerca impostati & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R75-F-Ob} & L'utente deve poter visualizzare l'anteprima di un documento selezionato & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R76-F-Ob} & L'utente deve ricevere un messaggio di avviso sull'eventuale indisponibilità dell'anteprima per un documento selezionato & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R77-F-Ob} & L'utente deve poter esportare un documento selezionato, scegliendo il percorso dove salvarlo & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R78-F-Ob} & L'utente deve ricevere un messaggio di errore se l'esportazione fallisce & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R79-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R80-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
+                Soddisfatto \\ 
+                \hline
+                \hline
+                \textbf{R80-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R81-F-Op} & L'utente deve poter stampare un documento selezionato & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R82-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R83-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
+                Soddisfatto \\ 
+                \hline
+                \textbf{R84-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
+                Soddisfatto \\ 
+                \hline
+            \end{longtable}
+        }
+        \subsection{Grafici Riassuntivi}
+        \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [explode=0.1, text=legend] { 75/Requisiti soddisfatti, 25/Requisiti non soddisfatti }
+                \end{tikzpicture}
+                \caption{Percentuale di requisiti funzionali soddisfatti}
+        \end{figure}
+        \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [explode=0.1, text=legend] { 100/Requisiti soddisfatti, 0/Requisiti non soddisfatti }
+                \end{tikzpicture}
+                \caption{Percentuale di requisiti funzionali obbligatori soddisfatti}
+        \end{figure}
+        \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [explode=0.1, text=legend] { 50/Requisiti soddisfatti, 50/Requisiti non soddisfatti }
+                \end{tikzpicture}
+                \caption{Percentuale di requisiti funzionali opzionali soddisfatti}
+        \end{figure}
+        \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [explode=0.1, text=legend] { 25/Requisiti soddisfatti, 75/Requisiti non soddisfatti }
+                \end{tikzpicture}
+                \caption{Percentuale di requisiti funzionali desiderabili soddisfatti}
+        \end{figure}
+    }
+\end{document}
