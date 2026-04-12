@@ -1,0 +1,156 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{docsTemplate}
+
+\setTitle{Manuale Utente}
+\setAuthors{Sara Gioia Fichera}
+\setVerificators{Nenad Radulovic}
+\setApprovation{}
+\setVersion{0.2}
+\setType{Esterno}
+\setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
+
+\begin{document}
+    \include{docTitlepage}
+
+    \section*{Registro delle modifiche} {
+        \begin{table}[h!]
+            \rowcolors{2}{lightgray}{white}
+                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
+                \hline
+                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.2} & 11/04/26 & Sara Gioia Fichera & Responsabile & Nenad Radulovic & Stesura sezione Guida all'Utilizzo\\
+                \hline
+                \textbf{0.1} & 11/04/26 & Sara Gioia Fichera & Responsabile & Nenad Radulovic & Struttura generale del documento\\
+                \hline
+            \end{tabularx}
+        \end{table}
+    }
+    \newpage
+    
+    \tableofcontents
+    \newpage
+
+    \listoffigures
+    \newpage
+    
+    \listoftables
+    \newpage
+
+    \section{Introduzione} {
+        \subsection{Scopo del documento} {        
+            Il presente documento ha lo scopo di fornire all'utente tutte le istruzioni necessarie per la corretta installazione e il normale utilizzo dell'applicativo desktop DIPReader.
+            Al suo interno è presente una guida per la consultazione dei pacchetti informativi (DIP).
+        }
+
+        \subsection{Glossario}
+            I termini tecnici o specifici del dominio che potrebbero risultare ambigui sono definiti nel documento \textit{Glossario}, consultabile tra i riferimenti in apertura del documento. All'interno del testo, tali termini sono 
+            riconoscibili dalla notazione:
+                \begin{center}
+                    parola\textsubscript{G}
+                \end{center}
+        
+        \subsection{Riferimenti} {
+            \subsubsection{Riferimenti normativi} {
+            \begin{itemize}
+                \item \textit{Norme di Progetto v1.0}
+                \begin{itemize}
+                    \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Norme_di_Progetto_v1_0.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+                \item Regolamento del Progetto Didattico
+                \begin{itemize}
+                    \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+            \end{itemize}
+            }
+            \subsubsection{Riferimenti informativi} {
+                \begin{itemize}
+                \item \textit{Analisi dei Requisiti v1.0}
+                \begin{itemize}
+                    \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20esterni/Analisi_dei_Requisiti_v1_0.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+                \item Verbali interni
+                \item Verbali esterni
+                \item Capitolato C3
+                \begin{itemize}
+                    \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+                \item Slide del corso: T2 - Processi di ciclo di vita del \textit{software}
+                \begin{itemize}
+                    \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T02.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+                \item Slide del corso: T4 - Gestione di progetto
+                \begin{itemize}
+                    \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T04.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+                \item \textit{Glossario v0.5}
+                \begin{itemize}
+                    \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Glossario_v0_5.pdf}
+                    \item[] (Ultimo accesso: 13/04/2026)
+                \end{itemize}
+            \end{itemize}
+            }
+        }
+    }
+    
+    \section{Installazione}
+        \subsection{Requisiti di sistema}
+
+        \subsection{Installazione}
+            
+    \section{Guida all'utilizzo}
+        \subsection{Apertura di un pacchetto DIP}
+        \label{sec:apertura}
+        DIPReader legge automaticamente il contenuto del pacchetto informativo all'avvio, senza necessità di configurazioni. Per caricare un DIP è sufficiente posizionare il file eseguibile dell'applicazione direttamente all'interno della cartella principale (o radice) del pacchetto DIP e avviarlo con un doppio clic.
+        Il sistema ne riconosce automaticamente la struttura e popola la lista dei documenti. Nel caso di pacchetto non riconosciuto o con struttura non conforme, viene mostrato un apposito messaggio di errore.
+
+        \subsection{Consultazione dei documenti}
+            \subsubsection{Visualizzare la lista dei documenti}
+            Al centro della finestra è presente la lista di tutti i documenti contenuti nel pacchetto DIP o, nel caso in cui siano applicati dei filtri (per maggiori dettagli sull'utilizzo dei filtri si rimanda alla sezione \ref{sec:filtri}), l'elenco dei soli documenti corrispondenti ai criteri di ricerca. Ogni voce riporta il nome del file e la relativa estensione.          
+            
+            \subsubsection{Selezionare un documento e visualizzarne i dettagli}
+            Per selezionare un documento è sufficiente fare clic sul nome del documento dalla lista. 
+            Dopo aver selezionato un documento, nel pannello di destra compare la sezione "Dettagli Documento" con i seguenti campi: il nome del file, il formato (ad esempio PDF o XML), l'identificativo univoco del documento, e la data e ora di registrazione. Più in basso è presente la sezione "Allegati", che mostra il numero di allegati e li elenca ciascuno con il proprio percorso e formato.
+            Ogni allegato presente in questa lista può essere a sua volta selezionato per poterne consultare i dettagli specifici. Per la consultazione degli allegati vedere la sezione~\ref{sec:allegati}.
+
+            \subsubsection{Visualizzare l'anteprima di un documento}
+            A seguito della selezione di un documento dalla lista, nel pannello di destra è presente la sezione "Anteprima Documento". Se il documento è in formato PDF, l'anteprima viene caricata e visualizzata direttamente nella finestra, permettendone la lettura senza la necessità di aprire programmi esterni.
+            Se l'anteprima non è disponibile, la sezione lo comunica tramite un apposito messaggio.
+        \subsection{Consultazione degli allegati}
+            \subsubsection{Visualizzare gli allegati di un documento}
+            \label{sec:allegati}
+            Gli allegati di un documento sono consultabili dopo aver selezionato il documento principale (o padre) dalla lista. Nel pannello di destra, all'interno della sezione "Dettagli Documento", è presente l'elenco degli allegati associati, ciascuno con il proprio formato. Da questa sezione è possibile fare clic su un allegato per consultarne i dettagli specifici.
+        
+            \subsubsection{Selezionare un allegato e visualizzarne i dettagli}
+            Per consultare un allegato, fare clic sulla relativa voce all'interno della sezione "Allegati" nel pannello dei dettagli del documento padre. Il pannello di destra si aggiornerà mostrando la scheda "Dettagli Allegato", che riepiloga il nome del file, il formato e il suo identificativo univoco.
+            \subsubsection{Tornare al documento padre}
+            Per tornare alla visualizzazione del documento principale è sufficiente fare clic sul suo nome nella lista centrale. Il pannello di destra si aggiorna ripristinando i metadati e l'eventuale anteprima.
+            (In alternativa, è possibile utilizzare l'apposito collegamento "Vai al documento principale" situato nella parte superiore del pannello dei dettagli. ??)
+
+        \subsection{Ricerca e uso dei filtri}
+            \label{sec:filtri}
+            \subsubsection{Aggiungere un filtro}
+            Nella parte superiore del pannello laterale sinistro è presente il pulsante "Aggiungi Filtro". Premendolo compare una nuova riga contenente due elementi: un menu a tendina, per selezionare il campo sui cui effettuare la ricerca, e un campo di testo in cui digitare il valore desiderato.
+
+            \subsubsection{Utilizzare più filtri combinati}
+            È possibile combinare più criteri di ricerca premendo nuovamente il pulsante "Aggiungi Filtro". Ogni riga aggiunta rappresenta un filtro indipendente: la ricerca restituisce solo i documenti che soddisfano tutti i criteri contemporaneamente.
+
+            \subsubsection{Rimuovere un filtro}
+            Per eliminare un filtro specifico è sufficiente fare clic sul pulsante a forma di "X" posto alla destra del relativo campo di testo.
+
+            \subsubsection{Avviare la ricerca}
+            Una volta impostati i parametri desiderati, fare clic sul pulsante "Cerca" per avviare l'elaborazione. La lista si aggiorna mostrando solo i documenti che corrispondono esattamente ai criteri inseriti.
+
+            \subsubsection{Ripristinare la lista completa}
+            Per tornare a visualizzare l'intero contenuto del pacchetto DIP è sufficiente rimuovere tutti i filtri attivi e premere nuovamente il pulsante "Cerca".
+            
+        \subsection{Visualizzare le informazioni sul pacchetto DIP}
+        Il riquadro "Informazioni del pacchetto (DIP)", sempre visibile nel pannello in basso a sinistra, riporta: la data di creazione, il nome e la versione del programma usato per generarlo, il produttore e il numero totale di documenti contenuti.
+
+\end{document}
