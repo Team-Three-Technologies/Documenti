@@ -8,11 +8,12 @@
 \usepackage{makecell}
 \usepackage{xltabular}
 \usepackage{amsmath}
+\usepackage{caption}
 \setTitle{Specifica Tecnica}
-\setAuthors{}
-\setVerificators{}
+\setAuthors{Mattia Oliva Medin \\ & Francesco Balestro}
+\setVerificators{Nenad Radulovic \\ & Filippo Compagno}
 \setApprovation{}
-\setVersion{0.0}
+\setVersion{0.2}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -25,6 +26,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.2} & 13/04/26 & Francesco Balestro & Verificatore & Filippo Compagno & Sezione "Scopo del documento" e "Tecnologie" \\
                 \hline
                 \textbf{0.1} & 11/04/26 & Mattia Oliva Medin & Programmatore & Nenad Radulovic & Prima stesura \\
                 \hline
@@ -44,7 +47,17 @@
 
     \section{Introduzione} {
         \subsection{Scopo del documento} {        
-            ...
+            Il presente documento ha lo scopo di descrivere in maniera approfondita l’architettura del prodotto software, offrendo una rappresentazione chiara, organizzata e completa delle sue componenti, delle modalità con cui interagiscono e della loro distribuzione all’interno del sistema.\\
+            \\
+            La Specifica Tecnica costituisce un riferimento fondamentale per le attività di progettazione e sviluppo del prodotto, introducendo evoluzioni e miglioramenti volti a rafforzarne la solidità architetturale rispetto al PoC.\\
+            \\
+            In particolare, questo documento si propone di:
+            \begin{itemize}
+                \item Definire l’architettura logica del sistema, descrivendo le componenti principali, le rispettive responsabilità e le relazioni tra esse;
+                \item Illustrare l’architettura di deployment, specificando come le diverse componenti vengono distribuite nell’ambiente di esecuzione;
+                \item Presentare i design pattern architetturali adottati, mettendo in evidenza le scelte progettuali legate alle tecnologie utilizzate;
+                \item Fornire ulteriori dettagli progettuali utili a valorizzare le decisioni architetturali e a facilitare la comprensione e la manutenzione del sistema.
+            \end{itemize}
         }
 
         \subsection{Glossario} {
@@ -73,7 +86,85 @@
     }
 
     \section{Tecnologie} {
+        Il progetto è stato realizzato adottando un insieme di tecnologie consolidate e complementari, selezionate per garantire semplicità di sviluppo, portabilità e facilità di manutenzione, in linea con un’architettura di tipo monolitico.\\
+        \\
+        La soluzione prevede un’applicazione desktop sviluppata utilizzando Angular per la gestione dell’interfaccia utente, integrata con Electron per la creazione del pacchetto eseguibile e per l’esecuzione in ambiente desktop. La comunicazione tra le componenti avviene tramite meccanismi di Inter-Process Communication (IPC) messi a disposizione da Electron, consentendo un’interazione strutturata ed efficiente tra le diverse parti dell’applicazione.\\
+        \\
+        Per la gestione della persistenza dei dati è stato adottato SQLite, scelto per la sua leggerezza, semplicità di integrazione e adeguatezza a contesti applicativi locali. In particolare, il database viene utilizzato per memorizzare e gestire i dati relativi al DIP, permettendone la consultazione e la visualizzazione all’interno dell’applicazione.\\
+        \\
+        Le tecnologie adottate sono state classificate in funzione del loro ruolo architetturale all’interno del sistema, includendo linguaggi di programmazione, framework per lo sviluppo dell’interfaccia utente, framework e runtime per l’esecuzione e il packaging dell’applicazione desktop, meccanismi di comunicazione tra componenti e sistemi di persistenza dei dati.\\
+        \\
+        Di seguito vengono descritte nel dettaglio le tecnologie adottate, evidenziandone le caratteristiche principali.
 
+        \subsection{Linguaggi di Programmazione}
+        \begin{table}[H]
+            \captionsetup{skip=10pt}
+            \caption{Linguaggi di Programmazione}
+            \rowcolors{1}{lightgray}{white}
+            \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
+                \hline
+                \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+                \hline
+                \textbf{TypeScript} &  & TypeScript è un linguaggio di programmazione tipizzato basato su JavaScript, utilizzato per migliorare la qualità del codice grazie alla tipizzazione statica e al supporto per lo sviluppo di applicazioni scalabili e manutenibili. \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \subsection{Framework per lo sviluppo dell'interfaccia utente}
+        \begin{table}[H]
+            \captionsetup{skip=10pt}
+            \caption{Framework per lo sviluppo dell'interfaccia utente}
+            \rowcolors{1}{lightgray}{white}
+            \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
+                \hline
+                \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+                \hline
+                \textbf{Angular} &  & Angular è un framework frontend basato su TypeScript, utilizzato per la realizzazione di applicazioni web strutturate e modulari tramite un’architettura a componenti. \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \subsection{Framework e runtime di esecuzione desktop}
+        \begin{table}[H]
+            \captionsetup{skip=10pt}
+            \caption{Framework e runtime di esecuzione desktop}
+            \rowcolors{1}{lightgray}{white}
+            \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
+                \hline
+                \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+                \hline
+                \textbf{Electron} &  & Electron è un framework per lo sviluppo di applicazioni desktop multipiattaforma basato su tecnologie web, che integra un runtime basato su Chromium e Node.js e fornisce strumenti per il packaging e l’esecuzione dell’applicazione. \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \subsection{Comunicazione tra componenti}
+        \begin{table}[H]
+            \captionsetup{skip=10pt}
+            \caption{Comunicazione tra componenti}
+            \rowcolors{1}{lightgray}{white}
+            \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
+                \hline
+                \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+                \hline
+                \textbf{IPC} &  & IPC (Inter-Process Communication di Electron) è un meccanismo fornito da Electron che consente la comunicazione tra il processo principale e i processi renderer, permettendo lo scambio strutturato di messaggi e dati tra i componenti dell’applicazione. \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \subsection{Sistemi per la persistenza dei dati}
+        \begin{table}[H]
+            \captionsetup{skip=10pt}
+            \caption{Sistemi per la persistenza dei dati}
+            \rowcolors{1}{lightgray}{white}
+            \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
+                \hline
+                \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+                \hline
+                \textbf{SQLite} &  & SQLite è un sistema di gestione di database relazionale leggero e embedded, utilizzato per la persistenza locale dei dati senza necessità di un server esterno. \\
+                \hline
+            \end{tabular}
+        \end{table}
     }
 
     \section{Architettura} {
