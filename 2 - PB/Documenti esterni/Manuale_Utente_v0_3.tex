@@ -2,10 +2,10 @@
 \usepackage{docsTemplate}
 
 \setTitle{Manuale Utente}
-\setAuthors{Sara Gioia Fichera}
-\setVerificators{Nenad Radulovic}
+\setAuthors{Sara Gioia Fichera \\ & Andrea Masiero}
+\setVerificators{Nenad Radulovic \\ & Francesco Balestro}
 \setApprovation{}
-\setVersion{0.2}
+\setVersion{0.3}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -18,6 +18,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.3} & 13/04/26 & Andrea Masiero & Amministratore & Francesco Balestro & Stesura sezione Installazione\\
                 \hline
                 \textbf{0.2} & 11/04/26 & Sara Gioia Fichera & Responsabile & Nenad Radulovic & Stesura sezione Guida all'Utilizzo\\
                 \hline
@@ -101,9 +103,43 @@
     
     \section{Installazione}
         \subsection{Requisiti di sistema}
+        DIPReader è un'applicazione desktop autonoma che non richiede l'installazione di componenti aggiuntive. Tutto il necessario per il funzionamento è già incluso nel pacchetto di distribuzione. \\
+
+        L'applicazione è compatibile con i seguenti sistemi operativi:
+        \begin{itemize}
+            \item Windows: Windows 10 o versioni successive
+            \item macOS: macOS 11 o versioni successive
+            \item Linux: qualsiasi distribuzione moderna con supporto al formato AppImage
+        \end{itemize}
 
         \subsection{Installazione}
-            
+            Per installare l'applicativo DIPReader la procedura cambia leggermente in base al sistema operativo in uso. In nessun caso è richiesta l'installazione di componenti aggiuntive.
+
+            (procedura con screen di come fare il download dalla repo. ??)
+
+            \begin{itemize}
+                \item Windows: Il pacchetto è un file eseguibile .exe di tipo portable. È sufficiente scaricare il file, posizionarlo nella cartella desiderata e avviarlo con un doppio clic.
+                \item macOS: Il pacchetto per macOS è distribuito come archivio .zip. \\
+                    Per installare l'applicazione è sufficiente:
+                    \begin{enumerate}
+                        \item Aprire il file .zip scaricato
+                        \item Trascinare l'applicazione nella cartella scelta
+                        \item Avviare l'applicazione con un doppio clic
+                    \end{enumerate}
+                \item Linux: Il pacchetto è distribuito nel formato AppImage, un formato universale compatibile con la maggior parte delle distribuzioni Linux. \\
+                    Per avviare l'applicazione:
+                    \begin{enumerate}
+                        \item Scaricare il file .AppImage
+                        \item Renderlo eseguibile: tasto destro sul file $\rightarrow$ Proprietà $\rightarrow$ spuntare "Consenti esecuzione come programma" (oppure da terminale con il comando chmod + x nomeFile.AppImage ??)
+                        \item Avviare l'applicazione con un doppio clic
+                    \end{enumerate}
+                    Non è necessario disporre di permessi di amministratore.
+            \end{itemize}
+
+        \subsection{Primo avvio}
+            Una volta avviato DIPReader, l'applicazione si apre direttamente sull'interfaccia principale, senza richiedere alcuna registrazione, creazione di account o configurazione. Se l'eseguibile non è stato posizionato all'interno di una cartella DIP valida, la lista dei documenti risulta vuota.
+            Per caricare un pacchetto DIP e iniziare la consultazione, fare riferimento alla sezione \ref{sec:apertura}.
+
     \section{Guida all'utilizzo}
         \subsection{Apertura di un pacchetto DIP}
         \label{sec:apertura}
