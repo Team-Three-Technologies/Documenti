@@ -16,7 +16,7 @@
 \setAuthors{Filippo Compagno\\ & Nenad Radulovic\\ & Francesco Balestro \\ & Mattia Oliva Medin \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Andrea Masiero}
 \setVerificators{Andrea Masiero \\ & Mattia Oliva Medin \\ & Bianca Zaghetto \\ & Francesco Balestro \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno}
 \setApprovation{Andrea Masiero}
-\setVersion{1.0}
+\setVersion{1.1}
 \setType{Interno}
 \setDestination{Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin}
 
@@ -36,6 +36,8 @@
         \hline
         \endlastfoot
 
+        \textbf{1.1} & 15/04/2026 & Bianca Zaghetto & Programmatore & Filippo Compagno & Convenzioni di naming \\
+        \hline
         \textbf{1.0} & 06/03/2026 & Andrea Masiero & Responsabile & - & Approvazione e rilascio \\
         \hline
         \textbf{0.11} & 28/01/2026 & Andrea Masiero & Amministratore & Filippo Compagno & Conclusione sezione Introduzione \\
@@ -264,6 +266,32 @@
                     \item \textbf{Funzioni}: non vanno definite funzioni troppo lunghe che si occupano di operazioni diverse;
                     \item \textbf{Indentazione}: va rispettata l'indentazione del codice per favorire la sua leggibilità. 
                 \end{itemize}
+
+            \paragraph{Convenzioni di naming}
+
+                Per garantire uniformità, leggibilità e manutenibilità del codice, il gruppo adotta le seguenti convenzioni di denominazione:
+
+                \begin{itemize}
+                    \item \textbf{Classi}: devono essere denominate utilizzando la notazione \textit{PascalCase}.\\
+                    Esempio: \texttt{DipIndexParserImpl}
+                
+                    \item \textbf{Variabili e metodi}: devono essere denominati utilizzando la notazione \textit{camelCase}.\\
+                    Esempio: \texttt{parseTagValue}
+                
+                    \item \textbf{Costanti}: devono essere denominate utilizzando la notazione \textit{SNAKE\_CASE} in maiuscolo.\\
+                    Esempio: \texttt{DIP\_AUTO\_IMPORT}
+                
+                    \item \textbf{File}: devono seguire la seguente convenzione:
+                    \begin{itemize}
+                        \item struttura del nome del file nel formato:
+                        \begin{center}
+                            \texttt{nome.responsabilità.interface} \quad oppure \quad \texttt{nome.responsabilità.impl}
+                        \end{center}
+                        \item il nome viene scritto in \textit{kebab-case} se composto da più parole;
+                    \end{itemize}
+                    Esempi: \texttt{dip-index.parser.interface}, \texttt{metadata.parser.impl}
+                \end{itemize}
+                
 \newpage
 
 \section{Processi di Supporto}
