@@ -18,13 +18,13 @@
 \titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex}
 
 \setTitle{Piano di Progetto}
-\setAuthors{Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno}
+\setAuthors{Bianca Zaghetto \\ & Mattia Oliva Medin \\ & Sara Gioia Fichera \\ & Nenad Radulovic \\ & Filippo Compagno \\ & Andrea Masiero \\ & Francesco Balestro}
 \setVerificators{Mattia Oliva
 Medin \\ & Sara Gioia
 Fichera \\ & Andrea Masiero \\ & Nenad Radulovic \\ & Filippo
 Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
 \setApprovation{Nenad Radulovic}
-\setVersion{1.4}
+\setVersion{1.5}
 \setType{Esterno}
 \setDestination{Tullio Vardanega \\ & Riccardo Cardin \\ & Sanmarco Informatica \\[-0.1em] & Team Three Technologies}
 \setcounter{secnumdepth}{4}
@@ -44,6 +44,8 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
 \endfoot
 \hline
 \endlastfoot
+\textbf{1.5} & 20/04/26 & Francesco Balestro & Progettista & Bianca Zaghetto & Aggiunta pianificazione quattordicesimo periodo \\
+\hline
 \textbf{1.4} & 13/04/26 & Andrea Masiero & Progettista & Filippo Compagno & Aggiunta pianificazione tredicesimo periodo \\
 \hline
 \textbf{1.3} & 07/04/26 & Filippo Compagno & Programmatore & Nenad Radulovic & Aggiunta pianificazione dodicesimo periodo \\
@@ -299,19 +301,22 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
             \end{tabular}
         \end{table}
 
-    % \subsection{Prima Revisione}
-    %     \begin{table}[H]
-    %         \centering
-    %         \begin{tabular}{|c|c|}
-    %         \hline
-    %             \rowcolor{lightgray}{\textbf{Revisione}} & {\textbf{Data}}  \\
-    %         \hline
-    %             Product Baseline & ???\\
-    %         \hline
-    %         \end{tabular}
-    %         \caption{Data di consegna prevista aggiornata a seguito della RTB}
-    %         \label{tab:cal2}
-    %     \end{table}
+    \subsection{Prima Revisione}
+        A seguito della prima revisione RTB svolta in data 24/03/2026, il gruppo ha deciso di posticipare la data di consegna della Product Baseline, visto il lavoro svolto sinora ed i ritardi accumulati.
+        Il gruppo si pone quindi come obiettivo il seguente:
+
+         \begin{table}[H]
+             \centering
+             \begin{tabular}{|c|c|}
+            \hline
+                \rowcolor{lightgray}{\textbf{Revisione}} & {\textbf{Data}}  \\
+            \hline
+                 Product Baseline & 24/04/2026\\
+            \hline
+             \end{tabular}
+             \caption{Data di consegna prevista aggiornata a seguito della RTB}
+             \label{tab:cal2}
+        \end{table}
 
 \newpage
 \section{Impegno orario previsto e stima dei costi totali}
@@ -1979,23 +1984,23 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \hline
                     \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
                 \hline
-                    Balestro & & & & & 7 & & 7\\
+                    Balestro & & & & & 5 & & 5\\
                 \hline
-                    Compagno & 2 & & & 5 & & & 7\\
+                    Compagno & 2 & & & 4 & & & 6\\
                 \hline
-                    Fichera & & & & 8 & & & 8\\
+                    Fichera & & & & 6 & & & 6\\
                 \hline
-                    Masiero & & & & & 6 & & 6\\
+                    Masiero & & & & & 5 & & 5\\
                 \hline
-                    Oliva Medin & & 2 & & 8 & & & 10\\
+                    Oliva Medin & & 2 & & 6 & & & 8\\
                 \hline
-                    Radulovic & & & & 6 & 3 & & 9\\
+                    Radulovic & & & & 5 & 3 & & 8\\
                 \hline
-                    Zaghetto & & & & 6 & & 2 & 8\\
+                    Zaghetto & & & & 5 & & 2 & 7\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 33 & 16 & 2 & 55\\
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 26 & 13 & 2 & 45\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 825 & 240 & 30 & 1195\\
+                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 650 & 195 & 30 & 975\\
                 \hline
                 \end{tabular}
                 \end{table}
@@ -2003,7 +2008,7 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                \pie [polar, explode=0.1, text=legend] { 3.63/Responsabile, 3.63/Amministratore, 60/Progettista, 29.09/Programmatore, 3.63/Verificatore }
+                \pie [polar, explode=0.1, text=legend] { 4.44/Responsabile, 4.44/Amministratore, 57.78/Progettista, 28.89/Programmatore, 4.44/Verificatore }
                 \end{tikzpicture}
                 \caption{Consuntivo orario in percentuale - Undicesimo periodo}
                 \end{figure}
@@ -2022,15 +2027,15 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \hline
                     Analista & 0 & 0\\
                 \hline
-                    Progettista & 33 & 825\\
+                    Progettista & 26 & 650\\
                 \hline
-                    Programmatore & 16 & 240\\
+                    Programmatore & 13 & 195\\
                 \hline
                     Verificatore & 2 & 30\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale} & 55 & 1195\\
+                    \rowcolor{lightgray}\textit{Totale} & 45 & 975\\
                 \hline
-                    \rowcolor{lightgray}\textit{Rimanenti} & 150 & 2725\\
+                    \rowcolor{lightgray}\textit{Rimanenti} & 160 & 2945\\
                 \hline
                 \end{tabular}
                 \end{table}
@@ -2133,23 +2138,23 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \hline
                     \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
                 \hline
-                    Balestro & & & & & 7 & & 7\\
+                    Balestro & & & & & 6 & & 6\\
                 \hline
-                    Compagno & 2 & & & & 4 & & 6\\
+                    Compagno & 2 & & & & 3 & & 5\\
                 \hline
-                    Fichera & & & & 9 & & & 9\\
+                    Fichera & & & & 8 & & & 8\\
                 \hline
-                    Masiero & & & & & 7 & & 7\\
+                    Masiero & & & & & 5 & & 5\\
                 \hline
-                    Oliva Medin & & 2 & & & & 7 & 9\\
+                    Oliva Medin & & 2 & & & & 6 & 8\\
                 \hline
-                    Radulovic & & & & 6 & & 3 & 9\\
+                    Radulovic & & & & 5 & & 3 & 8\\
                 \hline
-                    Zaghetto & & & & & 5 & 2 & 7\\
+                    Zaghetto & & & & & 3 & 2 & 5\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 15 & 23 & 12 & 54\\
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 13 & 17 & 11 & 45\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 375 & 345 & 180 & 1000\\
+                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 325 & 255 & 165 & 845\\
                 \hline
                 \end{tabular}
                 \end{table}
@@ -2157,7 +2162,7 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                \pie [polar, explode=0.1, text=legend] { 3.70/Responsabile, 3.70/Amministratore, 27.78/Progettista, 42.59/Programmatore, 22.22/Verificatore }
+                \pie [polar, explode=0.1, text=legend] { 4.44/Responsabile, 4.44/Amministratore, 28.89/Progettista, 37.78/Programmatore, 24.44/Verificatore }
                 \end{tikzpicture}
                 \caption{Consuntivo orario in percentuale - Dodicesimo periodo}
                 \end{figure}
@@ -2176,15 +2181,15 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \hline
                     Analista & 0 & 0\\
                 \hline
-                    Progettista & 15 & 375\\
+                    Progettista & 13 & 325\\
                 \hline
-                    Programmatore & 23 & 345\\
+                    Programmatore & 17 & 255\\
                 \hline
-                    Verificatore & 12 & 180\\
+                    Verificatore & 11 & 165\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale} & 54 & 1000\\
+                    \rowcolor{lightgray}\textit{Totale} & 45 & 845\\
                 \hline
-                    \rowcolor{lightgray}\textit{Rimanenti} & 96 & 1725\\
+                    \rowcolor{lightgray}\textit{Rimanenti} & 115 & 2100\\
                 \hline
                 \end{tabular}
                 \end{table}
@@ -2245,7 +2250,7 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
             \paragraph{Preventivo}
                 \begin{table}[H]
                 \centering
-                \caption{Preventivo orario dodicesimo periodo}
+                \caption{Preventivo orario tredicesimo periodo}
                 \begin{tabular}{|l|c|c|c|c|c|c|c|}
                 \hline
                     \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
@@ -2287,23 +2292,23 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \hline
                     \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
                 \hline
-                    Balestro & & & & 6 & & & 6\\
+                    Balestro & & & & 4 & & & 4\\
                 \hline
-                    Compagno & & & & & 5 & 3 & 8\\
+                    Compagno & & & & & 3 & 2 & 5\\
                 \hline
-                    Fichera & 2 & & & & 5 & & 7\\
+                    Fichera & 2 & & & & 3 & & 5\\
                 \hline
-                    Masiero & & & & 6 & & & 6\\
+                    Masiero & & & & 4 & & & 4\\
                 \hline
-                    Oliva Medin & & & & & 8 & & 8\\
+                    Oliva Medin & & & & & 6 & & 6\\
                 \hline
-                    Radulovic & & & & & & 7 & 7\\
+                    Radulovic & & & & & & 5 & 5\\
                 \hline
-                    Zaghetto & & 2 & & & 6 & & 8\\
+                    Zaghetto & & 2 & & & 5 & & 7\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 12 & 24 & 10 & 50\\
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 8 & 17 & 7 & 36\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 300 & 360 & 150 & 910\\
+                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 200 & 255 & 105 & 660\\
                 \hline
                 \end{tabular}
                 \end{table}
@@ -2311,7 +2316,7 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                \pie [polar, explode=0.1, text=legend] { 4/Responsabile, 4/Amministratore, 24/Progettista, 48/Programmatore, 20/Verificatore }
+                \pie [polar, explode=0.1, text=legend] { 5.56/Responsabile, 5.56/Amministratore, 22.22/Progettista, 47.22/Programmatore, 19.44/Verificatore }
                 \end{tikzpicture}
                 \caption{Consuntivo orario in percentuale - Tredicesimo periodo}
                 \end{figure}
@@ -2330,15 +2335,15 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
                 \hline
                     Analista & 0 & 0\\
                 \hline
-                    Progettista & 12 & 300\\
+                    Progettista & 8 & 200\\
                 \hline
-                    Programmatore & 24 & 360\\
+                    Programmatore & 17 & 255\\
                 \hline
-                    Verificatore & 10 & 150\\
+                    Verificatore & 7 & 105\\
                 \hline
-                    \rowcolor{lightgray}\textit{Totale} & 50 & 910\\
+                    \rowcolor{lightgray}\textit{Totale} & 36 & 660\\
                 \hline
-                    \rowcolor{lightgray}\textit{Rimanenti} & 46 & 815\\
+                    \rowcolor{lightgray}\textit{Rimanenti} & 79 & 1440\\
                 \hline
                 \end{tabular}
                 \end{table}
@@ -2347,5 +2352,156 @@ Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
             Questo periodo è stato caratterizzato dal termine della progettazione e dal proseguimento della codifica, durante la codifica sono state riscontrate diverse difficoltà riguardanti le tecnologie che vengono utilizzate, il gruppo ha quindi deciso di confrontarsi meglio e di collaborare maggiormente, in modo da riuscire a superare le difficoltà e proseguire con la codifica.
             L'incontro con il professor Cardin è stato molto utile per risolvere i dubbi riguardanti la progettazione ed ha permesso un proseguimento più fluido della codifica.
 
-                    
+     % QUATTORDICESIMO PERIODO --------------------------
+        \subsubsection{13/04/2026 - 19/04/2026 - Quattordicesimo periodo}
+            \paragraph{Panoramica e obiettivi}
+            Il quattordicesimo periodo è stato caratterrizato dalla continuazione della codifica, inoltre sono stati aggiornati il Piano di Progetto e il Piano di Qualifica. Il gruppo ha inoltre deciso di iniziare con la stesura della Specifica Tecnica e del Manuale Utente. Gli obiettivi sono stati:
+            \begin{itemize}
+                \item Proseguimento codifica
+                \item Aggiornamento Piano di Qualifica
+                \item Aggiornamento Piano di Progetto
+                \item Inizio stesura Specifica Tecnica
+                \item Inizio stesura Manuale Utente
+            \end{itemize}
+            
+            \paragraph{Gestione rischi}
+                \begin{itemize}
+                \item\hyperref[tab:r1]{[R1-1] Inesperienza nelle tecnologie da utilizzare}
+                \end{itemize}
+                Dato il proseguimento della codifica, il gruppo ha previsto l'incorrere di rischi riguardanti l'inesperienza nelle tecnologie.
+    
+                \paragraph*{Rischi incontrati}
+                Durante questo periodo non è stato riscontrato alcun rischio, in quanto il gruppo è riuscito a superare le difficoltà riscontrate durante la codifica del periodo precedente, confrontandosi meglio e collaborando maggiormente.
+                La codifica è quindi proseguita senza problemi.
+                
+            \paragraph{Ruoli assegnati}
+            I ruoli assegnati per il quattordicesimo periodo sono i seguenti:
+                \begin{table}[H]
+                \centering
+                \caption{Ruoli quattordicesimo periodo}
+                \begin{tabular}{|l|l|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Membro}} \\
+                \hline
+                    Responsabile & Mattia Oliva Medin \\
+                \hline
+                    Amministratore & Sara Gioia Fichera \\
+                \hline
+                    Analista & - \\
+                \hline
+                    Progettista & Andrea Masiero \\
+                \hline
+                    Programmatore & \makecell[l]{ Nenad Radulovic\\ Bianca Zaghetto } \\
+                \hline
+                    Verificatore & \makecell[l]{ Francesco Balestro \\ Filippo Compagno } \\
+                \hline
+                \end{tabular}
+                \end{table}
+                
+            \paragraph{Preventivo}
+                \begin{table}[H]
+                \centering
+                \caption{Preventivo orario quattordicesimo periodo}
+                \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
+                \hline
+                    Balestro & & & & & & 6 & 6\\
+                \hline
+                    Compagno & & & & & & 6 & 6\\
+                \hline
+                    Fichera & & 6 & & & & & 6\\
+                \hline
+                    Masiero & & & & 6 & & & 6\\
+                \hline
+                    Oliva Medin & 6 & & & & & & 6\\
+                \hline
+                    Radulovic & & & & & 6 & & 6\\
+                \hline
+                    Zaghetto & & & & & 6 & & 6\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 6 & 6 & 0 & 6 & 12 & 12 & 42\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale costi} & 180 & 120 & 0 & 150 & 180 & 180 & 810\\
+                \hline
+                \end{tabular}
+                \end{table}
+
+                \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [polar, explode=0.1, text=legend] { 14.29/Responsabile, 14.29/Amministratore, 14.29/Progettista,  28.57/Programmatore, 28.57/Verificatore }
+                \end{tikzpicture}
+                \caption{Preventivo orario in percentuale - Quattordicesimo periodo}
+                \end{figure}
+                
+            \paragraph{Consuntivo}
+                \begin{table}[H]
+                \centering
+                \caption{Consuntivo orario quattordicesimo periodo}
+                \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Membro}} & {\textbf{RE}} & {\textbf{AM}} & {\textbf{AN}} & {\textbf{PRJ}} & {\textbf{PRG}} & {\textbf{VER}} & {\textbf{TOTALE}}\\
+                \hline
+                    Balestro & & & & & & 5 & 5\\
+                \hline
+                    Compagno & & & & & & 4 & 4\\
+                \hline
+                    Fichera & & 2 & & & & 5 & 7\\
+                \hline
+                    Masiero & & & & 5 & & & 5\\
+                \hline
+                    Oliva Medin & 2 & & & & 4 & & 6\\
+                \hline
+                    Radulovic & & & & & 7 & & 7\\
+                \hline
+                    Zaghetto & & & & & 5 & & 5\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale per ruolo} & 2 & 2 & 0 & 5 & 16 & 14 & 39\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale costi} & 60 & 40 & 0 & 125 & 240 & 210 & 675\\
+                \hline
+                \end{tabular}
+                \end{table}
+
+                \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                \pie [polar, explode=0.1, text=legend] { 5.13/Responsabile, 5.13/Amministratore, 12.82/Progettista, 41.03/Programmatore, 35.90/Verificatore }
+                \end{tikzpicture}
+                \caption{Consuntivo orario in percentuale - Quattordicesimo periodo}
+                \end{figure}
+                
+            \paragraph{Risorse rimanenti}
+                \begin{table}[H]
+                \centering
+                \caption{Risorse economiche rimanenti dal consuntivo orario}
+                \begin{tabular}{|l|c|c|}
+                \hline
+                    \rowcolor{lightgray}{\textbf{Ruolo}} & {\textbf{Ore}} & {\textbf{Costo}}\\
+                \hline
+                    Responsabile & 2 & 60\\
+                \hline
+                    Amministratore & 2 & 40\\
+                \hline
+                    Analista & 0 & 0\\
+                \hline
+                    Progettista & 5 & 125\\
+                \hline
+                    Programmatore & 16 & 240\\
+                \hline
+                    Verificatore & 14 & 210\\
+                \hline
+                    \rowcolor{lightgray}\textit{Totale} & 39 & 675\\
+                \hline
+                    \rowcolor{lightgray}\textit{Rimanenti} & 40 & 765\\
+                \hline
+                \end{tabular}
+                \end{table}
+                
+            \paragraph{Retrospettiva}
+            Questo periodo è stato caratterizzato dalla continuazione della codifica, durante questo periodo non è stato riscontrato alcun rischio ed il lavoro è proseguito con successo.
+            Il gruppo prevede di terminare la codifica, i test e la stesura della documentazione entro il prossimo periodo, in modo da riuscire a rispettare i tempi previsti.
+            Il gruppo ha quindi fissato un incontro per il 28 aprile con la proponente per effettuare l'approvazione MVP.
+
 \end{document}
