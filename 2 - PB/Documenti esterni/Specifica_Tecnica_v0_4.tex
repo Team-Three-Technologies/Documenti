@@ -11,9 +11,9 @@
 \usepackage{caption}
 \setTitle{Specifica Tecnica}
 \setAuthors{Mattia Oliva Medin \\ & Francesco Balestro \\ & Bianca Zaghetto}
-\setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro}
+\setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto}
 \setApprovation{}
-\setVersion{0.3}
+\setVersion{0.4}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -26,6 +26,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.4} & 22/04/26 & Francesco Balestro & Responsabile & Bianca Zaghetto & Prima stesura Architetture e aggiornamento sezione "Tecnologie" \\
                 \hline
                 \textbf{0.3} & 14/04/26 & Bianca Zaghetto & Programmatore & Francesco Balestro & Riferimenti normativi \\
                 \hline
@@ -121,7 +123,7 @@
                 \hline
                 \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
                 \hline
-                \textbf{TypeScript} &  & TypeScript è un linguaggio di programmazione tipizzato basato su JavaScript, utilizzato per migliorare la qualità del codice grazie alla tipizzazione statica e al supporto per lo sviluppo di applicazioni scalabili e manutenibili. \\
+                \textbf{TypeScript} & 5.9.3 & TypeScript è un linguaggio di programmazione tipizzato basato su JavaScript, utilizzato per migliorare la qualità del codice grazie alla tipizzazione statica e al supporto per lo sviluppo di applicazioni scalabili e manutenibili. \\
                 \hline
             \end{tabular}
         \end{table}
@@ -135,7 +137,7 @@
                 \hline
                 \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
                 \hline
-                \textbf{Angular} &  & Angular è un framework frontend basato su TypeScript, utilizzato per la realizzazione di applicazioni web strutturate e modulari tramite un’architettura a componenti. \\
+                \textbf{Angular} & 21.2.0 & Angular è un framework frontend basato su TypeScript, utilizzato per la realizzazione di applicazioni web strutturate e modulari tramite un’architettura a componenti. \\
                 \hline
             \end{tabular}
         \end{table}
@@ -149,47 +151,85 @@
                 \hline
                 \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
                 \hline
-                \textbf{Electron} &  & Electron è un framework per lo sviluppo di applicazioni desktop multipiattaforma basato su tecnologie web, che integra un runtime basato su Chromium e Node.js e fornisce strumenti per il packaging e l’esecuzione dell’applicazione. \\
+                \textbf{Electron} & 40.8.2 & Electron è un framework per lo sviluppo di applicazioni desktop multipiattaforma basato su tecnologie web, che integra un runtime basato su Chromium e Node.js e fornisce strumenti per il packaging e l’esecuzione dell’applicazione. \\
                 \hline
             \end{tabular}
         \end{table}
 
-        \subsection{Comunicazione tra componenti}
+        \subsection{Librerie}
         \begin{table}[H]
             \captionsetup{skip=10pt}
-            \caption{Comunicazione tra componenti}
+            \caption{Librerie}
             \rowcolors{1}{lightgray}{white}
             \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
                 \hline
                 \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
                 \hline
-                \textbf{IPC} &  & IPC (Inter-Process Communication di Electron) è un meccanismo fornito da Electron che consente la comunicazione tra il processo principale e i processi renderer, permettendo lo scambio strutturato di messaggi e dati tra i componenti dell’applicazione. \\
+                \textbf{ngx-doc-viewer} & 21.0.5 & Libreria Angular per la visualizzazione di documenti direttamente nel browser tramite viewer integrati. \\
+                \hline
+                \textbf{better-sqlite3} & 12.6.2 & Libreria per Node.js che fornisce un’interfaccia sincrona ed efficiente per l’utilizzo di database SQLite, integrando direttamente il motore SQLite e semplificando l’esecuzione di query e la gestione dei dati. \\
+                \hline
+                \textbf{fast-xml-parser} & 5.5.9 & Libreria JavaScript veloce per il parsing e la conversione di file XML in oggetti JavaScript, e viceversa. \\
+                \hline
+                \textbf{tsyringe} & 4.10.0 & Libreria di dependency injection per TypeScript che facilita la gestione delle dipendenze e l’inversione del controllo. \\
                 \hline
             \end{tabular}
         \end{table}
 
-        \subsection{Sistemi per la persistenza dei dati}
+        \subsection{Strumenti di sviluppo}
         \begin{table}[H]
             \captionsetup{skip=10pt}
-            \caption{Sistemi per la persistenza dei dati}
+            \caption{Strumenti di sviluppo}
             \rowcolors{1}{lightgray}{white}
             \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
                 \hline
                 \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
                 \hline
-                \textbf{SQLite} &  & SQLite è un sistema di gestione di database relazionale leggero e embedded, utilizzato per la persistenza locale dei dati senza necessità di un server esterno. \\
+                \textbf{prettier} & 3.8.1 & Prettier è un formatter automatico di codice che garantisce uno stile consistente e leggibile in diversi linguaggi. \\
+                \hline
+                \textbf{electron-builder} & 26.8.1 & Strumento per il packaging e la distribuzione di applicazioni Electron in eseguibili per diverse piattaforme. \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+        \subsection{Tecnologie per analisi dinamica}
+        \begin{table}[H]
+            \captionsetup{skip=10pt}
+            \caption{Tecnologie per analisi dinamica}
+            \rowcolors{1}{lightgray}{white}
+            \begin{tabular}{|>{\centering\arraybackslash}m{0.20\linewidth}|>{\centering\arraybackslash}m{0.10\linewidth}|>{\centering\arraybackslash}m{0.62\linewidth}|}
+                \hline
+                \textbf{Tecnologia} & \textbf{Versione} & \textbf{Descrizione} \\
+                \hline
+                \textbf{vitest} & 4.0.8 & Vitest è un framework di testing veloce per progetti JavaScript/TypeScript, progettato per integrarsi con Vite e supportare test unitari e di integrazione. \\
+                \hline
+                \textbf{@vitest/coverage-v8} & 4.0.8 & @vitest/coverage-v8 è un plugin per Vitest che utilizza il motore V8 per generare report di code coverage durante l’esecuzione dei test. \\
                 \hline
             \end{tabular}
         \end{table}
     }
 
     \section{Architettura} {
-        \subsection{Architettura di deployment} {
-
-        }
-
         \subsection{Architettura logica} {
-            
+            Il sistema è progettato seguendo un’\textbf{architettura layered}, che organizza l’applicazione in livelli distinti con responsabilità ben definite, al fine di garantire una chiara separazione delle competenze, una maggiore manutenibilità e una migliore scalabilità logica del sistema.\\
+            \\
+            In questo modello architetturale, ogni livello espone servizi ben definiti verso il livello superiore e interagisce esclusivamente con quelli adiacenti, riducendo l’accoppiamento tra le componenti. Questa struttura consente di isolare la logica di presentazione, la logica applicativa e la gestione dei dati, facilitando l’evoluzione indipendente delle singole parti del sistema.\\
+            \\
+            L’applicazione è organizzata in tre livelli principali: \textit{presentation layer}, \textit{application layer} e \textit{data layer}, ciascuno con un ruolo ben definito all’interno del sistema.
+            \begin{itemize}
+                \item Il \textbf{presentation layer} è responsabile dell’interfaccia utente e della visualizzazione dei contenuti del DIP (Dissemination Information Package). È implementato tramite \textit{Angular} e gestisce il rendering delle viste, l’interazione con l’utente e la presentazione dei documenti e dei metadati.
+                \item L'\textbf{application layer} contiene la logica applicativa e coordina le operazioni tra interfaccia utente e accesso ai dati. È integrato nel contesto di \textit{Electron} e si occupa della gestione del flusso applicativo, della comunicazione tra processi tramite IPC e dell’orchestrazione delle operazioni sul DIP
+                \item Il \textbf{data layer} gestisce la persistenza e l’accesso ai dati contenuti nel pacchetto DIP. Utilizza \textit{better-sqlite3} per l’interazione con il database locale, permettendo l’esecuzione di query sui metadati e la gestione strutturata delle informazioni archivistiche.\\
+            \end{itemize}
+            La comunicazione tra i diversi livelli, in particolare tra presentation layer e application layer, avviene attraverso meccanismi di IPC forniti nativamente da Electron, che permettono un’interazione controllata tra i processi mantenendo una separazione tra interfaccia utente e logica applicativa.
+        }
+        
+        \subsection{Architettura di deployment} {
+            L’architettura di deployment del sistema è di tipo \textbf{monolitico}, in quanto l’applicazione viene distribuita come un’unica unità software autocontenuta. Tutte le componenti necessarie al funzionamento del sistema, incluse le dipendenze e le risorse applicative, sono incluse all’interno dello stesso pacchetto installabile.\\
+            \\
+            Questa scelta consente di semplificare il processo di installazione e configurazione per l’utente finale, eliminando la necessità di servizi esterni o di componenti distribuiti. L’applicazione può quindi essere eseguita in locale in modo indipendente, garantendo portabilità e coerenza dell’ambiente di esecuzione.\\
+            \\
+            Il packaging e la distribuzione dell’applicazione sono gestiti tramite \textit{electron-builder}, uno strumento specifico per applicazioni \textit{Electron}, che consente la creazione di eseguibili per le principali piattaforme desktop. Questo processo permette di ottenere un unico installer che incapsula l’intero sistema e tutte le sue dipendenze.
         }
 
         \subsection{Design pattern} {
