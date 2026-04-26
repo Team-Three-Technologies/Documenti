@@ -3,10 +3,10 @@
 \usepackage{fontawesome5}
 
 \setTitle{Manuale Utente}
-\setAuthors{Sara Gioia Fichera \\ & Andrea Masiero}
-\setVerificators{Nenad Radulovic \\ & Francesco Balestro}
+\setAuthors{Sara Gioia Fichera \\ & Andrea Masiero \\ & Filippo Compagno}
+\setVerificators{Nenad Radulovic \\ & Francesco Balestro \\ & Bianca Zaghetto}
 \setApprovation{}
-\setVersion{0.3}
+\setVersion{0.5}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -19,6 +19,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.5} & 24/04/26 & Filippo Compagno & Programmatore & Bianca Zaghetto & Aggiornata sezione Guida all'Utilizzo\\
                 \hline
                 \textbf{0.4} & 14/04/26 & Mattia Oliva Medin & Responsabile & Francesco Balestro & Aggiornata sezione Guida all'Utilizzo\\
                 \hline
@@ -61,12 +63,12 @@
                 \item \textit{Norme di Progetto v1.0}
                 \begin{itemize}
                     \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Norme_di_Progetto_v1_0.pdf}
-                    \item[] (Ultimo accesso: 13/04/2026)
+                    \item[] (Ultimo accesso: 14/04/2026)
                 \end{itemize}
                 \item Regolamento del Progetto Didattico
                 \begin{itemize}
                     \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/PD1.pdf}
-                    \item[] (Ultimo accesso: 13/04/2026)
+                    \item[] (Ultimo accesso: 24/04/2026)
                 \end{itemize}
             \end{itemize}
             }
@@ -75,7 +77,7 @@
                 \item \textit{Analisi dei Requisiti v1.0}
                 \begin{itemize}
                     \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20esterni/Analisi_dei_Requisiti_v1_0.pdf}
-                    \item[] (Ultimo accesso: 14/04/2026)
+                    \item[] (Ultimo accesso: 24/04/2026)
                 \end{itemize}
                 \item Verbali interni
                 \item Verbali esterni
@@ -87,7 +89,7 @@
                 \item Slide del corso: T2 - Processi di ciclo di vita del \textit{software}
                 \begin{itemize}
                     \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T02.pdf}
-                    \item[] (Ultimo accesso: 11/04/2026)
+                    \item[] (Ultimo accesso: 23/04/2026)
                 \end{itemize}
                 \item Slide del corso: T4 - Gestione di progetto
                 \begin{itemize}
@@ -97,7 +99,7 @@
                 \item \textit{Glossario v0.5}
                 \begin{itemize}
                     \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Glossario_v0_5.pdf}
-                    \item[] (Ultimo accesso: 14/04/2026)
+                    \item[] (Ultimo accesso: 24/04/2026)
                 \end{itemize}
             \end{itemize}
             }
@@ -106,7 +108,7 @@
     
     \section{Installazione}
         \subsection{Requisiti di sistema}
-        DIPReader è un'applicazione desktop autonoma che non richiede l'installazione di componenti aggiuntive. Tutto il necessario per il funzionamento è già incluso nel pacchetto di distribuzione. \\
+        DIPReader è un'applicazione desktop autonoma che non richiede l'installazione di componenti aggiuntive, in quanto tutto il necessario per il funzionamento è già incluso nel pacchetto di distribuzione.\\
 
         L'applicazione è compatibile con i seguenti sistemi operativi:
         \begin{itemize}
@@ -116,32 +118,54 @@
         \end{itemize}
 
         \subsection{Installazione}
-            Per installare l'applicativo DIPReader la procedura cambia leggermente in base al sistema operativo in uso. In nessun caso è richiesta l'installazione di componenti aggiuntive.
+            Per installare l'applicativo DIPReader la procedura cambia leggermente in base al sistema operativo in uso ma in nessun caso è richiesta l'installazione di componenti aggiuntive.
+            L'applicativo è disponibile per il download alla seguente repository: \\
+            \url{https://github.com/Team-Three-Technologies/MVP}
 
-            (procedura con screen di come fare il download dalla repo. ??)
+            (procedura con screen di come fare il download dalla repo)
 
             \begin{itemize}
-                \item Windows: Il pacchetto è un file eseguibile .exe di tipo portable. È sufficiente scaricare il file, posizionarlo nella cartella desiderata e avviarlo con un doppio clic.
+                \item Windows: Il pacchetto è un file eseguibile .exe di tipo portable.
+                    Per installare l'applicazione è sufficiente:
+                    \begin{enumerate}
+                        \item Posizionare il file scaricato nella cartella radice del pacchetto DIP
+                        \item Avviare l'applicazione con un doppio clic
+                    \end{enumerate}
+
                 \item macOS: Il pacchetto per macOS è distribuito come archivio .zip. \\
                     Per installare l'applicazione è sufficiente:
                     \begin{enumerate}
                         \item Aprire il file .zip scaricato
-                        \item Trascinare l'applicazione nella cartella scelta
+                        \item Trascinare l'applicazione nella cartella radice del pacchetto DIP
                         \item Avviare l'applicazione con un doppio clic
                     \end{enumerate}
+
                 \item Linux: Il pacchetto è distribuito nel formato AppImage, un formato universale compatibile con la maggior parte delle distribuzioni Linux. \\
                     Per avviare l'applicazione:
                     \begin{enumerate}
                         \item Scaricare il file .AppImage
-                        \item Renderlo eseguibile: tasto destro sul file $\rightarrow$ Proprietà $\rightarrow$ spuntare "Consenti esecuzione come programma" (oppure da terminale con il comando chmod + x nomeFile.AppImage ??)
-                        \item Avviare l'applicazione con un doppio clic
+                        \item Renderlo eseguibile: tasto destro sul file $\rightarrow$ Proprietà $\rightarrow$ spuntare "Consenti esecuzione come programma"
+                        \item Spostare il file nella cartella radice del pacchetto DIP e avviarlo con un doppio clic
                     \end{enumerate}
-                    Non è necessario disporre di permessi di amministratore.
             \end{itemize}
 
-        \subsection{Primo avvio}
-            Una volta avviato DIPReader, l'applicazione si apre direttamente sull'interfaccia principale, senza richiedere alcuna registrazione, creazione di account o configurazione. Se l'eseguibile non è stato posizionato all'interno di una cartella DIP valida, la lista dei documenti risulta vuota.
-            Per caricare un pacchetto DIP e iniziare la consultazione, fare riferimento alla sezione \ref{sec:apertura}.
+            In nessun caso sono richiesti permessi di amministratore.
+
+            \subsection{Primo avvio}
+            Al primo avvio DIPReader si apre direttamente sull'interfaccia principale, senza richiedere registrazione, creazione di account o configurazione. 
+            Se la lista dei documenti risulta vuota, verificare che l'eseguibile sia posizionato correttamente nella cartella radice del pacchetto DIP (vedere sezione \ref{sec:apertura}).
+
+            \begin{figure}[h!]
+                \centering
+                \setlength{\fboxrule}{0.5pt}
+                \setlength{\fboxsep}{0pt}
+                \fbox{
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/dipreader.png}
+                }
+                \caption{Schermata principale}
+                \label{fig:dipreader}
+            \end{figure}
+
 
     \section{Guida all'utilizzo}
         \subsection{Apertura di un pacchetto DIP}
@@ -151,16 +175,53 @@
 
         \subsection{Consultazione dei documenti}
             \subsubsection{Visualizzare la lista dei documenti}
-            Al centro della finestra è presente la lista di tutti i documenti contenuti nel pacchetto DIP o, nel caso in cui siano applicati dei filtri (per maggiori dettagli sull'utilizzo dei filtri si rimanda alla sezione \ref{sec:filtri}), l'elenco dei soli documenti corrispondenti ai criteri di ricerca. Ogni voce riporta il nome del file e la relativa estensione.          
+            Al centro della finestra è presente la lista di tutti i documenti contenuti nel pacchetto DIP o, nel caso in cui siano applicati dei filtri (per maggiori dettagli sull'utilizzo dei filtri si rimanda alla sezione \ref{sec:filtri}), l'elenco dei soli documenti corrispondenti ai criteri di ricerca. Per ciascun 
+            documento principale sono elencati, immediatamente al di sotto e con un leggero rientro, i relativi allegati.  
+            
+            \begin{figure}[h!]
+                \centering
+                \setlength{\fboxrule}{0.5pt}
+                \setlength{\fboxsep}{0pt}
+                \fbox{
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/document-list.png}
+                }
+                \caption{Lista dei documenti}
+                \label{fig:document-list}
+            \end{figure}
             
             \subsubsection{Selezionare un documento e visualizzarne i dettagli}
             Per selezionare un documento è sufficiente fare clic sul nome del documento dalla lista. 
             Dopo aver selezionato un documento, nel pannello di destra compare la sezione "Dettagli Documento" con i seguenti campi: il nome del file, il formato (ad esempio PDF o XML), l'identificativo univoco del documento, e la data e ora di registrazione. Più in basso è presente la sezione "Allegati", che mostra il numero di allegati e li elenca ciascuno con il proprio percorso e formato.
             Per la consultazione degli allegati vedere la sezione~\ref{sec:allegati}.
 
+            \begin{figure}[h!]
+                \centering
+                \setlength{\fboxrule}{0.5pt}
+                \setlength{\fboxsep}{0pt}
+                \fbox{
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/document-details.png}
+                }
+                \caption{Dettagli di un documento}
+                \label{fig:document-details}
+            \end{figure}
+
             \subsubsection{Visualizzare l'anteprima di un documento}
-            Per visualizzare il contenuto di un file, è sufficiente cliccare sull'icona a forma di occhio (\faEye) posta in corrispondenza del documento di interesse nell'elenco centrale. L'anteprima viene caricata in una schermata dedicata a tutto schermo, permettendo una lettura agevole senza la necessità di aprire programmi esterni. Per tornare alla lista di documenti è sufficiente cliccare l'apposito pulsante "Torna Indietro".
+            Per visualizzare il contenuto di un file, è sufficiente cliccare sull'icona a forma di occhio (\faEye) posta in corrispondenza del documento di interesse nell'elenco centrale. L'anteprima viene caricata in una schermata dedicata a tutto schermo, permettendo una lettura agevole senza la necessità di aprire programmi esterni. Per tornare alla lista di documenti è sufficiente cliccare l'apposito pulsante in alto a sinistra "Torna Indietro".
             Se l'anteprima non è disponibile, la sezione lo comunica tramite un apposito messaggio.
+
+            \begin{figure}[h!]
+                \centering
+                \setlength{\fboxrule}{0.5pt}
+                \setlength{\fboxsep}{0pt}
+                \fbox{
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/preview.png}
+                }
+                \caption{Anteprima di un documento}
+                \label{fig:preview}
+            \end{figure}
+
+            \subsubsection{Esportare un documento}
+            Per salvare una copia del documento sul proprio dispositivo, è sufficiente selezionare il documento desiderato dalla lista e fare clic sul pulsante "Esporta" presente nel pannello di destra. Verrà aperta una finestra di dialogo che permette di scegliere la cartella di destinazione.
 
         \subsection{Consultazione degli allegati}
             \subsubsection{Visualizzare gli allegati di un documento}
@@ -169,17 +230,39 @@
             
             \subsubsection{Selezionare un allegato e visualizzarne i dettagli}
             Per consultare i dettagli di uno specifico allegato, è sufficiente fare clic sul suo nome all'interno di questa sotto-lista. A seguito della selezione, il pannello di destra si aggiornerà mostrando la scheda "Dettagli Allegato", che riepiloga le informazioni specifiche del file selezionato quali: nome, formato e identificativo.
+
+            \begin{figure}[h!]
+                \centering
+                \setlength{\fboxrule}{0.5pt}
+                \setlength{\fboxsep}{0pt}
+                \fbox{
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/attachment.png}
+                }
+                \caption{Dettagli di un allegato}
+                \label{fig:attachment}
+            \end{figure}
             
             \subsubsection{Visualizzare l'anteprima di un allegato}
             Così come per i documenti principali, anche per gli allegati è possibile visualizzare l'anteprima. Per farlo, occorre cliccare sull'icona a forma di occhio (\faEye) situata alla destra del nominativo dell'allegato desiderato.
+
+            \begin{figure}[h!]
+                \centering
+                \setlength{\fboxrule}{0.5pt}
+                \setlength{\fboxsep}{0pt}
+                \fbox{
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/preview.png}
+                }
+                \caption{Anteprima di un documento}
+            \end{figure}
             
             \subsubsection{Tornare al documento padre}
             Per tornare alla visualizzazione del documento principale è sufficiente fare clic sul suo nome nella lista centrale. Il pannello di destra si aggiorna ripristinando i metadati.
 
         \subsection{Ricerca e uso dei filtri}
             \label{sec:filtri}
-            \subsubsection{Aggiungere un filtro}
-            Nella parte superiore del pannello laterale sinistro è presente il pulsante "Aggiungi Filtro". Premendolo compare una nuova riga contenente due elementi: un menu a tendina, per selezionare il campo sui cui effettuare la ricerca, e un campo di testo in cui digitare il valore desiderato.
+                \subsubsection{Aggiungere un filtro}
+                Nella parte superiore del pannello laterale sinistro è presente il pulsante "Aggiungi Filtro". Premendolo compare una nuova riga contenente un menu a tendina per selezionare il campo su cui effettuare la ricerca e un campo per inserire il valore desiderato.
+                Quest'ultimo varia in base al campo selezionato: per i campi temporali è presente un selettore di data, per i campi categorici un menu a tendina con opzioni predefinite, per gli altri invece un campo libero.
 
             \begin{figure}[h!]
                 \centering
@@ -192,9 +275,6 @@
                 \label{fig:filter1}
             \end{figure}
 
-            \subsubsection{Utilizzare più filtri combinati}
-            È possibile combinare più criteri di ricerca premendo nuovamente il pulsante "Aggiungi Filtro". Ogni riga aggiunta rappresenta un filtro indipendente: la ricerca restituisce solo i documenti che soddisfano tutti i criteri contemporaneamente.
-
             \begin{figure}[h!]
                 \centering
                 \setlength{\fboxrule}{0.5pt}
@@ -202,11 +282,15 @@
                 \fbox{
                     \includegraphics[width=0.5\textwidth]{screenshots_dipreader/filter2.png}
                 }
-                \caption{Impostare più filtri contemporaneamente}
+                \caption{Filtro con menu a tendina}
                 \label{fig:filter2}
             \end{figure}
 
+            \subsubsection{Utilizzare più filtri combinati}
+            È possibile combinare più criteri di ricerca premendo nuovamente il pulsante "Aggiungi Filtro". I filtri aggiuntivi si applicano in modo cumulativo: la ricerca restituisce solo i documenti che soddisfano tutti i criteri inseriti contemporaneamente.
+
             \subsubsection{Rimuovere un filtro}
+            \label{sec:removefilter}
             Per eliminare un filtro specifico è sufficiente fare clic sul pulsante a forma di "X" posto alla destra del relativo campo di testo.
 
             \begin{figure}[h!]
@@ -224,10 +308,10 @@
             Una volta impostati i parametri desiderati, fare clic sul pulsante "Cerca" per avviare l'elaborazione. La lista si aggiorna mostrando solo i documenti che corrispondono esattamente ai criteri inseriti.
 
             \subsubsection{Ripristinare la lista completa}
-            Per tornare a visualizzare l'intero contenuto del pacchetto DIP è sufficiente rimuovere tutti i filtri attivi e premere nuovamente il pulsante "Cerca".
+            Per tornare a visualizzare l'intero contenuto del pacchetto DIP è sufficiente rimuovere tutti i filtri attivi. Per rimuovere un filtro si veda la sezione \ref{sec:removefilter}.
             
         \subsection{Visualizzare le informazioni sul pacchetto DIP}
-        Il riquadro "Informazioni del pacchetto (DIP)", sempre visibile in basso a sinistra, riporta: data di creazione, nome e versione del programma usato per generarlo, produttore e numero totale di documenti contenuti.
+        Il riquadro "Informazioni del pacchetto (DIP)", sempre visibile in basso a sinistra, riporta: UUID, data di creazione, numero totale di documenti contenuti e numero AIP.
         
         \begin{figure}[h!]
             \centering
@@ -236,7 +320,7 @@
             \fbox{
                 \includegraphics[width=0.5\textwidth]{screenshots_dipreader/dip-details.png}
             }
-            \caption{Dettagli di un DIP}
+            \caption{Dettagli del pacchetto DIP}
             \label{fig:dip-details}
         \end{figure}
 \end{document}
