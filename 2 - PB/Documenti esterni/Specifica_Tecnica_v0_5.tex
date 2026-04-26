@@ -330,7 +330,7 @@
         }
         \subsection{Struttura a layer} {
             \subsubsection{Oggetti di trasferimento dati} {
-                \paragraph{IpcResponse$<$T$>$}\mbox{}\\
+                \paragraph{IpcResponse$<$T$>$}\label{par:ipcResponse}\mbox{}\\
                 Rappresenta un DTO generico per la risposta di comunicazione tra processi (IPC) nel sistema. Questo oggetto è utilizzato nell'application logic per trasportare in modo uniforme il risultato di un'operazione, contenendo sia i dati di successo che eventuali errori.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -339,21 +339,21 @@
                     \item \textbf{error string $|$ null}: rappresenta il messaggio di errore associato all'operazione in caso di fallimento; assume valore \texttt{null} in caso di successo.
                 \end{itemize}
                 
-                \paragraph{DipRequestDTO}\mbox{}\\
+                \paragraph{DipRequestDTO}\label{par:dipRequestDTO}\mbox{}\\
                 Rappresenta un DTO (Data Transfer Object) per la richiesta di operazioni su un pacchetto DIP. Questo oggetto è utilizzato nell'application logic per trasportare l'identificativo del pacchetto DIP su cui eseguire le operazioni richieste.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
                 \begin{itemize}
                     \item \textbf{dipUuid string}: rappresenta l'identificativo univoco del pacchetto DIP su cui eseguire l'operazione richiesta.
                 \end{itemize}
-                \paragraph{AutolimportDipResponseDTO}\mbox{}\\
+                \paragraph{AutoImportDipResponseDTO}\label{par:AutoImportDipResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di importazione automatica di un pacchetto DIP. Questo oggetto è utilizzato nell'application logic per restituire l'identificativo del pacchetto DIP che è stato importato.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
                 \begin{itemize}
                     \item \textbf{dipUuid string}: rappresenta l'identificativo univoco del pacchetto DIP che è stato importato automaticamente nel sistema.
                 \end{itemize}
-                \paragraph{DipContentResponseDTO}\mbox{}\\
+                \paragraph{DipContentResponseDTO}\label{par:DipContentResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di recupero del contenuto di un pacchetto DIP. Questo oggetto è utilizzato nell'application logic per restituire le informazioni principali del pacchetto DIP e l'elenco dei documenti in esso contenuti.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -365,7 +365,7 @@
                     \item \textbf{documentsList DocumentEssentialsDTO[0..*]}: rappresenta una lista opzionale di oggetti DocumentEssentialsDTO contenenti le informazioni essenziali dei documenti presenti nel pacchetto DIP.
                 \end{itemize}
 
-                \paragraph{FileIntegrityDTO}\mbox{}\\
+                \paragraph{FileIntegrityDTO}\label{par:FileIntegrityDTO}\mbox{}\\
                 Rappresenta un DTO per la verifica dell'integrità di un file all'interno del DIP. Questo oggetto è utilizzato nell'application logic per riportare l'esito del controllo di integrità su un singolo file.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -373,7 +373,7 @@
                     \item \textbf{uuid string}: rappresenta l'identificativo univoco del file sottoposto a verifica di integrità;
                     \item \textbf{status boolean}: rappresenta l'esito della verifica di integrità del file; assume valore \texttt{true} se il file è integro, \texttt{false} altrimenti.
                 \end{itemize}
-                \paragraph{DocumentIntegrityDTO}\mbox{}\\
+                \paragraph{DocumentIntegrityDTO}\label{par:DocumentIntegrityDTO}\mbox{}\\
                 Rappresenta un DTO per la verifica dell'integrità di un documento all'interno del DIP. Questo oggetto è utilizzato nell'application logic per riportare l'esito del controllo di integrità sul file principale del documento e sugli eventuali allegati.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -381,14 +381,14 @@
                     \item \textbf{integrity FileIntegrityDTO}: rappresenta l'esito della verifica di integrità del file principale del documento;
                     \item \textbf{attachments FileIntegrityDTO[0..*]}: rappresenta una lista opzionale di oggetti FileIntegrityDTO contenenti gli esiti della verifica di integrità per ciascun allegato associato al documento.
                 \end{itemize}
-                \paragraph{DiplintegrityResponseDTO}\mbox{}\\
+                \paragraph{DipIntegrityResponseDTO}\label{par:DipIntegrityResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di verifica dell'integrità di un pacchetto DIP. Questo oggetto è utilizzato nell'application logic per restituire gli esiti dei controlli di integrità sui documenti contenuti nel pacchetto.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
                 \begin{itemize}
                     \item \textbf{documents DocumentIntegrityDTO[0..*]}: rappresenta una lista opzionale di oggetti DocumentIntegrityDTO contenenti gli esiti della verifica di integrità per ciascun documento presente nel pacchetto DIP.
                 \end{itemize}
-                \paragraph{DocumentEssentialsAttachmentDTO}\mbox{}\\
+                \paragraph{DocumentEssentialsAttachmentDTO}\label{par:DocumentEssentialsAttachmentDTO}\mbox{}\\
                 Rappresenta un DTO per le informazioni essenziali di un allegato all'interno di un documento nel DIP. Questo oggetto è utilizzato nell'application logic per trasportare i dati minimi di un allegato, come l'identificativo e il nome.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -396,7 +396,7 @@
                     \item \textbf{uuid string}: rappresenta l'identificativo univoco dell'allegato;
                     \item \textbf{name string}: rappresenta il nome dell'allegato.
                 \end{itemize}
-                \paragraph{DocumentEssentialsDTO}\mbox{}\\
+                \paragraph{DocumentEssentialsDTO}\label{par:DocumentEssentialsDTO}\mbox{}\\
                 Rappresenta un DTO per le informazioni essenziali di un documento nel DIP. Questo oggetto è utilizzato nell'application logic per trasportare i dati minimi di un documento, come l'identificativo, il nome e la lista degli allegati associati.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -406,7 +406,7 @@
                     \item \textbf{documentAttachments DocumentEssentialsAttachmentDTO[0..*]}: rappresenta una lista opzionale di oggetti DocumentEssentialsAttachmentDTO contenente le informazioni essenziali degli allegati associati al documento.
                 \end{itemize}
 
-                \paragraph{SearchResponseDTO}\mbox{}\\
+                \paragraph{SearchResponseDTO}\label{par:SearchResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di ricerca di documenti nel DIP. Questo oggetto è utilizzato nell'application logic per restituire l'elenco dei documenti che soddisfano i criteri di ricerca specificati.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -414,7 +414,7 @@
                     \item \textbf{results DocumentEssentialsDTO[0..*]}: rappresenta una lista opzionale di oggetti DocumentEssentialsDTO contenente le informazioni essenziali dei documenti trovati in seguito all'esecuzione della ricerca.
                 \end{itemize}
 
-                \paragraph{SearchFilterDTO}\mbox{}\\
+                \paragraph{SearchFilterDTO}\label{par:SearchFilterDTO}\mbox{}\\
                 Rappresenta un DTO per la definizione di un filtro di ricerca nel DIP. Questo oggetto è utilizzato nell'application logic per specificare un criterio di ricerca basato su una coppia tipo-valore applicabile ai metadati dei documenti.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -423,14 +423,14 @@
                     \item \textbf{value string}: rappresenta il valore da confrontare con il metadato specificato per il filtro di ricerca.
                 \end{itemize}
 
-                \paragraph{SearchRequestDTO}\mbox{}\\
+                \paragraph{SearchRequestDTO}\label{par:SearchRequestDTO}\mbox{}\\
                 Rappresenta un DTO per la richiesta di ricerca di documenti nel DIP. Questo oggetto è utilizzato nell'application logic per trasportare l'insieme dei filtri da applicare nella ricerca sui metadati dei documenti.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
                 \begin{itemize}
                     \item \textbf{filters SearchFilterDTO[0..*]}: rappresenta una lista opzionale di oggetti SearchFilterDTO contenente i filtri da applicare per la ricerca dei documenti.
                 \end{itemize}
-                \paragraph{AttachmentResponseDTO}\mbox{}\\
+                \paragraph{AttachmentResponseDTO}\label{par:AttachmentResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta contenente le informazioni di un allegato nel DIP. Questo oggetto è utilizzato nell'application logic per trasportare i dati di un allegato, inclusi l'identificativo, il percorso e l'estensione del file.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -439,7 +439,7 @@
                     \item \textbf{path string}: rappresenta il percorso del file allegato all'interno del sistema;
                     \item \textbf{extension string}: rappresenta l'estensione del file allegato.
                 \end{itemize}
-                \paragraph{DocumentDetailsResponseDTO}\mbox{}\\
+                \paragraph{DocumentDetailsResponseDTO}\label{par:DocumentDetailsResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di recupero dei dettagli di un documento nel DIP. Questo oggetto è utilizzato nell'application logic per restituire tutte le informazioni relative a un documento, inclusi metadati, contenuto, dimensioni e allegati.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -458,7 +458,7 @@
                     \item \textbf{attachments AttachmentResponseDTO[0..*]}: rappresenta una lista opzionale di oggetti AttachmentResponseDTO contenente le informazioni dettagliate degli allegati del documento.
                 \end{itemize}
 
-                \paragraph{DocumentRequestDTO}\mbox{}\\
+                \paragraph{DocumentRequestDTO}\label{par:DocumentRequestDTO}\mbox{}\\
                 Rappresenta un DTO per la richiesta di operazioni su un documento nel DIP. Questo oggetto è utilizzato nell'application logic per trasportare l'identificativo del documento su cui eseguire l'operazione richiesta.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -466,7 +466,7 @@
                     \item \textbf{documentUuid string}: rappresenta l'identificativo univoco del documento su cui eseguire l'operazione richiesta.
                 \end{itemize}
 
-                \paragraph{FileRequestDTO}\mbox{}\\
+                \paragraph{FileRequestDTO}\label{par:FileRequestDTO}\mbox{}\\
                 Rappresenta un DTO per la richiesta di operazioni su un file all'interno di un documento nel DIP. Questo oggetto è utilizzato nell'application logic per trasportare l'identificativo del documento e l'identificativo opzionale del file su cui eseguire l'operazione richiesta.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -474,14 +474,14 @@
                     \item \textbf{documentUuid string}: rappresenta l'identificativo univoco del documento contenente il file;
                     \item \textbf{fileUuid string $|$ undefined}: rappresenta l'identificativo univoco del file su cui eseguire l'operazione; se non specificato (undefined), l'operazione viene eseguita sul file principale del documento.
                 \end{itemize}
-                \paragraph{FileInternalPreviewResponseDTO}\mbox{}\\
+                \paragraph{FileInternalPreviewResponseDTO}\label{par:FileInternalPreviewResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di generazione di un'anteprima interna di un file nel DIP. Questo oggetto è utilizzato nell'application logic per restituire il percorso del file di anteprima generato per la visualizzazione all'interno dell'applicazione.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
                 \begin{itemize}
                     \item \textbf{filePath string}: rappresenta il percorso del file di anteprima interna generato, accessibile dall'applicazione per la visualizzazione del contenuto.
                 \end{itemize}
-                \paragraph{ExportFileResponseDTO}\mbox{}\\
+                \paragraph{ExportFileResponseDTO}\label{par:ExportFileResponseDTO}\mbox{}\\
                 Rappresenta un DTO per la risposta all'operazione di esportazione di un file nel DIP. Questo oggetto è utilizzato nell'application logic per restituire il percorso del file esportato sul file system locale.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -491,34 +491,34 @@
             }
             
             \subsubsection{Presentation layer}
-                \paragraph{DipHandler}\mbox{}\\
+                \paragraph{DipHandler}\label{par:DipHandler}\mbox{}\\
                 Il DipHandler gestisce l'Application Logic per la gestione dei pacchetti DIP. Coordina le operazioni di importazione automatica, recupero del contenuto e verifica dell'integrità dei pacchetti DIP.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{autoimportDipUseCase port.AutoimportDipUseCase}: rappresenta il caso d'uso per l'importazione automatica dei pacchetti DIP; vedere la Sezione 3.4.3.1;
-                    \item \textbf{getDipContentUseCase port.GetDipContentUseCase}: rappresenta il caso d'uso per il recupero del contenuto di un pacchetto DIP; vedere la Sezione 3.4.3.3;
-                    \item \textbf{checkDipIntegrityUseCase port.CheckDipIntegrityUseCase}: rappresenta il caso d'uso per la verifica dell'integrità di un pacchetto DIP; vedere la Sezione 3.4.3.5.
+                    \item \textbf{autoimportDipUseCase port.AutoimportDipUseCase}: rappresenta il caso d'uso per l'importazione automatica dei pacchetti DIP; vedere la Sezione \ref{par:AutoImportDipUseCase};
+                    \item \textbf{getDipContentUseCase port.GetDipContentUseCase}: rappresenta il caso d'uso per il recupero del contenuto di un pacchetto DIP; vedere la Sezione \ref{par:GetDipContentUseCase};
+                    \item \textbf{checkDipIntegrityUseCase port.CheckDipIntegrityUseCase}: rappresenta il caso d'uso per la verifica dell'integrità di un pacchetto DIP; vedere la Sezione \ref{par:CheckDipIntegrityUseCase}.
                 \end{itemize}
                 
                 \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
-                    \item \textbf{DipHandler(autoimportDipUseCase port.AutoimportDipUseCase,\\ getDipContentUseCase port.GetDipContentUseCase,\\ checkDipIntegrityUseCase port.CheckDipIntegrityUseCase) *DipHandler}:\\ costruttore della struttura. Inizializza gli attributi autolimportDipUseCase, getDipContentUseCase e checkDipIntegrityUseCase con i valori passati come parametri;
-                    \item \textbf{autoimport(): Promise$<$lpcResponse$<$AutoimportDipResponseDTO$>>$}: avvia il processo di importazione automatica dei pacchetti DIP disponibili nel sistema. Delega l'operazione al caso d'uso autolimportDipUseCase. Ritorna una Promise contenente la risposta con l'esito dell'importazione;
+                    \item \textbf{DipHandler(autoimportDipUseCase port.AutoimportDipUseCase,\\ getDipContentUseCase port.GetDipContentUseCase,\\ checkDipIntegrityUseCase port.CheckDipIntegrityUseCase) *DipHandler}:\\ costruttore della struttura. Inizializza gli attributi autoImportDipUseCase, getDipContentUseCase e checkDipIntegrityUseCase con i valori passati come parametri;
+                    \item \textbf{autoimport(): Promise$<$lpcResponse$<$AutoimportDipResponseDTO$>>$}: avvia il processo di importazione automatica dei pacchetti DIP disponibili nel sistema. Delega l'operazione al caso d'uso autoImportDipUseCase. Ritorna una Promise contenente la risposta con l'esito dell'importazione;
                     \item \textbf{getDipContent(dipRequestDto: DipRequestDTO):\\ Promise$<$lpcResponse$<$DipContentResponseDTO$>>$}: recupera il contenuto completo del pacchetto DIP specificato nel DTO. Delega l'operazione al caso d'uso getDipContentUseCase. Ritorna una Promise contenente la risposta con i dati del pacchetto;
                     \item \textbf{checkDipIntegrity(dipRequestDto: DipRequestDTO):\\ Promise$<$lpcResponse$<$DipIntegrityResponseDTO$>>$}: verifica l'integrità del pacchetto DIP specificato, controllando checksum e firme digitali. Delega l'operazione al caso d'uso checkDipIntegrityUseCase. Ritorna una Promise contenente la risposta con l'esito della verifica.
                 \end{itemize}
 
-                \paragraph{DocumentHandler}\mbox{}\\
+                \paragraph{DocumentHandler}\label{par:DocumentHandler}\mbox{}\\
                 Il DocumentHandler gestisce l'Application Logic per la gestione dei documenti all'interno dei pacchetti DIP. Coordina le operazioni di visualizzazione dei dettagli, ricerca basata su metadati, anteprime interne ed esterne dei file, ed esportazione dei documenti.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{getDocumentDetailsUseCase port.GetDocumentDetailsUseCase}: rappresenta il caso d'uso per il recupero dei dettagli di un documento; vedere la Sezione 3.4.3.7;
-                    \item \textbf{searchDocumentsFromMetadataUseCase\\ port.SearchDocumentsFromMetadataUseCase}: rappresenta il caso d'uso per la ricerca di documenti basata su metadati; vedere la Sezione 3.4.3.9;
-                    \item \textbf{fileInternalPreviewUseCase port.FileInternalPreviewUseCase}: rappresenta il caso d'uso per la generazione di anteprime interne dei file; vedere la Sezione 3.4.3.11;
-                    \item \textbf{fileExternalPreviewUseCase port.FileExternalPreviewUseCase}: rappresenta il caso d'uso per la generazione di anteprime esterne dei file; vedere la Sezione 3.4.3.13;
-                    \item \textbf{exportDocumentUseCase port.ExportFileUseCase}: rappresenta il caso d'uso per l'esportazione dei file; vedere la Sezione 3.4.3.15.
+                    \item \textbf{getDocumentDetailsUseCase port.GetDocumentDetailsUseCase}: rappresenta il caso d'uso per il recupero dei dettagli di un documento; vedere la Sezione \ref{par:GetDocumentDetailsUseCase};
+                    \item \textbf{searchDocumentsFromMetadataUseCase\\ port.SearchDocumentsFromMetadataUseCase}: rappresenta il caso d'uso per la ricerca di documenti basata su metadati; vedere la Sezione \ref{par:SearchDocumentsFromMetadataUseCase};
+                    \item \textbf{fileInternalPreviewUseCase port.FileInternalPreviewUseCase}: rappresenta il caso d'uso per la generazione di anteprime interne dei file; vedere la Sezione \ref{par:FileInternalPreviewUseCase};
+                    \item \textbf{fileExternalPreviewUseCase port.FileExternalPreviewUseCase}: rappresenta il caso d'uso per la generazione di anteprime esterne dei file; vedere la Sezione \ref{par:FileExternalPreviewUseCase};
+                    \item \textbf{exportDocumentUseCase port.ExportFileUseCase}: rappresenta il caso d'uso per l'esportazione dei file; vedere la Sezione \ref{par:ExportFileUseCase}.
                 \end{itemize}
             
             \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
@@ -533,180 +533,180 @@
 
             
             \subsubsection{Application layer} 
-                \paragraph{AutolimportDipUseCase}\mbox{}\\
-                L'interfaccia AutolimportDipUseCase definisce il contratto per il caso d'uso di importazione automatica dei pacchetti DIP nel sistema.\\
+                \paragraph{AutoImportDipUseCase}\label{par:AutoImportDipUseCase}\mbox{}\\
+                L'interfaccia AutoImportDipUseCase definisce il contratto per il caso d'uso di importazione automatica dei pacchetti DIP nel sistema.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
-                    \item \textbf{execute(): Promise$<$AutolimportDipResponseDTO$>$}: esegue l'operazione di importazione automatica dei pacchetti DIP disponibili nel sistema. Ritorna una Promise contenente la risposta con l’identificativo del pacchetto DIP che è stato importato.
+                    \item \textbf{execute(): Promise$<$AutoImportDipResponseDTO$>$}: esegue l'operazione di importazione automatica dei pacchetti DIP disponibili nel sistema. Ritorna una Promise contenente la risposta con l’identificativo del pacchetto DIP che è stato importato. Si veda Sezione \ref{par:AutoImportDipResponseDTO}
                 \end{itemize}
-                \paragraph{AutolimportDipService}\mbox{}\\
-                La classe AutolimportDipService implementa l'interfaccia AutolimportDipUseCase, gestendo la logica applicativa per l'importazione automatica dei pacchetti DIP. Coordina l'accesso al file system, il parsing dei pacchetti, il mapping delle entità e la persistenza nei repository.\\
+                \paragraph{AutoImportDipService}\label{par:AutoImportDipService}\mbox{}\\
+                La classe AutoImportDipService implementa l'interfaccia AutoImportDipUseCase, gestendo la logica applicativa per l'importazione automatica dei pacchetti DIP. Coordina l'accesso al file system, il parsing dei pacchetti, il mapping delle entità e la persistenza nei repository.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{fileSystemProvider port.FileSystemProvider}: rappresenta il provider per l'accesso al file system; vedere la Sezione 3.4.x.1;
-                    \item \textbf{dipParser port.DipParser}: rappresenta il parser per la decodifica dei pacchetti DIP; vedere la Sezione 3.4.x.2;
-                    \item \textbf{dipMapper port.DipMapper}: rappresenta il mapper per la trasformazione delle entità DIP; vedere la Sezione 3.4.x.3;
-                    \item \textbf{documentClassMapper port.DocumentClassMapper}: rappresenta il mapper per le classi documentali; vedere la Sezione 3.4.x.4;
-                    \item \textbf{conservationProcessMapper port.ConservationProcessMapper}: rappresenta il mapper per i processi di conservazione; vedere la Sezione 3.4.x.5;
-                    \item \textbf{documentMapper port.DocumentMapper}: rappresenta il mapper per i documenti; vedere la Sezione 3.4.x.6;
-                    \item \textbf{dipRepository port.DipRepository}: rappresenta il repository per l'accesso ai dati dei pacchetti DIP; vedere la Sezione 3.4.x.7;
-                    \item \textbf{documentClassRepository port.DocumentClassRepository}: rappresenta il repository per l'accesso ai dati delle classi documentali; vedere la Sezione 3.4.x.8;
-                    \item \textbf{conservationProcessRepository port.ConservationProcessRepository}: rappresenta il repository per l'accesso ai dati dei processi di conservazione; vedere la Sezione 3.4.x.9;
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.10.
+                    \item \textbf{fileSystemProvider port.FileSystemProvider}: rappresenta il provider per l'accesso al file system; vedere la Sezione \ref{par:FileSystemProvider};
+                    \item \textbf{dipParser port.DipParser}: rappresenta il parser per la decodifica dei pacchetti DIP; vedere la Sezione \ref{par:DipParser};
+                    \item \textbf{dipMapper port.DipMapper}: rappresenta il mapper per la trasformazione delle entità DIP; vedere la Sezione \ref{par:DipMapper};
+                    \item \textbf{documentClassMapper port.DocumentClassMapper}: rappresenta il mapper per le classi documentali; vedere la Sezione \ref{par:DocumentClassMapper};
+                    \item \textbf{conservationProcessMapper port.ConservationProcessMapper}: rappresenta il mapper per i processi di conservazione; vedere la Sezione \ref{par:ConservationProcessMapper};
+                    \item \textbf{documentMapper port.DocumentMapper}: rappresenta il mapper per i documenti; vedere la Sezione \ref{par:DocumentMapper};
+                    \item \textbf{dipRepository port.DipRepository}: rappresenta il repository per l'accesso ai dati dei pacchetti DIP; vedere la Sezione \ref{par:DipRepository};
+                    \item \textbf{documentClassRepository port.DocumentClassRepository}: rappresenta il repository per l'accesso ai dati delle classi documentali; vedere la Sezione \ref{par:DocumentClassRepository};
+                    \item \textbf{conservationProcessRepository port.ConservationProcessRepository}: rappresenta il repository per l'accesso ai dati dei processi di conservazione; vedere la Sezione \ref{par:ConservationProcessRepository};
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository} 
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
-                    \item \textbf{AutolimportDipService(fileSystemProvider port.FileSystemProvider, dipParser port.DipParser, dipMapper port.DipMapper, documentClassMapper\\ port.DocumentClassMapper, conservationProcessMapper\\ port.ConservationProcessMapper, dipRepository port.DipRepository,\\ documentClassRepository port.DocumentClassRepository, conservationProcessRepository port.ConservationProcessRepository, documentRepository\\ port.DocumentRepository) *AutolimportDipService}: costruttore della struttura. Inizializza tutti gli attributi con i valori passati come parametri;
-                    \item \textbf{execute(): Promise$<$AutolimportDipResponseDTO$>$}: implementa il metodo dell'interfaccia. Esegue la scansione del file system tramite fileSystemProvider per individuare nuovi pacchetti DIP. Per ciascun pacchetto, utilizza dipParser per decodificare il contenuto, dipMapper e gli altri mapper per trasformare le entità, e infine persiste i dati nei repository corrispondenti. Ritorna una Promise contenente la risposta con l’identificativo del pacchetto DIP che è stato importato.
+                    \item \textbf{AutoImportDipService(fileSystemProvider port.FileSystemProvider, dipParser port.DipParser, dipMapper port.DipMapper, documentClassMapper\\ port.DocumentClassMapper, conservationProcessMapper\\ port.ConservationProcessMapper, dipRepository port.DipRepository,\\ documentClassRepository port.DocumentClassRepository, conservationProcessRepository port.ConservationProcessRepository, documentRepository\\ port.DocumentRepository) *AutoImportDipService}: costruttore della struttura. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{execute(): Promise$<$AutoImportDipResponseDTO$>$}: implementa il metodo dell'interfaccia. Esegue la scansione del file system tramite fileSystemProvider per individuare nuovi pacchetti DIP. Per ciascun pacchetto, utilizza dipParser per decodificare il contenuto, dipMapper e gli altri mapper per trasformare le entità, e infine persiste i dati nei repository corrispondenti. Ritorna una Promise contenente la risposta con l’identificativo del pacchetto DIP che è stato importato.
                 \end{itemize}
-                \paragraph{GetDipContentUseCase}\mbox{}\\
+                \paragraph{GetDipContentUseCase}\label{par:GetDipContentUseCase}\mbox{}\\
                 L'interfaccia GetDipContentUseCase definisce il contratto per il caso d'uso di recupero del contenuto di un pacchetto DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(dipUuid: string): Promise$<$DipContentResponseDTO$>$}: esegue l'operazione di recupero del contenuto del pacchetto DIP identificato dall'UUID specificato. Ritorna una Promise contenente la risposta con le informazioni principali del pacchetto DIP e l’elenco dei documenti in esso contenuti.
                 \end{itemize}
-                \paragraph{GetDipContentService}\mbox{}\\
+                \paragraph{GetDipContentService}\label{par:GetDipContentService}\mbox{}\\
                 La classe GetDipContentService implementa l'interfaccia GetDipContentUseCase, gestendo la logica applicativa per il recupero del contenuto di un pacchetto DIP. Coordina l'accesso ai repository per ottenere i metadati del pacchetto e dei documenti associati.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{dipRepository port.DipRepository}: rappresenta il repository per l'accesso ai dati dei pacchetti DIP; vedere la Sezione 3.4.x.1;
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.2.
+                    \item \textbf{dipRepository port.DipRepository}: rappresenta il repository per l'accesso ai dati dei pacchetti DIP; vedere la Sezione \ref{par:DipRepository};
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository}.
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{GetDipContentService(dipRepository port.DipRepository, documentRepository port.DocumentRepository) *GetDipContentService}: costruttore della struttura. Inizializza gli attributi dipRepository e documentRepository con i valori passati come parametri;
                     \item \textbf{execute(dipUuid: string): Promise$<$DipContentResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera le informazioni del pacchetto DIP tramite dipRepository utilizzando l'UUID fornito. Successivamente, recupera i documenti associati al pacchetto tramite documentRepository. Compone e ritorna una Promise contenente la risposta con i dati principali del pacchetto DIP.
                 \end{itemize}
-                \paragraph{CheckDipIntegrityUseCase}\mbox{}\\
+                \paragraph{CheckDipIntegrityUseCase}\label{par:CheckDipIntegrityUseCase}\mbox{}\\
                 L'interfaccia CheckDipIntegrityUseCase definisce il contratto per il caso d'uso di verifica dell'integrità di un pacchetto DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(diplUuid: string): Promise$<$DipIntegrityResponseDTO$>$}: esegue l'operazione di verifica dell'integrità del pacchetto DIP identificato dall'UUID specificato. Controlla la consistenza dei file, la validità dei checksum e delle eventuali firme digitali. Ritorna una Promise contenente la risposta con l'esito della verifica.
                 \end{itemize}
-                \paragraph{CheckDipIntegrityService}\mbox{}\\
+                \paragraph{CheckDipIntegrityService}\label{par:CheckDipIntegrityService}\mbox{}\\
                 La classe CheckDipIntegrityService implementa l'interfaccia CheckDipIntegrityUseCase, gestendo la logica applicativa per la verifica dell'integrità dei pacchetti DIP. Coordina l'accesso al file system, la decodifica dei contenuti in base64 e il calcolo degli hash per confrontarli con i valori di riferimento.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.1;
-                    \item \textbf{fileSystemProvider port.FileSystemProvider}: rappresenta il provider per l'accesso al file system; vedere la Sezione 3.4.x.2;
-                    \item \textbf{base64Provider port.Base64Provider}: rappresenta il provider per la codifica/decodifica in base64; vedere la Sezione 3.4.x.3;
-                    \item \textbf{hashProvider port.HashProvider}: rappresenta il provider per il calcolo di hash crittografici; vedere la Sezione 3.4.x.4.
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository};
+                    \item \textbf{fileSystemProvider port.FileSystemProvider}: rappresenta il provider per l'accesso al file system; vedere la Sezione \ref{par:FileSystemProvider};
+                    \item \textbf{base64Provider port.Base64Provider}: rappresenta il provider per la codifica/decodifica in base64; vedere la Sezione \ref{par:Base64Provider};
+                    \item \textbf{hashProvider port.HashProvider}: rappresenta il provider per il calcolo di hash crittografici; vedere la Sezione \ref{par:HashProvider}.
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
-                    \item \textbf{CheckDiplIntegrityService(documentRepository port.DocumentRepository, fileSystemProvider port.FileSystemProvider, base64Provider port.Base64Provider, hashProvider port.HashProvider) *CheckDiplIntegrityService}: costruttore della struttura. Inizializza tutti gli attributi con i valori passati come parametri;
-                    \item \textbf{execute(diplUuid: string): Promise$<$DiplIntegrityResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera i metadati e i checksum di riferimento del pacchetto DIP tramite documentRepository. Accede ai file fisici tramite fileSystemProvider, decodifica eventuali contenuti in base64 tramite base64Provider, e calcola gli hash correnti dei file tramite hashProvider. Confronta gli hash calcolati con quelli di riferimento per verificare l'integrità del pacchetto. Ritorna una Promise contenente la risposta con l'esito della verifica.
+                    \item \textbf{CheckDipIntegrityService(documentRepository port.DocumentRepository, fileSystemProvider port.FileSystemProvider, base64Provider port.Base64Provider, hashProvider port.HashProvider) *CheckDipIntegrityService}: costruttore della struttura. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{execute(diplUuid: string): Promise$<$DipIntegrityResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera i metadati e i checksum di riferimento del pacchetto DIP tramite documentRepository. Accede ai file fisici tramite fileSystemProvider, decodifica eventuali contenuti in base64 tramite base64Provider, e calcola gli hash correnti dei file tramite hashProvider. Confronta gli hash calcolati con quelli di riferimento per verificare l'integrità del pacchetto. Ritorna una Promise contenente la risposta con l'esito della verifica.
                 \end{itemize}
-                \paragraph{GetDocumentDetailsUseCase}\mbox{}\\
+                \paragraph{GetDocumentDetailsUseCase}\label{par:GetDocumentDetailsUseCase}\mbox{}\\
                 L'interfaccia GetDocumentDetailsUseCase definisce il contratto per il caso d'uso di recupero dei dettagli di un documento all'interno del DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(documentUuid: string): Promise$<$DocumentDetailsResponseDTO$>$}: esegue l'operazione di recupero dei dettagli del documento identificato dall'UUID specificato. Ritorna una Promise contenente la risposta con i dettagli del documento.
                 \end{itemize}
-                \paragraph{GetDocumentDetailsService}\mbox{}\\
+                \paragraph{GetDocumentDetailsService}\label{par:GetDocumentDetailsService}\mbox{}\\
                 La classe GetDocumentDetailsService implementa l'interfaccia GetDocumentDetailsUseCase, gestendo la logica applicativa per il recupero dei dettagli di un documento. Coordina l'accesso al repository per ottenere le informazioni del documento.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.1.
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository}.
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{GetDocumentDetailsService(documentRepository port.DocumentRepository) *GetDocumentDetailsService}: costruttore della struttura. Inizializza l'attributo documentRepository con il valore passato come parametro;
                     \item \textbf{execute(documentUuid: string): Promise$<$DocumentDetailsResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera le informazioni del documento tramite documentRepository utilizzando l'UUID fornito. Compone e ritorna una Promise contenente la risposta con i dettagli completi del documento.
                 \end{itemize}
-                \paragraph{SearchDocumentsFromMetadataUseCase}\mbox{}\\
+                \paragraph{SearchDocumentsFromMetadataUseCase}\label{par:SearchDocumentsFromMetadataUseCase}\mbox{}\\
                 L'interfaccia SearchDocumentsFromMetadataUseCase definisce il contratto per il caso d'uso di ricerca di documenti basata su metadati all'interno del DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
-                    \item \textbf{execute(filters: \{ type: string; value: string \}[]): Promise$<$SearchResponseDTO$>$}: esegue l'operazione di ricerca dei documenti applicando i filtri specificati sui metadati. I filtri sono espressi come array di oggetti contenenti il tipo di metadato da cercare e il valore da confrontare. Ritorna una Promise contenente la risposta con l'elenco dei documenti che soddisfano i criteri di ricerca.
+                    \item \textbf{execute(filters: \{ type: string; value: string \}[]): Promise$<$SearchResponseDTO$>$}: esegue l'operazione di ricerca dei documenti applicando i filtri specificati sui metadati. I filtri sono espressi come array di oggetti contenenti il tipo di metadato da cercare e il valore da confrontare. Ritorna una Promise contenente la risposta con l'elenco dei documenti che soddisfano i criteri di ricerca. Vedere la Sezione \ref{par:SearchResponseDTO}
                 \end{itemize}
-                \paragraph{SearchDocumentsFromMetadataService}\mbox{}\\
+                \paragraph{SearchDocumentsFromMetadataService}\label{par:SearchDocumentsFromMetadataService}\mbox{}\\
                 La classe SearchDocumentsFromMetadataService implementa l'interfaccia SearchDocumentsFromMetadataUseCase, gestendo la logica applicativa per la ricerca di documenti basata su metadati. Coordina l'accesso al repository per interrogare i documenti secondo i filtri forniti.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.1.
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository}.
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{SearchDocumentsFromMetadataService(documentRepository\\ port.DocumentRepository) *SearchDocumentsFromMetadataService}: costruttore della struttura. Inizializza l'attributo documentRepository con il valore passato come parametro;
                     \item \textbf{execute(filters: \{ type: string; value: string \}): Promise$<$SearchResponseDTO$>$}: implementa il metodo dell'interfaccia. Interroga il documentRepository applicando i filtri specificati sui metadati dei documenti. Compone e ritorna una Promise contenente la risposta con l'elenco dei documenti trovati.
                 \end{itemize}
-                \paragraph{FileInternalPreviewUseCase}\mbox{}\\
+                \paragraph{FileInternalPreviewUseCase}\label{par:FileInternalPreviewUseCase}\mbox{}\\
                 L'interfaccia FileInternalPreviewUseCase definisce il contratto per il caso d'uso di generazione di anteprime interne dei file all'interno del DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$FileInternalPreviewResponseDTO$>$}: esegue l'operazione di generazione di un'anteprima interna per il file specificato. Riceve l'UUID del documento contenente il file e l'UUID opzionale del file (se non fornito, viene selezionato il file principale del documento). Ritorna una Promise contenente la risposta con il percorso del file di anteprima generato per la visualizzazione all’interno dell’applicazione.
                 \end{itemize}
-                \paragraph{FileInternalPreviewService}\mbox{}\\
+                \paragraph{FileInternalPreviewService}\label{par:FileInternalPreviewService}\mbox{}\\
                 La classe FileInternalPreviewService implementa l'interfaccia FileInternalPreviewUseCase, gestendo la logica applicativa per la generazione di anteprime interne dei file. Coordina l'accesso al repository per ottenere i dati del documento e del file da visualizzare.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.1.
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository}
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{FileInternalPreviewService(documentRepository port.DocumentRepository)}: costruttore della struttura. Inizializza l'attributo documentRepository con il valore passato come parametro;
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$FileInternalPreviewResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera le informazioni del documento e del file tramite documentRepository utilizzando gli UUID forniti. Genera un'anteprima ottimizzata per la visualizzazione interna e ritorna una Promise contenente il percorso del file di anteprima.
                 \end{itemize}
-                \paragraph{FileExternalPreviewUseCase}\mbox{}\\
+                \paragraph{FileExternalPreviewUseCase}\label{par:FileExternalPreviewUseCase}\mbox{}\\
                 L'interfaccia FileExternalPreviewUseCase definisce il contratto per il caso d'uso di generazione di anteprime esterne dei file all'interno del DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$void$>$}: esegue l'operazione di generazione di un'anteprima esterna per il file specificato. Riceve l'UUID del documento contenente il file e l'UUID opzionale del file (se non fornito, viene selezionato il file principale del documento).
                 \end{itemize}
-                \paragraph{FileExternalPreviewService}\mbox{}\\
+                \paragraph{FileExternalPreviewService}\label{par:FileExternalPreviewService}\mbox{}\\
                 La classe FileExternalPreviewService implementa l'interfaccia FileExternalPreviewUseCase, gestendo la logica applicativa per la generazione di anteprime esterne dei file. Coordina l'accesso al repository per ottenere i dati del documento e del file.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{documentRepository DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.1;
-                    \item \textbf{shellProvider ShellProvider}: rappresenta il provider per la gestione della shell e delle operazioni di condivisione esterna; vedere la Sezione 3.4.x.2.
+                    \item \textbf{documentRepository DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository};
+                    \item \textbf{shellProvider ShellProvider}: rappresenta il provider per la gestione della shell e delle operazioni di condivisione esterna; vedere la Sezione \ref{par:ShellProvider} .
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{FileExternalPreviewService(documentRepository port.DocumentRepository, shellProvider port.ShellProvider)}: costruttore della struttura. Inizializza gli attributi documentRepository e shellProvider con i valori passati come parametri;
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$void$>$}: implementa il metodo dell'interfaccia. Recupera le informazioni del documento e del file tramite documentRepository utilizzando gli UUID forniti. DA COMPLETARE.
                 \end{itemize}
 
-                \paragraph{ExportFileUseCase}\mbox{}\\
+                \paragraph{ExportFileUseCase}\label{par:ExportFileUseCase}\mbox{}\\
                 L'interfaccia ExportFileUseCase definisce il contratto per il caso d'uso di esportazione dei file all'interno del DIP.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$ExportFileResponseDTO$>$}: esegue l'operazione di esportazione del file specificato. Riceve l'UUID del documento contenente il file e l'UUID opzionale del file (se non fornito, viene esportato il file principale del documento). Ritorna una Promise contenente il percorso del file esportato sul file system locale.
                 \end{itemize}
 
-                \paragraph{ExportFileService}\mbox{}\\
+                \paragraph{ExportFileService}\label{par:ExportFileService}\mbox{}\\
                 La classe ExportFileService implementa l'interfaccia ExportFileUseCase, gestendo la logica applicativa per l'esportazione dei file. Coordina l'accesso al repository per ottenere i dati del documento e del file, e utilizza dialogProvider e fileSystemProvider per gestire l'interazione con l'utente e la scrittura sul file system.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione 3.4.x.1;
-                    \item \textbf{dialogProvider port.DialogProvider}: rappresenta il provider per la gestione delle finestre di dialogo (es. selezione della cartella di destinazione); vedere la Sezione 3.4.x.2;
-                    \item \textbf{fileSystemProvider port.FileSystemProvider}: rappresenta il provider per l'accesso al file system e la scrittura dei file esportati; vedere la Sezione 3.4.x.3.
+                    \item \textbf{documentRepository port.DocumentRepository}: rappresenta il repository per l'accesso ai dati dei documenti; vedere la Sezione \ref{par:DocumentRepository};
+                    \item \textbf{dialogProvider port.DialogProvider}: rappresenta il provider per la gestione delle finestre di dialogo (es. selezione della cartella di destinazione); vedere la Sezione \ref{par:DialogProvider};
+                    \item \textbf{fileSystemProvider port.FileSystemProvider}: rappresenta il provider per l'accesso al file system e la scrittura dei file esportati; vedere la Sezione \ref{par:FileSystemProvider}.
                 \end{itemize}
                 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{ExportFileService(documentRepository port.DocumentRepository, dialogProvider port.DialogProvider, fileSystemProvider port.FileSystemProvider) *ExportFileService}: costruttore della struttura. Inizializza gli attributi documentRepository, dialogProvider e fileSystemProvider con i valori passati come parametri;
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$ExportFileResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera le informazioni del documento e del file tramite documentRepository utilizzando gli UUID forniti. Utilizza dialogProvider per consentire all'utente di selezionare la destinazione di esportazione e fileSystemProvider per scrivere il file sul disco. Ritorna una Promise contenente la risposta con il percorso del file esportato sul file system locale.
@@ -714,7 +714,7 @@
             }
 
             \subsubsection{Domain layer}
-                \paragraph{Dip}\mbox{}\\
+                \paragraph{Dip}\label{par:Dip}\mbox{}\\
                 La classe Dip rappresenta l'entità di dominio corrispondente a un pacchetto DIP all'interno del sistema. Incapsula le informazioni principali del pacchetto, quali l'identificativo del processo associato, la data di creazione e i contatori relativi ai documenti e ai pacchetti AIP contenuti.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
@@ -725,7 +725,7 @@
                     \item \textbf{aipCount number}: rappresenta il numero di pacchetti AIP (Archival Information Package) associati al pacchetto DIP.
                 \end{itemize}
 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{Dip(processUuid: string, creationDate: Date, documentsCount: number, aipCount: number)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
                     \item \textbf{getProcessUuid(): string}: restituisce il valore dell'attributo processUuid;
@@ -738,7 +738,7 @@
                     \item \textbf{setAipCount(aipCount: number): void}: imposta il valore dell'attributo aipCount con il valore passato come parametro.
                 \end{itemize}
 
-                \paragraph{DocumentClass}\mbox{}\\
+                \paragraph{DocumentClass}\label{par:DocumentClass}\mbox{}\\
                 La classe DocumentClass rappresenta l'entità di dominio corrispondente a una classe documentale all'interno del sistema. Descrive una tipologia di documento definita nell'ambito di un pacchetto DIP, con le relative informazioni di validità temporale.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
@@ -751,7 +751,7 @@
                     \item \textbf{dipUuid string}: rappresenta l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata.
                 \end{itemize}
 
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{DocumentClass(uuid: string, name: string, version: string, validFrom: Date, validTo: Date $|$ undefined, dipUuid: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
                     \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
@@ -769,7 +769,7 @@
                 \end{itemize}
 
 
-                \paragraph{ConservationProcess}\mbox{}\\
+                \paragraph{ConservationProcess}\label{par:ConservationProcess}\mbox{}\\
                 La classe ConservationProcess rappresenta un processo di conservazione all'interno del sistema. Contiene le informazioni relative a un processo di conservazione associato a una specifica classe documentale, inclusi i contatori di SIP, documenti e file, e la dimensione totale dei contenuti archiviati.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
@@ -784,7 +784,7 @@
                     \item \textbf{documentClassVersion string}: rappresenta la versione della classe documentale associata al processo di conservazione.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{ConservationProcess(uuid: string, creationDate: Date, totalSize: string, sipCount: number, documentsCount: number, filesCount: number,\\ documentClassUuid: string, documentClassVersion: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
                     \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
@@ -805,20 +805,20 @@
                     \item \textbf{setDocumentClassVersion(documentClassVersion: string): void}: imposta il valore dell'attributo documentClassVersion con il valore passato come parametro.
                 \end{itemize}
 
-                \paragraph{Document}\mbox{}\\
+                \paragraph{Document}\label{par:Document}\mbox{}\\
                 La classe Document rappresenta l'entità di dominio corrispondente a un documento all'interno del sistema. Contiene le informazioni strutturali del documento, inclusi il file principale, gli eventuali allegati, i metadati associati e il riferimento al processo di conservazione di appartenenza.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
                     \item \textbf{uuid string}: rappresenta l'identificativo univoco del documento;
                     \item \textbf{path string}: rappresenta il percorso nel file system in cui è archiviato il documento;
-                    \item \textbf{main File}: rappresenta il file principale associato al documento;
+                    \item \textbf{main File}: rappresenta il file principale associato al documento; si veda la Sezione \ref{par:File};
                     \item \textbf{attachments File[]}: rappresenta la lista degli allegati associati al documento; può essere vuota;
-                    \item \textbf{metadata Metadata[]}: rappresenta la lista dei metadati associati al documento; può essere vuota;
+                    \item \textbf{metadata Metadata[]}: rappresenta la lista dei metadati associati al documento; può essere vuota; si veda la Sezione \ref{par:Metadata}
                     \item \textbf{conservationProcessUuid string}: rappresenta l'identificativo univoco del processo di conservazione a cui il documento appartiene.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{Document(uuid: string, path: string, main: File, attachments: File[], metadata: Metadata[], conservationProcessUuid: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
                     \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
@@ -837,7 +837,7 @@
                     \item \textbf{getMetadataValueByRegex(name: RegExp): string $|$ null}: restituisce il valore del primo metadato il cui nome soddisfa l'espressione regolare specificata; restituisce null se nessun metadato corrisponde.
                 \end{itemize}
 
-                \paragraph{File}\mbox{}\\
+                \paragraph{File}\label{par:File}\mbox{}\\
                 La classe File rappresenta l'entità di dominio corrispondente a un file all'interno del sistema. Può rappresentare sia il file principale di un documento sia uno dei suoi allegati. Fornisce metodi di utilità per ricavare informazioni sul nome e sull'estensione del file a partire dal percorso.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
@@ -847,7 +847,7 @@
                     \item \textbf{size string}: rappresenta la dimensione del file.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{File(uuid: string, path: string, size: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
                     \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
@@ -860,17 +860,17 @@
                     \item \textbf{getExtension(): string}: restituisce l'estensione del file ricavata dal percorso memorizzato nell'attributo path;
                 \end{itemize}
  
-                \paragraph{Metadata}\mbox{}\\
+                \paragraph{Metadata}\label{par:Metadata}\mbox{}\\
                 La classe Metadata rappresenta l'entità di dominio corrispondente a un metadato associato a un documento all'interno del sistema. Ogni metadato è composto da un nome, un valore e un tipo che ne determina la corretta interpretazione.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
                     \item \textbf{name string}: rappresenta il nome del metadato, ovvero il campo a cui il valore si riferisce;
                     \item \textbf{value string}: rappresenta il valore del metadato;
-                    \item \textbf{type MetadataTypeEnum}: rappresenta il tipo del metadato, utilizzato per la corretta interpretazione del valore; vedere la sezione relativa a MetadataTypeEnum.
+                    \item \textbf{type MetadataTypeEnum}: rappresenta il tipo del metadato, utilizzato per la corretta interpretazione del valore; vedere la Sezione \ref{par:MetadataTypeEnum}.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{Metadata(name: string, value: string, type: MetadataTypeEnum)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
                     \item \textbf{getName(): string}: restituisce il valore dell'attributo name;
@@ -881,7 +881,7 @@
                     \item \textbf{setType(type: MetadataTypeEnum): void}: imposta il valore dell'attributo type con il valore passato come parametro.
                 \end{itemize}
  
-                \paragraph{MetadataTypeEnum}\mbox{}\\
+                \paragraph{MetadataTypeEnum}\label{par:MetadataTypeEnum}\mbox{}\\
                 L'enumerazione MetadataTypeEnum definisce i possibili tipi che un metadato può assumere all'interno del sistema. Viene utilizzata dalla classe Metadata per determinare la corretta interpretazione del valore memorizzato.\\
                 \\
                 \textbf{Descrizione dei valori dell'enumerazione}:
@@ -894,7 +894,7 @@
                     \item \textbf{BASE64}: indica che il valore del metadato è codificato in formato Base64.
                 \end{itemize}
  
-                \paragraph{MetadataFilter}\mbox{}\\
+                \paragraph{MetadataFilter}\label{par:MetadataFilter}\mbox{}\\
                 La classe MetadataFilter rappresenta un criterio di ricerca applicabile ai metadati dei documenti all'interno del sistema. Viene utilizzata nell'application layer per costruire le query di ricerca sui documenti a partire dai filtri specificati dall'utente.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
@@ -903,7 +903,7 @@
                     \item \textbf{value string}: rappresenta il valore da confrontare con il metadato specificato.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{MetadataFilter(type: string, value: string)}: costruttore della classe. Inizializza gli attributi type e value con i valori passati come parametri;
                     \item \textbf{getType(): string}: restituisce il valore dell'attributo type;
@@ -911,32 +911,148 @@
                     \item \textbf{setType(type: string): void}: imposta il valore dell'attributo type con il valore passato come parametro;
                     \item \textbf{setValue(value: string): void}: imposta il valore dell'attributo value con il valore passato come parametro.
                 \end{itemize}
+
+                \paragraph{DipMapper}\label{par:DipMapper}\mbox{}\\
+                La classe DipMapper è responsabile della trasformazione dei dati grezzi di un pacchetto DIP, ottenuti dalla fase di parsing, nell'oggetto di dominio Dip. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
+                \\
+               \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DipMapper()}: costruttore della classe;
+                    \item \textbf{toDomain(packageInfo: any): Dip}: esegue la trasformazione dei dati grezzi del pacchetto DIP, ricevuti come risultato del parsing, nell'oggetto di dominio Dip corrispondente. Ritorna l'oggetto Dip costruito a partire dalle informazioni contenute in packageInfo.
+                \end{itemize}
+
+                \paragraph{DocumentClassMapper}\label{par:DocumentClassMapper}\mbox{}\\
+                La classe DocumentClassMapper è responsabile della trasformazione dei dati grezzi di una classe documentale, ottenuti dalla fase di parsing del file XML del DIP, nell'oggetto di dominio DocumentClass. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DocumentClassMapper()}: costruttore della classe;
+                    \item \textbf{toDomain(documentClassXml: any, dipUuid: string): DocumentClass}: esegue la trasformazione dei dati grezzi della classe documentale, ricevuti come risultato del parsing XML, nell'oggetto di dominio DocumentClass corrispondente. Riceve inoltre l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata. Ritorna l'oggetto DocumentClass costruito a partire dalle informazioni fornite.
+                \end{itemize}
+
+                \paragraph{ConservationProcessMapper}\label{par:ConservationProcessMapper}\mbox{}\\
+                La classe ConservationProcessMapper è responsabile della trasformazione dei dati grezzi di un processo di conservazione, ottenuti dalla fase di parsing del file AIP Info, nell'oggetto di dominio ConservationProcess. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{ConservationProcessMapper()}: costruttore della classe;
+                    \item \textbf{toDomain(aipInfoXml: any): ConservationProcess}: esegue la trasformazione dei dati grezzi del processo di conservazione, ricevuti come risultato del parsing del file AIP Info, nell'oggetto di dominio ConservationProcess corrispondente. Ritorna l'oggetto ConservationProcess costruito a partire dalle informazioni contenute in aipInfoXml.
+                \end{itemize}
+
+                \paragraph{DocumentMapper}\label{par:DocumentMapper}\mbox{}\\
+                La classe DocumentMapper è responsabile della trasformazione del risultato del parsing di un documento nell'oggetto di dominio Document. Coordina la costruzione dell'oggetto Document a partire da un DocumentParsingResult, delegando l'appiattimento e la classificazione dei metadati a MetadataFlattener. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{metadataFlattener MetadataFlattener}: rappresenta il componente responsabile dell'appiattimento e della classificazione dei metadati del documento; vedere la Sezione \ref{par:MetadataFlattener} .
+                \end{itemize}
+ 
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DocumentMapper(metadataFlattener: MetadataFlattener)}: costruttore della classe. Inizializza l'attributo metadataFlattener con il valore passato come parametro;
+                    \item \textbf{toDomain(parsedDocument: DocumentParsingResult): Document}: esegue la trasformazione del risultato del parsing di un documento nell'oggetto di dominio Document corrispondente. Utilizza metadataFlattener per appiattire e classificare i metadati grezzi contenuti in parsedDocument. Ritorna l'oggetto Document costruito a partire dalle informazioni fornite. Si veda la Sezione \ref{par:DocumentParsingResult}
+                \end{itemize}
+
+                \paragraph{MetadataFlattener}\label{par:MetadataFlattener}\mbox{}\\
+                La classe MetadataFlattener è responsabile dell'appiattimento della struttura gerarchica dei metadati grezzi di un documento in una lista di oggetti di dominio Metadata. Attraverso un algoritmo di visita ricorsiva, la classe esplora l'albero dei dati applicando politiche di filtraggio e di classificazione dei tipi definite nei componenti. \\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{pathPolicy MetadataPathPolicy}: rappresenta la politica di filtraggio dei percorsi dei metadati, utilizzata per determinare quali metadati includere e quali contrassegnare come metadati di utilità; vedere la Sezione \ref{par:MetadataPathPolicy};
+                    \item \textbf{typePolicy MetadataTypePolicy}: rappresenta la politica di classificazione dei tipi dei metadati, utilizzata per determinare il tipo MetadataTypeEnum da assegnare a ciascun metadato; vedere la Sezione \ref{par:MetadataTypePolicy}.
+                \end{itemize}
+ 
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{MetadataFlattener(pathPolicy: MetadataPathPolicy, typePolicy: MetadataTypePolicy)}: costruttore della classe. Inizializza gli attributi pathPolicy e typePolicy con i valori passati come parametri;
+                    \item \textbf{flatten(root: Record$<$string, unknown$>$, rootPath: string): Metadata[]}: esegue l'appiattimento ricorsivo della struttura gerarchica dei metadati grezzi, a partire dal nodo radice root e dal percorso radice rootPath. Applica pathPolicy per filtrare i percorsi e typePolicy per classificare i tipi. Ritorna la lista degli oggetti Metadata costruiti a partire dalla struttura appiattita.
+                \end{itemize}
+
+                \noindent \paragraph{MetadataPathPolicy}\label{par:MetadataPathPolicy}\mbox{}\\
+                La classe MetadataPathPolicy implementa la politica di filtraggio dei percorsi dei metadati durante la fase di appiattimento eseguita da MetadataFlattener. Determina quali percorsi dei metadati debbano essere inclusi nell'output e quali debbano essere contrassegnati come metadati di utilità, sulla base di una configurazione PathPolicy fornita alla costruzione. Per approfondire, vedere la Sezione \ref{par:PathPolicy}\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{policy Required$<$PathPolicy$>$}: rappresenta la configurazione della politica di filtraggio dei percorsi, contenente le regole di inclusione, esclusione e classificazione come metadati di utilità.
+                \end{itemize}
+ 
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{MetadataPathPolicy(policy: PathPolicy $|$ undefined)}: costruttore della classe. Inizializza l'attributo policy con la configurazione fornita; se il valore è undefined, viene utilizzata una configurazione di default;
+                    \item \textbf{include(path: string): boolean}: verifica se il percorso specificato deve essere incluso tra i metadati del documento secondo le regole di filtraggio configurate. Ritorna true se il percorso è incluso, false altrimenti;
+                    \item \textbf{utility(path: string): boolean}: verifica se il percorso specificato deve essere classificato come metadato di utilità secondo le regole configurate. Ritorna true se il percorso è un metadato di utilità, false altrimenti.
+                \end{itemize}
+ 
+                \paragraph{MetadataTypePolicy}\label{par:MetadataTypePolicy}\mbox{}\\
+                La classe MetadataTypePolicy implementa la politica di classificazione dei tipi dei metadati durante la fase di appiattimento eseguita da MetadataFlattener. Determina il tipo MetadataTypeEnum da assegnare a ciascun metadato sulla base del suo percorso, utilizzando una configurazione TypePolicy fornita alla costruzione.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{policy Required$<$TypePolicy$>$}: rappresenta la configurazione della politica di classificazione dei tipi, contenente le regole per l'assegnazione dei tipi MetadataTypeEnum ai percorsi dei metadati.
+                \end{itemize}
+ 
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{MetadataTypePolicy(policy: TypePolicy $|$ undefined)}: costruttore della classe. Inizializza l'attributo policy con la configurazione fornita; se il valore è undefined, viene utilizzata una configurazione di default;
+                    \item \textbf{type(path: string): MetadataTypeEnum}: determina il tipo MetadataTypeEnum da assegnare al metadato identificato dal percorso specificato, sulla base delle regole di classificazione configurate. Ritorna il valore MetadataTypeEnum corrispondente.
+                \end{itemize}
+ 
+                \paragraph{PathPolicy}\label{par:PathPolicy}\mbox{}\\
+                L'interfaccia PathPolicy rappresenta la struttura di configurazione della politica di filtraggio dei percorsi dei metadati, utilizzata da MetadataPathPolicy. Definisce le regole di inclusione, esclusione e classificazione come metadati di utilità, espresse sia come stringhe esatte sia come espressioni regolari.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{allowExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da includere;
+                    \item \textbf{allowRegex RegExp[]}: rappresenta la lista delle espressioni regolari per l'inclusione dei percorsi dei metadati;
+                    \item \textbf{denyExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da escludere;
+                    \item \textbf{denyRegex RegExp[]}: rappresenta la lista delle espressioni regolari per l'esclusione dei percorsi dei metadati;
+                    \item \textbf{utilityExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come metadati di utilità;
+                    \item \textbf{utilityRegex RegExp[]}: rappresenta la lista delle espressioni regolari per la classificazione dei percorsi come metadati di utilità.
+                \end{itemize}
+
+                \paragraph{TypePolicy}\label{par:TypePolicy}\mbox{}\\
+                L'interfaccia TypePolicy rappresenta la struttura di configurazione della politica di classificazione dei tipi dei metadati, utilizzata da MetadataTypePolicy. Definisce le regole per l'assegnazione dei tipi MetadataTypeEnum ai percorsi dei metadati, espresse sia come stringhe esatte sia come espressioni regolari, per ciascun tipo supportato.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{booleanExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come tipo BOOLEAN;
+                    \item \textbf{booleanRegex RegExp[]}: rappresenta la lista delle espressioni regolari per la classificazione dei metadati come tipo BOOLEAN;
+                    \item \textbf{numberExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come tipo NUMBER;
+                    \item \textbf{numberRegex RegExp[]}: rappresenta la lista delle espressioni regolari per la classificazione dei metadati come tipo NUMBER;
+                    \item \textbf{base64Exact string[]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come tipo BASE64;
+                    \item \textbf{base64Regex RegExp[]}: rappresenta la lista delle espressioni regolari per la classificazione dei metadati come tipo BASE64;
+                    \item \textbf{dateExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come tipo DATE;
+                    \item \textbf{dateRegex RegExp[]}: rappresenta la lista delle espressioni regolari per la classificazione dei metadati come tipo DATE;
+                    \item \textbf{timeExact string[]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come tipo TIME;
+                    \item \textbf{timeRegex RegExp[]}: rappresenta la lista delle espressioni regolari per la classificazione dei metadati come tipo TIME.
+                \end{itemize}
+            }
             
 
             \subsubsection{Persistence layer} 
-                \paragraph{DipRepository}\mbox{}\\
+                \paragraph{DipRepository}\label{par:DipRepository}\mbox{}\\
                 L'interfaccia DipRepository definisce il contratto per l'accesso ai dati relativi ai pacchetti DIP nel sistema. Astrae le operazioni di persistenza e recupero dei pacchetti DIP, consentendo all'application layer di interagire con il database senza dipendere dai dettagli implementativi dello strato di persistenza.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{save(dip: Dip): Promise$<$Dip$>$}: esegue l'operazione di persistenza di un pacchetto DIP nel sistema di archiviazione. Riceve un oggetto di tipo Dip e ritorna una Promise contenente il pacchetto DIP salvato;
                     \item \textbf{findByUuid(uuid: string): Promise$<$Dip $|$ null$>$}: esegue l'operazione di recupero di un pacchetto DIP a partire dal suo identificativo univoco. Ritorna una Promise contenente il pacchetto DIP corrispondente, oppure null se nessun pacchetto con l'UUID specificato è presente nel sistema.
                 \end{itemize}
 
-                \paragraph{SQLiteDipRepository}\mbox{}\\
+                \paragraph{SQLiteDipRepository}\label{par:SQLiteDipRepository}\mbox{}\\
                 La classe SQLiteDipRepository implementa l'interfaccia DipRepository, gestendo la persistenza e il recupero dei pacchetti DIP tramite un database SQLite locale.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider.
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la Sezione \ref{par:DatabaseProvider}.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{SQLiteDipRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
                 \end{itemize}
 
-                \paragraph{DipRow}\mbox{}\\
+                \paragraph{DipRow}\label{par:DipRow}\mbox{}\\
                 L'interfaccia DipRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai pacchetti DIP. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -947,28 +1063,28 @@
                     \item \textbf{numero\_aip number}: rappresenta il numero di pacchetti AIP (Archival Information Package) associati al pacchetto DIP.
                 \end{itemize}
 
-                \paragraph{DocumentClassRepository}\mbox{}\\
+                \paragraph{DocumentClassRepository}\label{par:DocumentClassRepository}\mbox{}\\
                 L'interfaccia DocumentClassRepository definisce il contratto per l'accesso ai dati relativi alle classi documentali nel sistema. Astrae le operazioni di persistenza e recupero delle classi documentali, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{save(documentClass: DocumentClass): Promise$<$DocumentClass$>$}: esegue l'operazione di persistenza di una classe documentale nel sistema di archiviazione. Riceve un oggetto di tipo DocumentClass e ritorna una Promise contenente la classe documentale salvata;
                 \end{itemize}
 
-                \paragraph{SQLiteDocumentClassRepository}\mbox{}\\
+                \paragraph{SQLiteDocumentClassRepository}\label{par:SQLiteDocumentClassRepository}\mbox{}\\
                 La classe SQLiteDocumentClassRepository implementa l'interfaccia DocumentClassRepository, gestendo la persistenza e il recupero delle classi documentali tramite un database SQLite locale.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider.
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la Sezione \ref{par:DatabaseProvider}.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{SQLiteDocumentClassRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
                 \end{itemize}
 
-                \paragraph{DocumentClassRow}\mbox{}\\
+                \paragraph{DocumentClassRow}\label{par:DocumentClassRow}\mbox{}\\
                 La classe DocumentClassRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa alle classi documentali. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -981,28 +1097,28 @@
                     \item \textbf{uuid\_dip string}: rappresenta l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata.
                 \end{itemize}
 
-                \paragraph{ConservationProcessRepository}\mbox{}\\
+                \paragraph{ConservationProcessRepository}\label{par:ConservationProcessRepository}\mbox{}\\
                 L'interfaccia ConservationProcessRepository definisce il contratto per l'accesso ai dati relativi ai processi di conservazione nel sistema. Astrae le operazioni di persistenza dei processi di conservazione, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{save(conservationProcess: ConservationProcess): Promise$<$ConservationProcess$>$}: esegue l'operazione di persistenza di un processo di conservazione nel sistema di archiviazione. Riceve un oggetto di tipo ConservationProcess e ritorna una Promise contenente il processo di conservazione salvato;
                 \end{itemize}
 
-                \paragraph{SQLiteConservationProcessRepository}\mbox{}\\
+                \paragraph{SQLiteConservationProcessRepository}\label{par:SQLiteConservationProcessRepository}\mbox{}\\
                 La classe SQLiteConservationProcessRepository implementa l'interfaccia ConservationProcessRepository, gestendo la persistenza dei processi di conservazione tramite un database SQLite locale.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider.
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la Sezione \ref{par:DatabaseProvider}.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{SQLiteConservationProcessRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
                 \end{itemize}
 
-                \paragraph{ConservationProcessRow}\mbox{}\\
+                \paragraph{ConservationProcessRow}\label{par:ConservationProcessRow}\mbox{}\\
                 L'interfaccia ConservationProcessRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai processi di conservazione. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -1017,10 +1133,10 @@
                     \item \textbf{versione\_classe\_documentale string}: rappresenta la versione della classe documentale associata al processo di conservazione.
                 \end{itemize}
 
-                \paragraph{DocumentRepository}\mbox{}\\
+                \paragraph{DocumentRepository}\label{par:DocumentRepository}\mbox{}\\
                 L'interfaccia DocumentRepository definisce il contratto per l'accesso ai dati relativi ai documenti nel sistema. Astrae le operazioni di persistenza e recupero dei documenti e dei loro file e metadati associati, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
                 \\
-                \textbf{Descrizione dei metodi dell'interfaccia}:
+              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{save(document: Document): Promise$<$Document$>$}: esegue l'operazione di persistenza di un documento nel sistema di archiviazione. Riceve un oggetto di tipo Document e ritorna una Promise contenente il documento salvato;
                     \item \textbf{findMainFileByDocumentUuid(documentUuid: string): Promise$<$File$>$}: esegue l'operazione di recupero del file principale associato a un documento, identificato dal suo UUID. Ritorna una Promise contenente l'oggetto File corrispondente;
@@ -1032,16 +1148,20 @@
                     \item \textbf{findAllByMetadata(filters: MetadataFilter[]): Promise$<$Document[]$>$}: esegue l'operazione di recupero di tutti i documenti che soddisfano i criteri di ricerca specificati attraverso una lista di filtri sui metadati. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota.
                 \end{itemize}
 
-                \paragraph{SQLiteDocumentRepository}\mbox{}\\
+                \paragraph{SQLiteDocumentRepository}\label{par:SQLiteDocumentRepository}\mbox{}\\
                 La classe SQLiteDocumentRepository implementa l'interfaccia DocumentRepository, gestendo la persistenza e il recupero dei documenti e dei loro dati associati tramite un database SQLite locale. Supporta la ricerca avanzata per metadati tramite SearchQueryBuilder.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
-                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider;
-                    \item \textbf{searchQueryBuilder SearchQueryBuilder}: rappresenta il builder utilizzato per la costruzione dinamica delle query di ricerca sui metadati; vedere la sezione relativa a SearchQueryBuilder.
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la Sezione \ref{par:DatabaseProvider};
+                    \item \textbf{searchQueryBuilder SearchQueryBuilder}: rappresenta il builder utilizzato per la costruzione dinamica delle query di ricerca sui metadati; vedere la Sezione \ref{par:SearchQueryBuilder}.
+                \end{itemize}
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{SQLiteDocumentRepository(dbProvider: DatabaseProvider,\\ searchQueryBuilder: SearchQueryBuilder)}: costruttore della classe. Inizializza gli attributi dbProvider e searchQueryBuilder con i valori passati come parametri.
                 \end{itemize}
 
-                \paragraph{DocumentRow}\mbox{}\\
+                \paragraph{DocumentRow}\label{par:DocumentRow}\mbox{}\\
                 L'interfaccia DocumentRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai documenti. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -1052,7 +1172,7 @@
                     \item \textbf{uuid\_file\_principale string}: rappresenta l'identificativo univoco del file principale associato al documento.
                 \end{itemize}
  
-                \paragraph{MetadataRow}\mbox{}\\
+                \paragraph{MetadataRow}\label{par:MetadataRow}\mbox{}\\
                 L'interfaccia MetadataRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai metadati dei documenti. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -1063,7 +1183,7 @@
                     \item \textbf{uuid\_documento string}: rappresenta l'identificativo univoco del documento a cui il metadato è associato.
                 \end{itemize}
  
-                \paragraph{FileRow}\mbox{}\\
+                \paragraph{FileRow}\label{par:FileRow}\mbox{}\\
                 L'interfaccia FileRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai file. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -1073,15 +1193,15 @@
                     \item \textbf{dimensione string}: rappresenta la dimensione del file nel formato memorizzato nel database.
                 \end{itemize}
  
-                \paragraph{DocumentUuidRow}\mbox{}\\
-                Linterfaccia DocumentUuidRow rappresenta una struttura dati minimale utilizzata internamente nel persistence layer per il recupero dei soli identificativi univoci dei documenti, tipicamente come risultato intermedio di query di ricerca.\\
+                \paragraph{DocumentUuidRow}\label{par:DocumentUuidRow}\mbox{}\\
+                L'interfaccia DocumentUuidRow rappresenta una struttura dati minimale utilizzata internamente nel persistence layer per il recupero dei soli identificativi univoci dei documenti, tipicamente come risultato intermedio di query di ricerca.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
                 \begin{itemize}
                     \item \textbf{uuid\_documento string}: rappresenta l'identificativo univoco del documento restituito dalla query.
                 \end{itemize}
  
-                \paragraph{SearchQueryBuilder}\mbox{}\\
+                \paragraph{SearchQueryBuilder}\label{par:SearchQueryBuilder}\mbox{}\\
                 La classe SearchQueryBuilder implementa il pattern Builder per la costruzione dinamica di query SQL di ricerca sui metadati dei documenti. Viene utilizzata da SQLiteDocumentRepository per comporre in modo flessibile le condizioni di ricerca a partire da una lista di filtri.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
@@ -1089,14 +1209,14 @@
                     \item \textbf{filters MetadataFilter[]}: rappresenta la lista dei filtri sui metadati da applicare nella query di ricerca; può essere vuota.
                 \end{itemize}
  
-                \textbf{Descrizione dei metodi invocabili dalla classe}:
+              \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
                 \begin{itemize}
                     \item \textbf{SearchQueryBuilder()}: costruttore della classe. Inizializza la lista dei filtri come vuota;
                     \item \textbf{withFilter(filter: MetadataFilter): void}: aggiunge un filtro alla lista dei filtri da applicare nella query di ricerca. Riceve un oggetto di tipo MetadataFilter contenente il tipo e il valore del criterio di ricerca;
-                    \item \textbf{buildQuery(): SearchQueryBuilderResult}: esegue la costruzione della query SQL a partire dai filtri accumulati. Ritorna un oggetto SearchQueryBuilderResult contenente la query e i parametri da passare al database.
+                    \item \textbf{buildQuery(): SearchQueryBuilderResult}: esegue la costruzione della query SQL a partire dai filtri accumulati. Ritorna un oggetto SearchQueryBuilderResult contenente la query e i parametri da passare al database. Si veda la Sezione \ref{par:SearchQueryBuilderResult}
                 \end{itemize}
  
-                \paragraph{SearchQueryBuilderResult}\mbox{}\\
+                \paragraph{SearchQueryBuilderResult}\label{par:SearchQueryBuilderResult}\mbox{}\\
                 L'interfaccia SearchQueryBuilderResult rappresenta il risultato della costruzione di una query SQL da parte di SearchQueryBuilder. Contiene la stringa della query e i parametri associati, pronti per essere passati al database.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -1107,7 +1227,7 @@
 
 
             \subsubsection{Infrastructure layer} 
-                \paragraph{HashAlgorithm}\mbox{}\\
+                \paragraph{HashAlgorithm}\label{par:HashAlgorithm}\mbox{}\\
                 L'enumerazione HashAlgorithm definisce gli algoritmi di hashing crittografico supportati dal sistema. Viene utilizzata dal HashProvider per determinare l'algoritmo da applicare nel calcolo degli hash durante la verifica dell'integrità dei pacchetti DIP.\\
                 \\
                 \textbf{Descrizione dei valori dell'enumerazione}:
@@ -1116,7 +1236,19 @@
                     \item \textbf{SHA512}: indica l'utilizzo dell'algoritmo di hashing SHA-512.
                 \end{itemize}
 
-    }
+                \paragraph{DocumentParsingResult}\label{par:DocumentParsingResult}\mbox{}\\
+                La classe DocumentParsingResult rappresenta il risultato intermedio del parsing di un documento all'interno di un pacchetto DIP. Viene prodotta da DipParser (Sezione \ref{par:DipParser} )e consumata da DocumentMapper (Sezione \ref{par:DocumentMapper})per la costruzione dell'oggetto di dominio Document.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del documento estratto durante il parsing;
+                    \item \textbf{conservationProcessUuid string}: rappresenta l'identificativo univoco del processo di conservazione a cui il documento appartiene;
+                    \item \textbf{documentPath string}: rappresenta il percorso nel file system in cui è archiviato il documento;
+                    \item \textbf{primaryFilePath string}: rappresenta il percorso del file principale associato al documento;
+                    \item \textbf{attachmentsFilesPath [uuid: string, path: string][]}: rappresenta la lista degli allegati del documento, ciascuno identificato da un UUID e dal relativo percorso nel file system;
+                    \item \textbf{documentMetadata any}: rappresenta i metadati grezzi del documento, nella forma restituita dal parser XML prima della trasformazione in oggetti di dominio Metadata.
+                \end{itemize}
+
 
     \section{Stato dei requisiti funzionali} {
         \subsection{Stato per requisito} {
