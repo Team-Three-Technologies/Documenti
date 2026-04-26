@@ -490,7 +490,7 @@
                 \end{itemize}
             }
             
-            \subsubsection{Presentation layer} {
+            \subsubsection{Presentation layer}
                 \paragraph{DipHandler}\mbox{}\\
                 Il DipHandler gestisce l'Application Logic per la gestione dei pacchetti DIP. Coordina le operazioni di importazione automatica, recupero del contenuto e verifica dell'integrità dei pacchetti DIP.\\
                 \\
@@ -530,9 +530,9 @@
                     \item \textbf{fileExternalPreview(fileRequestDto: FileRequestDTO):\\ Promise$<$lpcResponse$<$ExportFileResponseDTO$>>$}: genera un'anteprima esterna del file specificato, producendo un URL o un contenuto condivisibile. Delega l'operazione al caso d'uso fileExternalPreviewUseCase. Ritorna una Promise contenente la risposta con i dati per l'anteprima esterna;
                     \item \textbf{exportFile(exportFileRequestDto: ExportFileRequestDTO):\\ Promise$<$lpcResponse$<$ExportFileResponseDTO$>>$}: esporta il file specificato nel formato richiesto. Delega l'operazione al caso d'uso exportDocumentUseCase. Ritorna una Promise contenente la risposta con il percorso del file esportato sul file system locale.
                 \end{itemize}
-            }
+
             
-            \subsubsection{Application layer} {
+            \subsubsection{Application layer} 
                 \paragraph{AutolimportDipUseCase}\mbox{}\\
                 L'interfaccia AutolimportDipUseCase definisce il contratto per il caso d'uso di importazione automatica dei pacchetti DIP nel sistema.\\
                 \\
@@ -712,12 +712,410 @@
                     \item \textbf{execute(documentUuid: string, fileUuid: string $|$ undefined):\\ Promise$<$ExportFileResponseDTO$>$}: implementa il metodo dell'interfaccia. Recupera le informazioni del documento e del file tramite documentRepository utilizzando gli UUID forniti. Utilizza dialogProvider per consentire all'utente di selezionare la destinazione di esportazione e fileSystemProvider per scrivere il file sul disco. Ritorna una Promise contenente la risposta con il percorso del file esportato sul file system locale.
                 \end{itemize}
             }
+
+            \subsubsection{Domain layer}
+                \paragraph{Dip}\mbox{}\\
+                La classe Dip rappresenta l'entità di dominio corrispondente a un pacchetto DIP all'interno del sistema. Incapsula le informazioni principali del pacchetto, quali l'identificativo del processo associato, la data di creazione e i contatori relativi ai documenti e ai pacchetti AIP contenuti.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{processUuid string}: rappresenta l'identificativo univoco del processo associato al pacchetto DIP;
+                    \item \textbf{creationDate Date}: rappresenta la data di creazione del pacchetto DIP;
+                    \item \textbf{documentsCount number}: rappresenta il numero totale di documenti contenuti nel pacchetto DIP;
+                    \item \textbf{aipCount number}: rappresenta il numero di pacchetti AIP (Archival Information Package) associati al pacchetto DIP.
+                \end{itemize}
+
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{Dip(processUuid: string, creationDate: Date, documentsCount: number, aipCount: number)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{getProcessUuid(): string}: restituisce il valore dell'attributo processUuid;
+                    \item \textbf{getCreationDate(): Date}: restituisce il valore dell'attributo creationDate;
+                    \item \textbf{getDocumentsCount(): number}: restituisce il valore dell'attributo documentsCount;
+                    \item \textbf{getAipCount(): number}: restituisce il valore dell'attributo aipCount;
+                    \item \textbf{setProcessUuid(processUuid: string): void}: imposta il valore dell'attributo processUuid con il valore passato come parametro;
+                    \item \textbf{setCreationDate(creationDate: Date): void}: imposta il valore dell'attributo creationDate con il valore passato come parametro;
+                    \item \textbf{setDocumentsCount(documentsCount: number): void}: imposta il valore dell'attributo documentsCount con il valore passato come parametro;
+                    \item \textbf{setAipCount(aipCount: number): void}: imposta il valore dell'attributo aipCount con il valore passato come parametro.
+                \end{itemize}
+
+                \paragraph{DocumentClass}\mbox{}\\
+                La classe DocumentClass rappresenta l'entità di dominio corrispondente a una classe documentale all'interno del sistema. Descrive una tipologia di documento definita nell'ambito di un pacchetto DIP, con le relative informazioni di validità temporale.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco della classe documentale;
+                    \item \textbf{name string}: rappresenta il nome della classe documentale;
+                    \item \textbf{version string}: rappresenta la versione della classe documentale;
+                    \item \textbf{validFrom Date}: rappresenta la data a partire dalla quale la classe documentale è considerata valida;
+                    \item \textbf{validTo Date $|$ undefined}: rappresenta la data di scadenza della validità della classe documentale; assume valore undefined se la classe documentale non ha una data di scadenza;
+                    \item \textbf{dipUuid string}: rappresenta l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata.
+                \end{itemize}
+
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DocumentClass(uuid: string, name: string, version: string, validFrom: Date, validTo: Date $|$ undefined, dipUuid: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
+                    \item \textbf{getName(): string}: restituisce il valore dell'attributo name;
+                    \item \textbf{getVersion(): string}: restituisce il valore dell'attributo version;
+                    \item \textbf{getValidFrom(): Date}: restituisce il valore dell'attributo validFrom;
+                    \item \textbf{getValidTo(): Date $|$ undefined}: restituisce il valore dell'attributo validTo;
+                    \item \textbf{getDipUuid(): string}: restituisce il valore dell'attributo dipUuid;
+                    \item \textbf{setUuid(uuid: string): void}: imposta il valore dell'attributo uuid con il valore passato come parametro;
+                    \item \textbf{setName(name: string): void}: imposta il valore dell'attributo name con il valore passato come parametro;
+                    \item \textbf{setVersion(version: string): void}: imposta il valore dell'attributo version con il valore passato come parametro;
+                    \item \textbf{setValidFrom(validFrom: Date): void}: imposta il valore dell'attributo validFrom con il valore passato come parametro;
+                    \item \textbf{setValidTo(validTo: Date $|$ undefined): void}: imposta il valore dell'attributo validTo con il valore passato come parametro;
+                    \item \textbf{setDipUuid(dipUuid: string): void}: imposta il valore dell'attributo dipUuid con il valore passato come parametro.
+                \end{itemize}
+
+
+                \paragraph{ConservationProcess}\mbox{}\\
+                La classe ConservationProcess rappresenta un processo di conservazione all'interno del sistema. Contiene le informazioni relative a un processo di conservazione associato a una specifica classe documentale, inclusi i contatori di SIP, documenti e file, e la dimensione totale dei contenuti archiviati.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del processo di conservazione;
+                    \item \textbf{creationDate Date}: rappresenta la data di creazione del processo di conservazione;
+                    \item \textbf{totalSize string}: rappresenta la dimensione totale dei file contenuti nel processo di conservazione;
+                    \item \textbf{sipCount number}: rappresenta il numero di pacchetti SIP (Submission Information Package) associati al processo di conservazione;
+                    \item \textbf{documentsCount number}: rappresenta il numero totale di documenti inclusi nel processo di conservazione;
+                    \item \textbf{filesCount number}: rappresenta il numero totale di file associati ai documenti del processo di conservazione;
+                    \item \textbf{documentClassUuid string}: rappresenta l'identificativo univoco della classe documentale associata al processo di conservazione;
+                    \item \textbf{documentClassVersion string}: rappresenta la versione della classe documentale associata al processo di conservazione.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{ConservationProcess(uuid: string, creationDate: Date, totalSize: string, sipCount: number, documentsCount: number, filesCount: number,\\ documentClassUuid: string, documentClassVersion: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
+                    \item \textbf{getCreationDate(): Date}: restituisce il valore dell'attributo creationDate;
+                    \item \textbf{getTotalSize(): string}: restituisce il valore dell'attributo totalSize;
+                    \item \textbf{getSipCount(): number}: restituisce il valore dell'attributo sipCount;
+                    \item \textbf{getDocumentsCount(): number}: restituisce il valore dell'attributo documentsCount;
+                    \item \textbf{getFilesCount(): number}: restituisce il valore dell'attributo filesCount;
+                    \item \textbf{getDocumentClassUuid(): string}: restituisce il valore dell'attributo documentClassUuid;
+                    \item \textbf{getDocumentClassVersion(): string}: restituisce il valore dell'attributo documentClassVersion;
+                    \item \textbf{setUuid(uuid: string): void}: imposta il valore dell'attributo uuid con il valore passato come parametro;
+                    \item \textbf{setCreationDate(creationDate: Date): void}: imposta il valore dell'attributo creationDate con il valore passato come parametro;
+                    \item \textbf{setTotalSize(totalSize: string): void}: imposta il valore dell'attributo totalSize con il valore passato come parametro;
+                    \item \textbf{setSipCount(sipCount: number): void}: imposta il valore dell'attributo sipCount con il valore passato come parametro;
+                    \item \textbf{setDocumentsCount(documentsCount: number): void}: imposta il valore dell'attributo documentsCount con il valore passato come parametro;
+                    \item \textbf{setFilesCount(filesCount: number): void}: imposta il valore dell'attributo filesCount con il valore passato come parametro;
+                    \item \textbf{setDocumentClassUuid(documentClassUuid: string): void}: imposta il valore dell'attributo documentClassUuid con il valore passato come parametro;
+                    \item \textbf{setDocumentClassVersion(documentClassVersion: string): void}: imposta il valore dell'attributo documentClassVersion con il valore passato come parametro.
+                \end{itemize}
+
+                \paragraph{Document}\mbox{}\\
+                La classe Document rappresenta l'entità di dominio corrispondente a un documento all'interno del sistema. Contiene le informazioni strutturali del documento, inclusi il file principale, gli eventuali allegati, i metadati associati e il riferimento al processo di conservazione di appartenenza.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del documento;
+                    \item \textbf{path string}: rappresenta il percorso nel file system in cui è archiviato il documento;
+                    \item \textbf{main File}: rappresenta il file principale associato al documento;
+                    \item \textbf{attachments File[]}: rappresenta la lista degli allegati associati al documento; può essere vuota;
+                    \item \textbf{metadata Metadata[]}: rappresenta la lista dei metadati associati al documento; può essere vuota;
+                    \item \textbf{conservationProcessUuid string}: rappresenta l'identificativo univoco del processo di conservazione a cui il documento appartiene.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{Document(uuid: string, path: string, main: File, attachments: File[], metadata: Metadata[], conservationProcessUuid: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
+                    \item \textbf{getPath(): string}: restituisce il valore dell'attributo path;
+                    \item \textbf{getMain(): File}: restituisce il file principale associato al documento;
+                    \item \textbf{getAttachments(): File[]}: restituisce la lista degli allegati associati al documento;
+                    \item \textbf{getMetadata(): Metadata[]}: restituisce la lista dei metadati associati al documento;
+                    \item \textbf{getConservationProcessUuid(): string}: restituisce l'identificativo univoco del processo di conservazione a cui il documento appartiene;
+                    \item \textbf{setUuid(uuid: string): void}: imposta il valore dell'attributo uuid con il valore passato come parametro;
+                    \item \textbf{setPath(path: string): void}: imposta il valore dell'attributo path con il valore passato come parametro;
+                    \item \textbf{setMain(main: File): void}: imposta il file principale del documento con il valore passato come parametro;
+                    \item \textbf{setAttachments(attachments: File[]): void}: imposta la lista degli allegati del documento con il valore passato come parametro;
+                    \item \textbf{setMetadata(metadata: Metadata[]): void}: imposta la lista dei metadati del documento con il valore passato come parametro;
+                    \item \textbf{setConservationProcessUuid(conservationProcessUuid: string): void}: imposta l'identificativo del processo di conservazione con il valore passato come parametro;
+                    \item \textbf{getMetadataValueByName(name: string): string $|$ null}: restituisce il valore del primo metadato il cui nome corrisponde esattamente alla stringa specificata; restituisce null se nessun metadato corrisponde;
+                    \item \textbf{getMetadataValueByRegex(name: RegExp): string $|$ null}: restituisce il valore del primo metadato il cui nome soddisfa l'espressione regolare specificata; restituisce null se nessun metadato corrisponde.
+                \end{itemize}
+
+                \paragraph{File}\mbox{}\\
+                La classe File rappresenta l'entità di dominio corrispondente a un file all'interno del sistema. Può rappresentare sia il file principale di un documento sia uno dei suoi allegati. Fornisce metodi di utilità per ricavare informazioni sul nome e sull'estensione del file a partire dal percorso.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del file;
+                    \item \textbf{path string}: rappresenta il percorso nel file system in cui è archiviato il file;
+                    \item \textbf{size string}: rappresenta la dimensione del file.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{File(uuid: string, path: string, size: string)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{getUuid(): string}: restituisce il valore dell'attributo uuid;
+                    \item \textbf{getPath(): string}: restituisce il valore dell'attributo path;
+                    \item \textbf{getSize(): string}: restituisce il valore dell'attributo size;
+                    \item \textbf{setUuid(uuid: string): void}: imposta il valore dell'attributo uuid con il valore passato come parametro;
+                    \item \textbf{setPath(path: string): void}: imposta il valore dell'attributo path con il valore passato come parametro;
+                    \item \textbf{setSize(size: string): void}: imposta il valore dell'attributo size con il valore passato come parametro;
+                    \item \textbf{getFilename(): string}: restituisce il nome completo del file senza estensione ricavato dal percorso memorizzato nell'attributo path;
+                    \item \textbf{getExtension(): string}: restituisce l'estensione del file ricavata dal percorso memorizzato nell'attributo path;
+                \end{itemize}
+ 
+                \paragraph{Metadata}\mbox{}\\
+                La classe Metadata rappresenta l'entità di dominio corrispondente a un metadato associato a un documento all'interno del sistema. Ogni metadato è composto da un nome, un valore e un tipo che ne determina la corretta interpretazione.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{name string}: rappresenta il nome del metadato, ovvero il campo a cui il valore si riferisce;
+                    \item \textbf{value string}: rappresenta il valore del metadato;
+                    \item \textbf{type MetadataTypeEnum}: rappresenta il tipo del metadato, utilizzato per la corretta interpretazione del valore; vedere la sezione relativa a MetadataTypeEnum.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{Metadata(name: string, value: string, type: MetadataTypeEnum)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{getName(): string}: restituisce il valore dell'attributo name;
+                    \item \textbf{getValue(): string}: restituisce il valore dell'attributo value;
+                    \item \textbf{getType(): MetadataTypeEnum}: restituisce il valore dell'attributo type;
+                    \item \textbf{setName(name: string): void}: imposta il valore dell'attributo name con il valore passato come parametro;
+                    \item \textbf{setValue(value: string): void}: imposta il valore dell'attributo value con il valore passato come parametro;
+                    \item \textbf{setType(type: MetadataTypeEnum): void}: imposta il valore dell'attributo type con il valore passato come parametro.
+                \end{itemize}
+ 
+                \paragraph{MetadataTypeEnum}\mbox{}\\
+                L'enumerazione MetadataTypeEnum definisce i possibili tipi che un metadato può assumere all'interno del sistema. Viene utilizzata dalla classe Metadata per determinare la corretta interpretazione del valore memorizzato.\\
+                \\
+                \textbf{Descrizione dei valori dell'enumerazione}:
+                \begin{itemize}
+                    \item \textbf{STRING}: indica che il valore del metadato è di tipo stringa;
+                    \item \textbf{NUMBER}: indica che il valore del metadato è di tipo numerico;
+                    \item \textbf{BOOLEAN}: indica che il valore del metadato è di tipo booleano;
+                    \item \textbf{DATE}: indica che il valore del metadato rappresenta una data;
+                    \item \textbf{TIME}: indica che il valore del metadato rappresenta un orario;
+                    \item \textbf{BASE64}: indica che il valore del metadato è codificato in formato Base64.
+                \end{itemize}
+ 
+                \paragraph{MetadataFilter}\mbox{}\\
+                La classe MetadataFilter rappresenta un criterio di ricerca applicabile ai metadati dei documenti all'interno del sistema. Viene utilizzata nell'application layer per costruire le query di ricerca sui documenti a partire dai filtri specificati dall'utente.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{type string}: rappresenta il tipo di metadato su cui applicare il filtro di ricerca, corrispondente al nome del campo da confrontare;
+                    \item \textbf{value string}: rappresenta il valore da confrontare con il metadato specificato.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{MetadataFilter(type: string, value: string)}: costruttore della classe. Inizializza gli attributi type e value con i valori passati come parametri;
+                    \item \textbf{getType(): string}: restituisce il valore dell'attributo type;
+                    \item \textbf{getValue(): string}: restituisce il valore dell'attributo value;
+                    \item \textbf{setType(type: string): void}: imposta il valore dell'attributo type con il valore passato come parametro;
+                    \item \textbf{setValue(value: string): void}: imposta il valore dell'attributo value con il valore passato come parametro.
+                \end{itemize}
             
-            \subsubsection{Data layer} {
-                \paragraph{ Utilizzo del pattern nel progetto}\mbox{}\\
-                Testo...
-            }
-        }
+
+            \subsubsection{Persistence layer} 
+                \paragraph{DipRepository}\mbox{}\\
+                L'interfaccia DipRepository definisce il contratto per l'accesso ai dati relativi ai pacchetti DIP nel sistema. Astrae le operazioni di persistenza e recupero dei pacchetti DIP, consentendo all'application layer di interagire con il database senza dipendere dai dettagli implementativi dello strato di persistenza.\\
+                \\
+                \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{save(dip: Dip): Promise$<$Dip$>$}: esegue l'operazione di persistenza di un pacchetto DIP nel sistema di archiviazione. Riceve un oggetto di tipo Dip e ritorna una Promise contenente il pacchetto DIP salvato;
+                    \item \textbf{findByUuid(uuid: string): Promise$<$Dip $|$ null$>$}: esegue l'operazione di recupero di un pacchetto DIP a partire dal suo identificativo univoco. Ritorna una Promise contenente il pacchetto DIP corrispondente, oppure null se nessun pacchetto con l'UUID specificato è presente nel sistema.
+                \end{itemize}
+
+                \paragraph{SQLiteDipRepository}\mbox{}\\
+                La classe SQLiteDipRepository implementa l'interfaccia DipRepository, gestendo la persistenza e il recupero dei pacchetti DIP tramite un database SQLite locale.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{SQLiteDipRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
+                \end{itemize}
+
+                \paragraph{DipRow}\mbox{}\\
+                L'interfaccia DipRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai pacchetti DIP. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid\_processo string}: rappresenta l'identificativo univoco del processo associato al pacchetto DIP, utilizzato come chiave primaria nella tabella;
+                    \item \textbf{data\_creazione string}: rappresenta la data di creazione del pacchetto DIP nel formato memorizzato nel database;
+                    \item \textbf{numero\_documenti number}: rappresenta il numero totale di documenti contenuti nel pacchetto DIP;
+                    \item \textbf{numero\_aip number}: rappresenta il numero di pacchetti AIP (Archival Information Package) associati al pacchetto DIP.
+                \end{itemize}
+
+                \paragraph{DocumentClassRepository}\mbox{}\\
+                L'interfaccia DocumentClassRepository definisce il contratto per l'accesso ai dati relativi alle classi documentali nel sistema. Astrae le operazioni di persistenza e recupero delle classi documentali, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
+                \\
+                \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{save(documentClass: DocumentClass): Promise$<$DocumentClass$>$}: esegue l'operazione di persistenza di una classe documentale nel sistema di archiviazione. Riceve un oggetto di tipo DocumentClass e ritorna una Promise contenente la classe documentale salvata;
+                \end{itemize}
+
+                \paragraph{SQLiteDocumentClassRepository}\mbox{}\\
+                La classe SQLiteDocumentClassRepository implementa l'interfaccia DocumentClassRepository, gestendo la persistenza e il recupero delle classi documentali tramite un database SQLite locale.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{SQLiteDocumentClassRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
+                \end{itemize}
+
+                \paragraph{DocumentClassRow}\mbox{}\\
+                La classe DocumentClassRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa alle classi documentali. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco della classe documentale, utilizzato come chiave primaria nella tabella;
+                    \item \textbf{nome string}: rappresenta il nome della classe documentale;
+                    \item \textbf{versione string}: rappresenta la versione della classe documentale;
+                    \item \textbf{valida\_da string}: rappresenta la data a partire dalla quale la classe documentale è considerata valida;
+                    \item \textbf{valida\_fino string $|$ undefined}: rappresenta la data di scadenza della validità della classe documentale; assume valore undefined se la classe documentale non ha una data di scadenza;
+                    \item \textbf{uuid\_dip string}: rappresenta l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata.
+                \end{itemize}
+
+                \paragraph{ConservationProcessRepository}\mbox{}\\
+                L'interfaccia ConservationProcessRepository definisce il contratto per l'accesso ai dati relativi ai processi di conservazione nel sistema. Astrae le operazioni di persistenza dei processi di conservazione, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
+                \\
+                \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{save(conservationProcess: ConservationProcess): Promise$<$ConservationProcess$>$}: esegue l'operazione di persistenza di un processo di conservazione nel sistema di archiviazione. Riceve un oggetto di tipo ConservationProcess e ritorna una Promise contenente il processo di conservazione salvato;
+                \end{itemize}
+
+                \paragraph{SQLiteConservationProcessRepository}\mbox{}\\
+                La classe SQLiteConservationProcessRepository implementa l'interfaccia ConservationProcessRepository, gestendo la persistenza dei processi di conservazione tramite un database SQLite locale.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{SQLiteConservationProcessRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
+                \end{itemize}
+
+                \paragraph{ConservationProcessRow}\mbox{}\\
+                L'interfaccia ConservationProcessRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai processi di conservazione. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del processo di conservazione, utilizzato come chiave primaria nella tabella;
+                    \item \textbf{data\_creazione string}: rappresenta la data di creazione del processo di conservazione nel formato memorizzato nel database;
+                    \item \textbf{dimensione\_totale string}: rappresenta la dimensione totale dei file contenuti nel processo di conservazione;
+                    \item \textbf{numero\_sip number}: rappresenta il numero di pacchetti SIP (Submission Information Package) associati al processo di conservazione;
+                    \item \textbf{numero\_documenti number}: rappresenta il numero totale di documenti inclusi nel processo di conservazione;
+                    \item \textbf{numero\_file\_documenti number}: rappresenta il numero totale di file associati ai documenti del processo di conservazione;
+                    \item \textbf{uuid\_classe\_documentale string}: rappresenta l'identificativo univoco della classe documentale associata al processo di conservazione;
+                    \item \textbf{versione\_classe\_documentale string}: rappresenta la versione della classe documentale associata al processo di conservazione.
+                \end{itemize}
+
+                \paragraph{DocumentRepository}\mbox{}\\
+                L'interfaccia DocumentRepository definisce il contratto per l'accesso ai dati relativi ai documenti nel sistema. Astrae le operazioni di persistenza e recupero dei documenti e dei loro file e metadati associati, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
+                \\
+                \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{save(document: Document): Promise$<$Document$>$}: esegue l'operazione di persistenza di un documento nel sistema di archiviazione. Riceve un oggetto di tipo Document e ritorna una Promise contenente il documento salvato;
+                    \item \textbf{findMainFileByDocumentUuid(documentUuid: string): Promise$<$File$>$}: esegue l'operazione di recupero del file principale associato a un documento, identificato dal suo UUID. Ritorna una Promise contenente l'oggetto File corrispondente;
+                    \item \textbf{findAttachmentsByDocumentUuid(documentUuid: string): Promise$<$File[]$>$}: esegue l'operazione di recupero di tutti gli allegati associati a un documento, identificato dal suo UUID. Ritorna una Promise contenente la lista degli oggetti File trovati, che può essere vuota;
+                    \item \textbf{findMetadataByDocumentUuid(documentUuid: string): Promise$<$Metadata[]$>$}: esegue l'operazione di recupero di tutti i metadati associati a un documento, identificato dal suo UUID. Ritorna una Promise contenente la lista degli oggetti Metadata trovati, che può essere vuota;
+                    \item \textbf{findByUuid(documentUuid: string): Promise$<$Document $|$ null$>$}: esegue l'operazione di recupero di un documento a partire dal suo identificativo univoco. Ritorna una Promise contenente il documento corrispondente, oppure null se nessun documento con l'UUID specificato è presente nel sistema;
+                    \item \textbf{findAllByDipUuid(dipUuid: string): Promise$<$Document[]$>$}: esegue l'operazione di recupero di tutti i documenti contenuti in un pacchetto DIP, identificato dal suo UUID. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota;
+                    \item \textbf{findFileByUuid(fileUuid: string): Promise$<$File $|$ null$>$}: esegue l'operazione di recupero di un file a partire dal suo identificativo univoco, indipendentemente dal documento a cui appartiene. Ritorna una Promise contenente l'oggetto File corrispondente, oppure null se nessun file con l'UUID specificato è presente nel sistema;
+                    \item \textbf{findAllByMetadata(filters: MetadataFilter[]): Promise$<$Document[]$>$}: esegue l'operazione di recupero di tutti i documenti che soddisfano i criteri di ricerca specificati attraverso una lista di filtri sui metadati. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota.
+                \end{itemize}
+
+                \paragraph{SQLiteDocumentRepository}\mbox{}\\
+                La classe SQLiteDocumentRepository implementa l'interfaccia DocumentRepository, gestendo la persistenza e il recupero dei documenti e dei loro dati associati tramite un database SQLite locale. Supporta la ricerca avanzata per metadati tramite SearchQueryBuilder.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{dbProvider DatabaseProvider}: rappresenta il provider per l'accesso al database SQLite; vedere la sezione relativa a DatabaseProvider;
+                    \item \textbf{searchQueryBuilder SearchQueryBuilder}: rappresenta il builder utilizzato per la costruzione dinamica delle query di ricerca sui metadati; vedere la sezione relativa a SearchQueryBuilder.
+                \end{itemize}
+
+                \paragraph{DocumentRow}\mbox{}\\
+                L'interfaccia DocumentRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai documenti. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del documento, utilizzato come chiave primaria nella tabella;
+                    \item \textbf{percorso string}: rappresenta il percorso nel file system in cui è archiviato il documento;
+                    \item \textbf{uuid\_processo\_conservazione string}: rappresenta l'identificativo univoco del processo di conservazione a cui il documento appartiene;
+                    \item \textbf{uuid\_file\_principale string}: rappresenta l'identificativo univoco del file principale associato al documento.
+                \end{itemize}
+ 
+                \paragraph{MetadataRow}\mbox{}\\
+                L'interfaccia MetadataRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai metadati dei documenti. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{nome string}: rappresenta il nome del metadato, ovvero il campo a cui il valore si riferisce;
+                    \item \textbf{valore string}: rappresenta il valore del metadato memorizzato nel database;
+                    \item \textbf{tipo string}: rappresenta il tipo del metadato, utilizzato per la corretta interpretazione del valore durante il mapping verso l'oggetto di dominio Metadata;
+                    \item \textbf{uuid\_documento string}: rappresenta l'identificativo univoco del documento a cui il metadato è associato.
+                \end{itemize}
+ 
+                \paragraph{FileRow}\mbox{}\\
+                L'interfaccia FileRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai file. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid string}: rappresenta l'identificativo univoco del file, utilizzato come chiave primaria nella tabella;
+                    \item \textbf{percorso string}: rappresenta il percorso nel file system in cui è archiviato il file;
+                    \item \textbf{dimensione string}: rappresenta la dimensione del file nel formato memorizzato nel database.
+                \end{itemize}
+ 
+                \paragraph{DocumentUuidRow}\mbox{}\\
+                Linterfaccia DocumentUuidRow rappresenta una struttura dati minimale utilizzata internamente nel persistence layer per il recupero dei soli identificativi univoci dei documenti, tipicamente come risultato intermedio di query di ricerca.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{uuid\_documento string}: rappresenta l'identificativo univoco del documento restituito dalla query.
+                \end{itemize}
+ 
+                \paragraph{SearchQueryBuilder}\mbox{}\\
+                La classe SearchQueryBuilder implementa il pattern Builder per la costruzione dinamica di query SQL di ricerca sui metadati dei documenti. Viene utilizzata da SQLiteDocumentRepository per comporre in modo flessibile le condizioni di ricerca a partire da una lista di filtri.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{filters MetadataFilter[]}: rappresenta la lista dei filtri sui metadati da applicare nella query di ricerca; può essere vuota.
+                \end{itemize}
+ 
+                \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{SearchQueryBuilder()}: costruttore della classe. Inizializza la lista dei filtri come vuota;
+                    \item \textbf{withFilter(filter: MetadataFilter): void}: aggiunge un filtro alla lista dei filtri da applicare nella query di ricerca. Riceve un oggetto di tipo MetadataFilter contenente il tipo e il valore del criterio di ricerca;
+                    \item \textbf{buildQuery(): SearchQueryBuilderResult}: esegue la costruzione della query SQL a partire dai filtri accumulati. Ritorna un oggetto SearchQueryBuilderResult contenente la query e i parametri da passare al database.
+                \end{itemize}
+ 
+                \paragraph{SearchQueryBuilderResult}\mbox{}\\
+                L'interfaccia SearchQueryBuilderResult rappresenta il risultato della costruzione di una query SQL da parte di SearchQueryBuilder. Contiene la stringa della query e i parametri associati, pronti per essere passati al database.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{query string}: rappresenta la stringa SQL della query costruita da SearchQueryBuilder;
+                    \item \textbf{params (string $|$ number)[]}: rappresenta la lista dei parametri da passare alla query SQL per la sostituzione dei segnaposto.
+                \end{itemize}
+
+
+            \subsubsection{Infrastructure layer} 
+                \paragraph{HashAlgorithm}\mbox{}\\
+                L'enumerazione HashAlgorithm definisce gli algoritmi di hashing crittografico supportati dal sistema. Viene utilizzata dal HashProvider per determinare l'algoritmo da applicare nel calcolo degli hash durante la verifica dell'integrità dei pacchetti DIP.\\
+                \\
+                \textbf{Descrizione dei valori dell'enumerazione}:
+                \begin{itemize}
+                    \item \textbf{SHA256}: indica l'utilizzo dell'algoritmo di hashing SHA-256;
+                    \item \textbf{SHA512}: indica l'utilizzo dell'algoritmo di hashing SHA-512.
+                \end{itemize}
+
     }
 
     \section{Stato dei requisiti funzionali} {
