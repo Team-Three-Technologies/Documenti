@@ -15,7 +15,7 @@
 \setAuthors{Mattia Oliva Medin \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
 \setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Andrea Masiero}
 \setApprovation{}
-\setVersion{0.7}
+\setVersion{0.8}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -29,7 +29,9 @@
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
                 \hline
-                \textbf{0.7} & 27/04/26 & Francesco Balestro & Programmatore & Andrea Masiero & Stesura "Infrastructure layer" e "Classi per il rendering" \\
+                \textbf{0.8} & 26/04/26 & Bianca Zaghetto & Programmatore & Nenad Radulovic & Aggiornamento requisiti e grafici \\
+                \hline
+                \textbf{0.7} & 26/04/26 & Francesco Balestro & Programmatore & Bianca Zaghetto & Stesura "Infrastructure layer" e "Classi per il rendering" \\
                 \hline
                 \textbf{0.6} & 26/04/26 & Sara Gioia Fichera & Programmatore & Mattia Oliva Medin & Stesura "Domain layer" e "Persistence layer" \\
                 \hline
@@ -1944,26 +1946,22 @@
                 Soddisfatto \\ 
                 \hline
                 \textbf{R79-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
-                Soddisfatto \\ 
+                Non soddisfatto \\ 
                 \hline
                 \textbf{R80-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
-                Soddisfatto \\ 
-                \hline
-                \hline
-                \textbf{R80-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
-                Soddisfatto \\ 
+                Non soddisfatto \\ 
                 \hline
                 \textbf{R81-F-Op} & L'utente deve poter stampare un documento selezionato & 
-                Soddisfatto \\ 
+                Non soddisfatto \\ 
                 \hline
-                \textbf{R82-F-Ob} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
-                Soddisfatto \\ 
+                \textbf{R82-F-Op} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
+                Non soddisfatto \\ 
                 \hline
                 \textbf{R83-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
-                Soddisfatto \\ 
+                Non soddisfatto \\ 
                 \hline
                 \textbf{R84-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
-                Soddisfatto \\ 
+                Non soddisfatto \\ 
                 \hline
             \end{longtable}
         }
@@ -1971,30 +1969,30 @@
         \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                \pie [explode=0.1, text=legend] { 75/Requisiti soddisfatti, 25/Requisiti non soddisfatti }
+                \pie [explode=0.1, text=legend] { 92.86/Requisiti soddisfatti, 7.14/Requisiti non soddisfatti }
                 \end{tikzpicture}
-                \caption{Percentuale di requisiti funzionali soddisfatti}
+                \caption{Percentuale di soddisfazione dei requisiti funzionali}
         \end{figure}
         \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
                 \pie [explode=0.1, text=legend] { 100/Requisiti soddisfatti, 0/Requisiti non soddisfatti }
                 \end{tikzpicture}
-                \caption{Percentuale di requisiti funzionali obbligatori soddisfatti}
+                \caption{Percentuale di soddisfazione dei requisiti funzionali obbligatori}
         \end{figure}
         \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                \pie [explode=0.1, text=legend] { 50/Requisiti soddisfatti, 50/Requisiti non soddisfatti }
+                \pie [explode=0.1, text=legend] { 0/Requisiti soddisfatti, 100/Requisiti non soddisfatti }
                 \end{tikzpicture}
-                \caption{Percentuale di requisiti funzionali opzionali soddisfatti}
+                \caption{Percentuale di soddisfazione dei requisiti funzionali opzionali}
         \end{figure}
         \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                \pie [explode=0.1, text=legend] { 25/Requisiti soddisfatti, 75/Requisiti non soddisfatti }
+                \pie [explode=0.1, text=legend] { 100/Requisiti soddisfatti, 0/Requisiti non soddisfatti }
                 \end{tikzpicture}
-                \caption{Percentuale di requisiti funzionali desiderabili soddisfatti}
+                \caption{Percentuale di soddisfazione dei requisiti funzionali desiderabili}
         \end{figure}
     }
 \end{document}
