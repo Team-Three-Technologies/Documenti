@@ -13,9 +13,9 @@
 \setcounter{tocdepth}{4}
 \setTitle{Specifica Tecnica}
 \setAuthors{Mattia Oliva Medin \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
-\setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
+\setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Andrea Masiero}
 \setApprovation{}
-\setVersion{0.6}
+\setVersion{0.7}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -28,6 +28,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{0.7} & 27/04/26 & Francesco Balestro & Programmatore & Andrea Masiero & Stesura "Infrastructure layer" e "Classi per il rendering" \\
                 \hline
                 \textbf{0.6} & 26/04/26 & Sara Gioia Fichera & Programmatore & Mattia Oliva Medin & Stesura "Domain layer" e "Persistence layer" \\
                 \hline
@@ -264,7 +266,23 @@
                 \end{itemize}
                 
                 \paragraph{ Utilizzo del pattern nel progetto}\mbox{}\\
-                Testo...
+                Nel progetto, il pattern Dependency Injection è stato adottato sia nel Main process che nel Renderer process, sfruttando approcci specifici per ciascun ambiente.\\
+                \\
+                Nel Main process (Node.js/Electron), la dependency injection è implementata manualmente tramite il passaggio esplicito delle dipendenze nei costruttori delle classi. Questo approccio, noto come \textit{constructor injection}, è stato utilizzato, per esempio, nei seguenti casi:
+                \begin{itemize}
+                    \item Ciascun servizio (ad esempio \texttt{LocalFileSystemProvider},\\ \texttt{CryptoHashProvider}, \texttt{DatabaseProvider}) riceve le proprie dipendenze (come\\ \texttt{AppConfig}) tramite costruttore;
+                    \item Le classi che implementano i casi d'uso (come \texttt{AutoImportDipService}) ricevono repository, provider e mapper necessari attraverso il costruttore;
+                    \item I repository (ad esempio \texttt{DipRepository}, \texttt{DocumentRepository}) ricevono l'istanza del database tramite dependency injection.
+                \end{itemize}
+                
+                \noindent Nel Renderer process (Angular), la dependency injection è nativa del framework. Angular fornisce un sistema di dependency injection gerarchico che permette di:
+                \begin{itemize}
+                    \item Dichiarare i servizi (come \texttt{ElectronIPCService}) come \texttt{@Injectable()} e registrarli nei provider del modulo o del componente;
+                    \item Iniettare automaticamente le dipendenze nei costruttori dei componenti Angular (ad esempio \texttt{DipDashboardContainer} riceve \texttt{ElectronIPCService} tramite costruttore);
+                    \item Sfruttare il ciclo di vita dei servizi (singleton per l'intera applicazione o scoped per modulo/componente).
+                \end{itemize}
+                
+                \noindent Questo approccio garantisce un basso accoppiamento tra le classi, facilitando la testabilità (attraverso il mocking delle dipendenze) e la manutenibilità del codice.
             }
             \subsubsection{Builder} {
                 \paragraph{Descrizione del pattern}\mbox{}\\
@@ -285,7 +303,11 @@
                 \end{itemize}
                 
                 \paragraph{ Utilizzo del pattern nel progetto}\mbox{}\\
-                Testo...
+                Il pattern Builder è stato impiegato nel progetto per la costruzione dinamica di query di ricerca sui metadati dei documenti. Data la natura variabile e composizionale dei criteri di ricerca (l'utente può specificare un numero arbitrario di filtri di diverso tipo), il pattern Builder permette di costruire progressivamente l'oggetto \texttt{SearchRequestDTO} (Sezione \ref{par:SearchRequestDTO}) senza dover ricorrere a costruttori con un numero elevato di parametri opzionali.\\
+                \\
+                Nello specifico, il componente \texttt{FiltersComponent} (Sezione \ref{par:FiltersComponent}) agisce come \textit{Director} che, a partire dai filtri selezionati dall'utente, costruisce un oggetto \texttt{SearchRequestDTO} contenente l'array di \texttt{SearchFilterDTO} (Sezione \ref{par:SearchFilterDTO}). La costruzione avviene in modo incrementale: l'utente può aggiungere, rimuovere o modificare singoli filtri, e il componente aggiorna di conseguenza la struttura della richiesta.\\
+                \\
+                Nel codice il pattern è implementato mediante l'uso di metodi come \texttt{addFilters()}, \texttt{removeFilters()}, \texttt{onFilterTypeChange()}, che modificano gradualmente lo stato dell'oggetto \texttt{filtriAttivi} fino alla chiamata di \texttt{startSearch()}, che emette il DTO completo. Questo approccio rende il codice più leggibile e manutenibile rispetto all'alternativa di costruire la richiesta con un unico costruttore complesso.
             }
             \subsubsection{Strategy} {
                 \paragraph{Descrizione del pattern}\mbox{}\\
@@ -306,7 +328,23 @@
                 \end{itemize}
                 
                 \paragraph{ Utilizzo del pattern nel progetto}\mbox{}\\
-                Testo...
+                Il pattern Strategy è stato utilizzato nel progetto per gestire le diverse versioni del formato dei pacchetti DIP durante l'attività di parsing. Poiché il formato DIP potrebbe evolvere nel tempo (ad esempio dalla versione 1 alla versione 2), è necessario poter supportare più versioni contemporaneamente senza modificare il codice esistente.\\
+                \\
+                Il pattern è implementato attraverso le seguenti interfacce e implementazioni:
+                \begin{itemize}
+                    \item \textbf{Strategy interfaces}: \texttt{DipIndexParser} (Sezione \ref{par:DipIndexParser}), \texttt{AipInfoParser} (Sezione \ref{par:AipInfoParser}), \texttt{DocumentMetadataParser} (Sezione \ref{par:DocumentMetadataParser}) definiscono il contratto per il parsing di specifiche componenti del pacchetto DIP;
+                    \item \textbf{Concrete strategies}: \texttt{DipIndexParserV1} (Sezione \ref{par:DipIndexParserV1}), \texttt{AipInfoParserV1} (Sezione \ref{par:AipInfoParserV1}), \texttt{DocumentMetadataParserV1} (Sezione \ref{par:DocumentMetadataParserV1}) implementano la logica di parsing per la versione 1 del formato;
+                    \item \textbf{Context}: \texttt{DipParserV1} (Sezione \ref{par:DipParserV1}) agisce come contesto, ricevendo le strategie specifiche tramite dependency injection e delegando a esse le operazioni di parsing.
+                \end{itemize}
+                
+                \noindent In futuro, per supportare una nuova versione del formato (ad esempio versione 2), sarà sufficiente:
+                \begin{enumerate}
+                    \item Creare nuove classi \texttt{DipIndexParserV2}, \texttt{AipInfoParserV2}, \texttt{DocumentMetadataParserV2} che implementano le rispettive interfacce;
+                    \item Creare un nuovo contesto \texttt{DipParserV2} che utilizza le nuove strategie;
+                    \item Modificare la configurazione della dependency injection per selezionare la versione appropriata in base a un rilevatore automatico del formato.
+                \end{enumerate}
+                
+                \noindent L'adozione del pattern Strategy, permette di aderire all'Open/Closed Principle (principio di apertura/chiusura) del SOLID: il sistema è aperto all'estensione (nuove versioni del formato) ma chiuso alla modifica delle classi esistenti.
             }
             \subsubsection{Repository} {
                 \paragraph{Descrizione del pattern}\mbox{}\\
@@ -327,13 +365,31 @@
                 \end{itemize}
                 
                 \paragraph{ Utilizzo del pattern nel progetto}\mbox{}\\
-                Testo...
+                Il pattern Repository è stato adottato nel Main process per mediare l'accesso ai dati persistenti, astraendo completamente i dettagli implementativi del database sottostante (SQLite) e fornendo un'interfaccia simile a una collezione per l'accesso agli oggetti di dominio.\\
+                \\
+                Le principali componenti del pattern sono:
+                \begin{itemize}
+                    \item \textbf{Repository interfaces}: interfacce come \texttt{DipRepository}, \texttt{DocumentRepository},\\ \texttt{DocumentClassRepository}, \texttt{ConservationProcessRepository} definiscono le operazioni di persistenza disponibili (ad esempio \texttt{findById()}, \texttt{save()}, \texttt{findAll()}, \texttt{delete()});
+                    \item \textbf{Concrete repositories}: implementazioni concrete di queste interfacce (ad esempio \texttt{DipRepositoryImpl}) che utilizzano l'istanza del database fornita da \texttt{DatabaseProvider} (Sezione \ref{par:DatabaseProvider}) per eseguire le effettive operazioni SQL;
+                    \item \textbf{Use case}: i casi d'uso (come \texttt{AutoImportDipService}) dipendono dalle interfacce dei repository, non dalle implementazioni concrete, applicando il principio di dependency inversion.
+                \end{itemize}
+                
+                \noindent Ad esempio, durante l'importazione automatica di un pacchetto DIP, \texttt{AutoImportDipService} utilizza:
+                \begin{itemize}
+                    \item \texttt{DipRepository} per salvare le informazioni del pacchetto DIP;
+                    \item \texttt{DocumentRepository} per salvare i documenti e i loro allegati;
+                    \item \texttt{DocumentClassRepository} per salvare le classi documentali;
+                    \item \texttt{ConservationProcessRepository} per salvare i processi di conservazione.
+                \end{itemize}
             }
         }
-        \subsection{Struttura a layer} {
+
+        \subsection{Main process} {
+            DA SCRIVERE
+            
             \subsubsection{Oggetti di trasferimento dati} {
                 Per implementare i DTO sono state utilizzate le \verb|interface| di TypeScript, che sono uno strumento di tipizzazione statica utilizzato per descrivere la forma di un oggetto (attributi, metodi, tipi), presente solo in fase di compilazione per il controllo dei tipi; non esistono a runtime e non impongono realmente un'implementazione come nei linguaggi OOP classici. Sono in questo caso utili solo a verificare che una struttura rispetti la forma dichiarata. Sono rappresentate nei nostri diagrammi UML come una classe con attributi pubblici.  
-                \paragraph{IpcResponse$<$T$>$}\label{par:ipcResponse}\mbox{}\\
+                \paragraph{IpcResponse$<$T$>$}\label{par:IpcResponse}\mbox{}\\
                 Rappresenta un DTO generico che funge da wrapper per la risposta di comunicazione tra processi (IPC) nel sistema. Questo oggetto è utilizzato nell'application logic per trasportare in modo uniforme il risultato di un'operazione, contenendo sia i dati di successo che eventuali errori.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -342,7 +398,7 @@
                     \item \textbf{error: string $|$ null}: rappresenta il messaggio di errore associato all'operazione in caso di fallimento; assume valore \texttt{null} in caso di successo.
                 \end{itemize}
                 
-                \paragraph{DipRequestDTO}\label{par:dipRequestDTO}\mbox{}\\
+                \paragraph{DipRequestDTO}\label{par:DipRequestDTO}\mbox{}\\
                 Rappresenta un DTO (Data Transfer Object) per la richiesta di operazioni su un pacchetto DIP. Questo oggetto è utilizzato nell'application logic per trasportare l'identificativo del pacchetto DIP su cui eseguire le operazioni richieste.\\
                 \\
                 \textbf{Descrizione degli attributi della struttura}:
@@ -486,7 +542,7 @@
                 \end{itemize}
             }
             
-            \subsubsection{Presentation layer}
+            \subsubsection{Presentation layer} {
                 \paragraph{DipHandler}\label{par:DipHandler}\mbox{}\\
                 Il DipHandler gestisce la Presentation Logic per la gestione dei pacchetti DIP. Coordina le operazioni di importazione automatica, recupero del contenuto e verifica dell'integrità dei pacchetti DIP.\\
                 \\
@@ -526,13 +582,13 @@
                     \item \textbf{fileExternalPreview(fileRequestDto: FileRequestDTO):\\ Promise$<$lpcResponse$<$ExportFileResponseDTO$>>$}: genera un'anteprima esterna del file specificato, producendo un URL o un contenuto condivisibile. Delega l'operazione al caso d'uso fileExternalPreviewUseCase. Ritorna una Promise contenente la risposta con i dati per l'anteprima esterna;
                     \item \textbf{exportFile(exportFileRequestDto: ExportFileRequestDTO):\\ Promise$<$lpcResponse$<$ExportFileResponseDTO$>>$}: esporta il file specificato nel formato richiesto. Delega l'operazione al caso d'uso exportDocumentUseCase. Ritorna una Promise contenente la risposta con il percorso del file esportato sul file system locale.
                 \end{itemize}
-
+            }
             
-            \subsubsection{Application layer} 
+            \subsubsection{Application layer} {
                 \paragraph{AutoImportDipUseCase}\label{par:AutoImportDipUseCase}\mbox{}\\
                 L'interfaccia AutoImportDipUseCase definisce il contratto per il caso d'uso di importazione automatica dei pacchetti DIP nel sistema.\\
                 \\
-              \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{execute(): Promise$<$AutoImportDipResponseDTO$>$}: esegue l'operazione di importazione automatica dei pacchetti DIP disponibili nel sistema. Ritorna una Promise contenente la risposta con l’identificativo del pacchetto DIP che è stato importato. Si veda Sezione \ref{par:AutoImportDipResponseDTO}
                 \end{itemize}
@@ -711,7 +767,7 @@
                 \end{itemize}
             }
 
-            \subsubsection{Domain layer}
+            \subsubsection{Domain layer} {
                 \paragraph{Dip}\label{par:Dip}\mbox{}\\
                 La classe Dip rappresenta l'entità di dominio corrispondente a un pacchetto DIP all'interno del sistema. Incapsula le informazioni principali del pacchetto, quali l'identificativo del processo associato, la data di creazione e i contatori relativi ai documenti e ai pacchetti AIP contenuti.\\
                 \\
@@ -735,7 +791,6 @@
                     \item \textbf{setDocumentsCount(documentsCount: number): void}: imposta il valore dell'attributo documentsCount con il valore passato come parametro;
                     \item \textbf{setAipCount(aipCount: number): void}: imposta il valore dell'attributo aipCount con il valore passato come parametro.
                 \end{itemize}
-
                 \paragraph{DocumentClass}\label{par:DocumentClass}\mbox{}\\
                 La classe DocumentClass rappresenta l'entità di dominio corrispondente a una classe documentale all'interno del sistema. Descrive una tipologia di documento definita nell'ambito di un pacchetto DIP, con le relative informazioni di validità temporale.\\
                 \\
@@ -765,8 +820,6 @@
                     \item \textbf{setValidTo(validTo: Date $|$ undefined): void}: imposta il valore dell'attributo validTo con il valore passato come parametro;
                     \item \textbf{setDipUuid(dipUuid: string): void}: imposta il valore dell'attributo dipUuid con il valore passato come parametro.
                 \end{itemize}
-
-
                 \paragraph{ConservationProcess}\label{par:ConservationProcess}\mbox{}\\
                 La classe ConservationProcess rappresenta un processo di conservazione all'interno del sistema. Contiene le informazioni relative a un processo di conservazione associato a una specifica classe documentale, inclusi i contatori di SIP, documenti e file, e la dimensione totale dei contenuti archiviati.\\
                 \\
@@ -802,7 +855,6 @@
                     \item \textbf{setDocumentClassUuid(documentClassUuid: string): void}: imposta il valore dell'attributo documentClassUuid con il valore passato come parametro;
                     \item \textbf{setDocumentClassVersion(documentClassVersion: string): void}: imposta il valore dell'attributo documentClassVersion con il valore passato come parametro.
                 \end{itemize}
-
                 \paragraph{Document}\label{par:Document}\mbox{}\\
                 La classe Document rappresenta l'entità di dominio corrispondente a un documento all'interno del sistema. Contiene le informazioni strutturali del documento, inclusi il file principale, gli eventuali allegati, i metadati associati e il riferimento al processo di conservazione di appartenenza.\\
                 \\
@@ -834,7 +886,6 @@
                     \item \textbf{getMetadataValueByName(name: string): string $|$ null}: restituisce il valore del primo metadato il cui nome corrisponde esattamente alla stringa specificata; restituisce null se nessun metadato corrisponde;
                     \item \textbf{getMetadataValueByRegex(name: RegExp): string $|$ null}: restituisce il valore del primo metadato il cui nome soddisfa l'espressione regolare specificata; restituisce null se nessun metadato corrisponde.
                 \end{itemize}
-
                 \paragraph{File}\label{par:File}\mbox{}\\
                 La classe File rappresenta l'entità di dominio corrispondente a un file all'interno del sistema. Può rappresentare sia il file principale di un documento sia uno dei suoi allegati. Fornisce metodi di utilità per ricavare informazioni sul nome e sull'estensione del file a partire dal percorso.\\
                 \\
@@ -857,7 +908,6 @@
                     \item \textbf{getFilename(): string}: restituisce il nome completo del file senza estensione ricavato dal percorso memorizzato nell'attributo path;
                     \item \textbf{getExtension(): string}: restituisce l'estensione del file ricavata dal percorso memorizzato nell'attributo path;
                 \end{itemize}
- 
                 \paragraph{Metadata}\label{par:Metadata}\mbox{}\\
                 La classe Metadata rappresenta l'entità di dominio corrispondente a un metadato associato a un documento all'interno del sistema. Ogni metadato è composto da un nome, un valore e un tipo che ne determina la corretta interpretazione.\\
                 \\
@@ -878,7 +928,6 @@
                     \item \textbf{setValue(value: string): void}: imposta il valore dell'attributo value con il valore passato come parametro;
                     \item \textbf{setType(type: MetadataTypeEnum): void}: imposta il valore dell'attributo type con il valore passato come parametro.
                 \end{itemize}
- 
                 \paragraph{MetadataTypeEnum}\label{par:MetadataTypeEnum}\mbox{}\\
                 L'enumerazione MetadataTypeEnum definisce i possibili tipi che un metadato può assumere all'interno del sistema. Viene utilizzata dalla classe Metadata per determinare la corretta interpretazione del valore memorizzato.\\
                 \\
@@ -891,7 +940,6 @@
                     \item \textbf{TIME}: indica che il valore del metadato rappresenta un orario;
                     \item \textbf{BASE64}: indica che il valore del metadato è codificato in formato Base64.
                 \end{itemize}
- 
                 \paragraph{MetadataFilter}\label{par:MetadataFilter}\mbox{}\\
                 La classe MetadataFilter rappresenta un criterio di ricerca applicabile ai metadati dei documenti all'interno del sistema. Viene utilizzata nell'application layer per costruire le query di ricerca sui documenti a partire dai filtri specificati dall'utente.\\
                 \\
@@ -909,7 +957,6 @@
                     \item \textbf{setType(type: string): void}: imposta il valore dell'attributo type con il valore passato come parametro;
                     \item \textbf{setValue(value: string): void}: imposta il valore dell'attributo value con il valore passato come parametro.
                 \end{itemize}
-
                 \paragraph{DipMapper}\label{par:DipMapper}\mbox{}\\
                 La classe DipMapper è responsabile della trasformazione dei dati grezzi di un pacchetto DIP, ottenuti dalla fase di parsing, nell'oggetto di dominio Dip. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
                 \\
@@ -918,7 +965,6 @@
                     \item \textbf{DipMapper()}: costruttore della classe;
                     \item \textbf{toDomain(packageInfo: any): Dip}: esegue la trasformazione dei dati grezzi del pacchetto DIP, ricevuti come risultato del parsing, nell'oggetto di dominio Dip corrispondente. Ritorna l'oggetto Dip costruito a partire dalle informazioni contenute in packageInfo.
                 \end{itemize}
-
                 \paragraph{DocumentClassMapper}\label{par:DocumentClassMapper}\mbox{}\\
                 La classe DocumentClassMapper è responsabile della trasformazione dei dati grezzi di una classe documentale, ottenuti dalla fase di parsing del file XML del DIP, nell'oggetto di dominio DocumentClass. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
                 \\
@@ -927,7 +973,6 @@
                     \item \textbf{DocumentClassMapper()}: costruttore della classe;
                     \item \textbf{toDomain(documentClassXml: any, dipUuid: string): DocumentClass}: esegue la trasformazione dei dati grezzi della classe documentale, ricevuti come risultato del parsing XML, nell'oggetto di dominio DocumentClass corrispondente. Riceve inoltre l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata. Ritorna l'oggetto DocumentClass costruito a partire dalle informazioni fornite.
                 \end{itemize}
-
                 \paragraph{ConservationProcessMapper}\label{par:ConservationProcessMapper}\mbox{}\\
                 La classe ConservationProcessMapper è responsabile della trasformazione dei dati grezzi di un processo di conservazione, ottenuti dalla fase di parsing del file AIP Info, nell'oggetto di dominio ConservationProcess. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
                 \\
@@ -936,7 +981,6 @@
                     \item \textbf{ConservationProcessMapper()}: costruttore della classe;
                     \item \textbf{toDomain(aipInfoXml: any): ConservationProcess}: esegue la trasformazione dei dati grezzi del processo di conservazione, ricevuti come risultato del parsing del file AIP Info, nell'oggetto di dominio ConservationProcess corrispondente. Ritorna l'oggetto ConservationProcess costruito a partire dalle informazioni contenute in aipInfoXml.
                 \end{itemize}
-
                 \paragraph{DocumentMapper}\label{par:DocumentMapper}\mbox{}\\
                 La classe DocumentMapper è responsabile della trasformazione del risultato del parsing di un documento nell'oggetto di dominio Document. Coordina la costruzione dell'oggetto Document a partire da un DocumentParsingResult, delegando l'appiattimento e la classificazione dei metadati a MetadataFlattener. Viene utilizzata da AutoImportDipService durante il processo di importazione automatica dei pacchetti DIP.\\
                 \\
@@ -950,7 +994,6 @@
                     \item \textbf{DocumentMapper(metadataFlattener: MetadataFlattener)}: costruttore della classe. Inizializza l'attributo metadataFlattener con il valore passato come parametro;
                     \item \textbf{toDomain(parsedDocument: DocumentParsingResult): Document}: esegue la trasformazione del risultato del parsing di un documento nell'oggetto di dominio Document corrispondente. Utilizza metadataFlattener per appiattire e classificare i metadati grezzi contenuti in parsedDocument. Ritorna l'oggetto Document costruito a partire dalle informazioni fornite. Si veda la Sezione \ref{par:DocumentParsingResult}
                 \end{itemize}
-
                 \paragraph{MetadataFlattener}\label{par:MetadataFlattener}\mbox{}\\
                 La classe MetadataFlattener è responsabile dell'appiattimento della struttura gerarchica dei metadati grezzi di un documento in una lista di oggetti di dominio Metadata. Attraverso un algoritmo di visita ricorsiva, la classe esplora l'albero dei dati applicando politiche di filtraggio e di classificazione dei tipi definite nei componenti. \\
                 \\
@@ -982,7 +1025,6 @@
                     \item \textbf{include(path: string): boolean}: verifica se il percorso specificato deve essere incluso tra i metadati del documento secondo le regole di filtraggio configurate. Ritorna true se il percorso è incluso, false altrimenti;
                     \item \textbf{utility(path: string): boolean}: verifica se il percorso specificato deve essere classificato come metadato di utilità secondo le regole configurate. Ritorna true se il percorso è un metadato di utilità, false altrimenti.
                 \end{itemize}
- 
                 \paragraph{MetadataTypePolicy}\label{par:MetadataTypePolicy}\mbox{}\\
                 La classe MetadataTypePolicy implementa la politica di classificazione dei tipi dei metadati durante la fase di appiattimento eseguita da MetadataFlattener. Determina il tipo MetadataTypeEnum da assegnare a ciascun metadato sulla base del suo percorso, utilizzando una configurazione TypePolicy fornita alla costruzione.\\
                 \\
@@ -996,7 +1038,6 @@
                     \item \textbf{MetadataTypePolicy(policy: TypePolicy $|$ undefined)}: costruttore della classe. Inizializza l'attributo policy con la configurazione fornita; se il valore è undefined, viene utilizzata una configurazione di default;
                     \item \textbf{type(path: string): MetadataTypeEnum}: determina il tipo MetadataTypeEnum da assegnare al metadato identificato dal percorso specificato, sulla base delle regole di classificazione configurate. Ritorna il valore MetadataTypeEnum corrispondente.
                 \end{itemize}
- 
                 \paragraph{PathPolicy}\label{par:PathPolicy}\mbox{}\\
                 L'interfaccia PathPolicy rappresenta la struttura di configurazione della politica di filtraggio dei percorsi dei metadati, utilizzata da MetadataPathPolicy. Definisce le regole di inclusione, esclusione e classificazione come metadati di utilità, espresse sia come stringhe esatte sia come espressioni regolari.\\
                 \\
@@ -1009,7 +1050,6 @@
                     \item \textbf{utilityExact: string[0..*]}: rappresenta la lista dei percorsi esatti dei metadati da classificare come metadati di utilità;
                     \item \textbf{utilityRegex: RegExp[0..*]}: rappresenta la lista delle espressioni regolari per la classificazione dei percorsi come metadati di utilità.
                 \end{itemize}
-
                 \paragraph{TypePolicy}\label{par:TypePolicy}\mbox{}\\
                 L'interfaccia TypePolicy rappresenta la struttura di configurazione della politica di classificazione dei tipi dei metadati, utilizzata da MetadataTypePolicy. Definisce le regole per l'assegnazione dei tipi MetadataTypeEnum ai percorsi dei metadati, espresse sia come stringhe esatte sia come espressioni regolari, per ciascun tipo supportato.\\
                 \\
@@ -1027,9 +1067,8 @@
                     \item \textbf{timeRegex: RegExp[0..*]}: rappresenta la lista delle espressioni regolari per la classificazione dei metadati come tipo TIME.
                 \end{itemize}
             }
-            
 
-            \subsubsection{Persistence layer} 
+            \subsubsection{Persistence layer} {
                 \paragraph{DipRepository}\label{par:DipRepository}\mbox{}\\
                 L'interfaccia DipRepository definisce il contratto per l'accesso ai dati relativi ai pacchetti DIP nel sistema. Astrae le operazioni di persistenza e recupero dei pacchetti DIP, consentendo all'application layer di interagire con il database senza dipendere dai dettagli implementativi dello strato di persistenza.\\
                 \\
@@ -1038,7 +1077,6 @@
                     \item \textbf{save(dip: Dip): Promise$<$Dip$>$}: esegue l'operazione di persistenza di un pacchetto DIP nel sistema di archiviazione. Riceve un oggetto di tipo Dip e ritorna una Promise contenente il pacchetto DIP salvato;
                     \item \textbf{findByUuid(uuid: string): Promise$<$Dip $|$ null$>$}: esegue l'operazione di recupero di un pacchetto DIP a partire dal suo identificativo univoco. Ritorna una Promise contenente il pacchetto DIP corrispondente, oppure null se nessun pacchetto con l'UUID specificato è presente nel sistema.
                 \end{itemize}
-
                 \paragraph{SQLiteDipRepository}\label{par:SQLiteDipRepository}\mbox{}\\
                 La classe SQLiteDipRepository implementa l'interfaccia DipRepository, gestendo la persistenza e il recupero dei pacchetti DIP tramite un database SQLite locale.\\
                 \\
@@ -1051,7 +1089,6 @@
                 \begin{itemize}
                     \item \textbf{SQLiteDipRepository(dbProvider: DatabaseProvider)}: costruttore della classe. Inizializza l'attributo dbProvider con il valore passato come parametro.
                 \end{itemize}
-
                 \paragraph{DipRow}\label{par:DipRow}\mbox{}\\
                 L'interfaccia DipRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai pacchetti DIP. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
@@ -1062,7 +1099,6 @@
                     \item \textbf{numero\_documenti: number}: rappresenta il numero totale di documenti contenuti nel pacchetto DIP;
                     \item \textbf{numero\_aip: number}: rappresenta il numero di pacchetti AIP (Archival Information Package) associati al pacchetto DIP.
                 \end{itemize}
-
                 \paragraph{DocumentClassRepository}\label{par:DocumentClassRepository}\mbox{}\\
                 L'interfaccia DocumentClassRepository definisce il contratto per l'accesso ai dati relativi alle classi documentali nel sistema. Astrae le operazioni di persistenza e recupero delle classi documentali, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
                 \\
@@ -1070,7 +1106,6 @@
                 \begin{itemize}
                     \item \textbf{save(documentClass: DocumentClass): Promise$<$DocumentClass$>$}: esegue l'operazione di persistenza di una classe documentale nel sistema di archiviazione. Riceve un oggetto di tipo DocumentClass e ritorna una Promise contenente la classe documentale salvata;
                 \end{itemize}
-
                 \paragraph{SQLiteDocumentClassRepository}\label{par:SQLiteDocumentClassRepository}\mbox{}\\
                 La classe SQLiteDocumentClassRepository implementa l'interfaccia DocumentClassRepository, gestendo la persistenza e il recupero delle classi documentali tramite un database SQLite locale.\\
                 \\
@@ -1096,7 +1131,6 @@
                 %     \item \textbf{valida\_fino string $|$ undefined}: rappresenta la data di scadenza della validità della classe documentale; assume valore undefined se la classe documentale non ha una data di scadenza;
                 %     \item \textbf{uuid\_dip string}: rappresenta l'identificativo univoco del pacchetto DIP a cui la classe documentale è associata.
                 % \end{itemize}
-
                 \paragraph{ConservationProcessRepository}\label{par:ConservationProcessRepository}\mbox{}\\
                 L'interfaccia ConservationProcessRepository definisce il contratto per l'accesso ai dati relativi ai processi di conservazione nel sistema. Astrae le operazioni di persistenza dei processi di conservazione, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
                 \\
@@ -1104,7 +1138,6 @@
                 \begin{itemize}
                     \item \textbf{save(conservationProcess: ConservationProcess): Promise$<$ConservationProcess$>$}: esegue l'operazione di persistenza di un processo di conservazione nel sistema di archiviazione. Riceve un oggetto di tipo ConservationProcess e ritorna una Promise contenente il processo di conservazione salvato;
                 \end{itemize}
-
                 \paragraph{SQLiteConservationProcessRepository}\label{par:SQLiteConservationProcessRepository}\mbox{}\\
                 La classe SQLiteConservationProcessRepository implementa l'interfaccia ConservationProcessRepository, gestendo la persistenza dei processi di conservazione tramite un database SQLite locale.\\
                 \\
@@ -1132,18 +1165,16 @@
                 %     \item \textbf{uuid\_classe\_documentale string}: rappresenta l'identificativo univoco della classe documentale associata al processo di conservazione;
                 %     \item \textbf{versione\_classe\_documentale string}: rappresenta la versione della classe documentale associata al processo di conservazione.
                 % \end{itemize}
-
                 \paragraph{DocumentRepository}\label{par:DocumentRepository}\mbox{}\\
                 L'interfaccia DocumentRepository definisce il contratto per l'accesso ai dati relativi ai documenti nel sistema. Astrae le operazioni di persistenza e recupero dei documenti e dei loro file e metadati associati, disaccoppiando l'application layer dai dettagli dello strato di persistenza.\\
                 \\
               \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
                 \begin{itemize}
                     \item \textbf{saveMany(documents: Document[0..*]): Promise$<$Document[0..*]$>$}: esegue l'operazione di persistenza di una serie di documenti nel sistema di archiviazione. Riceve un array di oggetti di tipo Document e ritorna una Promise contenente i documenti salvati;
-                    \item \textbf{findByUuid(documentUuid: string, withMetadata: boolean): Promise$<$Document $|$ null$>$}: esegue l'operazione di recupero di un documento a partire dal suo identificativo univoco, se il parametro withMetadata è true vengono estratti anche tutti i metadati relativi al documento. Ritorna una Promise contenente il documento corrispondente, oppure null se nessun documento con l'UUID specificato è presente nel sistema.;
-                    \item \textbf{findAllByDipUuid(dipUuid: string, withMetadata: boolean): Promise$<$Document[0..*]$>$}: esegue l'operazione di recupero di tutti i documenti contenuti in un pacchetto DIP, identificato dal suo UUID, se il parametro withMetadata è true vengono estratti anche tutti i metadati relativi al documento. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota;
-                    \item \textbf{findAllByMetadata(filters: MetadataFilter[0..*], withMetadata: boolean): Promise$<$Document[0..*]$>$}: esegue l'operazione di recupero di tutti i documenti che soddisfano i criteri di ricerca specificati attraverso una lista di filtri sui metadati, se il parametro withMetadata è true vengono estratti anche tutti i metadati relativi al documento. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota.
+                    \item \textbf{findByUuid(documentUuid: string, withMetadata: boolean):\\ Promise$<$Document $|$ null$>$}: esegue l'operazione di recupero di un documento a partire dal suo identificativo univoco, se il parametro withMetadata è true vengono estratti anche tutti i metadati relativi al documento. Ritorna una Promise contenente il documento corrispondente, oppure null se nessun documento con l'UUID specificato è presente nel sistema.;
+                    \item \textbf{findAllByDipUuid(dipUuid: string, withMetadata: boolean):\\ Promise$<$Document[0..*]$>$}: esegue l'operazione di recupero di tutti i documenti contenuti in un pacchetto DIP, identificato dal suo UUID, se il parametro withMetadata è true vengono estratti anche tutti i metadati relativi al documento. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota;
+                    \item \textbf{findAllByMetadata(filters: MetadataFilter[0..*], withMetadata: boolean):\\ Promise$<$Document[0..*]$>$}: esegue l'operazione di recupero di tutti i documenti che soddisfano i criteri di ricerca specificati attraverso una lista di filtri sui metadati, se il parametro withMetadata è true vengono estratti anche tutti i metadati relativi al documento. Ritorna una Promise contenente la lista dei documenti trovati, che può essere vuota.
                 \end{itemize}
-
                 \paragraph{SQLiteDocumentRepository}\label{par:SQLiteDocumentRepository}\mbox{}\\
                 La classe SQLiteDocumentRepository implementa l'interfaccia DocumentRepository, gestendo la persistenza e il recupero dei documenti e dei loro dati associati tramite un database SQLite locale. Supporta la ricerca avanzata per metadati tramite SearchQueryBuilder.\\
                 \\
@@ -1161,7 +1192,6 @@
                     \item \textbf{SQLiteDocumentRepository(dbProvider: DatabaseProvider,\\ searchQueryBuilder: SearchQueryBuilder)}: costruttore della classe. Inizializza gli attributi dbProvider e searchQueryBuilder con i valori passati come parametri e i vari Statement con le query necessarie per l'inserimento.
                     \item \textbf{hydrateDocs(uuids: string[0..*], withMetadata: boolean): Document[0..*]}: metodo utilizzato per estrarre dal database SQLite i documenti con UUID corrispondenti a quelli contenuti in uuids, vengono estratti anche i metadati relativi se withMetadata è true. 
                 \end{itemize}
-
                 \paragraph{DocumentWithMainFileRow}\label{par:DocumentWithMainFileRow}\mbox{}\\
                 L'interfaccia DocumentWithMainFileRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ad un documento e sul file principale. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
@@ -1174,7 +1204,6 @@
                     \item \textbf{file\_percorso: string}: rappresenta il percorso nel file system in cui è archiviato il file;
                     \item \textbf{file\_dimensione: string}: rappresenta la dimensione del file nel formato memorizzato nel database.
                 \end{itemize}
- 
                 \paragraph{MetadataRow}\label{par:MetadataRow}\mbox{}\\
                 L'interfaccia MetadataRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa ai metadati dei documenti. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
@@ -1185,7 +1214,6 @@
                     \item \textbf{tipo: string}: rappresenta il tipo del metadato, utilizzato per la corretta interpretazione del valore durante il mapping verso l'oggetto di dominio Metadata;
                     \item \textbf{uuid\_documento: string}: rappresenta l'identificativo univoco del documento a cui il metadato è associato.
                 \end{itemize}
- 
                 \paragraph{AttachmentRow}\label{par:AttachmentRow}\mbox{}\\
                 L'interfaccia AttachmentRow rappresenta la struttura dati corrispondente a una riga della tabella del database relativa agli allegati. Viene utilizzata internamente nel persistence layer per il mapping tra i dati grezzi del database e gli oggetti di dominio.\\
                 \\
@@ -1196,7 +1224,6 @@
                     \item \textbf{percorso: string}: rappresenta il percorso nel file system in cui è archiviato il file;
                     \item \textbf{dimensione: string}: rappresenta la dimensione del file nel formato memorizzato nel database.
                 \end{itemize}
- 
                 \paragraph{DocumentUuidRow}\label{par:DocumentUuidRow}\mbox{}\\
                 L'interfaccia DocumentUuidRow rappresenta una struttura dati minimale utilizzata internamente nel persistence layer per il recupero dei soli identificativi univoci dei documenti, tipicamente come risultato intermedio di query di ricerca.\\
                 \\
@@ -1204,7 +1231,6 @@
                 \begin{itemize}
                     \item \textbf{uuid\_documento string}: rappresenta l'identificativo univoco del documento restituito dalla query.
                 \end{itemize}
- 
                 \paragraph{SearchQueryBuilder}\label{par:SearchQueryBuilder}\mbox{}\\
                 La classe SearchQueryBuilder implementa il pattern Builder per la costruzione dinamica di query SQL di ricerca sui metadati dei documenti. Viene utilizzata da SQLiteDocumentRepository per comporre in modo flessibile le condizioni di ricerca a partire da una lista di filtri.\\
                 \\
@@ -1219,7 +1245,6 @@
                     \item \textbf{withFilter(filter: MetadataFilter): void}: aggiunge un filtro alla lista dei filtri da applicare nella query di ricerca. Riceve un oggetto di tipo MetadataFilter contenente il tipo e il valore del criterio di ricerca;
                     \item \textbf{buildQuery(): SearchQueryBuilderResult}: esegue la costruzione della query SQL a partire dai filtri accumulati. Ritorna un oggetto SearchQueryBuilderResult contenente la query e i parametri da passare al database. Si veda la Sezione \ref{par:SearchQueryBuilderResult}
                 \end{itemize}
- 
                 \paragraph{SearchQueryBuilderResult}\label{par:SearchQueryBuilderResult}\mbox{}\\
                 L'interfaccia SearchQueryBuilderResult rappresenta il risultato della costruzione di una query SQL da parte di SearchQueryBuilder. Contiene la stringa della query e i parametri associati, pronti per essere passati al database.\\
                 \\
@@ -1228,9 +1253,9 @@
                     \item \textbf{query: string}: rappresenta la stringa SQL della query costruita da SearchQueryBuilder;
                     \item \textbf{params: (string $|$ number)[0..*]}: rappresenta la lista dei parametri da passare alla query SQL per la sostituzione dei segnaposto.
                 \end{itemize}
+            }
 
-
-            \subsubsection{Infrastructure layer} 
+            \subsubsection{Infrastructure layer} {
                 \paragraph{HashAlgorithm}\label{par:HashAlgorithm}\mbox{}\\
                 L'enumerazione HashAlgorithm definisce gli algoritmi di hashing crittografico supportati dal sistema. Viene utilizzata dal HashProvider per determinare l'algoritmo da applicare nel calcolo degli hash durante la verifica dell'integrità dei pacchetti DIP.\\
                 \\
@@ -1239,7 +1264,6 @@
                     \item \textbf{SHA256}: indica l'utilizzo dell'algoritmo di hashing SHA-256;
                     \item \textbf{SHA512}: indica l'utilizzo dell'algoritmo di hashing SHA-512.
                 \end{itemize}
-
                 \paragraph{DocumentParsingResult}\label{par:DocumentParsingResult}\mbox{}\\
                 La classe DocumentParsingResult rappresenta il risultato intermedio del parsing di un documento all'interno di un pacchetto DIP. Viene prodotta da DipParser (Sezione \ref{par:DipParser} )e consumata da DocumentMapper (Sezione \ref{par:DocumentMapper})per la costruzione dell'oggetto di dominio Document.\\
                 \\
@@ -1252,7 +1276,432 @@
                     \item \textbf{attachmentsFilesPath: [uuid: string, path: string][0..*]}: rappresenta la lista degli allegati del documento, ciascuno identificato da un UUID e dal relativo percorso nel file system;
                     \item \textbf{documentMetadata: any}: rappresenta i metadati grezzi del documento, nella forma restituita dal parser XML prima della trasformazione in oggetti di dominio Metadata.
                 \end{itemize}
+                \paragraph{AppConfig}\label{par:AppConfig}\mbox{}\\
+                La classe AppConfig rappresenta la configurazione principale dell'applicazione di visualizzazione dei pacchetti DIP. Viene utilizzata da DatabaseProvider (Sezione \ref{par:DatabaseProvider}) per localizzare i file di migrazione del database e da LocalFileSystemProvider (Sezione \ref{par:LocalFileSystemProvider}) per determinare i percorsi di base per l'accesso ai documenti e ai file dell'applicazione.\\
+                \\
+                \textbf{Descrizione degli attributi della struttura}:
+                \begin{itemize}
+                    \item \textbf{migrationsPath: string}: rappresenta il percorso nel file system in cui sono archiviati i file di migrazione del database, utilizzato da DatabaseProvider per l'inizializzazione e l'aggiornamento dello schema;
+                    \item \textbf{documentsPath: string}: rappresenta il percorso nel file system in cui sono archiviati i documenti e i pacchetti DIP, utilizzato da LocalFileSystemProvider per l'accesso ai file;
+                    \item \textbf{appDir: string}: rappresenta il percorso della directory principale dell'applicazione, utilizzato come base per la risoluzione dei percorsi relativi.
+                \end{itemize}
+                \paragraph{HashProvider}\label{par:HashProvider}\mbox{}\\
+                L'interfaccia HashProvider definisce il contratto per la gestione delle operazioni di hashing crittografico. Fornisce metodi per la conversione di stringhe in algoritmi di hash, il calcolo di hash a partire da flussi di dati e il confronto tra valori hash.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{toHashAlgorithm(metadataValue: string): HashAlgorithm}: converte una stringa metadataValue nel corrispondente enumerato HashAlgorithm. Si veda Sezione \ref{par:HashAlgorithm};
+                    \item \textbf{hashStream(stream: Readable, algorithm: HashAlgorithm):\\ Promise$<$Buffer$>$}: calcola l'hash del flusso di dati stream utilizzando l'algoritmo specificato. Ritorna una Promise contenente il Buffer con il valore hash calcolato;
+                    \item \textbf{areEqualsHashBytes(hashA: Buffer, hashB: Buffer): boolean}: confronta due valori hash rappresentati come Buffer. Ritorna \texttt{true} se i due hash sono uguali, \texttt{false} altrimenti.
+                \end{itemize}
+                \paragraph{CryptoHashProvider}\label{par:CryptoHashProvider}\mbox{}\\
+                La classe CryptoHashProvider implementa l'interfaccia HashProvider, gestendo la logica applicativa per le operazioni di hashing crittografico. Utilizza le funzionalità crittografiche native del framework per il calcolo di hash secondo gli algoritmi SHA.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{Nessun attributo}: la classe non espone attributi pubblici; le dipendenze sono gestite internamente tramite i moduli crittografici del framework.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{CryptoHashProvider()}: costruttore della classe. Inizializza l'istanza del provider di hashing crittografico;
+                    \item \textbf{toHashAlgorithm(metadataValue: string): HashAlgorithm}: implementa il metodo dell'interfaccia. Converte la stringa metadataValue nell'enumerato HashAlgorithm corrispondente (ad esempio, \texttt{"SHA256"} in \texttt{HashAlgorithm.SHA256}). Solleva un'eccezione se l'algoritmo non è supportato;
+                    \item \textbf{hashStream(stream: Readable, algorithm: HashAlgorithm):\\ Promise$<$Buffer$>$}: implementa il metodo dell'interfaccia. Legge il flusso stream e calcola l'hash utilizzando l'algoritmo specificato. Ritorna una Promise contenente il Buffer con il valore hash calcolato;
+                    \item \textbf{areEqualsHashBytes(hashA: Buffer, hashB: Buffer): boolean}: implementa il metodo dell'interfaccia. Confronta i due Buffer byte per byte e ritorna \texttt{true} se sono identici, \texttt{false} altrimenti.
+                \end{itemize}
+                \paragraph{Base64Provider}\label{par:Base64Provider}\mbox{}\\
+                L'interfaccia Base64Provider definisce il contratto per la gestione delle operazioni di decodifica di stringhe in formato Base64.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{decodeToBytes(base64: string): Buffer}: decodifica la stringa Base64 fornita nel corrispondente Buffer di byte. Ritorna il Buffer contenente i dati decodificati.
+                \end{itemize}
+                \paragraph{Base64ProviderImpl}\label{par:Base64ProviderImpl}\mbox{}\\
+                La classe Base64ProviderImpl implementa l'interfaccia Base64Provider, gestendo la logica applicativa per la decodifica di stringhe in formato Base64. Utilizza le funzionalità native del framework per la conversione dei dati.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{Nessun attributo}: la classe non espone attributi pubblici; le operazioni di decodifica sono gestite internamente tramite i moduli nativi del framework.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{Base64ProviderImpl()}: costruttore della classe. Inizializza l'istanza del provider di decodifica Base64;
+                    \item \textbf{decodeToBytes(base64: string): Buffer}: implementa il metodo dell'interfaccia. Decodifica la stringa Base64 ricevuta come parametro nel corrispondente Buffer di byte. Solleva un'eccezione se la stringa non è un Base64 valido. Ritorna il Buffer contenente i dati decodificati.
+                \end{itemize}
+                \paragraph{DatabaseProvider}\label{par:DatabaseProvider}\mbox{}\\
+                La classe DatabaseProvider gestisce l'accesso al database del sistema, occupandosi dell'inizializzazione della connessione, dell'esecuzione delle migrazioni e della fornitura dell'istanza del database ai componenti dell'applicazione.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{db: Database.Database}: rappresenta l'istanza del database gestita dal provider, utilizzata per eseguire le operazioni di persistenza;
+                    \item \textbf{config: AppConfig}: rappresenta la configurazione dell'applicazione contenente il percorso delle migrazioni; vedere la Sezione \ref{par:AppConfig};
+                    \item \textbf{fileSystemProvider: FileSystemProvider}: rappresenta il provider per l'accesso al file system, utilizzato per leggere i file di migrazione; vedere la Sezione \ref{par:FileSystemProvider}.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DatabaseProvider(config: AppConfig, fileSystemProvider: FileSystemProvider)}: costruttore della classe. Inizializza gli attributi config e fileSystemProvider con i valori passati come parametri;
+                    \item \textbf{init(): Promise$<$void$>$}: metodo privato di inizializzazione. Configura la connessione al database e prepara l'ambiente per l'esecuzione delle migrazioni. Viene chiamato internamente dal costruttore;
+                    \item \textbf{instance(): Database.Database}: restituisce l'istanza del database inizializzata. Se l'istanza non è ancora disponibile, chiama init() prima di restituirla;
+                    \item \textbf{runMigrations(): Promise$<$void$>$}: esegue le migrazioni del database leggendo i file dal percorso config.migrationsPath tramite fileSystemProvider. Applica al database tutte le migrazioni non ancora eseguite.
+                \end{itemize}
+                \paragraph{DipIndexParser}\label{par:DipIndexParser}\mbox{}\\
+                L'interfaccia DipIndexParser definisce il contratto per il parsing dell'indice di un pacchetto DIP.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{parseDipIndex(xmlPath: string): Promise$<$any$>$}: esegue il parsing del file di indice XML del pacchetto DIP situato nel percorso xmlPath. Ritorna una Promise contenente la struttura dati (di tipo any) rappresentante il contenuto parsato dell'indice.
+                \end{itemize}
+                \paragraph{DipIndexParserV1}\label{par:DipIndexParserV1}\mbox{}\\
+                La classe DipIndexParserV1 implementa l'interfaccia DipIndexParser, gestendo la logica applicativa per il parsing dell'indice dei pacchetti DIP nella versione 1 del formato. Utilizza un parser XML per decodificare il file e verifica la presenza della struttura richiesta.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{parser: XMLParser}: rappresenta il parser XML utilizzato per decodificare il file di indice.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DipIndexParserV1(parser: XMLParser)}: costruttore della classe. Inizializza l'attributo parser con il valore passato come parametro;
+                    \item \textbf{parseDipIndex(xmlPath: string): Promise$<$any$>$}: implementa il metodo dell'interfaccia. Legge e parsifica il file XML all'indirizzo xmlPath utilizzando l'attributo parser. Verifica la correttezza della struttura tramite il metodo privato assertRequiredStructure. Ritorna una Promise contenente la struttura dati parsata;
+                    \item \textbf{assertRequiredStructure(root: any): void}: metodo privato che verifica la presenza di tutti gli elementi e attributi obbligatori nella struttura radice root dell'indice parsato. Solleva un'eccezione se la struttura non è conforme alle aspettative della versione 1 del formato.
+                \end{itemize}
+                \paragraph{DocumentMetadataParser}\label{par:DocumentMetadataParser}\mbox{}\\
+                L'interfaccia DocumentMetadataParser definisce il contratto per il parsing dei metadati di un documento all'interno di un pacchetto DIP.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{parseMetadata(xmlPath: string): Promise$<$any$>$}: esegue il parsing del file XML dei metadati del documento situato nel percorso xmlPath. Ritorna una Promise contenente la struttura dati (di tipo any) rappresentante i metadati parsati del documento.
+                \end{itemize}
+                \paragraph{DocumentMetadataParserV1}\label{par:DocumentMetadataParserV1}\mbox{}\\
+                La classe DocumentMetadataParserV1 implementa l'interfaccia DocumentMetadataParser, gestendo la logica applicativa per il parsing dei metadati dei documenti nella versione 1 del formato. Utilizza un parser XML per decodificare il file e verifica la presenza della struttura richiesta.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{parser: XMLParser}: rappresenta il parser XML utilizzato per decodificare il file dei metadati.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DocumentMetadataParserV1(parser: XMLParser)}: costruttore della classe. Inizializza l'attributo parser con il valore passato come parametro;
+                    \item \textbf{parseMetadata(xmlPath: string): Promise$<$any$>$}: implementa il metodo dell'interfaccia. Legge e parsifica il file XML dei metadati all'indirizzo xmlPath utilizzando l'attributo parser. Verifica la correttezza della struttura tramite il metodo privato assertRequiredStructure. Ritorna una Promise contenente la struttura dati dei metadati parsati;
+                    \item \textbf{assertRequiredStructure(root: any): void}: metodo privato che verifica la presenza di tutti gli elementi e attributi obbligatori nella struttura radice root dei metadati parsati. Solleva un'eccezione se la struttura non è conforme alle aspettative della versione 1 del formato.
+                \end{itemize}
+                \paragraph{AipInfoParser}\label{par:AipInfoParser}\mbox{}\\
+                L'interfaccia AipInfoParser definisce il contratto per il parsing delle informazioni AIP (Archival Information Package) all'interno di un pacchetto DIP.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{parseAipInfo(xml: string): Promise$<$any$>$}: esegue il parsing della stringa XML contenente le informazioni AIP. Ritorna una Promise contenente la struttura dati (di tipo any) rappresentante le informazioni AIP parsate.
+                \end{itemize}
+                \paragraph{AipInfoParserV1}\label{par:AipInfoParserV1}\mbox{}\\
+                La classe AipInfoParserV1 implementa l'interfaccia AipInfoParser, gestendo la logica applicativa per il parsing delle informazioni AIP nella versione 1 del formato. Utilizza un parser XML per decodificare la stringa XML fornita.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{parser: XMLParser}: rappresenta il parser XML utilizzato per decodificare la stringa XML contenente le informazioni AIP.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{AipInfoParserV1(parser: XMLParser)}: costruttore della classe. Inizializza l'attributo parser con il valore passato come parametro;
+                    \item \textbf{parseAipInfo(xml: string): Promise$<$any$>$}: implementa il metodo dell'interfaccia. Parsifica la stringa XML ricevuta come parametro utilizzando l'attributo parser. Ritorna una Promise contenente la struttura dati delle informazioni AIP parsate.
+                \end{itemize}
+                \paragraph{DipParser}\label{par:DipParser}\mbox{}\\
+                L'interfaccia DipParser definisce il contratto per il parsing completo di un pacchetto DIP. Fornisce metodi per l'analisi dell'indice DIP, delle informazioni AIP e per la lettura in streaming dei documenti contenuti nel pacchetto.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{parseDiplindex(dipIndexBuffer: Buffer): Promise$<$any$>$}: esegue il parsing dell'indice del pacchetto DIP a partire dal Buffer contenente il file XML dell'indice. Ritorna una Promise contenente la struttura dati parsata dell'indice;
+                    \item \textbf{parseAipInfo(aipInfoBuffer: Buffer): Promise$<$any$>$}: esegue il parsing delle informazioni AIP a partire dal Buffer contenente il file XML delle informazioni AIP. Ritorna una Promise contenente la struttura dati parsata delle informazioni AIP;
+                    \item \textbf{parseDocumentsStream(dipIndex: any, dir: string):\\ AsyncIterable$<$DocumentParsingResult$>$}: a partire dall'indice parsato dipIndex e dalla directory dir contenente i file del pacchetto, ritorna un iteratore asincrono che produce oggetti DocumentParsingResult (Sezione \ref{par:DocumentParsingResult}) per ogni documento trovato nel pacchetto.
+                \end{itemize}
+                \paragraph{DipParserV1}\label{par:DipParserV1}\mbox{}\\
+                La classe DipParserV1 implementa l'interfaccia DipParser, gestendo la logica applicativa per il parsing dei pacchetti DIP nella versione 1 del formato. Coordina l'utilizzo dei parser specializzati per l'indice, le informazioni AIP e i metadati dei documenti, e utilizza il fileSystemProvider per l'accesso ai file.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{dipIndexParser: DipIndexParser}: rappresenta il parser per l'indice del pacchetto DIP; vedere la Sezione \ref{par:DipIndexParser};
+                    \item \textbf{aipInfoParser: AipInfoParser}: rappresenta il parser per le informazioni AIP; vedere la Sezione \ref{par:AipInfoParser};
+                    \item \textbf{documentMetadataParser: DocumentMetadataParser}: rappresenta il parser per i metadati dei documenti; vedere la Sezione \ref{par:DocumentMetadataParser};
+                    \item \textbf{fileSystemProvider: FileSystemProvider}: rappresenta il provider per l'accesso al file system, utilizzato per leggere i file dei documenti; vedere la Sezione \ref{par:FileSystemProvider}.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{DipParserV1(dipIndexParser: DipIndexParser, aipInfoParser: AipInfoParser, documentMetadataParser: DocumentMetadataParser, fileSystemProvider: FileSystemProvider)}: costruttore della classe. Inizializza tutti gli attributi con i valori passati come parametri;
+                    \item \textbf{parseDiplindex(dipIndexBuffer: Buffer): Promise$<$any$>$}: implementa il metodo dell'interfaccia. Converte il Buffer in stringa e delega il parsing a dipIndexParser. Ritorna una Promise contenente la struttura dati parsata dell'indice;
+                    \item \textbf{parseAipInfo(aipInfoBuffer: Buffer): Promise$<$any$>$}: implementa il metodo dell'interfaccia. Converte il Buffer in stringa e delega il parsing a AipInfoParser. Ritorna una Promise contenente la struttura dati parsata delle informazioni AIP;
+                    \item \textbf{parseDocumentsStream(dipIndex: any, dir: string):\\ AsyncIterable$<$DocumentParsingResult$>$}: implementa il metodo dell'interfaccia. Naviga la struttura dell'indice dipIndex per individuare i documenti. Per ciascun documento, legge il file dei metadati tramite fileSystemProvider e lo parsifica con documentMetadataParser, producendo un oggetto DocumentParsingResult (Sezione \ref{par:DocumentParsingResult}) in streaming.
+                \end{itemize}
+                \paragraph{FileSystemProvider}\label{par:FileSystemProvider}\mbox{}\\
+                L'interfaccia FileSystemProvider definisce il contratto per le operazioni di accesso e manipolazione del file system. Fornisce metodi per la gestione di directory, la lettura di file, la creazione di stream e la copia di file.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{getStartDir(): string}: restituisce il percorso della directory di partenza per l'importazione automatica dei pacchetti DIP;
+                    \item \textbf{ensureDir(dir: string): Promise$<$string $|$ null$>$}: verifica se la directory dir esiste; in caso contrario, la crea. Ritorna il percorso della directory se l'operazione ha successo, \texttt{null} altrimenti;
+                    \item \textbf{findFile(dir: string, namePattern: RegExp): Promise$<$string $|$ null$>$}: cerca un file all'interno della directory dir il cui nome corrisponde all'espressione regolare namePattern. Ritorna il percorso completo del file se trovato, \texttt{null} altrimenti;
+                    \item \textbf{readFile(path: string): Promise$<$Buffer$>$}: legge l'intero contenuto del file situato in path e lo restituisce come Buffer. Solleva un'eccezione se il file non esiste o non è accessibile;
+                    \item \textbf{readDir(path: string): Promise$<$string[0..*]$>$}: legge il contenuto della directory path e restituisce una lista dei nomi dei file e delle sottodirectory in essa contenuti;
+                    \item \textbf{createReadStream(path: string): Readable}: crea e restituisce uno stream leggibile (Readable) per il file situato in path, consentendo la lettura asincrona del contenuto;
+                    \item \textbf{copyFile(sourcePath: string, destPath: string): Promise$<$void$>$}: copia il file da sourcePath a destPath. Sovrascrive il file di destinazione se già esistente. Ritorna una Promise che si risolve al completamento dell'operazione.
+                \end{itemize}
+                \paragraph{LocalFileSystemProvider}\label{par:LocalFileSystemProvider}\mbox{}\\
+                La classe LocalFileSystemProvider implementa l'interfaccia FileSystemProvider (Sezione \ref{par:FileSystemProvider}), gestendo la logica applicativa per l'accesso al file system locale. Utilizza la configurazione dell'applicazione per determinare le directory di base.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{config: AppConfig}: rappresenta la configurazione dell'applicazione contenente i percorsi di base per l'accesso al file system, come documentsPath e appDir; vedere la Sezione \ref{par:AppConfig}.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{LocalFileSystemProvider(config: AppConfig)}: costruttore della classe. Inizializza l'attributo config con il valore passato come parametro;
+                    \item \textbf{getStartDir(): string}: implementa il metodo dell'interfaccia. Restituisce il percorso config.documentsPath come directory di partenza per l'importazione automatica dei pacchetti DIP;
+                    \item \textbf{ensureDir(dir: string): Promise$<$string $|$ null$>$}: implementa il metodo dell'interfaccia. Verifica l'esistenza della directory dir utilizzando le API del file system locale; se non esiste, la crea ricorsivamente. Ritorna il percorso normalizzato della directory se l'operazione ha successo, \texttt{null} altrimenti;
+                    \item \textbf{findFile(dir: string, namePattern: RegExp): Promise$<$string $|$ null$>$}: implementa il metodo dell'interfaccia. Scansiona ricorsivamente la directory dir alla ricerca di un file il cui nome corrisponde a namePattern. Ritorna il percorso completo del primo file trovato, o \texttt{null} se nessun file corrisponde;
+                    \item \textbf{readFile(path: string): Promise$<$Buffer$>$}: implementa il metodo dell'interfaccia. Legge l'intero contenuto del file situato in path utilizzando le API di lettura asincrona del file system locale. Ritorna un Buffer contenente i dati letti;
+                    \item \textbf{readDir(path: string): Promise$<$string[0..*]$>$}: implementa il metodo dell'interfaccia. Legge il contenuto della directory path e restituisce una lista dei nomi dei file e delle sottodirectory in essa contenuti;
+                    \item \textbf{createReadStream(path: string): Readable}: implementa il metodo dell'interfaccia. Crea e restituisce uno stream leggibile (Readable) per il file situato in path utilizzando le API di streaming del file system locale;
+                    \item \textbf{copyFile(sourcePath: string, destPath: string): Promise$<$void$>$}: implementa il metodo dell'interfaccia. Copia il file da sourcePath a destPath utilizzando le API del file system locale. Sovrascrive il file di destinazione se già esistente.
+                \end{itemize}
+                \paragraph{DialogProvider}\label{par:DialogProvider}\mbox{}\\
+                L'interfaccia DialogProvider definisce il contratto per la gestione delle finestre di dialogo interattive. Fornisce metodi per la selezione di percorsi di salvataggio da parte dell'utente.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{selectSavePath(fileName: string): Promise$<$string $|$ null$>$}: apre una finestra di dialogo per consentire all'utente di selezionare la posizione in cui salvare un file. Il parametro fileName suggerisce il nome predefinito del file. Ritorna il percorso selezionato dall'utente, o \texttt{null} se l'operazione viene annullata.
+                \end{itemize}
+                \paragraph{ElectronDialogProvider}\label{par:ElectronDialogProvider}\mbox{}\\
+                La classe ElectronDialogProvider implementa l'interfaccia DialogProvider, gestendo la logica applicativa per le finestre di dialogo nell'ambiente Electron. Utilizza le API native di Electron per interagire con il sistema operativo e presentare all'utente le finestre di selezione file.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{Nessun attributo}: la classe non espone attributi pubblici; le operazioni di dialogo sono delegate alle API di Electron.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{ElectronDialogProvider()}: costruttore della classe. Inizializza l'istanza del provider di finestre di dialogo per Electron;
+                    \item \textbf{selectSavePath(fileName: string): Promise$<$string $|$ null$>$}: implementa il metodo dell'interfaccia. Utilizza l'API \texttt{dialog.showSaveDialog} di Electron per presentare all'utente una finestra di salvataggio con il nome fileName suggerito. Ritorna il percorso selezionato dall'utente, o \texttt{null} se l'utente annulla l'operazione.
+                \end{itemize}
+                \paragraph{ShellProvider}\label{par:ShellProvider}\mbox{}\\
+                L'interfaccia ShellProvider definisce il contratto per l'interazione con le funzionalità di shell del sistema operativo. Fornisce metodi per l'apertura di file con l'applicazione predefinita.\\
+                \\
+                \noindent \textbf{Descrizione dei metodi dell'interfaccia}:
+                \begin{itemize}
+                    \item \textbf{openFile(path: string): Promise$<$void$>$}: apre il file situato nel percorso path utilizzando l'applicazione predefinita del sistema operativo associata al tipo di file. Ritorna una Promise che si risolve al completamento dell'operazione.
+                \end{itemize}
+                \paragraph{ElectronShellProvider}\label{par:ElectronShellProvider}\mbox{}\\
+                La classe ElectronShellProvider implementa l'interfaccia ShellProvider, gestendo la logica applicativa per l'interazione con le funzionalità di shell nel contesto dell'applicazione Electron. Utilizza l'API \texttt{shell} di Electron per delegare al sistema operativo l'apertura dei file.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{Nessun attributo}: la classe non espone attributi pubblici; le operazioni di shell sono delegate all'API \texttt{shell} di Electron.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{ElectronShellProvider()}: costruttore della classe. Inizializza l'istanza del provider di shell per Electron;
+                    \item \textbf{openFile(path: string): Promise$<$void$>$}: implementa il metodo dell'interfaccia. Utilizza l'API \texttt{shell.openPath} di Electron per aprire il file situato in path con l'applicazione predefinita del sistema operativo. Ritorna una Promise che si risolve al completamento dell'operazione.
+                \end{itemize}
+            }
 
+        \subsection{Renderer process} {
+            DA SCRIVERE
+
+            \subsubsection{Classi per il rendering}{
+                \paragraph{DocumentDetailsComponent}\label{par:DocumentDetailsComponent}\mbox{}\\
+                La classe DocumentDetailsComponent rappresenta il componente Angular responsabile della visualizzazione dei dettagli di un documento all'interno di un DIP. Gestisce la presentazione delle informazioni del documento, degli allegati e lo stato di caricamento, oltre a gestire l'evento di esportazione del documento o dei singoli file.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{document: DocumentDetailsResponseDTO $|$ null}: rappresenta i dettagli del documento da visualizzare, o \texttt{null} se nessun documento è caricato; vedere la Sezione \ref{par:DocumentDetailsResponseDTO};
+                    \item \textbf{allegato: AttachmentResponseDTO $|$ null}: rappresenta l'allegato attualmente selezionato o visualizzato, o \texttt{null} se nessun allegato è selezionato; vedere la Sezione \ref{par:AttachmentResponseDTO};
+                    \item \textbf{isLoading: boolean}: flag che indica se il componente è in stato di caricamento; assume valore \texttt{true} durante il recupero asincrono dei dati, \texttt{false} altrimenti;
+                    \item \textbf{export: EventEmitter$<$\{ documentUuid: string; fileUuid?: string \}$>$}: EventEmitter di Angular utilizzato per emettere un evento di esportazione verso il componente padre. L'evento trasporta un oggetto contenente l'UUID del documento e l'UUID opzionale del file da esportare.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{onExport(documentUuid: string, fileUuid?: string): void}: metodo invocato dall'interfaccia utente quando l'utente richiede l'esportazione di un documento o di un file. Riceve l'UUID del documento e l'UUID opzionale del file (se non specificato, viene esportato l'intero documento). Emette l'evento tramite l'EventEmitter \texttt{export} per notificare il componente padre.
+                \end{itemize}
+                \paragraph{DipDetailsComponent}\label{par:DipDetailsComponent}\mbox{}\\
+                La classe DipDetailsComponent rappresenta il componente Angular responsabile della visualizzazione dei dettagli di un pacchetto DIP. Gestisce la presentazione delle informazioni principali del pacchetto, inclusi i metadati e l'elenco dei documenti in esso contenuti.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{dipInfo: DipContentResponseDTO $|$ null}: rappresenta le informazioni del pacchetto DIP da visualizzare, o \texttt{null} se nessun pacchetto è caricato; vedere la Sezione \ref{par:DipContentResponseDTO}.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{Nessun metodo}: la classe non espone metodi pubblici; la logica di presentazione è gestita tramite il template Angular che si lega direttamente all'attributo \texttt{dipInfo} per visualizzare i dati del pacchetto DIP.
+                \end{itemize}
+                \paragraph{FiltersComponent}\label{par:FiltersComponent}\mbox{}\\
+                La classe FiltersComponent rappresenta il componente Angular responsabile della gestione dei filtri di ricerca nel DIP. Fornisce all'utente un'interfaccia per costruire query di ricerca complesse basate su diverse tipologie di metadati e gestisce la validazione dei filtri e le dipendenze tra di essi.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{searchRequested: EventEmitter$<$SearchFilterDTO$>$}: EventEmitter di Angular utilizzato per emettere un evento di ricerca verso il componente padre quando l'utente avvia una ricerca, trasportando il filtro costruito;
+                    \item \textbf{filtriDropdown: Set$<$string$>$}: insieme dei tipi di filtro che devono essere presentati come dropdown (selezione da lista predefinita);
+                    \item \textbf{filtriBoolean: Set$<$string$>$}: insieme dei tipi di filtro di tipo booleano (vero/falso);
+                    \item \textbf{filtriData: Set$<$string$>$}: insieme dei tipi di filtro relativi a date;
+                    \item \textbf{filtriOra: Set$<$string$>$}: insieme dei tipi di filtro relativi a orari;
+                    \item \textbf{filtriNumerici: Set$<$string$>$}: insieme dei tipi di filtro di tipo numerico;
+                    \item \textbf{filtriPartialva: Set$<$string$>$}: insieme dei tipi di filtro che accettano corrispondenza parziale;
+                    \item \textbf{filtriCodiceFiscale: Set$<$string$>$}: insieme dei tipi di filtro relativi a codici fiscali;
+                    \item \textbf{opzioniPerDropdown: Record$<$string; string$>$}: mappa che associa a ciascun tipo di filtro a dropdown le opzioni selezionabili (come stringa o come record annidato);
+                    \item \textbf{dipendenze: Record$<$string; SearchFilterDTO$>$}: mappa che definisce le dipendenze tra filtri (es. se un filtro viene rimosso, vengono rimossi anche i filtri che dipendono da esso);
+                    \item \textbf{tuttiFiltri: string}: stringa che elenca tutti i tipi di filtro disponibili, probabilmente utilizzata per la generazione dinamica dell'interfaccia;
+                    \item \textbf{filtriAttivi: SearchFilterDTO}: rappresenta il filtro attualmente costruito dall'utente, in attesa di essere inviato per la ricerca.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{opzioniDisponibili(currentIndex: number): string}: restituisce le opzioni di filtro disponibili da aggiungere in una posizione specifica, escludendo quelle già selezionate per evitare duplicati;
+                    \item \textbf{addFilters(): void}: aggiunge una nuova condizione di filtro vuota all'array dei filtri attivi;
+                    \item \textbf{removeFilters(index: number): void}: rimuove la condizione di filtro all'indice specificato dall'array dei filtri attivi;
+                    \item \textbf{onFilterTypeChange(index: number, newType: string): void}: gestisce il cambiamento del tipo di filtro per la condizione all'indice specificato. Aggiorna il tipo e resetta il valore del filtro;
+                    \item \textbf{onFilterValueChange(): void}: gestisce il cambiamento del valore di un filtro, attivando la validazione e la gestione delle dipendenze;
+                    \item \textbf{startSearch(): void}: avvia la ricerca emettendo l'evento \texttt{searchRequested} contenente i filtri attualmente impostati;
+                    \item \textbf{isDropdownFilter(type: string): boolean}: verifica se il tipo di filtro specificato deve essere visualizzato come dropdown. Ritorna \texttt{true} se il tipo è presente in \texttt{filtriDropdown};
+                    \item \textbf{isBooleanFilter(type: string): boolean}: verifica se il tipo di filtro specificato è di tipo booleano. Ritorna \texttt{true} se il tipo è presente in \texttt{filtriBoolean};
+                    \item \textbf{isDateFilter(type: string): boolean}: verifica se il tipo di filtro specificato è di tipo data. Ritorna \texttt{true} se il tipo è presente in \texttt{filtriData};
+                    \item \textbf{isTimeFilter(type: string): boolean}: verifica se il tipo di filtro specificato è di tipo orario. Ritorna \texttt{true} se il tipo è presente in \texttt{filtriOra};
+                    \item \textbf{getDropdownOptions(type: string): string}: restituisce le opzioni disponibili per un filtro dropdown del tipo specificato, leggendole da \texttt{opzioniPerDropdown};
+                    \item \textbf{isValidForType(filterType: string, rawValue: string): boolean}: metodo privato che valuta se il valore rawValue è valido per il tipo di filtro filterType. Utilizza le regex o le regole di validazione appropriate per ciascuna tipologia;
+                    \item \textbf{rimuoviDipendentiInvalidi(): void}: metodo privato che, dopo la rimozione di un filtro, rimuove anche tutti i filtri che dipendevano da esso secondo le dipendenze definite in \texttt{dipendenze}.
+                \end{itemize}
+                \paragraph{DocumentListComponent}\label{par:DocumentListComponent}\mbox{}\\
+                La classe DocumentListComponent rappresenta il componente Angular responsabile della visualizzazione della lista dei documenti contenuti in un pacchetto DIP. Gestisce la presentazione dei documenti, il loro stato di integrità, e gli eventi di selezione e anteprima sia per i documenti che per i loro allegati.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{documents: DocumentEssentialsDTO}: rappresenta la lista dei documenti essenziali da visualizzare; vedere la Sezione \ref{par:DocumentEssentialsDTO};
+                    \item \textbf{isLoading: boolean}: flag che indica se il componente è in stato di caricamento; assume valore \texttt{true} durante il recupero asincrono dei dati, \texttt{false} altrimenti;
+                    \item \textbf{errorMessage: string $|$ null}: rappresenta il messaggio di errore da visualizzare in caso di fallimento del caricamento dei documenti; assume valore \texttt{null} se nessun errore è presente;
+                    \item \textbf{integrityMap: Map$<$string; boolean$>$}: mappa che associa a ciascun UUID di documento lo stato di integrità (\texttt{true} se integro, \texttt{false} altrimenti), utilizzata per visualizzare indicatori di validità nella lista;
+                    \item \textbf{documentSelected: EventEmitter$<$string$>$}: EventEmitter di Angular utilizzato per emettere un evento quando un documento viene selezionato, trasportando l'UUID del documento selezionato;
+                    \item \textbf{attachmentSelected: EventEmitter$<$\{ documentUuid: string; attachmentUuid: string \}$>$}: EventEmitter di Angular utilizzato per emettere un evento quando un allegato viene selezionato, trasportando un oggetto contenente l'UUID del documento padre e l'UUID dell'allegato;
+                    \item \textbf{itemPreview: EventEmitter$<$\{ documentUuid: string; attachmentUuid?: string \}$>$}: EventEmitter di Angular utilizzato per emettere un evento di anteprima, trasportando un oggetto contenente l'UUID del documento e l'UUID opzionale dell'allegato da visualizzare in anteprima.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{getIntegrityStatus(uuid: string): "ok" $|$ "ko" $|$ "unknown"}: restituisce lo stato di integrità del documento identificato dall'UUID specificato. Ritorna \texttt{"ok"} se l'integrità è verificata, \texttt{"ko"} se non lo è, \texttt{"unknown"} se lo stato non è ancora disponibile nella mappa \texttt{integrityMap};
+                    \item \textbf{onRowClick(id: string): void}: metodo invocato quando l'utente clicca su una riga della tabella dei documenti. Emette l'evento \texttt{documentSelected} con l'UUID del documento selezionato per notificare il componente padre;
+                    \item \textbf{onAttachmentClick(doc: DocumentEssentialsDTO, allegato: DocumentEssentialsAttachmentDTO, event: Event): void}: metodo invocato quando l'utente clicca su un allegato. Previene la propagazione dell'evento per evitare di attivare anche la selezione del documento padre. Emette l'evento \texttt{attachmentSelected} contenente l'UUID del documento e l'UUID dell'allegato;
+                    \item \textbf{onViewDocumentClick(doc: DocumentEssentialsDTO, event: Event): void}: metodo invocato quando l'utente richiede l'anteprima del documento principale. Previene la propagazione dell'evento. Emette l'evento \texttt{itemPreview} contenente l'UUID del documento (senza attachmentUuid, indicando che si tratta del documento principale);
+                    \item \textbf{onViewAttachmentClick(doc: DocumentEssentialsDTO, allegato: DocumentEssentialsAttachmentDTO, event: Event): void}: metodo invocato quando l'utente richiede l'anteprima di un allegato. Previene la propagazione dell'evento. Emette l'evento \texttt{itemPreview} contenente l'UUID del documento e l'UUID dell'allegato da visualizzare.
+                \end{itemize}
+                \paragraph{DocumentPreviewComponent}\label{par:DocumentPreviewComponent}\mbox{}\\
+                La classe DocumentPreviewComponent rappresenta il componente Angular responsabile della visualizzazione in anteprima di documenti e allegati nel DIP. Gestisce il caricamento, la sanitizzazione e la visualizzazione sicura dei contenuti dei file all'interno dell'interfaccia utente.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{document: any $|$ null}: rappresenta il documento corrente da visualizzare in anteprima, contenente i dati e i metadati necessari; assume valore \texttt{null} se nessun documento è selezionato;
+                    \item \textbf{itemFormatto: string $|$ null}: rappresenta il formato del documento da visualizzare (es. PDF, immagine, testo), utilizzato per selezionare il componente di rendering appropriato; assume valore \texttt{null} se il formato non è ancora determinato;
+                    \item \textbf{documentFileUrl: string $|$ null}: rappresenta l'URL del file del documento da visualizzare, utilizzato per il caricamento nell'iframe o nel visualizzatore appropriato; assume valore \texttt{null} se l'URL non è ancora disponibile;
+                    \item \textbf{isLoadingPreview: boolean}: flag che indica se l'anteprima è in stato di caricamento; assume valore \texttt{true} durante il recupero o la generazione dell'anteprima, \texttt{false} altrimenti;
+                    \item \textbf{sanitizer: DomSanitizer}: rappresenta il servizio Angular DomSanitizer utilizzato per sanitizzare gli URL e prevenire attacchi XSS (Cross-Site Scripting) durante la visualizzazione dei contenuti;
+                    \item \textbf{safeDocumentUrl: SafeResourceUrl $|$ null}: rappresenta l'URL del documento sanitizzato e considerato sicuro per l'utilizzo in contesti di risorse (es. attributo \texttt{src} di un iframe); assume valore \texttt{null} se l'URL non è ancora disponibile o non può essere sanitizzato.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{ngOnChanges(changes: SimpleChanges): void}: metodo del ciclo di vita di Angular invocato quando uno o più attributi di input del componente cambiano valore. Monitora in particolare le modifiche all'attributo \texttt{document} e, quando viene fornito un nuovo documento, avvia il processo di caricamento e sanitizzazione dell'URL dell'anteprima, aggiornando \texttt{isLoadingPreview}, \texttt{documentFileUrl} e \texttt{safeDocumentUrl} di conseguenza.
+                \end{itemize}
+                \paragraph{ElectronIPCService}\label{par:ElectronIPCService}\mbox{}\\
+                La classe ElectronIPCService rappresenta il servizio Angular responsabile della comunicazione inter-processo (IPC) tra il renderer process e il main process dell'applicazione Electron. Fornisce metodi per invocare operazioni sul main process (come importazione automatica, recupero contenuti, verifica integrità, ricerca, anteprime ed esportazione) e gestisce le risposte tramite il meccanismo di IPC.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{api: any}: rappresenta l'oggetto esposto dal main process di Electron tramite il meccanismo \texttt{contextBridge}, che fornisce l'accesso sicuro alle API del main process per la comunicazione IPC. Espone i canali per invocare le operazioni e registrare listener.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{unwrapIpcResponse(response: IpcResponse$<$T$>$, fallbackMessage: string): T}: metodo privato che estrae i dati da una risposta IPC standardizzata di tipo IpcResponse$<$T$>$ (Sezione \ref{par:IpcResponse}). Se la risposta contiene un errore, solleva un'eccezione con il messaggio di errore o con il fallbackMessage fornito. Ritorna i dati di tipo T in caso di successo;
+                    \item \textbf{autoImport(): Promise$<$AutoImportDipResponseDTO$>$}: invoca l'operazione di importazione automatica dei pacchetti DIP sul main process tramite IPC. Ritorna una Promise contenente il DTO di risposta AutoImportDipResponseDTO (Sezione \ref{par:AutoImportDipResponseDTO});
+                    \item \textbf{content(dipRequestDto: DipRequestDTO): Promise$<$DipContentResponseDTO$>$}: invoca l'operazione di recupero del contenuto di un pacchetto DIP sul main process. Riceve il DTO di richiesta DipRequestDTO (Sezione \ref{par:DipRequestDTO}). Ritorna una Promise contenente il DTO di risposta DipContentResponseDTO (Sezione \ref{par:DipContentResponseDTO});
+                    \item \textbf{checkIntegrity(dipRequestDto: DipRequestDTO): void}: invoca l'operazione di verifica dell'integrità di un pacchetto DIP sul main process. Riceve il DTO di richiesta DipRequestDTO;
+                    \item \textbf{getDocumentDetails(documentRequestDTO: DocumentRequestDTO):\\ Promise$<$DocumentDetailsResponseDTO$>$}: invoca l'operazione di recupero dei dettagli di un documento sul main process. Riceve il DTO di richiesta DocumentRequestDTO (Sezione \ref{par:DocumentRequestDTO}). Ritorna una Promise contenente il DTO di risposta DocumentDetailsResponseDTO (Sezione \ref{par:DocumentDetailsResponseDTO});
+                    \item \textbf{searchDocuments(searchRequestDto: SearchRequestDTO):\\ Promise$<$SearchResponseDTO$>$}: invoca l'operazione di ricerca dei documenti basata su metadati sul main process. Riceve il DTO di richiesta SearchRequestDTO (Sezione \ref{par:SearchRequestDTO}). Ritorna una Promise contenente il DTO di risposta SearchResponseDTO (Sezione \ref{par:SearchResponseDTO});
+                    \item \textbf{fileInternalPreview(fileRequestDto: FileRequestDTO):\\ Promise$<$FileInternalPreviewResponseDTO$>$}: invoca l'operazione di generazione di anteprima interna di un file sul main process. Riceve il DTO di richiesta FileRequestDTO (Sezione \ref{par:FileRequestDTO}). Ritorna una Promise contenente il DTO di risposta FileInternalPreviewResponseDTO (Sezione \ref{par:FileInternalPreviewResponseDTO});
+                    \item \textbf{fileExternalPreview(fileRequestDto: FileRequestDTO): Promise$<$void$>$}:\\ invoca l'operazione di generazione di anteprima esterna di un file sul main process. Riceve il DTO di richiesta FileRequestDTO;
+                    \item \textbf{exportFile(fileRequestDto: ExportFileRequestDTO):\\ Promise$<$ExportFileResponseDTO$>$}: invoca l'operazione di esportazione di un file sul main process. Riceve il DTO di richiesta ExportFileRequestDTO. Ritorna una Promise contenente il DTO di risposta ExportFileResponseDTO (Sezione \ref{par:ExportFileResponseDTO});
+                    \item \textbf{on(channel: string, callback: Function): Function}: registra una funzione di callback per un canale IPC specificato, consentendo al componente di ricevere eventi asincroni dal main process. Ritorna una funzione che, se invocata, rimuove il listener registrato.
+                \end{itemize}
+                \paragraph{DipDashboardContainer}\label{par:DipDashboardContainer}\mbox{}\\
+                La classe DipDashboardContainer rappresenta il componente container Angular responsabile dell'orchestrazione della logica applicativa e della gestione dello stato per il dashboard di visualizzazione dei pacchetti DIP. Utilizza i segnali (signals) di Angular per la gestione reattiva dello stato e coordina le interazioni tra i componenti figli (DocumentListComponent, DocumentDetailsComponent, FiltersComponent, DocumentPreviewComponent) e il servizio ElectronIPCService per la comunicazione con il main process.\\
+                \\
+                \textbf{Descrizione degli attributi della classe}:
+                \begin{itemize}
+                    \item \textbf{electronIpc: ElectronIPCService}: rappresenta il servizio per la comunicazione IPC con il main process di Electron; vedere la Sezione \ref{par:ElectronIPCService};
+                    \item \textbf{selectedDocumentState: signal$<$DocumentDetailsResponseDTO $|$ null$>$}: segnale privato che mantiene lo stato del documento attualmente selezionato;
+                    \item \textbf{selectedDocument: Signal$<$DocumentDetailsResponseDTO $|$ null$>$}: segnale pubblico readonly che espone lo stato del documento selezionato ai componenti figli;
+                    \item \textbf{\_selectedAllegatoState: signal$<$AttachmentResponseDTO $|$ null$>$}: segnale privato che mantiene lo stato dell'allegato attualmente selezionato;
+                    \item \textbf{selectedAllegato: Signal$<$AttachmentResponseDTO $|$ null$>$}: segnale pubblico readonly che espone lo stato dell'allegato selezionato;
+                    \item \textbf{\_dipInfo: signal$<$DipContentResponseDTO $|$ null$>$}: segnale privato che mantiene le informazioni del pacchetto DIP corrente;
+                    \item \textbf{dipInfo: Signal$<$DipContentResponseDTO $|$ null$>$}: segnale pubblico readonly che espone le informazioni del pacchetto DIP;
+                    \item \textbf{\_documentList: signal$<$DocumentEssentialsDTO$>$}: segnale privato che mantiene la lista dei documenti essenziali;
+                    \item \textbf{documentList: Signal$<$DocumentEssentialsDTO$>$}: segnale pubblico readonly che espone la lista dei documenti;
+                    \item \textbf{\_isListLoading: signal$<$boolean$>$}: segnale privato che indica se la lista dei documenti è in caricamento;
+                    \item \textbf{isListLoading: Signal$<$boolean$>$}: segnale pubblico readonly che espone lo stato di caricamento della lista;
+                    \item \textbf{\_isDetailsLoading: signal$<$boolean$>$}: segnale privato che indica se i dettagli del documento sono in caricamento;
+                    \item \textbf{isDetailsLoading: Signal$<$boolean$>$}: segnale pubblico readonly che espone lo stato di caricamento dei dettagli;
+                    \item \textbf{errorMessage: signal$<$string $|$ null$>$}: segnale pubblico che mantiene il messaggio di errore da visualizzare all'utente;
+                    \item \textbf{\_documentFileUrl: signal$<$string $|$ null$>$}: segnale privato che mantiene l'URL del file del documento per l'anteprima;
+                    \item \textbf{documentFileUrl: Signal$<$string $|$ null$>$}: segnale pubblico readonly che espone l'URL del file per l'anteprima;
+                    \item \textbf{\_isLoadingPreview: signal$<$boolean$>$}: segnale privato che indica se l'anteprima è in caricamento;
+                    \item \textbf{isLoadingPreview: Signal$<$boolean$>$}: segnale pubblico readonly che espone lo stato di caricamento dell'anteprima;
+                    \item \textbf{\_previewSelectedDocumentState: signal$<$name $|$ null$>$}: segnale privato che mantiene lo stato del documento selezionato per l'anteprima (probabilmente il nome);
+                    \item \textbf{previewSelectedDocument: Signal$<$name $|$ null$>$}: segnale pubblico readonly che espone lo stato del documento in anteprima;
+                    \item \textbf{\_previewItemFormato: signal$<$string $|$ null$>$}: segnale privato che mantiene il formato dell'elemento in anteprima;
+                    \item \textbf{previewItemFormato: Signal$<$string $|$ null$>$}: segnale pubblico readonly che espone il formato dell'elemento in anteprima;
+                    \item \textbf{\_integrityMap: signal$<$Map$<$string; boolean$>$$>$}: segnale privato che mantiene la mappa degli stati di integrità per ciascun documento;
+                    \item \textbf{integrityMap: Signal$<$Map$<$string; boolean$>$$>$}: segnale pubblico readonly che espone la mappa degli stati di integrità;
+                    \item \textbf{\_integritySubscriptions: void}: gestore delle sottoscrizioni relative ai controlli di integrità, utilizzato per la pulizia delle risorse.
+                \end{itemize}
+                
+                \noindent \textbf{Descrizione dei metodi invocabili dalla classe}:
+                \begin{itemize}
+                    \item \textbf{onDocumentSelected(id: string): Promise$<$void$>$}: gestisce l'evento di selezione di un documento dalla lista. Aggiorna lo stato di caricamento dei dettagli e invoca \texttt{selectDocument} per recuperare i dettagli del documento selezionato;
+                    \item \textbf{onAttachmentSelected(event: \{ documentUuid: string; attachmentUuid: string \}): Promise$<$void$>$}: gestisce l'evento di selezione di un allegato. Aggiorna lo stato di caricamento e invoca \texttt{selectAllegato} per recuperare i dettagli dell'allegato selezionato;
+                    \item \textbf{ngOnInit(): Promise$<$void$>$}: metodo del ciclo di vita di Angular invocato all'inizializzazione del componente. Avvia il processo di \texttt{autolimport} per caricare il primo pacchetto DIP disponibile;
+                    \item \textbf{onSearch(filters: SearchFilterDTO): Promise$<$void$>$}: gestisce l'evento di ricerca emesso dal FiltersComponent. Invoca il metodo \texttt{searchDocuments} con i filtri forniti;
+                    \item \textbf{onItemPreview(item: \{ documentUuid: string; fileUuid?: string \}): Promise$<$void$>$}: gestisce l'evento di anteprima emesso da DocumentListComponent. Invoca il metodo \texttt{previewSelect} per generare l'anteprima del documento o allegato specificato;
+                    \item \textbf{closePreview(): void}: chiude l'anteprima corrente, resettando lo stato di \\ \texttt{\_previewSelectedDocumentState}, \texttt{\_previewItemFormat}, \texttt{\_documentFileUrl} e \\ \texttt{\_isLoadingPreview};
+                    \item \textbf{onExport(event: \{ documentUuid: string; fileUuid?: string \}): Promise$<$void$>$}: gestisce l'evento di esportazione emesso da DocumentDetailsComponent. Invoca il metodo \texttt{exportFile} con i parametri forniti;
+                    \item \textbf{loadDiplInfo(dipUuid: string): Promise$<$void$>$}: metodo privato che carica le informazioni del pacchetto DIP tramite \texttt{electronIpc.content} e aggiorna i segnali \texttt{\_diplInfo} e \texttt{\_documentList};
+                    \item \textbf{loadIntegrity(dipUuid: string): Promise$<$void$>$}: metodo privato che carica lo stato di integrità del pacchetto DIP tramite \texttt{electronIpc.checkIntegrity} e aggiorna la mappa di integrità tramite \texttt{\_updateIntegrityMap};
+                    \item \textbf{\_updateIntegrityMap(data: DocumentIntegrityResponseDTO): void}: metodo privato che aggiorna il segnale \texttt{\_integrityMap} a partire dai dati di integrità ricevuti, mappando ciascun documento al suo stato di integrità;
+                    \item \textbf{\_clearIntegritySubscriptions(): void}: metodo privato che pulisce le sottoscrizioni relative ai controlli di integrità per evitare memory leak;
+                    \item \textbf{selectDocument(id: string): Promise$<$void$>$}: metodo privato che recupera i dettagli di un documento tramite \texttt{electronIpc.getDocumentDetails} e aggiorna \\ \texttt{\_selectedDocumentState};
+                    \item \textbf{selectAllegato(documentUuid: string, allegatoUuid: string): Promise$<$void$>$}: metodo privato che recupera i dettagli di un allegato (come parte del documento padre) e aggiorna \texttt{\_selectedAllegatoState};
+                    \item \textbf{previewSelect(documentUuid: string, fileUuid?: string): Promise$<$void$>$}: metodo privato che genera un'anteprima del documento o allegato tramite \\ \texttt{electronIpc.fileInternalPreview} e aggiorna \texttt{\_previewSelectedDocumentState}, \\ \texttt{\_previewItemFormat}, \texttt{\_documentFileUrl} e \texttt{\_isLoadingPreview};
+                    \item \textbf{searchDocuments(filters: SearchFilterDTO): Promise$<$void$>$}: metodo privato che esegue una ricerca dei documenti tramite \texttt{electronIpc.searchDocuments}, aggiorna la lista \texttt{\_documentList} e resetta la selezione corrente tramite \texttt{clearSelection};
+                    \item \textbf{clearSelection(): void}: metodo privato che resetta lo stato di selezione, impostando \texttt{\_selectedDocumentState} e \texttt{\_selectedAllegatoState} a \texttt{null};
+                    \item \textbf{clearPreview(): void}: metodo privato che resetta lo stato dell'anteprima;
+                    \item \textbf{exportFile(documentUuid: string, fileUuid?: string): Promise$<$void$>$}: metodo privato che esporta un file tramite \texttt{electronIpc.exportFile} e gestisce eventuali errori aggiornando \texttt{errorMessage};
+                    \item \textbf{autolimport(): Promise$<$void$>$}: metodo privato invocato all'inizializzazione. Carica automaticamente il primo pacchetto DIP disponibile tramite \texttt{electronIpc.autolimport}, quindi carica le informazioni e l'integrità del pacchetto;
+                    \item \textbf{ngOnDestroy(): void}: metodo del ciclo di vita di Angular invocato alla distruzione del componente. Pulisce le sottoscrizioni attive tramite \texttt{\_clearIntegritySubscriptions}.
+                \end{itemize}
+            }
+        }
+
+        \subsection{Comunicazione tra Main process e Renderer process}\label{sec:ipc-communication} {
+            La comunicazione tra i due processi avviene tramite il meccanismo di Inter-Process Communication (IPC) fornito da Electron, implementato nel progetto attraverso il servizio \texttt{ElectronIPCService} (Sezione \ref{par:ElectronIPCService}) nel Renderer process e l'esposizione selettiva di API tramite \texttt{contextBridge} nel Main process.\\
+            \\
+            Il modello di comunicazione adottato è asincrono basato su Promise: il Renderer process invoca un metodo sul servizio \texttt{ElectronIPCService} (ad esempio \texttt{autolimport()}, \texttt{content()}, \texttt{searchDocuments()}) che, tramite IPC, richiede al Main process di eseguire l'operazione corrispondente. Il Main process, al completamento, restituisce una risposta standardizzata attraverso il DTO \texttt{IpcResponse<T>} (Sezione \ref{par:IpcResponse}), che incapsula sia i dati di successo che eventuali errori. Questo pattern garantisce un handling uniforme degli errori e la tipizzazione forte delle risposte.\\
+            \\
+            Per le operazioni di lunga durata (come l'importazione automatica o la generazione di anteprime), il Main process può inoltre inviare eventi di progresso o notifiche asincrone attraverso i canali IPC, a cui il Renderer process può sottoscriversi tramite il metodo \texttt{on()} del servizio.
+        }
+
+    }
 
     \section{Stato dei requisiti funzionali} {
         \subsection{Stato per requisito} {
