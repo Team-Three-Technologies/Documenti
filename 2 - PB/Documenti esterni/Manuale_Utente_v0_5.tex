@@ -1,6 +1,8 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{docsTemplate}
 \usepackage{fontawesome5}
+\usepackage{float}
+\raggedbottom
 
 \setTitle{Manuale Utente}
 \setAuthors{Sara Gioia Fichera \\ & Andrea Masiero \\ & Filippo Compagno}
@@ -20,7 +22,7 @@
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
                 \hline
-                \textbf{0.5} & 24/04/26 & Filippo Compagno & Programmatore & Bianca Zaghetto & Aggiornata sezione Guida all'Utilizzo\\
+                \textbf{0.5} & 24/04/26 & Filippo Compagno & Programmatore & Bianca Zaghetto & Aggiunta delle immagini\\
                 \hline
                 \textbf{0.4} & 14/04/26 & Mattia Oliva Medin & Responsabile & Francesco Balestro & Aggiornata sezione Guida all'Utilizzo\\
                 \hline
@@ -41,9 +43,6 @@
     \listoffigures
     \newpage
     
-    \listoftables
-    \newpage
-
     \section{Introduzione} {
         \subsection{Scopo del documento} {        
             Il presente documento ha lo scopo di fornire all'utente tutte le istruzioni necessarie per la corretta installazione e il normale utilizzo dell'applicativo desktop DIPReader.
@@ -155,12 +154,12 @@
             Al primo avvio DIPReader si apre direttamente sull'interfaccia principale, senza richiedere registrazione, creazione di account o configurazione. 
             Se la lista dei documenti risulta vuota, verificare che l'eseguibile sia posizionato correttamente nella cartella radice del pacchetto DIP (vedere sezione \ref{sec:apertura}).
 
-            \begin{figure}[h!]
+            \begin{figure}[H]
                 \centering
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/dipreader.png}
+                    \includegraphics[width=\textwidth]{screenshots_dipreader/dipreader.png}
                 }
                 \caption{Schermata principale}
                 \label{fig:dipreader}
@@ -183,7 +182,7 @@
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/document-list.png}
+                    \includegraphics[width=\textwidth]{screenshots_dipreader/document-list.png}
                 }
                 \caption{Lista dei documenti}
                 \label{fig:document-list}
@@ -194,12 +193,12 @@
             Dopo aver selezionato un documento, nel pannello di destra compare la sezione "Dettagli Documento" con i seguenti campi: il nome del file, il formato (ad esempio PDF o XML), l'identificativo univoco del documento, e la data e ora di registrazione. Più in basso è presente la sezione "Allegati", che mostra il numero di allegati e li elenca ciascuno con il proprio percorso e formato.
             Per la consultazione degli allegati vedere la sezione~\ref{sec:allegati}.
 
-            \begin{figure}[h!]
+            \begin{figure}[H]
                 \centering
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/document-details.png}
+                    \includegraphics[width=0.8\textwidth]{screenshots_dipreader/document-details.png}
                 }
                 \caption{Dettagli di un documento}
                 \label{fig:document-details}
@@ -209,12 +208,12 @@
             Per visualizzare il contenuto di un file, è sufficiente cliccare sull'icona a forma di occhio (\faEye) posta in corrispondenza del documento di interesse nell'elenco centrale. L'anteprima viene caricata in una schermata dedicata a tutto schermo, permettendo una lettura agevole senza la necessità di aprire programmi esterni. Per tornare alla lista di documenti è sufficiente cliccare l'apposito pulsante in alto a sinistra "Torna Indietro".
             Se l'anteprima non è disponibile, la sezione lo comunica tramite un apposito messaggio.
 
-            \begin{figure}[h!]
+            \begin{figure}[H]
                 \centering
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/preview.png}
+                    \includegraphics[width=\textwidth]{screenshots_dipreader/preview.png}
                 }
                 \caption{Anteprima di un documento}
                 \label{fig:preview}
@@ -236,7 +235,7 @@
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/attachment.png}
+                    \includegraphics[width=0.8\textwidth]{screenshots_dipreader/attachment.png}
                 }
                 \caption{Dettagli di un allegato}
                 \label{fig:attachment}
@@ -250,9 +249,9 @@
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/preview.png}
+                    \includegraphics[width=\textwidth]{screenshots_dipreader/preview.png}
                 }
-                \caption{Anteprima di un documento}
+                \caption{Anteprima di un allegato}
             \end{figure}
             
             \subsubsection{Tornare al documento padre}
@@ -262,7 +261,6 @@
             \label{sec:filtri}
                 \subsubsection{Aggiungere un filtro}
                 Nella parte superiore del pannello laterale sinistro è presente il pulsante "Aggiungi Filtro". Premendolo compare una nuova riga contenente un menu a tendina per selezionare il campo su cui effettuare la ricerca e un campo per inserire il valore desiderato.
-                Quest'ultimo varia in base al campo selezionato: per i campi temporali è presente un selettore di data, per i campi categorici un menu a tendina con opzioni predefinite, per gli altri invece un campo libero.
 
             \begin{figure}[h!]
                 \centering
@@ -275,6 +273,8 @@
                 \label{fig:filter1}
             \end{figure}
 
+            L'area dove immettere il criterio di ricerca varia in base al campo selezionato: per i campi temporali è presente un selettore di data, per i campi categorici un menu a tendina con opzioni predefinite, per gli altri invece un campo libero.
+
             \begin{figure}[h!]
                 \centering
                 \setlength{\fboxrule}{0.5pt}
@@ -282,7 +282,7 @@
                 \fbox{
                     \includegraphics[width=0.5\textwidth]{screenshots_dipreader/filter2.png}
                 }
-                \caption{Filtro con menu a tendina}
+                \caption{Esempio di filtro con selezione da menu a tendina}
                 \label{fig:filter2}
             \end{figure}
 
@@ -311,9 +311,7 @@
             Per tornare a visualizzare l'intero contenuto del pacchetto DIP è sufficiente rimuovere tutti i filtri attivi. Per rimuovere un filtro si veda la sezione \ref{sec:removefilter}.
             
         \subsection{Visualizzare le informazioni sul pacchetto DIP}
-        Il riquadro "Informazioni del pacchetto (DIP)", sempre visibile in basso a sinistra, riporta: UUID, data di creazione, numero totale di documenti contenuti e numero AIP.
-        
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \setlength{\fboxrule}{0.5pt}
             \setlength{\fboxsep}{0pt}
@@ -323,4 +321,6 @@
             \caption{Dettagli del pacchetto DIP}
             \label{fig:dip-details}
         \end{figure}
+        Il riquadro "Informazioni del pacchetto (DIP)", sempre visibile in basso a sinistra, riporta: UUID, data di creazione, numero totale di documenti contenuti e numero AIP.
+        
 \end{document}
