@@ -366,7 +366,7 @@
 
             \end{longtable}
             
-\newpage
+    \newpage
     \section{Testing}
 
     Questa sezione descrive la strategia di verifica e validazione adottata dal gruppo per garantire la qualità del prodotto software.
@@ -374,11 +374,53 @@
 
         \subsection{Test di Unità}
 
-        In accordo con la pianificazione temporale del progetto e lo stato attuale di avanzamento, la definizione puntuale dei casi di test per questa categoria verrà eseguita in seguito alla fase di RTB.
+        I test di unità hanno lo scopo di verificare il corretto funzionamento delle singole unità software in isolamento, accertandosi che ciascuna componente si comporti come previsto indipendentemente dal resto del sistema.     
+        
+        \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
+                
+            \caption{Test di Unità} \\
+            \hline
+            \rowcolor{gray!40}
+            \textbf{ID} & \textbf{Descrizione} & \textbf{Valore atteso} & \textbf{Stato} \\
+            \hline
+            \endhead
+
+            TU01 & descrizione & valore atteso & S \\
+            \hline
+
+            TU02 & - & - & S \\
+            \hline
+
+            TU03 & - & - & S \\
+            \hline
+
+        \end{longtable}
+
 
         \subsection{Test di Integrazione}
 
-        In accordo con la pianificazione temporale del progetto e lo stato attuale di avanzamento, la definizione puntuale dei casi di test per questa categoria verrà eseguita in seguito alla fase di RTB.
+        I test di integrazione hanno lo scopo di verificare la corretta interazione tra le diverse unità software, accertandosi che i componenti del sistema collaborino come previsto.
+
+        \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
+                
+            \caption{Test di Integrazione} \\
+            \hline
+            \rowcolor{gray!40}
+            \textbf{ID} & \textbf{Descrizione} & \textbf{Valore atteso} & \textbf{Stato} \\
+            \hline
+            \endhead
+
+            TI01 & descrizione & valore atteso & S \\
+            \hline
+
+            TI02 & - & - & S \\
+            \hline
+
+            TI03 & - & - & S \\
+            \hline
+
+        \end{longtable}
+
 
         \subsection{Test di Sistema}
 
@@ -813,7 +855,7 @@ In questa sezione vengono riportati gli andamenti durante tutti gli sprint delle
     Il grafico mostra un andamento allineato tra EV e PV per i primi 3 sprint. A partire dallo sprint 4 si nota una leggera flessione dell’EV dovuta ai rallentamenti del periodo festivo (come descritto nel \textit{Piano di Progetto} (\S5.2.4.7)). 
     Nello sprint 8 si registra un ulteriore incremento dello scostamento negativo tra EV e PV, recuperato poi all'interno dello sprint successivo con la conclusione del PoC. 
     Tuttavia lo scostamento si è mantenuto entro i limiti di tolleranza accettabili definiti dalla metrica MPC08. 
-    In seguito alla consegna RTB l'andamento è rimasto generalmente allineato grazie alle migliorie organizzative stabilite durante lo sprint 11 (\S5.3.1.7)).
+    In seguito alla consegna RTB l'andamento è rimasto generalmente allineato grazie alle migliorie organizzative stabilite durante lo sprint 11 (\S5.3.1.7).
 
     \subsection{MPC04/MPC05 - Actual Cost (AC) e Estimated To Complete (ETC)}
     
