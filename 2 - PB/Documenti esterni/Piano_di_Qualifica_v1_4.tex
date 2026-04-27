@@ -3,6 +3,9 @@
 \usepackage{eurosym}
 \usepackage{array}
 \usepackage{float}
+\usepackage{xltabular}
+\usepackage[table]{xcolor}
+
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \setTitle{Piano di Qualifica}
@@ -16,13 +19,17 @@
 \begin{document}
     \include{docTitlepage}
 
-    \section*{Registro delle modifiche} {
-        \begin{table}[h!]
-            \rowcolors{2}{lightgray}{white}
-                \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
-                \hline
-                \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
-                \hline
+    \newpage
+    \section*{Registro delle modifiche}
+    \rowcolors{2}{lightgray}{white}
+    \begin{xltabular}{\textwidth}{|l|l|X|l|X|X|}
+    \hline
+    \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+    \hline
+    \endhead
+    \endfoot
+    \hline
+    \endlastfoot
                 \textbf{1.4} & 24/04/2026 & Andrea Masiero & Amministratore & Bianca Zaghetto & Aggiornamento sezione Testing\\
                 \hline
                 \textbf{1.3} & 20/04/2026 & Bianca Zaghetto & Verificatore & Nenad Radulovic & Aggiornamento per sprint 14\\
@@ -53,9 +60,7 @@
                 \hline
                 \textbf{0.1} & 18/12/2025 & Sara Gioia Fichera & Analista & Nenad Radulovic & Struttura del documento \\
                 \hline
-            \end{tabularx}
-        \end{table}
-    }
+    \end{xltabular}
     \newpage
     
     \tableofcontents
