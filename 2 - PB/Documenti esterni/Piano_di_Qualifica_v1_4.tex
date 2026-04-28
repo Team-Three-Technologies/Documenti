@@ -586,7 +586,34 @@
             TU36 & Testare che \texttt{Base64ProviderImpl.decodeToBytes()} gestisca una stringa base64 non valida & Buffer senza lanciare eccezioni & S \\
             \hline
 
-            *TU37 & Testare che \texttt{DatabaseProvider} & - & S \\
+            TU37 & Testare che \texttt{DatabaseProvider.instance} lanci un errore se il provider non è ancora stato inizializzato & Lancia l'eccezione 'DatabaseProvider non inizializzato' & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.instance} restituisca la connessione al database dopo l'inizializzazione & Instanza del database & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.init()} crei la directory documents, apra il database e imposti i pragma corretti & \texttt{ensureDir} chiamato con \texttt{documentsPath}, Database aperto con il path corretto; pragma \texttt{journal_mode = WAL} e \texttt{foreign_keys = ON} impostati & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.init()} continui correttamente anche se \texttt{ensureDir} di \texttt{documentsPath} fallisce & Nessuna eccezione viene lanciata e Database viene comunque aperto & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.init()} crei la tabella migrations & Tra le query eseguite ce n'è una contenente \texttt{CREATE TABLE IF NOT EXISTS migrations} & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.runMigrations()} esegua i file SQL in ordine alfabetico & I file vengono letti e applicati in ordine 001 poi 002 & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.runMigrations()} salti le migrazioni già applicate & Solo la migrazione non ancora applicata viene letta ed eseguita & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.runMigrations()} non esegua nulla se tutte le migrazioni sono già state applicate & \texttt{readFile} e \texttt{run} non vengono chiamati & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.runMigrations()} non faccia nulla se la cartella migrations è vuota & \texttt{readFile} e \texttt{run} non vengono chiamati & S \\
+            \hline
+
+            TU37 & Testare che \texttt{DatabaseProvider.runMigrations()} registri un timestamp ISO valido nella insert della migrazione & il timestamp è una stringa ISO & S \\
             \hline
 
             TU38 & Testare che \texttt{ElectronDialogProvider.selectSavePath()} restituisca il path quando viene selezionato un file & Restituisce '/tmp/file.txt' & S \\
