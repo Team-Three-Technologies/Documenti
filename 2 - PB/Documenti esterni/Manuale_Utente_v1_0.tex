@@ -187,6 +187,15 @@
                 \caption{Lista dei documenti}
                 \label{fig:document-list}
             \end{figure}
+
+            \subsubsection{Verifica dell'integrità dei documenti}
+            DIPReader esegue automaticamente un controllo di integrità su ogni file contenuto nel pacchetto all'atto del caricamento. \\
+            All'interno della lista centrale, lo stato di integrità è segnalato da un indicatore visivo posto accanto al nome di ciascun documento o allegato:
+            \begin{itemize}
+                \item \textbf{Spunta verde (\faCheckCircle[regular])}: indica che il  controllo è andato a buon fine e il file è integro
+                \item \textbf{Assenza dell'icona}: il controllo è in corso
+                \item \textbf{X rossa (\textcolor{red}{\faTimes})}: il controllo non ha avuto successo
+            \end{itemize}
             
             \subsubsection{Selezionare un documento e visualizzarne i dettagli}
             Per selezionare un documento è sufficiente fare clic sul nome del documento dalla lista. 
@@ -217,10 +226,9 @@
             \end{figure}
 
             \subsubsection{Visualizzare l'anteprima di un documento}
-            Per visualizzare il contenuto di un file, è sufficiente cliccare sull'icona a forma di occhio (\faEye) posta in corrispondenza del documento di interesse nell'elenco centrale. L'anteprima viene caricata in una schermata dedicata a tutto schermo, permettendo una lettura agevole senza la necessità di aprire programmi esterni. Per tornare alla lista di documenti è sufficiente cliccare l'apposito pulsante in alto a sinistra "Torna Indietro".
-            Se l'anteprima non è disponibile, la sezione lo comunica tramite un apposito messaggio.
-
-            \begin{figure}[H]
+                Per visualizzare il contenuto di un file, cliccare sull'icona a forma di occhio (\faEye) nell'elenco centrale. Per i formati PDF e immagine, l'anteprima viene caricata in una schermata interna a tutto schermo da cui è possibile tornare alla lista tramite il pulsante 'Torna Indietro'. Per tutti gli altri formati, il sistema avvierà invece l'apertura esterna del file utilizzando l'applicazione predefinita del sistema operativo.
+            
+                \begin{figure}[H]
                 \centering
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
