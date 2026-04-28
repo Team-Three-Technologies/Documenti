@@ -806,58 +806,112 @@
             TU97 & Testare che \texttt{ElectronIpc.autoImport()} gestisca correttamente quando l'API fallisce & Lancia l'eccezione 'API error' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.content()} restituisce il contenuto in caso di successo & Mock del contentResponse & S \\
+            TU98 & Testare che \texttt{ElectronIpc.content()} restituisce il contenuto in caso di successo & Mock del contentResponse & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.content()} lanci un errore in caso di fallimento del caricamente del contenuto & Lancia l'eccezione 'Content loading failed' & S \\
+            TU99 & Testare che \texttt{ElectronIpc.content()} lanci un errore in caso di fallimento del caricamente del contenuto & Lancia l'eccezione 'Content loading failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.checkIntegrity()} chiami correttamente l'API & \texttt{mockElectronAPI.dip.checkIntegrity} con oggetto test-dip-uuid & S \\
+            TU100 & Testare che \texttt{ElectronIpc.checkIntegrity()} chiami correttamente l'API & \texttt{mockElectronAPI.dip.checkIntegrity} con oggetto test-dip-uuid & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.checkIntegrity()} lanci un errore in caso di fallimento del controllo integrità & Lancia l'eccezione 'Integrity check failed' & S \\
+            TU101 & Testare che \texttt{ElectronIpc.checkIntegrity()} lanci un errore in caso di fallimento del controllo integrità & Lancia l'eccezione 'Integrity check failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.getDocumentDetails()} restituisca i dettagli del documento in caso di successo & \texttt{mockDetailsResponse}  & S \\
+            TU102 & Testare che \texttt{ElectronIpc.getDocumentDetails()} restituisca i dettagli del documento in caso di successo & \texttt{mockDetailsResponse}  & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.getDocumentDetails()} lanci un errore in caso di fallimento del recupero dettagli documento & Lancia l'eccezione 'Document details loading failed' & S \\
+            TU103 & Testare che \texttt{ElectronIpc.getDocumentDetails()} lanci un errore in caso di fallimento del recupero dettagli documento & Lancia l'eccezione 'Document details loading failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.searchDocuemnts()} restituisca i risultati di ricerca in caso di successo & \texttt{mockSearchResponse} & S \\
+            TU104 & Testare che \texttt{ElectronIpc.searchDocuemnts()} restituisca i risultati di ricerca in caso di successo & \texttt{mockSearchResponse} & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.searchDocuemnts()} lanci un errore in caso di fallimento della ricerca dei documenti & Lancia l'eccezione 'Document search failed' & S \\
+            TU105 & Testare che \texttt{ElectronIpc.searchDocuemnts()} lanci un errore in caso di fallimento della ricerca dei documenti & Lancia l'eccezione 'Document search failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.fileInternalPreview()} restituisca l'anteprima interna del file in caso di successo & \texttt{mockSearchResponse} & S \\
+            TU106 & Testare che \texttt{ElectronIpc.fileInternalPreview()} restituisca l'anteprima interna del file in caso di successo & \texttt{mockSearchResponse} & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.fileInternalPreview()} lanci un errore in caso di fallimento della preview interna & Lancia l'eccezione 'Internal preview failed' & S \\
+            TU107 & Testare che \texttt{ElectronIpc.fileInternalPreview()} lanci un errore in caso di fallimento della preview interna & Lancia l'eccezione 'Internal preview failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.fileExternalPreview()} restituisca l'anteprima esterna del file in caso di successo & Promise si risolve con undefined & S \\
+            TU108 & Testare che \texttt{ElectronIpc.fileExternalPreview()} restituisca l'anteprima esterna del file in caso di successo & Promise si risolve con undefined & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.fileExternalPreview()} lanci un errore in caso di fallimento della preview esterna & Lancia l'eccezione 'External preview failed' & S \\
+            TU109 & Testare che \texttt{ElectronIpc.fileExternalPreview()} lanci un errore in caso di fallimento della preview esterna & Lancia l'eccezione 'External preview failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.exportFile()} restituisca la risposta di esportazione file in caso di successo & success uguale a true & S \\
+            TU110 & Testare che \texttt{ElectronIpc.exportFile()} restituisca la risposta di esportazione file in caso di successo & success uguale a true & S \\
             \hline
 
-            TU97 & Testare che \texttt{ElectronIpc.exportFile()} lanci un errore in caso di fallimento dell'esportazione file & Lancia l'eccezione 'Export failed' & S \\
+            TU111 & Testare che \texttt{ElectronIpc.exportFile()} lanci un errore in caso di fallimento dell'esportazione file & Lancia l'eccezione 'Export failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
+            TU112 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
             \hline
 
-            TU97 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & All'aggiornamento di un valore l'array dei filtriAttivi viene cambiato & S \\
+            TU113 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & All'aggiornamento di un valore l'array dei filtriAttivi viene cambiato & S \\
             \hline
 
-            TU97 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & i valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
+            TU114 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & i valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
             \hline
 
-            TU98 & - & - & S \\
+            TU115 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I querySelector per gli input DOM corrispondono per lunghezza e tipologia ai mock definiti in \texttt{filtriAttivi} & S \\ 
+            \hline
+            
+            TU116 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuova i filtri dipendenti quando i valori cambiano & L'array \texttt{filtriAttivi} e le opzioni di \texttt{opzioniDisponibili()} assumono lo stato mutato atteso & S \\ 
+            \hline
+            
+            TU117 & Testare che \texttt{Filters} emetta solo filtri validi quando viene avviata una ricerca & L'EventEmitter \texttt{searchRequested} emette un array contenente unicamente i DTO dei filtri validati & S \\ 
+            \hline
+            
+            TU118 & Testare che \texttt{Filters} rimuova le righe tramite il pulsante elimina e avvii una nuova ricerca & L'array \texttt{filtriAttivi} risulta con \texttt{length} uguale a 0 e \texttt{searchRequested} emette \texttt{[]} & S \\ 
+            \hline
+            
+            TU119 & Testare che \texttt{DocumentPreview} mostri lo stato vuoto quando non è selezionato alcun documento & \texttt{fixture.nativeElement.textContent} contiene la stringa di stato vuoto predefinita & S \\ 
+            \hline
+            
+            TU120 & Testare che \texttt{DocumentPreview} mostri lo stato di caricamento quando l'anteprima è in generazione & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento & S \\ 
+            \hline
+            
+            TU121 & Testare che \texttt{DocumentPreview} gestisca anteprime PDF, immagini e formati non supportati & \texttt{safeDocumentUrl} riflette la sicurezza del link e il DOM renderizza \texttt{<iframe>} o \texttt{<img>} in base a \texttt{itemFormato} & S \\ 
+            \hline
+
+            TU122 & Testare che \texttt{DocumentList} mostri lo stato di caricamento quando richiesto & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento & S \\ 
+            \hline
+            
+            TU123 & Testare che \texttt{DocumentList} mostri lo stato di errore quando viene fornito un messaggio & \texttt{fixture.nativeElement.textContent} corrisponde al valore della property \texttt{errorMessage} & S \\ 
+            \hline
+            
+            TU124 & Testare che \texttt{DocumentList} mostri lo stato vuoto quando non ci sono documenti disponibili & \texttt{fixture.nativeElement.textContent} contiene la stringa di assenza documenti & S \\ 
+            \hline
+            
+            TU125 & Testare che \texttt{DocumentList} mostri documenti, allegati ed emetta eventi di selezione & \texttt{getIntegrityStatus} restituisce i valori mappati ed \texttt{EventEmitter} inviano i DTO previsti al click & S \\ 
+            \hline
+            
+            TU126 & Testare che \texttt{DocumentDetails} mostri lo stato di caricamento quando richiesto & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento dettagli & S \\ 
+            \hline
+            
+            TU127 & Testare che \texttt{DocumentDetails} mostri lo stato vuoto quando non è selezionato nulla & \texttt{fixture.nativeElement.textContent} contiene la stringa di richiesta selezione & S \\ 
+            \hline
+            
+            TU128 & Testare che \texttt{DocumentDetails} mostri i dettagli del documento, i soggetti e gli allegati & I nodi DOM per i metadati corrispondono al mock e \texttt{export} emette \texttt{\{documentUuid\}} & S \\ 
+            \hline
+            
+            TU129 & Testare che \texttt{DocumentDetails} mostri messaggi di relazione vuota quando mancano soggetti e allegati & \texttt{fixture.nativeElement.textContent} contiene le stringhe di fallback per \texttt{subjects} e \texttt{attachments} nulli & S \\ 
+            \hline
+            
+            TU130 & Testare che \texttt{DocumentDetails} mostri i dettagli dell'allegato ed esporti il file selezionato & \texttt{export} emette il payload contenente sia \texttt{documentUuid} che \texttt{fileUuid} & S \\ 
+            \hline
+            
+            TU131 & Testare che \texttt{DipDetails} mostri lo stato vuoto quando non ci sono pacchetti disponibili & \texttt{fixture.nativeElement.textContent} contiene la stringa di assenza pacchetti & S \\ 
+            \hline
+            
+            TU132 & Testare che \texttt{DipDetails} mostri i dati del pacchetto quando vengono fornite le info del DIP & \texttt{fixture.nativeElement.textContent} include le stringhe corrispondenti alle chiavi del DTO in ingresso & S \\ 
+            \hline
+            
+            TU133 & Testare che \texttt{DipDetails} usi N/D come fallback per i valori mancanti & Le occorrenze di \texttt{N/D} nel textContent sono conformi al numero di proprietà nulle in ingresso & S \\ 
             \hline
 
         \end{longtable}
