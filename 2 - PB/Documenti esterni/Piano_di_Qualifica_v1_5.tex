@@ -789,11 +789,75 @@
             TU92 & Testare che \texttt{SearchQueryBuilder.buildQuery()} resetti i filtri dopo la chiamata & La seconda chiamata a \texttt{buildQuery()} restituisce params [0] & S \\
             \hline
 %---------fine test repositories
+%---------test renderer
 
-            TU93 & - & - & S \\
+            TU93 & Testare che \texttt{App} inizializzi l'applicazione & L'istanza del componente root viene creata con successo & S \\
             \hline
 
-            TU94 & - & - & S \\
+            TU94 & Testare che \texttt{App} inizializzi l'applicazione & L'istanza del componente root viene creata con successo & S \\
+            \hline
+
+            TU95 & Testare che \texttt{ElectronIpc.autoImport()} la risposta avvenga con successo & Campo error con valore null & S \\
+            \hline
+
+            TU96 & Testare che \texttt{ElectronIpc.autoImport()} gestisca errore in caso di fallimento di \texttt{autoImport} & Lancia l'eccezione 'Auto import failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.autoImport()} gestisca correttamente quando l'API fallisce & Lancia l'eccezione 'API error' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.content()} restituisce il contenuto in caso di successo & Mock del contentResponse & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.content()} lanci un errore in caso di fallimento del caricamente del contenuto & Lancia l'eccezione 'Content loading failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.checkIntegrity()} chiami correttamente l'API & \texttt{mockElectronAPI.dip.checkIntegrity} con oggetto test-dip-uuid & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.checkIntegrity()} lanci un errore in caso di fallimento del controllo integrità & Lancia l'eccezione 'Integrity check failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.getDocumentDetails()} restituisca i dettagli del documento in caso di successo & \texttt{mockDetailsResponse}  & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.getDocumentDetails()} lanci un errore in caso di fallimento del recupero dettagli documento & Lancia l'eccezione 'Document details loading failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.searchDocuemnts()} restituisca i risultati di ricerca in caso di successo & \texttt{mockSearchResponse} & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.searchDocuemnts()} lanci un errore in caso di fallimento della ricerca dei documenti & Lancia l'eccezione 'Document search failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.fileInternalPreview()} restituisca l'anteprima interna del file in caso di successo & \texttt{mockSearchResponse} & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.fileInternalPreview()} lanci un errore in caso di fallimento della preview interna & Lancia l'eccezione 'Internal preview failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.fileExternalPreview()} restituisca l'anteprima esterna del file in caso di successo & Promise si risolve con undefined & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.fileExternalPreview()} lanci un errore in caso di fallimento della preview esterna & Lancia l'eccezione 'External preview failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.exportFile()} restituisca la risposta di esportazione file in caso di successo & success uguale a true & S \\
+            \hline
+
+            TU97 & Testare che \texttt{ElectronIpc.exportFile()} lanci un errore in caso di fallimento dell'esportazione file & Lancia l'eccezione 'Export failed' & S \\
+            \hline
+
+            TU97 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
+            \hline
+
+            TU97 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & All'aggiornamento di un valore l'array dei filtriAttivi viene cambiato & S \\
+            \hline
+
+            TU97 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & i valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
+            \hline
+
+            TU98 & - & - & S \\
             \hline
 
         \end{longtable}
