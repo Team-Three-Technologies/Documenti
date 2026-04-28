@@ -13,9 +13,9 @@
 \setcounter{tocdepth}{4}
 \setTitle{Specifica Tecnica}
 \setAuthors{Mattia Oliva Medin \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
-\setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Andrea Masiero}
+\setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Mattia Oliva Medin \\ & Andrea Masiero}
 \setApprovation{}
-\setVersion{0.8}
+\setVersion{0.9}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -29,13 +29,16 @@
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
                 \hline
-                \textbf{0.8} & 26/04/26 & Bianca Zaghetto & Programmatore & Nenad Radulovic & Aggiornamento requisiti e grafici \\
+                \textbf{0.9} & 26/04/26 & Mattia Oliva
+                Medin & Programmatore & Filippo Compagno & Correzioni varie \\
                 \hline
-                \textbf{0.7} & 26/04/26 & Francesco Balestro & Programmatore & Bianca Zaghetto & Stesura "Infrastructure layer" e "Classi per il rendering" \\
+                \textbf{0.8} & 26/04/26 & Bianca Zaghetto & Verificatore & Nenad Radulovic & Aggiornamento requisiti e grafici \\
+                \hline
+                \textbf{0.7} & 26/04/26 & Francesco Balestro & Responsabile & Andrea Masiero & Stesura "Infrastructure layer" e "Classi per il rendering" \\
                 \hline
                 \textbf{0.6} & 26/04/26 & Sara Gioia Fichera & Programmatore & Mattia Oliva Medin & Stesura "Domain layer" e "Persistence layer" \\
                 \hline
-                \textbf{0.5} & 25/04/26 & Francesco Balestro & Programmatore & Bianca Zaghetto & Prima stesura "Design pattern", "Oggetti di trasferimento dati", "Presentation layer" e "Application layer" \\
+                \textbf{0.5} & 25/04/26 & Francesco Balestro & Responsabile & Bianca Zaghetto & Prima stesura "Design pattern", "Oggetti di trasferimento dati", "Presentation layer" e "Application layer" \\
                 \hline
                 \textbf{0.4} & 22/04/26 & Francesco Balestro & Responsabile & Sara Gioia Fichera & Prima stesura Architetture e aggiornamento sezione "Tecnologie" \\
                 \hline
@@ -221,17 +224,28 @@
 
     \section{Architettura} {
         \subsection{Architettura logica} {
-            Il sistema è progettato seguendo un’\textbf{architettura layered}, che organizza l’applicazione in livelli distinti con responsabilità ben definite, al fine di garantire una chiara separazione delle competenze, una maggiore manutenibilità e una migliore scalabilità logica del sistema.\\
+            Il sistema è progettato seguendo un'architettura layered, che organizza l'applicazione in livelli distinti con responsabilità ben definite, al fine di garantire una chiara separazione delle competenze, una maggiore manutenibilità e una migliore scalabilità logica del sistema.\\
             \\
-            In questo modello architetturale, ogni livello espone servizi ben definiti verso il livello superiore e interagisce esclusivamente con quelli adiacenti, riducendo l’accoppiamento tra le componenti. Questa struttura consente di isolare la logica di presentazione, la logica applicativa e la gestione dei dati, facilitando l’evoluzione indipendente delle singole parti del sistema.\\
+            In questo modello architetturale, ogni livello espone servizi ben definiti verso il livello superiore e interagisce esclusivamente con quelli adiacenti, riducendo l'accoppiamento tra le componenti. Questa struttura consente di isolare la logica di presentazione, la logica applicativa e la gestione dei dati, facilitando l'evoluzione indipendente delle singole parti del sistema.\\
             \\
-            L’applicazione è organizzata in tre livelli principali: \textit{presentation layer}, \textit{application layer} e \textit{data layer}, ciascuno con un ruolo ben definito all’interno del sistema.
+            L'applicazione è organizzata in cinque layer principali: \textit{presentation layer}, \textit{application layer}, \textit{domain layer}, \textit{persistence layer} e \textit{infrastructure layer}, ciascuno con un ruolo ben definito all'interno del sistema.
             \begin{itemize}
-                \item Il \textbf{presentation layer} è responsabile dell’interfaccia utente e della visualizzazione dei contenuti del DIP (Dissemination Information Package). È implementato tramite \textit{Angular} e gestisce il rendering delle viste, l’interazione con l’utente e la presentazione dei documenti e dei metadati.
-                \item L'\textbf{application layer} contiene la logica applicativa e coordina le operazioni tra interfaccia utente e accesso ai dati. È integrato nel contesto di \textit{Electron} e si occupa della gestione del flusso applicativo, della comunicazione tra processi tramite IPC e dell’orchestrazione delle operazioni sul DIP
-                \item Il \textbf{data layer} gestisce la persistenza e l’accesso ai dati contenuti nel pacchetto DIP. Utilizza \textit{better-sqlite3} per l’interazione con il database locale, permettendo l’esecuzione di query sui metadati e la gestione strutturata delle informazioni archivistiche.\\
+                \item \textbf{Presentation layer}: è responsabile dell'interfaccia utente e della visualizzazione dei contenuti del DIP. È implementato tramite \textit{Angular} e risiede interamente nel \textit{Renderer process} di Electron. Gestisce il rendering delle viste, l'interazione con l'utente, la presentazione dei documenti e dei metadati, e l'orchestrazione dello stato dell'applicazione tramite segnali (signals) di Angular. Comunica con il layer sottostante (application layer) esclusivamente attraverso il servizio \texttt{ElectronIPCService}, che incapsula le chiamate IPC verso il Main process.
+                \item \textbf{Application layer}: contiene la logica applicativa e coordina le operazioni tra interfaccia utente e accesso ai dati. È integrato nel \textit{Main process} di Electron e si occupa della gestione del flusso applicativo, dell'orchestrazione delle operazioni sul DIP (importazione, ricerca, verifica integrità, esportazione) e dell'implementazione dei casi d'uso (es. \texttt{AutoImportDipService}, \texttt{GetDipContentService}, \texttt{SearchDocumentsService}). Questo layer dipende dalle interfacce dei repository (definite nel persistence layer) e dalle entità del dominio (domain layer), applicando il principio di dependency inversion.
+                \item \textbf{Domain layer}: rappresenta il cuore del sistema, contenendo le entità di business e i value object che modellano i concetti fondamentali del dominio di conservazione digitale. Questo layer è completamente indipendente dai dettagli infrastrutturali e non ha dipendenze verso layer esterni, incarnando il principio dell'\textit{Hexagonal Architecture} (core del dominio isolato).
+                \item \textbf{Persistence layer}: gestisce la persistenza e l'accesso ai dati contenuti nel pacchetto DIP. Utilizza \textit{better-sqlite3} per l'interazione con il database locale, permettendo l'esecuzione di query sui metadati e la gestione strutturata delle informazioni archivistiche. Implementa il pattern \textit{Repository} (Sezione \ref{sec:Repository}), fornendo interfacce che astraggono completamente i dettagli implementativi del database. Le implementazioni concrete dei repository risiedono in questo layer.
+                \item \textbf{Infrastructure layer}: fornisce servizi tecnici e infrastrutturali ai layer superiori. Include provider per l'accesso al file system, per il calcolo di hash crittografici, per la decodifica Base64, per la gestione di finestre di dialogo e per l'interazione con la shell del sistema operativo. Questo layer implementa le interfacce definite nei layer superiori, seguendo il principio di dependency inversion.
             \end{itemize}
-            La comunicazione tra i diversi livelli, in particolare tra presentation layer e application layer, avviene attraverso meccanismi di IPC forniti nativamente da Electron, che permettono un’interazione controllata tra i processi mantenendo una separazione tra interfaccia utente e logica applicativa.
+            
+            \noindent La comunicazione tra i diversi layer segue un flusso controllato dall'alto verso il basso:
+            \begin{itemize}
+                \item Il \textbf{presentation layer} (Renderer process) invoca metodi sul \textbf{application layer} (Main process) tramite IPC;
+                \item L'\textbf{application layer} orchestra le operazioni utilizzando le entità del \textbf{domain layer};
+                \item Per la persistenza, l'\textbf{application layer} utilizza le interfacce dei repository fornite dal \textbf{persistence layer};
+                \item Il \textbf{persistence layer} delega le operazioni tecniche (accesso al file system, calcoli crittografici) all'\textbf{infrastructure layer}.
+            \end{itemize}
+            
+            \noindent Questa organizzazione a cinque layer garantisce una separazione netta delle responsabilità, facilitando la testabilità (ogni layer può essere testato in isolamento con mock dei layer inferiori), la manutenibilità (modifiche a un layer non influenzano gli altri) e l'evoluzione indipendente delle singole componenti del sistema.
         }
         
         \subsection{Architettura di deployment} {
@@ -348,7 +362,7 @@
                 
                 \noindent L'adozione del pattern Strategy, permette di aderire all'Open/Closed Principle (principio di apertura/chiusura) del SOLID: il sistema è aperto all'estensione (nuove versioni del formato) ma chiuso alla modifica delle classi esistenti.
             }
-            \subsubsection{Repository} {
+            \subsubsection{Repository}\label{sec:Repository} {
                 \paragraph{Descrizione del pattern}\mbox{}\\
                 Il pattern Repository è un design pattern che fornisce un’astrazione per l’accesso ai dati, separando la logica di business dalla logica di persistenza.\\
                 \\
@@ -386,10 +400,57 @@
             }
         }
 
-        \subsection{Main process} {
-            DA SCRIVERE
+        \subsection{Architettura dei Processi e Comunicazione} {
+            L'applicazione è costruita sull'architettura duale fornita da Electron, che distingue due tipologie di processi – il \textit{Main process} e il \textit{Renderer process} – ciascuno con responsabilità specifiche e un meccanismo di comunicazione asincrona ben definito. Questa separazione è fondamentale per garantire sicurezza, prestazioni e manutenibilità del sistema di visualizzazione dei pacchetti DIP.
             
-            \subsubsection{Oggetti di trasferimento dati} {
+            \subsubsection{Main process} {
+                Il Main process rappresenta il processo principale dell'applicazione Electron. Ogni applicazione Electron ha un unico Main process, che viene eseguito all'avvio dell'applicazione e costituisce il punto di ingresso. Le sue caratteristiche principali sono:
+                \begin{itemize}
+                    \item \textbf{Accesso privilegiato}: il Main process ha accesso completo alle API del sistema operativo e alle risorse native, inclusi file system, finestre di dialogo, processi shell e operazioni crittografiche;
+                    \item \textbf{Gestione del ciclo di vita}: è responsabile della creazione e gestione delle finestre dell'applicazione (BrowserWindow) e del controllo del ciclo di vita complessivo dell'applicazione (avvio, chiusura, gestione degli eventi di sistema);
+                    \item \textbf{Ospite della logica di business}: nel progetto, il Main process ospita i layer applicativi più profondi: l'application layer (casi d'uso), il domain layer (entità e value object), il persistence layer (repository e accesso al database) e l'infrastructure layer (provider per file system, hashing, Base64, dialoghi, shell);
+                    \item \textbf{Accesso al database}: solo il Main process interagisce direttamente con il database SQLite locale tramite \texttt{better-sqlite3}, garantendo l'integrità e la consistenza dei dati;
+                    \item \textbf{Isolamento delle operazioni critiche}: tutte le operazioni che richiedono accesso al file system (lettura di file DIP, copia, esportazione), calcoli crittografici (hash, Base64) e interazione con il sistema operativo (apertura di file, finestre di dialogo) sono eseguite esclusivamente nel Main process.
+                \end{itemize}
+                
+                \noindent Nel contesto del progetto, il Main process ospita le seguenti componenti:
+                \begin{itemize}
+                    \item \textbf{DTO (Data Transfer Objects)}: oggetti per il trasporto dei dati tra i layer (Sezione \ref{sec:DTO});
+                    \item \textbf{Presentation layer (lato main)}: handler che ricevono le richieste IPC dal Renderer process e le traducono in chiamate ai casi d'uso (Sezione \ref{sec:Presentation-layer});
+                    \item \textbf{Application layer}: implementazione dei casi d'uso (es. \texttt{AutoImportDipService},\\ \texttt{GetDipContentService}, \texttt{SearchDocumentsService}) che orchestrano le operazioni (Sezione \ref{sec:Application-layer});
+                    \item \textbf{Domain layer}: entità di dominio (es. \texttt{Dip}, \texttt{Document}, \texttt{ConservationProcess}) e value object che rappresentano i concetti fondamentali del sistema di conservazione digitale (Sezione \ref{sec:Domain-layer});
+                    \item \textbf{Persistence layer}: repository (es. \texttt{DipRepository}, \texttt{DocumentRepository}) che mediano l'accesso al database SQLite (Sezione \ref{sec:Persistence-layer});
+                    \item \textbf{Infrastructure layer}: provider per operazioni tecniche come file system\\ (\texttt{LocalFileSystemProvider}), hashing (\texttt{CryptoHashProvider}), Base64\\ (\texttt{Base64ProviderImpl}), dialoghi (\texttt{ElectronDialogProvider}) e shell\\ (\texttt{ElectronShellProvider}) (Sezione \ref{sec:Infrastructure-layer}).
+                \end{itemize}
+            }
+            
+            \subsubsection{Renderer process} {
+                Il Renderer process è il processo incaricato di eseguire l'interfaccia utente dell'applicazione. Ogni finestra (BrowserWindow) creata dal Main process esegue il proprio Renderer process, isolato dagli altri. Le sue caratteristiche principali sono:
+                \begin{itemize}
+                    \item \textbf{Ambiente sandboxed}: per ragioni di sicurezza, il Renderer process opera in un ambiente limitato (sandbox) con accesso ridotto alle risorse di sistema. Non può accedere direttamente al file system, al database o alle API native del sistema operativo;
+                    \item \textbf{Hosting dell'interfaccia utente}: il Renderer process esegue l'applicazione Angular, che gestisce il rendering delle viste, l'interazione con l'utente e la presentazione dei dati;
+                    \item \textbf{Comunicazione controllata}: per interagire con il Main process, il Renderer process utilizza esclusivamente il meccanismo di IPC (Inter-Process Communication) fornito da Electron, attraverso il servizio \texttt{ElectronIPCService};
+                    \item \textbf{Gestione dello stato reattivo}: utilizza i segnali (signals) di Angular per mantenere uno stato reattivo e sincronizzato tra i vari componenti dell'interfaccia.
+                \end{itemize}
+                
+                \noindent Nel contesto del progetto, il Renderer process ospita esclusivamente le componenti di presentazione:
+                \begin{itemize}
+                    \item \textbf{Componenti Angular container}: come \texttt{DipDashboardContainer} (Sezione \ref{par:DipDashboardContainer}), che orchestrano la logica di presentazione e gestiscono lo stato dell'applicazione;
+                    \item \textbf{Componenti Angular presentazionali}: come \texttt{DocumentListComponent},\\ \texttt{DocumentDetailsComponent}, \texttt{FiltersComponent}, \texttt{DocumentPreviewComponent}, responsabili della visualizzazione dei dati e della raccolta degli input utente;
+                    \item \textbf{Servizi Angular}: come \texttt{ElectronIPCService} (Sezione \ref{par:ElectronIPCService}), che incapsula la comunicazione IPC con il Main process.
+                \end{itemize}
+            }
+            
+            \subsubsection{Comunicazione tra Main process e Renderer process}\label{sec:ipc-communication} {
+            La comunicazione tra i due processi avviene tramite il meccanismo di Inter-Process Communication (IPC) fornito da Electron, implementato nel progetto attraverso il servizio\\ \texttt{ElectronIPCService} (Sezione \ref{par:ElectronIPCService}) nel Renderer process e l'esposizione selettiva di API tramite \texttt{contextBridge} nel Main process.\\
+            \\
+            Il modello di comunicazione adottato è asincrono basato su \texttt{Promise}: il Renderer process invoca un metodo sul servizio \texttt{ElectronIPCService} (ad esempio \texttt{autoImport()}, \texttt{content()}, \texttt{searchDocuments()}) che, tramite IPC, richiede al Main process di eseguire l'operazione corrispondente. Il Main process, al completamento, restituisce una risposta standardizzata attraverso il DTO \texttt{IpcResponse<T>} (Sezione \ref{par:IpcResponse}), che incapsula sia i dati di successo che eventuali errori. Questo pattern garantisce una gestione uniforme degli errori e la tipizzazione forte delle risposte.\\
+            \\
+            La comunicazione è bidirezionale: sebbene sia sempre il Renderer process a iniziare una richiesta, il Main process può successivamente inviare notifiche asincrone (eventi di progresso o completamento) attraverso i canali IPC, a cui il Renderer process può sottoscriversi tramite il metodo \texttt{on()} del servizio. Questo approccio è particolarmente utile per operazioni di lunga durata come l'importazione automatica o la generazione di anteprime.
+        }
+
+        \subsection{Main process - Dettagli implementativi} {
+            \subsubsection{Oggetti di trasferimento dati (DTO)}\label{sec:DTO} {
                 Per implementare i DTO sono state utilizzate le \verb|interface| di TypeScript, che sono uno strumento di tipizzazione statica utilizzato per descrivere la forma di un oggetto (attributi, metodi, tipi), presente solo in fase di compilazione per il controllo dei tipi; non esistono a runtime e non impongono realmente un'implementazione come nei linguaggi OOP classici. Sono in questo caso utili solo a verificare che una struttura rispetti la forma dichiarata. Sono rappresentate nei nostri diagrammi UML come una classe con attributi pubblici.  
                 \paragraph{IpcResponse$<$T$>$}\label{par:IpcResponse}\mbox{}\\
                 Rappresenta un DTO generico che funge da wrapper per la risposta di comunicazione tra processi (IPC) nel sistema. Questo oggetto è utilizzato nell'application logic per trasportare in modo uniforme il risultato di un'operazione, contenendo sia i dati di successo che eventuali errori.\\
@@ -544,7 +605,7 @@
                 \end{itemize}
             }
             
-            \subsubsection{Presentation layer} {
+            \subsubsection{Presentation layer}\label{sec:Presentation-layer} {
                 \paragraph{DipHandler}\label{par:DipHandler}\mbox{}\\
                 Il DipHandler gestisce la Presentation Logic per la gestione dei pacchetti DIP. Coordina le operazioni di importazione automatica, recupero del contenuto e verifica dell'integrità dei pacchetti DIP.\\
                 \\
@@ -586,7 +647,7 @@
                 \end{itemize}
             }
             
-            \subsubsection{Application layer} {
+            \subsubsection{Application layer}\label{sec:Application-layer} {
                 \paragraph{AutoImportDipUseCase}\label{par:AutoImportDipUseCase}\mbox{}\\
                 L'interfaccia AutoImportDipUseCase definisce il contratto per il caso d'uso di importazione automatica dei pacchetti DIP nel sistema.\\
                 \\
@@ -769,7 +830,7 @@
                 \end{itemize}
             }
 
-            \subsubsection{Domain layer} {
+            \subsubsection{Domain layer}\label{sec:Domain-layer} {
                 \paragraph{Dip}\label{par:Dip}\mbox{}\\
                 La classe Dip rappresenta l'entità di dominio corrispondente a un pacchetto DIP all'interno del sistema. Incapsula le informazioni principali del pacchetto, quali l'identificativo del processo associato, la data di creazione e i contatori relativi ai documenti e ai pacchetti AIP contenuti.\\
                 \\
@@ -1070,7 +1131,7 @@
                 \end{itemize}
             }
 
-            \subsubsection{Persistence layer} {
+            \subsubsection{Persistence layer}\label{sec:Persistence-layer} {
                 \paragraph{DipRepository}\label{par:DipRepository}\mbox{}\\
                 L'interfaccia DipRepository definisce il contratto per l'accesso ai dati relativi ai pacchetti DIP nel sistema. Astrae le operazioni di persistenza e recupero dei pacchetti DIP, consentendo all'application layer di interagire con il database senza dipendere dai dettagli implementativi dello strato di persistenza.\\
                 \\
@@ -1257,7 +1318,7 @@
                 \end{itemize}
             }
 
-            \subsubsection{Infrastructure layer} {
+            \subsubsection{Infrastructure layer}\label{sec:Infrastructure-layer} {
                 \paragraph{HashAlgorithm}\label{par:HashAlgorithm}\mbox{}\\
                 L'enumerazione HashAlgorithm definisce gli algoritmi di hashing crittografico supportati dal sistema. Viene utilizzata dal HashProvider per determinare l'algoritmo da applicare nel calcolo degli hash durante la verifica dell'integrità dei pacchetti DIP.\\
                 \\
@@ -1511,9 +1572,7 @@
                 \end{itemize}
             }
 
-        \subsection{Renderer process} {
-            DA SCRIVERE
-
+        \subsection{Renderer process - Dettagli implementativi} {
             \subsubsection{Classi per il rendering}{
                 \paragraph{DocumentDetailsComponent}\label{par:DocumentDetailsComponent}\mbox{}\\
                 La classe DocumentDetailsComponent rappresenta il componente Angular responsabile della visualizzazione dei dettagli di un documento all'interno di un DIP. Gestisce la presentazione delle informazioni del documento, degli allegati e lo stato di caricamento, oltre a gestire l'evento di esportazione del documento o dei singoli file.\\
@@ -1694,15 +1753,6 @@
                 \end{itemize}
             }
         }
-
-        \subsection{Comunicazione tra Main process e Renderer process}\label{sec:ipc-communication} {
-            La comunicazione tra i due processi avviene tramite il meccanismo di Inter-Process Communication (IPC) fornito da Electron, implementato nel progetto attraverso il servizio \texttt{ElectronIPCService} (Sezione \ref{par:ElectronIPCService}) nel Renderer process e l'esposizione selettiva di API tramite \texttt{contextBridge} nel Main process.\\
-            \\
-            Il modello di comunicazione adottato è asincrono basato su Promise: il Renderer process invoca un metodo sul servizio \texttt{ElectronIPCService} (ad esempio \texttt{autolimport()}, \texttt{content()}, \texttt{searchDocuments()}) che, tramite IPC, richiede al Main process di eseguire l'operazione corrispondente. Il Main process, al completamento, restituisce una risposta standardizzata attraverso il DTO \texttt{IpcResponse<T>} (Sezione \ref{par:IpcResponse}), che incapsula sia i dati di successo che eventuali errori. Questo pattern garantisce un handling uniforme degli errori e la tipizzazione forte delle risposte.\\
-            \\
-            Per le operazioni di lunga durata (come l'importazione automatica o la generazione di anteprime), il Main process può inoltre inviare eventi di progresso o notifiche asincrone attraverso i canali IPC, a cui il Renderer process può sottoscriversi tramite il metodo \texttt{on()} del servizio.
-        }
-
     }
 
     \section{Stato dei requisiti funzionali} {
@@ -1946,22 +1996,22 @@
                 Soddisfatto \\ 
                 \hline
                 \textbf{R79-F-Op} & L'utente deve poter configurare la ricerca semantica inserendo una query in linguaggio naturale & 
-                Non soddisfatto \\ 
+                Non Soddisfatto \\ 
                 \hline
                 \textbf{R80-F-Op} & L'utente deve poter visualizzare il risultato della ricerca semantica configurata & 
-                Non soddisfatto \\ 
+                Non Soddisfatto \\ 
                 \hline
                 \textbf{R81-F-Op} & L'utente deve poter stampare un documento selezionato & 
-                Non soddisfatto \\ 
+                Non Soddisfatto \\ 
                 \hline
                 \textbf{R82-F-Op} & L'utente deve ricevere un messaggio di errore se la stampa fallisce & 
-                Non soddisfatto \\ 
+                Non Soddisfatto \\ 
                 \hline
                 \textbf{R83-F-Op} & L'utente deve poter verificare la firma digitale di un documento selezionato & 
-                Non soddisfatto \\ 
+                Non Soddisfatto \\ 
                 \hline
                 \textbf{R84-F-Op} & L'utente deve poter visualizzare il risultato della verifica della firma digitale di un documento & 
-                Non soddisfatto \\ 
+                Non Soddisfatto \\ 
                 \hline
             \end{longtable}
         }
