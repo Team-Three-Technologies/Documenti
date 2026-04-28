@@ -7,8 +7,8 @@
 \setTitle{Manuale Utente}
 \setAuthors{Sara Gioia Fichera \\ & Andrea Masiero \\ & Filippo Compagno}
 \setVerificators{Nenad Radulovic \\ & Francesco Balestro \\ & Bianca Zaghetto}
-\setApprovation{}
-\setVersion{0.5}
+\setApprovation{Bianca Zaghetto}
+\setVersion{1.0}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -21,6 +21,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{1.0} & 27/04/26 & Bianca Zaghetto & Responsabile & - & Approvazione e rilascio\\
                 \hline
                 \textbf{0.5} & 24/04/26 & Filippo Compagno & Programmatore & Bianca Zaghetto & Aggiunta delle immagini\\
                 \hline
@@ -121,8 +123,6 @@
             L'applicativo è disponibile per il download alla seguente repository: \\
             \url{https://github.com/Team-Three-Technologies/MVP}
 
-            (procedura con screen di come fare il download dalla repo)
-
             \begin{itemize}
                 \item Windows: Il pacchetto è un file eseguibile .exe di tipo portable.
                     Per installare l'applicazione è sufficiente:
@@ -190,7 +190,19 @@
             
             \subsubsection{Selezionare un documento e visualizzarne i dettagli}
             Per selezionare un documento è sufficiente fare clic sul nome del documento dalla lista. 
-            Dopo aver selezionato un documento, nel pannello di destra compare la sezione "Dettagli Documento" con i seguenti campi: il nome del file, il formato (ad esempio PDF o XML), l'identificativo univoco del documento, e la data e ora di registrazione. Più in basso è presente la sezione "Allegati", che mostra il numero di allegati e li elenca ciascuno con il proprio percorso e formato.
+            Dopo aver selezionato un documento, nel pannello di destra compare la sezione "Dettagli Documento" con i seguenti campi: \\
+            \begin{itemize}
+                \item Nome file
+                \item formato
+                \item Data e ora registrazione
+                \item Tipologia documentale
+                \item Numero documento
+                \item Codice Registro
+                \item Oggetto
+                \item Tipo aggregazione
+                \item Soggetti coinvolti
+            \end{itemize}
+            Più in basso è presente la sezione "Allegati", che mostra il numero di allegati e li elenca ciascuno con il proprio percorso e formato.
             Per la consultazione degli allegati vedere la sezione~\ref{sec:allegati}.
 
             \begin{figure}[H]
@@ -198,7 +210,7 @@
                 \setlength{\fboxrule}{0.5pt}
                 \setlength{\fboxsep}{0pt}
                 \fbox{
-                    \includegraphics[width=0.8\textwidth]{screenshots_dipreader/document-details.png}
+                    \includegraphics[width=0.5\textwidth]{screenshots_dipreader/document-details.png}
                 }
                 \caption{Dettagli di un documento}
                 \label{fig:document-details}
@@ -253,6 +265,9 @@
                 }
                 \caption{Anteprima di un allegato}
             \end{figure}
+
+            \subsubsection{Esportare un allegato}
+            Per salvare una copia dell'allegato sul proprio dispositivo, è sufficiente selezionare l'allegato desiderato dalla lista e fare clic sul pulsante "Esporta" presente nel pannello di destra. Verrà aperta una finestra di dialogo che permette di scegliere la cartella di destinazione.
             
             \subsubsection{Tornare al documento padre}
             Per tornare alla visualizzazione del documento principale è sufficiente fare clic sul suo nome nella lista centrale. Il pannello di destra si aggiorna ripristinando i metadati.
