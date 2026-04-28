@@ -4,6 +4,7 @@
 \usepackage{array}
 \usepackage{float}
 \usepackage{xltabular}
+\usepackage{enumitem}
 \usepackage[table]{xcolor}
 
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
@@ -376,7 +377,7 @@
 
         I test di unità hanno lo scopo di verificare il corretto funzionamento delle singole unità software in isolamento, accertandosi che ciascuna componente si comporti come previsto indipendentemente dal resto del sistema.     
         
-        \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
+        \begin{longtable}{|M{1.2cm}|M{5cm}|M{5cm}|M{1.5cm}|}
                 
             \caption{Test di Unità} \\
             \hline
@@ -385,13 +386,385 @@
             \hline
             \endhead
 
-            TU01 & descrizione & valore atteso & S \\
+            TU01 & Testare che i metodi getter di \texttt{ConservationProcess} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione: 
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{creationDate}
+                \item \texttt{totalSize}
+                \item \texttt{SipCount}
+                \item \texttt{documentsCount}
+                \item \texttt{documentClassUUID}
+                \item \texttt{documentClassVersion}
+            \end{itemize} & S \\
             \hline
 
-            TU02 & - & - & S \\
+            TU02 & Testare che i metodi setter di \texttt{ConservationProcess} aggiornino correttamente i campi & I getter restituiscono gli stessi valori inseriti dai setter & S \\
             \hline
 
-            TU03 & - & - & S \\
+            TU03 & Testare che i metodi getter di \texttt{DIP} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{processUuid}
+                \item \texttt{creationDate}
+                \item \texttt{documentsCount}
+                \item \texttt{aipCount}
+            \end{itemize} & S \\
+            \hline
+
+            TU04 & Testare che i metodi setter di \texttt{DIP} aggiornino correttamente i campi & I getter restituiscono gli stessi valori inseriti dai setter & S \\
+            \hline
+
+            TU05 & Testare che i metodi getter di \texttt{DocumentClass} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{Name}
+                \item \texttt{Version}
+                \item \texttt{validFrom}
+                \item \texttt{validTo}
+                \item \texttt{DipUuid}
+            \end{itemize} & S \\
+            \hline
+
+            TU06 & Testare che i metodi setter di \texttt{DocumentClass} aggiornino correttamente i campi & I getter restituiscono gli stessi valori inseriti dai setter & S \\
+            \hline
+
+            TU07 & Testare che i metodi getter di \texttt{Document} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{Path}
+                \item \texttt{Main}
+                \item \texttt{Attatchments}
+                \item \texttt{Metadata}
+                \item \texttt{conservationProcessUuid}
+            \end{itemize} 
+            La ricerca per nome e regex restituisce il valore corretto o \texttt{null} & S \\
+            \hline
+
+            TU08 & Testare che i metodi setter di \texttt{Document} aggiornino correttamente i campi & I getter restituiscono gli stessi valori inseriti dai setter & S \\
+            \hline
+
+            TU09 & Testare che i metodi getter di \texttt{File} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{Path}
+                \item \texttt{Size}
+            \end{itemize} & S \\
+            \hline
+
+            TU10 & Testare che i metodi getter con logica di \texttt{File} restituiscano il contenuto corretto per un file con estensione & Il metodo \texttt{getFilename} restituisce 'test' mentre \texttt{getExtention} restituisce 'png' & S \\
+            \hline
+
+            TU11 & Testare che i metodi getter con logica di \texttt{File} restituiscano il contenuto corretto per un file senza estensione & Il metodo \texttt{getFilename} restituisce 'test' mentre \texttt{getExtention} restituisce stringa vuota & S \\
+            \hline
+
+            TU12 & Testare che i metodi setter di \texttt{File} aggiornino correttamente i campi & I getter restituiscono gli stessi valori inseriti dai setter & S \\
+            \hline
+
+            TU13 & Testare che i metodi getter di \texttt{Metadata} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Name}
+                \item \texttt{Type}
+                \item \texttt{Value}
+            \end{itemize} & S \\
+            \hline
+
+            TU14 & Testare che i metodi setter di \texttt{Metadata} aggiornino correttamente i campi & I getter restituiscono gli stessi valori inseriti dai setter & S \\
+            \hline
+
+            TU15 & Testare che i metodi getter di \texttt{MetadataFilter} restituiscano correttamente i valori passati & I seguenti campi corrispondono ai valori di inizializzazione:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Type}
+                \item \texttt{Value}
+            \end{itemize} & S \\
+            \hline
+            
+%--------fine test domain
+%--------inizio test application
+
+            TU16 & Testare che \texttt{AutoImportDipService.execute()} lanci un errore se non viene trovato il file \texttt{DipIndex} all'interno della cartella & Viene lanciata l'eccezione 'DipIndex mancante'. \texttt{getStartDir} e \texttt{findFile} vengono chiamati e restituiscono rispettivamente \texttt{Path} e \texttt{null} & S \\
+            \hline
+
+            TU17 & Testare che \texttt{AutoImportDipService.execute()} lanci un errore se il DIP è già stato importato in precedenza & Viene lanciata l'eccezione 'DIP già importato in precedenza' & S \\
+            \hline
+
+            TU18 & Testare che \texttt{FileExternalPreviewService.execute()} funzioni correttamente con documento e allegato presenti & Restituisce un valore di tipo \texttt{string} & S \\
+            \hline
+
+            TU19 & Testare che \texttt{FileExternalPreviewService.execute()} lanci un errore se il documento non esiste & Viene lanciata l'eccezione 'Non esiste un documento con questo UUID:uuid' & S \\
+            \hline
+
+            TU20 & Testare che \texttt{FileExternalPreviewService.execute()} lanci un errore se un allegato non è associato a un documento & Viene lanciata un'eccezione 'Non esiste un file con UUID:uuid associato al documento con UUID:uuid' & S \\
+            \hline
+
+            TU21 & Testare che \texttt{FileExternalPreviewService.execute()} funzioni correttamente con un allegato non trovato & Restituisce un valore di tipo \texttt{string} & S \\
+            \hline
+
+            TU22 & Testare che \texttt{FileExternalPreviewService.execute()} lanci un errore se lo shell provider fallisce & Viene lanciata l'eccezione 'Errore shell' & S \\
+            \hline
+
+            TU23 & Testare che \texttt{FileInternalPreviewService.execute()} funzioni correttamente con documento e allegato presenti & Restituisce un valore di tipo \texttt{string} & S \\
+            \hline
+
+            TU24 & Testare che \texttt{FileInternalPreviewService.execute()} lanci un errore se il documento non esiste & Viene lanciata l'eccezione 'Non esiste un documento con questo UUID:uuid' & S \\
+            \hline
+
+            TU25 & Testare che \texttt{FileInternalPreviewService.execute()} lanci un errore se un allegato non è associato a un documento & Viene lanciata un'eccezione 'Non esiste un file con UUID:uuid associato al documento con UUID:uuid' & S \\
+            \hline
+
+            TU26 & Testare che \texttt{FileInternalPreviewService.execute()} funzioni correttamente con un allegato non trovato & Restituisce un valore di tipo \texttt{string} & S \\
+            \hline
+
+            TU27 & Testare che \texttt{GetDipContentService.execute()} lanci un errore se il DIP non è presente & Viene lanciata l'eccezione 'Non esiste un DIP con questo UUID:uuid' & S \\
+            \hline
+
+            TU28 & Testare che \texttt{GetDipContentService.execute()} restituisca i dati corretti quando la struttura del DIP e dei documenti è corretta & Il risultato contiene:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{creationDate}
+                \item \texttt{documentNumber}
+                \item \texttt{aipNumber}
+                \item \texttt{documentsList}
+            \end{itemize} Ogni elemento di \texttt{documentsList} contiene:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{documentUuid}
+                \item \texttt{documentName}
+                \item \texttt{documentAttatchments}
+            \end{itemize} Ogni allegato contiene:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{Name}
+            \end{itemize} & S \\
+            \hline
+
+            TU29 & Testare che \texttt{GetDocumentDetailsService} lanci un errore se il documento non è presente & Viene lanciata l'eccezione 'Non esiste un documento con questo UUID:uuid' & S \\
+            \hline
+
+            TU30 & Testare che \texttt{GetDocumentDetailsService} restituisca la struttura corretta con tutti i metadati presenti & Il risultato contiene:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{Uuid}
+                \item \texttt{Name}
+                \item \texttt{Extention}
+                \item \texttt{registrationType}
+                \item \texttt{registrationDate}
+                \item \texttt{registrationTime}
+                \item \texttt{Content}
+                \item \texttt{Version}
+                \item \texttt{filesCount}
+                \item \texttt{totalSize}
+                \item \texttt{attatchmentsCount}
+                \item \texttt{Attatchments}
+                \item \texttt{documentType}
+                \item \texttt{documentNumber}
+                \item \texttt{registryCode}
+                \item \texttt{aggregationType}
+                \item \texttt{Subjects}
+            \end{itemize} & S \\
+            \hline
+
+            TU31 & Testare che \texttt{SearchDocumentsFromMetadataService.execute()} restituisca i documenti trovati & Restituisce un array di documenti con:
+            \begin{itemize}[leftmargin=*]
+                \item \texttt{documentUuid}
+                \item \texttt{documentName}
+                \item \texttt{documentAttatchments}
+            \end{itemize} & S \\
+            \hline
+
+            TU32 & Testare che \texttt{SearchDocumentsFromMetadataService.execute()} restituisca un array vuoto quando non ci sono risultati & Array vuoto & S \\
+            \hline
+
+%----------fine test application
+%----------inizio test infrastructure
+
+            *TU33 & Testare che \texttt{AipInfoParserV1} & - & S \\
+            \hline
+
+            TU34 & Testare che \texttt{Base64ProviderImpl.decodeToBytes()} decodifichi una stringa base64 valida & Buffer corrispondente a 'test' & S \\
+            \hline
+
+            TU35 & Testare che \texttt{Base64ProviderImpl.decodeToBytes()} gestisca una stringa vuota & Buffer vuoto & S \\
+            \hline
+
+            TU36 & Testare che \texttt{Base64ProviderImpl.decodeToBytes()} gestisca una stringa base64 non valida & Buffer senza lanciare eccezioni & S \\
+            \hline
+
+            *TU37 & Testare che \texttt{DatabaseProvider} & - & S \\
+            \hline
+
+            TU38 & Testare che \texttt{ElectronDialogProvider.selectSavePath()} restituisca il path quando viene selezionato un file & Restituisce '/tmp/file.txt' & S \\
+            \hline
+
+            TU39 & Testare che \texttt{ElectronDialogProvider.selectSavePath()} ritorni \texttt{null} quando l'operazione viene cancellata & \texttt{null} & S \\
+            \hline
+
+            TU40 & Testare che \texttt{ElectronDialogProvider.selectSavePath()} ritorni \texttt{null} quando il \texttt{filePath} è una stringa vuota & \texttt{null} & S \\
+            \hline
+
+            *TU41 & Testare che \texttt{DipIndexParserV1} & - & S \\
+            \hline
+
+            *TU42 & Testare che \texttt{DipParserV1} & - & S \\
+            \hline
+
+            *TU43 & Testare che \texttt{DocumentMetadataParserV1} & - & S \\
+            \hline
+
+            *TU44 & Testare che \texttt{LocalFileSystemProvider} & - & S \\
+            \hline
+
+            TU45 & Testare che \texttt{CryptoHashProvider.toHashAlgorithm()} converta \texttt{metadataValue} in un algoritmo hash supportato & 'sha256' & S \\
+            \hline
+
+            TU46 & Testare che \texttt{CryptoHashProvider.toHashAlgorithm()} lanci un errore per un algoritmo non supportato & Viene lanciata l'eccezione 'Algoritmo hash non supportato nei metadata:unknown' & S \\
+            \hline
+
+            TU47 & Testare che \texttt{CryptoHashProvider.hashStream()} calcoli l'hash di uno stream & Un'istanza di buffer & S \\
+            \hline
+
+            TU48 & Testare che \texttt{CryptoHashProvider.hashStream()} produca hash consistenti per lo stesso input & I due hash calcolati sugli input sono identici & S \\
+            \hline
+            
+            TU49 & Testare che \texttt{CryptoHashProvider.areEqualsHashBytes()} restituisca \texttt{true} per due hash identici & \texttt{true} & S \\
+            \hline
+          
+            TU50 & Testare che \texttt{CryptoHashProvider.areEqualsHashBytes()} restituisca \texttt{false} per due hash diversi & \texttt{false} & S \\
+            \hline
+
+            TU51 & Testare che \texttt{ElectronShellProvider.openFile()} non produca errori quando viene aperto un file & \texttt{shell.openPath} viene chiamato con il path corretto & S \\
+            \hline
+
+            TU52 & Testare che \texttt{ElectronShellProvider.openFile()} lanci un errore quando il file non viene aperto & Viene lanciata l'eccezione 'Impossibile aprire il file: fileNotFound' & S \\
+            \hline
+
+%---------fine test infrastructure
+%---------inizio test presentation
+
+            TU53 & Testare che \texttt{DipHandler.autoImport} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            \hline
+
+            TU54 & Testare che \texttt{DipHandler.autoImport} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'DipIndex mancante' & S \\
+            \hline
+
+            TU55 & Testare che \texttt{DipHandler.autoImport} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Dip già importato in precedenza' & S \\
+            \hline
+
+            TU56 & Testare che \texttt{DipHandler.autoImport} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'AipInfo mancante' & S \\
+            \hline
+
+            TU57 & Testare che \texttt{DipHandler.getDipContent()} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            \hline
+
+            TU58 & Testare che \texttt{DipHandler.getDipContent()} restituisce \texttt{error} quando il use case lancia un'eccezione & Stampa 'Non esiste un DIP con questo UUID:uuid' & S \\
+            \hline
+
+            *TU59 & Testare che \texttt{DipHandler.checkDipIntegrity()} invii i risultati parziali e il segnale DONE tramite IPC & - & S \\
+            \hline
+
+            *TU60 & Testare che \texttt{DipHandler.checkDipIntegrity()} invii il segnale ERROR tramite IPC se fallisce & - & S \\
+            \hline
+
+            TU61 & Testare che \texttt{DocumentHandler.getDocumentDetails()} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            \hline
+
+            TU62 & Testare che \texttt{DocumentHandler.getDocumentDetails()} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un documento con questo UUID:uuid'  & S \\
+            \hline
+
+            TU63 & Testare che \texttt{DocumentHandler.searchDocuemnts()} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            \hline
+
+            TU64 & Testare che \texttt{DocumentHandler.searchDocuemnts()} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore ricerca documento' & S \\
+            \hline
+
+            TU65 & Testare che \texttt{DocumentHandler.fileInternalPreview()} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            \hline
+
+            TU66 & Testare che \texttt{DocumentHandler.fileInternalPreview()} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore preview interna' & S \\
+            \hline
+
+            TU67 & Testare che \texttt{DocumentHandler.fileExternalPreview()} restituisca \texttt{data} \texttt{void} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{data} è \texttt{void} mentre \texttt{error} è \texttt{null} & S \\
+            \hline
+
+            TU68 & Testare che \texttt{DocumentHandler.fileExternalPreview()} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore preview esterna' & S \\
+            \hline
+
+            TU69 & Testare che \texttt{DocumentHandler.exportFile()} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            \hline
+
+            TU70 & Testare che \texttt{DocumentHandler.exportFile()} restituisca \texttt{error} quando il documento non esiste & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un documento con questo UUID:uuid' & S \\
+            \hline
+
+            TU71 & Testare che \texttt{DocumentHandler.exportFile()} restituisca \texttt{error} quando il file non è associato al documento & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un file con UUID:uuid associato al documento con UUID:uuid' & S \\
+            \hline
+
+            TU72 & Testare che \texttt{DocumentHandler.exportFile()} restituisca \texttt{error} quando la selezione del path viene cancellata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Selezione cancellata' & S \\
+            \hline
+
+            TU73 & Testare che \texttt{DocumentHandler.exportFile()} restituisca \texttt{error} quando l'esportazione fallisce & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Esportazione file con UUID:uuid fallita' & S \\
+            \hline
+
+%---------fine test presentation
+%---------inizio test repositories
+
+            TU74 & Testare che se \texttt{SQLiteConservationProcess.save()} avviene con successo, restituisca il \texttt{conservationProcess} passato & \texttt{conservationProcess} & S \\
+            \hline
+
+            TU75 & Testare che se \texttt{SQLiteDipRepository.save()} avviene con successo, restituisca il DIP passato & DIP & S \\
+            \hline
+
+            TU76 & Testare che \texttt{SQLiteDipRepository.deleteByUuid()} esegua la query DELETE corretta sul database & 'DELETE FROM archivi\_dip' & S \\
+            \hline
+
+            TU77 & Testare che \texttt{SQLiteDipRepository.findByUuid()} restituisca un'istanza di DIP con quel UUID & DIP & S \\
+            \hline
+
+            TU78 & Testare che \texttt{SQLiteDipRepository.findByUuid()} restituisca \texttt{null} quando il record non esiste & \texttt{null} & S \\
+            \hline
+
+            TU79 & Testare che \texttt{SQLiteDocumentClassRepository.save()} restituisca la \texttt{documentClass} passata & \texttt{documentClass} & S \\
+            \hline
+
+            TU80 & Testare che \texttt{SQLiteDocumentClassRepository.saveMany()} salvi i documenti e li restituisca correttamente & Il risultato deve avere lunghezza 1 e dev'essere un'istanza di \texttt{Document} & S \\
+            \hline
+
+            TU81 & Testare che \texttt{SQLiteDocumentClassRepository.findByUuid()} restituisca un'istanza di \texttt{Document} quando l'UUID esiste & istanza di \texttt{Document} & S \\
+            \hline
+
+            TU82 & Testare che \texttt{SQLiteDocumentClassRepository.findByUuid()} restituisca \texttt{null} quando l'UUID non esiste & \texttt{null} & S \\
+            \hline
+
+            TU83 & Testare che \texttt{SQLiteDocumentClassRepository.findAllByDipUuid()} restituisca un array di \texttt{Document} quando esistono dei documenti associati & Il risultato deve avere lunghezza 1 e dev'essere un'istanza di \texttt{Document} & S \\
+            \hline
+
+            TU84 & Testare che \texttt{SQLiteDocumentClassRepository.findAllByDipUuid()} restituisca un array vuoto quando non esistono dei documenti associati & array vuoto & S \\
+            \hline
+
+            TU85 & Testare che \texttt{SQLiteDocumentClassRepository.findAllByMetadata()} funzioni con i filtri applicati correttamente & Il risultato è un array con almeno un'istanza di \texttt{Document} & S \\
+            \hline
+
+            TU86 & Testare che \texttt{SQLiteDocumentClassRepository.findAllByMetadata()} funzioni con nessun filtro applicato & array vuoto & S \\
+            \hline
+
+            TU87 & Testare che \texttt{SearchQueryBuilder.uuidFilter()} aggiunga un filtro correttamente & Non viene lanciata nessuna eccezione & S \\
+            \hline
+
+            TU88 & Testare che \texttt{SearchQueryBuilder.buildQuery()} con branch LIKE costruisca una query valida con una sola clausola & La query corrisponde al pattern regex atteso & S \\
+            \hline
+
+            TU89 & Testare che \texttt{SearchQueryBuilder.buildQuery()} con branch LIKE costruisca una query valida con n clausole separate da OR & La query corrisponde al pattern regex atteso & S \\
+            \hline
+
+            TU90 & Testare che \texttt{SearchQueryBuilder.buildQuery()} utilizzi il branch FTS quando tutte le stringhe hanno lunghezza >= 3 & La query corrisponde al pattern regex atteso & S \\
+            \hline
+
+            TU91 & Testare che \texttt{SearchQueryBuilder.buildQuery()} gestisca correttamente il caso senza clausole & La query contiene WHERE e i params sono [0] & S \\
+            \hline
+
+            TU92 & Testare che \texttt{SearchQueryBuilder.buildQuery()} resetti i filtri dopo la chiamata & La seconda chiamata a \texttt{buildQuery()} restituisce params [0] & S \\
+            \hline
+%---------fine test repositories
+
+            TU93 & - & - & S \\
+            \hline
+
+            TU94 & - & - & S \\
             \hline
 
         \end{longtable}
@@ -410,13 +783,13 @@
             \hline
             \endhead
 
-            TI01 & descrizione & valore atteso & S \\
+            TU01 & descrizione & valore atteso & S \\
             \hline
 
-            TI02 & - & - & S \\
+            TU02 & - & - & S \\
             \hline
 
-            TI03 & - & - & S \\
+            TU03 & - & - & S \\
             \hline
 
         \end{longtable}
