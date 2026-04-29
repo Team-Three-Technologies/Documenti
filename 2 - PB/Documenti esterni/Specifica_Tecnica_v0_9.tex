@@ -455,6 +455,16 @@
         }
 
         \subsection{Main process - Dettagli implementativi} {
+            \begin{figure}[H]
+                \centering
+                \includegraphics[
+                    angle=90,
+                    width=\textheight,
+                    height=\textwidth,
+                    keepaspectratio
+                ]{class_diagrams/main.pdf}
+                \caption{UML Main process}
+            \end{figure}
             \subsubsection{Oggetti di trasferimento dati (DTO)}\label{sec:DTO} {
                 Per implementare i DTO sono state utilizzate le \verb|interface| di TypeScript, che sono uno strumento di tipizzazione statica utilizzato per descrivere la forma di un oggetto (attributi, metodi, tipi), presente solo in fase di compilazione per il controllo dei tipi; non esistono a runtime e non impongono realmente un'implementazione come nei linguaggi OOP classici. Sono in questo caso utili solo a verificare che una struttura rispetti la forma dichiarata. Sono rappresentate nei nostri diagrammi UML come una classe con attributi pubblici.  
                 \paragraph{IpcResponse$<$T$>$}\label{par:IpcResponse}\mbox{}\\
