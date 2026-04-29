@@ -960,42 +960,35 @@
             \hline
             \endhead
 
-            TI01 & Testare che \texttt{dip.autoImport()} ritorni errore se il DiPIndex non viene trovato nella cartella & \texttt{response.error} contiene la stringa 'mancante' e \texttt{response.data} risulta \texttt{null} & S \\ 
-            \hline
-            
-            TI02 & Testare che \texttt{dip.autoImport()} restituisca il contenuto del DIP con i documenti corretti & \texttt{response.error} è \texttt{null} e \texttt{response.data.dipUuid} è definito come \texttt{string} & S \\ 
-            \hline
-            
-            TI03 & Testare che \texttt{dip.autoImport()} ritorni errore se il DIP è già stato importato & \texttt{response.data} è \texttt{null} e \texttt{response.error} è definito e contiene la stringa 'già importato' & S \\ 
-            \hline
-            
+            TI01 & Testare che \texttt{dip.autoImport()} ritorni errore se il DiPIndex non viene trovato nella cartella & Verifica errore per indice mancante. \newline • Errore 'mancante' \newline • Nessun dato & S \\ \hline
 
-            TI04 & Testare che \texttt{document.searchDocuments()} restituisca la struttura base del documento cercato (test minimale) & \texttt{response.error} è \texttt{null}, \texttt{results.length} è maggiore di 0, e il primo nodo possiede \texttt{documentUuid} uguale al seed e \texttt{documentAttachments} di tipo array & S \\ 
-            \hline
+            TI02 & Testare che \texttt{dip.autoImport()} restituisca il contenuto del DIP con i documenti corretti & Verifica corretto import. \newline • Nessun errore \newline • UUID restituito & S \\ \hline
             
-            TI05 & Testare che \texttt{document.searchDocuments()} restituisca un array vuoto se non ci sono risultati & \texttt{response.error} è \texttt{null} e \texttt{results} è un \texttt{Array} con \texttt{length} uguale a 0 & S \\ 
-            \hline
+            TI03 & Testare che \texttt{dip.autoImport()} ritorni errore se il DIP è già stato importato & Verifica blocco duplicati. \newline • Errore 'già importato' \newline • Nessun dato & S \\ \hline
             
-            TI06 & Testare che \texttt{dip.checkIntegrity()} emetta un risultato per ogni documento e completi l'operazione & L'evento 'dip:integrity-done' valuta \texttt{isDone} a \texttt{true}, \texttt{results.length} è maggiore di 0, e \texttt{firstResult.data.integrity.uuid} è definito con \texttt{error} a \texttt{null} & S \\ 
-            \hline
+            TI04 & Testare che \texttt{document.searchDocuments()} restituisca la struttura base del documento cercato (test minimale) & Verifica validità ricerca. \newline • Risultati non vuoti \newline • Struttura DTO valida & S \\ \hline
             
-            TI07 & Testare che \texttt{dip.checkIntegrity()} completi senza risultati se il DIP non esiste & L'evento 'dip:integrity-done' viene emesso valutando \texttt{isDone} a \texttt{true} con l'array \texttt{results.length} uguale a 0 & S \\ 
-            \hline
+            TI05 & Testare che \texttt{document.searchDocuments()} restituisca un array vuoto se non ci sono risultati & Verifica ricerca senza match. \newline • Array vuoto \newline • Nessun errore & S \\ \hline
             
-
-            TI08 & Testare che \texttt{document.details()} restituisca i dettagli del documento senza allegati & \texttt{response.error} è \texttt{null} e \texttt{response.data} fa \texttt{toMatchObject} con \texttt{attachmentsCount: 0} e \texttt{attachments: []} & S \\ 
-            \hline
+            TI06 & Testare che \texttt{dip.checkIntegrity()} emetta un risultato per ogni documento e completi l'operazione & Verifica flusso integrità. \newline • Evento di completamento \newline • Risultati validi raccolti & S \\ \hline
             
-            TI09 & Testare che \texttt{document.details()} restituisca i dettagli del documento con allegati & \texttt{response.error} è \texttt{null} e \texttt{response.data} fa \texttt{toMatchObject} con \texttt{attachmentsCount: 1} e l'array \texttt{attachments} che include il corretto UUID di seed & S \\ 
-            \hline
+            TI07 & Testare che \texttt{dip.checkIntegrity()} completi senza risultati se il DIP non esiste & Verifica integrità a vuoto. \newline • Completamento immediato \newline • Zero risultati & S \\ \hline
             
-            TI10 & Testare che \texttt{document.details()} ritorni errore se il documento non esiste & \texttt{response.error} contiene la stringa 'non-existent-uuid' e \texttt{response.data} risulta \texttt{null} & S \\ 
-            \hline
+            TI08 & Testare che \texttt{document.details()} restituisca i dettagli del documento senza allegati & Verifica recupero dettagli base. \newline • Nessun errore \newline • Assenza allegati mappata & S \\ \hline
             
-            TI11 & Testare che \texttt{dip.content()} restituisca il contenuto del DIP con i documenti corretti & \texttt{response.error} è \texttt{null}, \texttt{result.uuid} corrisponde al seed, \texttt{documentsList.length} è 2 e \texttt{doc2.documentAttachments.length} è 1 & S \\ 
-            \hline
+            TI09 & Testare che \texttt{document.details()} restituisca i dettagli del documento con allegati & Verifica recupero dati complessi. \newline • Nessun errore \newline • Allegati mappati & S \\ \hline
             
-            TI12 & Testare che \texttt{dip.content()} ritorni errore se il DIP non esiste & \texttt{response.data} risulta \texttt{null} e \texttt{response.error} risulta definito & S \\ 
+            TI10 & Testare che \texttt{document.details()} ritorni errore se il documento non esiste & Verifica errori su dettagli. \newline • Errore sollevato \newline • Dati nulli & S \\ \hline
+            
+            TI11 & Testare che \texttt{dip.content()} restituisca il contenuto del DIP con i documenti corretti & Verifica lettura del DIP. \newline • Nessun errore \newline • Relazioni verificate & S \\ \hline
+            
+            TI12 & Testare che \texttt{dip.content()} ritorni errore se il DIP non esiste & Verifica errori su DIP mancanti. \newline • Errore definito \newline • Nessun dato & S \\ \hline
+            
+            TI13 & Testare che \texttt{SQLiteDocumentRepository.saveMany()} e \texttt{findByUuid()} salvino e rileggano un documento con allegati e metadata reali & Verifica I/O su DB. \newline • Salvataggio riuscito \newline • Relazioni lette & S \\ \hline
+            
+            TI14 & Testare che \texttt{SQLiteDocumentRepository.findAllByDipUuid()} trovi i documenti di un DIP attraverso le relazioni SQLite & Verifica join su DB. \newline • Documenti recuperati \newline • Metadati coerenti & S \\ \hline
+            
+            TI15 & Testare che \texttt{SQLiteDocumentRepository.findAllByMetadata()} filtri i documenti per metadata usando la tabella \texttt{metadata\_filter\_match} reale & Verifica query builder. \newline • Risultati filtrati \newline • Metadati precisi & S \\ 
             \hline
 
         \end{longtable}
