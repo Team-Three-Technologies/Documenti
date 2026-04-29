@@ -379,7 +379,7 @@
 
         I test di unità hanno lo scopo di verificare il corretto funzionamento delle singole unità software in isolamento, accertandosi che ciascuna componente si comporti come previsto indipendentemente dal resto del sistema.     
         
-        \begin{longtable}{|M{1.2cm}|M{5cm}|M{5cm}|M{1.5cm}|}
+        \begin{longtable}{|M{1.2cm}|M{5cm}|M{7cm}|M{1.5cm}|}
                 
             \caption{Test di Unità} \\
             \hline
@@ -914,6 +914,36 @@
             TU133 & Testare che \texttt{DipDetails} usi N/D come fallback per i valori mancanti & Le occorrenze di \texttt{N/D} nel textContent sono conformi al numero di proprietà nulle in ingresso & S \\ 
             \hline
 
+            TU134 & Testare che \texttt{DipDashboardContainer} recuperi i dettagli del documento al suo click & \texttt{ElectronIpc.getDocumentDetails()} viene invocato con \texttt{\{documentUuid: 'doc-123'\}}, \texttt{selectedDocument()} corrisponde a \texttt{mockDetails} e \texttt{errorMessage()} è \texttt{null} & S \\ 
+            \hline
+            
+            TU135 & Testare che \texttt{DipDashboardContainer} aggiorni i risultati alla ricerca di documenti & \texttt{documentList().length} è \texttt{1} e la proprietà \texttt{name} del primo indice è \texttt{"Trovato"} & S \\ 
+            \hline
+            
+            TU136 & Testare che \texttt{DipDashboardContainer} avvii l'esportazione del file & \texttt{ElectronIpc.exportFile()} viene invocato con l'oggetto \texttt{\{documentUuid: 'doc-123', fileUuid: undefined\}} & S \\ 
+            \hline
+            
+            TU137 & Testare che \texttt{DipDashboardContainer} carichi lo stato dell'integrità dei documenti & \texttt{ElectronIpc.checkIntegrity()} viene invocato con \texttt{\{dipUuid: 'doc-123'\}} e \texttt{integrityMap().get('doc-123')} restituisce \texttt{true} & S \\ 
+            \hline
+            
+            TU138 & Testare che \texttt{DipDashboardContainer} gestisca l'anteprima interna per i file supportati & \texttt{ElectronIpc.fileInternalPreview()} viene invocato con l'UUID del documento, \texttt{documentFileUrl()} assume l'URL atteso e \texttt{previewItemFormato()} è \texttt{"pdf"} & S \\ 
+            \hline
+            
+            TU139 & Testare che \texttt{DipDashboardContainer} deleghi a un lettore esterno l'anteprima di file non supportati & \texttt{ElectronIpc.fileExternalPreview()} viene invocato con \texttt{\{documentUuid: 'doc-err', fileUuid: undefined\}} e \texttt{documentFileUrl()} risulta \texttt{null} & S \\ 
+            \hline
+            
+            TU140 & Testare che \texttt{DipDashboardContainer} aggiorni i dettagli e la selezione dello specifico allegato & \texttt{ElectronIpc.getDocumentDetails()} viene invocato per il documento padre e \texttt{selectedAllegato()?.uuid} restituisce \texttt{"att-123"} & S \\ 
+            \hline
+            
+            TU141 & Testare che \texttt{DipDashboardContainer} pulisca le risorse alla distruzione del componente & I segnali \texttt{selectedDocument()}, \texttt{selectedAllegato()} e \texttt{previewSelectedDocument()} restituiscono tutti \texttt{null} & S \\ 
+            \hline
+            
+            TU142 & Testare che \texttt{DipDashboardContainer} gestisca correttamente gli errori restituiti dal backend & \texttt{selectedDocument()} restituisce \texttt{null} e \texttt{errorMessage()} assume la stringa \texttt{"Failed to load document details."} & S \\ 
+            \hline
+            
+            TU143 & Testare che \texttt{DipDashboardContainer} renderizzi i dettagli del documento selezionato nel template & \texttt{fixture.nativeElement.textContent} contiene le stringhe \texttt{"Dettagli Documento"}, \texttt{"Documento dettagliato"} e \texttt{"REG-10"} & S \\ 
+            \hline
+
         \end{longtable}
 
 
@@ -921,7 +951,7 @@
 
         I test di integrazione hanno lo scopo di verificare la corretta interazione tra le diverse unità software, accertandosi che i componenti del sistema collaborino come previsto.
 
-        \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{2.5cm}|M{1.5cm}|}
+        \begin{longtable}{|M{1.2cm}|M{6.3cm}|M{5cm}|M{1.5cm}|}
                 
             \caption{Test di Integrazione} \\
             \hline
@@ -930,13 +960,42 @@
             \hline
             \endhead
 
-            TU01 & descrizione & valore atteso & S \\
+            TI01 & Testare che \texttt{dip.autoImport()} ritorni errore se il DiPIndex non viene trovato nella cartella & \texttt{response.error} contiene la stringa 'mancante' e \texttt{response.data} risulta \texttt{null} & S \\ 
             \hline
-
-            TU02 & - & - & S \\
+            
+            TI02 & Testare che \texttt{dip.autoImport()} restituisca il contenuto del DIP con i documenti corretti & \texttt{response.error} è \texttt{null} e \texttt{response.data.dipUuid} è definito come \texttt{string} & S \\ 
             \hline
+            
+            TI03 & Testare che \texttt{dip.autoImport()} ritorni errore se il DIP è già stato importato & \texttt{response.data} è \texttt{null} e \texttt{response.error} è definito e contiene la stringa 'già importato' & S \\ 
+            \hline
+            
 
-            TU03 & - & - & S \\
+            TI04 & Testare che \texttt{document.searchDocuments()} restituisca la struttura base del documento cercato (test minimale) & \texttt{response.error} è \texttt{null}, \texttt{results.length} è maggiore di 0, e il primo nodo possiede \texttt{documentUuid} uguale al seed e \texttt{documentAttachments} di tipo array & S \\ 
+            \hline
+            
+            TI05 & Testare che \texttt{document.searchDocuments()} restituisca un array vuoto se non ci sono risultati & \texttt{response.error} è \texttt{null} e \texttt{results} è un \texttt{Array} con \texttt{length} uguale a 0 & S \\ 
+            \hline
+            
+            TI06 & Testare che \texttt{dip.checkIntegrity()} emetta un risultato per ogni documento e completi l'operazione & L'evento 'dip:integrity-done' valuta \texttt{isDone} a \texttt{true}, \texttt{results.length} è maggiore di 0, e \texttt{firstResult.data.integrity.uuid} è definito con \texttt{error} a \texttt{null} & S \\ 
+            \hline
+            
+            TI07 & Testare che \texttt{dip.checkIntegrity()} completi senza risultati se il DIP non esiste & L'evento 'dip:integrity-done' viene emesso valutando \texttt{isDone} a \texttt{true} con l'array \texttt{results.length} uguale a 0 & S \\ 
+            \hline
+            
+
+            TI08 & Testare che \texttt{document.details()} restituisca i dettagli del documento senza allegati & \texttt{response.error} è \texttt{null} e \texttt{response.data} fa \texttt{toMatchObject} con \texttt{attachmentsCount: 0} e \texttt{attachments: []} & S \\ 
+            \hline
+            
+            TI09 & Testare che \texttt{document.details()} restituisca i dettagli del documento con allegati & \texttt{response.error} è \texttt{null} e \texttt{response.data} fa \texttt{toMatchObject} con \texttt{attachmentsCount: 1} e l'array \texttt{attachments} che include il corretto UUID di seed & S \\ 
+            \hline
+            
+            TI10 & Testare che \texttt{document.details()} ritorni errore se il documento non esiste & \texttt{response.error} contiene la stringa 'non-existent-uuid' e \texttt{response.data} risulta \texttt{null} & S \\ 
+            \hline
+            
+            TI11 & Testare che \texttt{dip.content()} restituisca il contenuto del DIP con i documenti corretti & \texttt{response.error} è \texttt{null}, \texttt{result.uuid} corrisponde al seed, \texttt{documentsList.length} è 2 e \texttt{doc2.documentAttachments.length} è 1 & S \\ 
+            \hline
+            
+            TI12 & Testare che \texttt{dip.content()} ritorni errore se il DIP non esiste & \texttt{response.data} risulta \texttt{null} e \texttt{response.error} risulta definito & S \\ 
             \hline
 
         \end{longtable}
