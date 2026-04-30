@@ -14,8 +14,8 @@
 \setTitle{Specifica Tecnica}
 \setAuthors{Mattia Oliva Medin \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera}
 \setVerificators{Nenad Radulovic \\ & Filippo Compagno \\ & Francesco Balestro \\ & Bianca Zaghetto \\ & Sara Gioia Fichera \\ & Mattia Oliva Medin \\ & Andrea Masiero}
-\setApprovation{}
-\setVersion{0.9}
+\setApprovation{Francesco Balestro}
+\setVersion{1.0}
 \setType{Esterno}
 \setDestination{Team Three Technologies \\ & Prof. Tullio Vardanega \\ & Prof. Riccardo Cardin \\ & Sanmarco Informatica SpA}
 
@@ -28,6 +28,8 @@
                 \begin{tabularx}{\textwidth}{|l|l|l|l|L|L|}
                 \hline
                 \textbf{Vers.} & \textbf{Data} & \textbf{Autore} & \textbf{Ruolo} & \textbf{Verifica} & \textbf{Oggetto} \\
+                \hline
+                \textbf{1.0} & 26/04/26 & Francesco Balestro & Responsabile &  & Approvazione documento \\
                 \hline
                 \textbf{0.9} & 26/04/26 & Mattia Oliva
                 Medin & Programmatore & Filippo Compagno & Correzioni varie \\
@@ -87,15 +89,15 @@
         \subsection{Riferimenti} {
             \subsubsection{Riferimenti normativi} {
                 \begin{itemize}
-                    \item \textit{Norme di progetto v1.0}
+                    \item \textit{Norme di progetto v2.0}
                     \begin{itemize}
-                        \item \url{https://team-three-technologies.github.io/Documenti/2%20-%20PB/Documenti%20Interni/Norme_di_Progetto_v1_0.pdf}
+                        \item \url{https://team-three-technologies.github.io/Documenti/2%20-%20PB/Documenti%20Interni/Norme_di_Progetto_v2_0.pdf}
                         \item[] (Ultimo accesso: 2026/04/11)
                     \end{itemize}
                     \item Capitolato C3
                     \begin{itemize}
                         \item \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C3.pdf}
-                        \item[] (Ultimo accesso: 2026/01/11)
+                        \item[] (Ultimo accesso: 2026/04/25)
                     \end{itemize}
                     \item Regolamento del Progetto Didattico
                     \begin{itemize}
@@ -106,10 +108,10 @@
             }
             \subsubsection{Riferimenti informativi} {
                 \begin{itemize}
-                    \item \textit{Glossario v0.5}
+                    \item \textit{Glossario v1.0}
                     \begin{itemize}
-                        \item \url{https://team-three-technologies.github.io/Documenti/1%20-%20RTB/Documenti%20interni/Glossario_v0_5.pdf}
-                        \item[] (Ultimo accesso: 2026/MM/DD)
+                        \item \url{https://team-three-technologies.github.io/Documenti/2%20-%20PB/Documenti%20interni/Glossario_v1_0.pdf}
+                        \item[] (Ultimo accesso: 2026/04/26)
                     \end{itemize}
                 \end{itemize}
             }
@@ -2246,7 +2248,7 @@
                 \paragraph{ElectronIPCService}\label{par:ElectronIPCService}\mbox{}\\
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.3\textwidth]{class_diagrams/electron-ipc-service.pdf}
+                    \includegraphics[width=0.7\textwidth]{class_diagrams/electron-ipc-service.pdf}
                     \caption{UML ElectronIPCService}
                 \end{figure}
                 \noindent La classe ElectronIPCService rappresenta il servizio Angular responsabile della comunicazione inter-processo (IPC) tra il renderer process e il main process dell'applicazione Electron. Fornisce metodi per invocare operazioni sul main process (come importazione automatica, recupero contenuti, verifica integrità, ricerca, anteprime ed esportazione) e gestisce le risposte tramite il meccanismo di IPC.\\
@@ -2270,7 +2272,12 @@
                     \item \textbf{on(channel: string, callback: Function): Function}: registra una funzione di callback per un canale IPC specificato, consentendo al componente di ricevere eventi asincroni dal main process. Ritorna una funzione che, se invocata, rimuove il listener registrato.
                 \end{itemize}
                 \paragraph{DipDashboardContainer}\label{par:DipDashboardContainer}\mbox{}\\
-                La classe DipDashboardContainer rappresenta il componente container Angular responsabile dell'orchestrazione della logica applicativa e della gestione dello stato per il dashboard di visualizzazione dei pacchetti DIP. Utilizza i segnali (signals) di Angular per la gestione reattiva dello stato e coordina le interazioni tra i componenti figli (DocumentListComponent, DocumentDetailsComponent, FiltersComponent, DocumentPreviewComponent) e il servizio ElectronIPCService per la comunicazione con il main process.\\
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{class_diagrams/dip-dashboard-container.pdf}
+                    \caption{UML DipDashboardContainer}
+                \end{figure}
+                \noindent La classe DipDashboardContainer rappresenta il componente container Angular responsabile dell'orchestrazione della logica applicativa e della gestione dello stato per il dashboard di visualizzazione dei pacchetti DIP. Utilizza i segnali (signals) di Angular per la gestione reattiva dello stato e coordina le interazioni tra i componenti figli (DocumentListComponent, DocumentDetailsComponent, FiltersComponent, DocumentPreviewComponent) e il servizio ElectronIPCService per la comunicazione con il main process.\\
                 \\
                 \textbf{Descrizione degli attributi della classe}:
                 \begin{itemize}
@@ -2325,6 +2332,121 @@
                     \item \textbf{ngOnDestroy(): void}: metodo del ciclo di vita di Angular invocato alla distruzione del componente. Pulisce le sottoscrizioni attive tramite \texttt{\_clearIntegritySubscriptions}.
                 \end{itemize}
             }
+        }
+        \subsection{Schema del database} {
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{db.pdf}
+                \caption{Schema ER del database utilizzato}
+            \end{figure}
+            Il database locale, realizzato in SQLite e gestito tramite \texttt{better-sqlite3}, è progettato 
+            per rappresentare la struttura archivistica dei pacchetti DIP e le relazioni 
+            tra le entità che li compongono.
+            È pensato per raccogliere in unico punto tutti i dati disponibili nel pacchetto, in modo da facilitare il loro accesso dal sistema, e non per la loro persistenza prolungata; infatti alla chiusura dell'applicazione i dati relativi al DIP appena consultato vengono rimossi.
+            Lo schema è modellato seguendo la notazione Entity-Relationship (ER) e si articola nelle seguenti entità principali.
+
+            \paragraph{Archivio DIP}
+                Rappresenta il pacchetto DIP importato nel sistema. I suoi attributi sono 
+                \texttt{UUID\_Processo} (chiave primaria), 
+                \texttt{Data\_Creazione}, \texttt{Numero\_Documenti} e \texttt{Numero\_AiP}. 
+                È legato a una o più una classe documentale tramite la relazione \textit{Contenuto} con cardinalità (1,N).
+
+            \paragraph{Classe Documentale}
+                Rappresenta la tipologia documentale a cui appartengono i documenti conservati.
+                È caratterizzata dagli attributi \texttt{UUID} (identificatore univoco, chiave 
+                primaria), \texttt{Versione}, \texttt{Nome}, \texttt{Valida\_Da} e 
+                \texttt{Valida\_Fino} (quest'ultimo opzionale, con cardinalità (0,1)), che 
+                consentono di tracciare la validità temporale della classe nel sistema di 
+                conservazione. Una classe documentale è associata a uno o più processi di 
+                conservazione tramite la relazione \textit{Contenuto} (cardinalità (1,N)).
+
+            \paragraph{Processo di Conservazione}
+                Rappresenta un processo di conservazione digitale e contiene gli attributi 
+                \texttt{UUID} (chiave primaria), \texttt{Data\_Creazione}, 
+                \texttt{Numero\_SiP}, \texttt{Numero\_Documenti}, 
+                \texttt{Numero\_File\_Documenti} e \texttt{Dimensione\_Totale}. 
+                È collegato a uno o più documenti tramite la relazione \textit{Contenuto} 
+                (cardinalità (1,N) lato processo, (1,1) lato documento).
+
+            \paragraph{Documento}
+                Rappresenta il singolo documento archiviato all'interno del DIP. 
+                È identificato da un \texttt{UUID} (chiave primaria) e possiede l'attributo 
+                \texttt{Percorso}, che indica la sua posizione nel file system del pacchetto. 
+                Un documento è associato a (1,1) processo di conservazione tramite 
+                la relazione \textit{Contenuto}, può avere zero o più allegati tramite la 
+                relazione \textit{Allegato} (cardinalità (0,N)), è associato a un file 
+                primario tramite la relazione \textit{Primario} (cardinalità (1,1)) e può 
+                essere descritto da uno o più metadati tramite la relazione 
+                \textit{Descrizione} (cardinalità (1,N)).
+
+            \paragraph{File}
+                Rappresenta un file fisico associato a un documento. Gli attributi sono 
+                \texttt{UUID} (chiave primaria), \texttt{Percorso}, \texttt{Formato} e 
+                \texttt{Dimensione}. Un file può essere il file primario di un documento 
+                (relazione \textit{Primario}) oppure un allegato (relazione 
+                \textit{Allegato}, cardinalità (1,1) lato file).
+
+            \paragraph{Metadato}
+                Rappresenta i metadati descrittivi associati a un documento. La chiave 
+                primaria è composta da \texttt{uuid\_documento} e \texttt{nome}, 
+                garantendo l'unicità del metadato per documento. Gli attributi \texttt{valore} 
+                (con collazione \texttt{NOCASE} per ricerche case-insensitive) e \texttt{tipo} 
+                ne descrivono rispettivamente il contenuto e la tipologia semantica. 
+                È referenziata da una tabella virtuale FTS5 (\texttt{metadata\_fts}) per 
+                supportare la ricerca full-text sui metadati (si veda il paragrafo 
+                sulla ricerca full-text).
+
+            \paragraph{Metadata Filter Match}
+                È una tabella di configurazione che definisce le corrispondenze tra i tipi 
+                di filtro esposti dall'interfaccia utente e i pattern dei nomi dei metadati 
+                nel database. La chiave primaria è composta da \texttt{type} e 
+                \texttt{nome\_pattern}: il primo corrisponde al tipo di filtro selezionabile 
+                dall'utente (es. \textit{Data registrazione}, \textit{Codice fiscale}), 
+                il secondo è un pattern compatibile con l'operatore \texttt{LIKE} di SQLite, 
+                usato per identificare i metadati corrispondenti. La tabella è popolata 
+                staticamente all'inizializzazione del database con i mapping definiti 
+                dallo standard di metadatazione adottato.
+
+            \paragraph{Ricerca full-text e trigger}
+                Per supportare la ricerca full-text sui metadati, lo schema definisce una 
+                tabella virtuale \texttt{metadata\_fts} basata sul modulo \textit{FTS5} di 
+                SQLite, con tokenizzazione \textit{trigram} per supportare ricerche per 
+                sottostringa. La tabella è mantenuta sincronizzata con \texttt{metadata} 
+                tramite tre trigger (\texttt{metadata\_fts\_insert}, 
+                \texttt{metadata\_fts\_delete}, \texttt{metadata\_fts\_update}) che 
+                propagano automaticamente le operazioni di inserimento, cancellazione 
+                e aggiornamento.\\
+                \\
+                \noindent Lo schema definisce inoltre due trigger per la gestione 
+                dell'integrità referenziale dei file:\\ \texttt{allegati\_delete\_files}, 
+                che elimina un file dalla tabella \texttt{files} quando viene rimosso 
+                l'ultimo allegato che lo referenzia, e \texttt{documenti\_delete\_main\_file}, 
+                che elimina il file principale di un documento quando quest'ultimo viene 
+                cancellato. Questa scelta è resa necessaria dal fatto che la tabella 
+                \texttt{files} non può essere referenziata con \texttt{ON DELETE CASCADE} 
+                standard.
+
+            \paragraph{Indici}
+                Lo schema definisce quattro indici secondari per ottimizzare le operazioni 
+                di ricerca e recupero dei dati più frequenti.
+                \texttt{idx\_processi\_uuid\_classe} è definito sulla coppia 
+                \texttt{(uuid\_classe\_documentale, versione\_classe\_documentale)} della 
+                tabella\\\texttt{processi\_conservazione}, ottimizzando le query di 
+                filtraggio dei processi per classe documentale.
+                \texttt{idx\_classi\_uuid\_dip} è definito su \texttt{uuid\_dip} della 
+                tabella \texttt{classi\_documentali}, velocizzando il recupero delle classi 
+                documentali associate a un determinato archivio DIP.
+                \texttt{idx\_documenti\_processo} è definito su 
+                \texttt{uuid\_processo\_conservazione} della tabella \texttt{documenti}, 
+                ottimizzando il recupero dell'insieme dei documenti appartenenti a un 
+                determinato processo di conservazione.
+                \texttt{idx\_allegati\_documento} è definito su \texttt{uuid\_documento} 
+                della tabella \texttt{allegati}, velocizzando il recupero degli allegati 
+                associati a un singolo documento.
+                Tutti e quattro gli indici coprono colonne che sono chiavi esterne 
+                coinvolte in join frequenti, seguendo la pratica consolidata di indicizzare 
+                sistematicamente le chiavi esterne in SQLite, che non le indicizza 
+                automaticamente a differenza di altri DBMS.
         }
     }
 
