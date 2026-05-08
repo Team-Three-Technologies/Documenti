@@ -382,7 +382,7 @@
 
         I test di unità hanno lo scopo di verificare il corretto funzionamento delle singole unità software in isolamento, accertandosi che ciascuna componente si comporti come previsto indipendentemente dal resto del sistema.     
         
-        \begin{longtable}{|M{1.2cm}|M{5cm}|M{7cm}|M{1.5cm}|}
+        \begin{longtable}{|M{1.2cm}|M{5cm}|M{8cm}|M{1.5cm}|}
                 
             \caption{Test di Unità} \\
             \hline
@@ -579,7 +579,7 @@
 %----------fine test application
 %----------inizio test infrastructure
 
-            *TU33 & Testare che \texttt{\seqsplit{AipInfoParserV1}} & - & S \\
+            TU33 & Testare che \texttt{\seqsplit{AipInfoParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
             \hline
 
             TU34 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} decodifichi una stringa base64 valida & Buffer corrispondente a 'test' & S \\
@@ -630,16 +630,16 @@
             TU40 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} ritorni \texttt{null} quando il \texttt{filePath} è una stringa vuota & \texttt{null} & S \\
             \hline
 
-            *TU41 & Testare che \texttt{\seqsplit{DipIndexParserV1}} & - & S \\
+            TU41 & Testare che \texttt{\seqsplit{DipIndexParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
             \hline
 
-            *TU42 & Testare che \texttt{\seqsplit{DipParserV1}} & - & S \\
+            TU42 & Testare che \texttt{\seqsplit{DipParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
             \hline
-
-            *TU43 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1}} & - & S \\
+        
+            TU43 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
             \hline
-
-            *TU44 & Testare che \texttt{\seqsplit{LocalFileSystemProvider}} & - & S \\
+        
+            TU44 & Testare che \texttt{\seqsplit{LocalFileSystemProvider}} istanzi correttamente il provider. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
             \hline
 
             TU45 & Testare che \texttt{\seqsplit{CryptoHashProvider.toHashAlgorithm()}} converta \texttt{metadataValue} in un algoritmo hash supportato & 'sha256' & S \\
@@ -687,10 +687,10 @@
             TU58 & Testare che \texttt{\seqsplit{DipHandler.getDipContent()}} restituisce \texttt{error} quando il use case lancia un'eccezione & Stampa 'Non esiste un DIP con questo UUID:uuid' & S \\
             \hline
 
-            *TU59 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii i risultati parziali e il segnale DONE tramite IPC & - & S \\
+            TU59 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii i risultati parziali e il segnale DONE tramite IPC & \texttt{mockSend} è stato chiamato con \texttt{\seqsplit{IPC\_CHANNELS.DIP\_CHECK\_INTEGRITY\_RESULT}} contenente \{ data: $<$qualsiasi$>$, error: null \}, e successivamente con \texttt{IPC\_CHANNELS.DIP\_CHECK\_INTEGRITY\_DONE}. & S \\
             \hline
-
-            *TU60 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii il segnale ERROR tramite IPC se fallisce & - & S \\
+        
+            TU60 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii il segnale ERROR tramite IPC se fallisce & \texttt{mockSend} è stato chiamato con \texttt{IPC\_CHANNELS.DIP\_CHECK\_INTEGRITY\_ERROR} contenente \{ error: 'errore' \}. & S \\
             \hline
 
             TU61 & Testare che \texttt{\seqsplit{DocumentHandler.getDocumentDetails()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
