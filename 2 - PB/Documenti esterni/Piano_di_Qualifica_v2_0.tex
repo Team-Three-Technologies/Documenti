@@ -579,372 +579,471 @@
 %----------fine test application
 %----------inizio test infrastructure
 
-            TU33 & Testare che \texttt{\seqsplit{AipInfoParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
+            TU33 & Testare che \texttt{\seqsplit{AipInfoParserV1.parseAipInfo()}} lanci un errore se l'XML passato non è valido & Viene lanciata l'eccezzione con messaggio: "AiPInfo XML non valido" & S \\
             \hline
 
-            TU34 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} decodifichi una stringa base64 valida & Buffer corrispondente a 'test' & S \\
+            TU34 & Testare che \texttt{\seqsplit{AipInfoParserV1.parseAipInfo()}} lanci un errore se l'XML non contiene l'elemento AiPInfo & Viene lanciata l'eccezzione con messaggio: "Elemento AiPInfo mancante" & S \\
             \hline
 
-            TU35 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} gestisca una stringa vuota & Buffer vuoto & S \\
+            TU35 & Testare che \texttt{\seqsplit{AipInfoParserV1.parseAipInfo()}} restituisca l'oggetto parsato quando l'XML è valido e contiene AiPInfo & L'oggetto restituito ha proprietà AiPInfo & S \\
             \hline
 
-            TU36 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} gestisca una stringa base64 non valida & Buffer senza lanciare eccezioni & S \\
+            TU36 & Testare che \texttt{\seqsplit{AipInfoParserV1.parseAipInfo()}} parsi \texttt{SubmissionSession} come array anche con una sola occorrenza & Array di lunghezza 1 con il primo elemento avente proprietà \texttt{Id} uguale a "SS1" & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.instance}} lanci un errore se il provider non è ancora stato inizializzato & Lancia l'eccezione 'DatabaseProvider non inizializzato' & S \\
+            TU37 & Testare che \texttt{\seqsplit{AipInfoParserV1.parseAipInfo()}} parsi \texttt{MIMEType} come array anche con una sola occorrenza & Array contenente "application/pdf" & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.instance}} restituisca la connessione al database dopo l'inizializzazione & Instanza del database & S \\
+            TU38 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} decodifichi una stringa base64 valida & Buffer corrispondente a 'test' & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.init()}} crei la directory documents, apra il database e imposti i pragma corretti & \texttt{ensureDir} chiamato con \texttt{documentsPath}, Database aperto con il path corretto; pragma \texttt{journal\_mode = WAL} e \texttt{foreign\_keys = ON} impostati & S \\
+            TU39 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} gestisca una stringa vuota & Buffer vuoto & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.init()}} continui correttamente anche se \texttt{ensureDir} di \texttt{documentsPath} fallisce & Nessuna eccezione viene lanciata e Database viene comunque aperto & S \\
+            TU40 & Testare che \texttt{\seqsplit{Base64ProviderImpl.decodeToBytes()}} gestisca una stringa base64 non valida & Buffer senza lanciare eccezioni & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.init()}} crei la tabella migrations & Tra le query eseguite ce n'è una contenente \texttt{CREATE TABLE IF NOT EXISTS migrations} & S \\
+            TU41 & Testare che \texttt{\seqsplit{DatabaseProvider.instance}} lanci un errore se il provider non è ancora stato inizializzato & Lancia l'eccezione 'DatabaseProvider non inizializzato' & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} esegua i file SQL in ordine alfabetico & I file vengono letti e applicati in ordine 001 poi 002 & S \\
+            TU42 & Testare che \texttt{\seqsplit{DatabaseProvider.instance}} restituisca la connessione al database dopo l'inizializzazione & Instanza del database & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} salti le migrazioni già applicate & Solo la migrazione non ancora applicata viene letta ed eseguita & S \\
+            TU43 & Testare che \texttt{\seqsplit{DatabaseProvider.init()}} crei la directory documents, apra il database e imposti i pragma corretti & \texttt{ensureDir} chiamato con \texttt{documentsPath}, Database aperto con il path corretto; pragma \texttt{journal\_mode = WAL} e \texttt{foreign\_keys = ON} impostati & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} non esegua nulla se tutte le migrazioni sono già state applicate & \texttt{readFile} e \texttt{run} non vengono chiamati & S \\
+            TU44 & Testare che \texttt{\seqsplit{DatabaseProvider.init()}} continui correttamente anche se \texttt{ensureDir} di \texttt{documentsPath} fallisce & Nessuna eccezione viene lanciata e Database viene comunque aperto & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} non faccia nulla se la cartella migrations è vuota & \texttt{readFile} e \texttt{run} non vengono chiamati & S \\
+            TU45 & Testare che \texttt{\seqsplit{DatabaseProvider.init()}} crei la tabella migrations & Tra le query eseguite ce n'è una contenente \texttt{CREATE TABLE IF NOT EXISTS migrations} & S \\
             \hline
 
-            TU37 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} registri un timestamp ISO valido nella insert della migrazione & il timestamp è una stringa ISO & S \\
+            TU46 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} esegua i file SQL in ordine alfabetico & I file vengono letti e applicati in ordine 001 poi 002 & S \\
             \hline
 
-            TU38 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} restituisca il path quando viene selezionato un file & Restituisce '/tmp/file.txt' & S \\
+            TU47 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} salti le migrazioni già applicate & Solo la migrazione non ancora applicata viene letta ed eseguita & S \\
             \hline
 
-            TU39 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} ritorni \texttt{null} quando l'operazione viene cancellata & \texttt{null} & S \\
+            TU48 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} non esegua nulla se tutte le migrazioni sono già state applicate & \texttt{readFile} e \texttt{run} non vengono chiamati & S \\
             \hline
 
-            TU40 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} ritorni \texttt{null} quando il \texttt{filePath} è una stringa vuota & \texttt{null} & S \\
+            TU49 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} non faccia nulla se la cartella migrations è vuota & \texttt{readFile} e \texttt{run} non vengono chiamati & S \\
             \hline
 
-            TU41 & Testare che \texttt{\seqsplit{DipIndexParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
+            TU50 & Testare che \texttt{\seqsplit{DatabaseProvider.runMigrations()}} registri un timestamp ISO valido nella insert della migrazione & il timestamp è una stringa ISO & S \\
             \hline
 
-            TU42 & Testare che \texttt{\seqsplit{DipParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
+            TU51 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} restituisca il path quando viene selezionato un file & Restituisce '/tmp/file.txt' & S \\
+            \hline
+
+            TU52 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} ritorni \texttt{null} quando l'operazione viene cancellata & \texttt{null} & S \\
+            \hline
+
+            TU53 & Testare che \texttt{\seqsplit{ElectronDialogProvider.selectSavePath()}} ritorni \texttt{null} quando il \texttt{filePath} è una stringa vuota & \texttt{null} & S \\
+            \hline
+
+            TU54 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se l'XML non è valido & Viene lanciata l'eccezione con messaggio "DiPIndex XML non valido" & S \\
+            \hline
+
+            TU55 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se manca l'elemento DiPIndex & Viene lanciata l'eccezione con messaggio "Elemento DiPIndex mancante" & S \\
+            \hline
+
+            TU56 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se manca l'elemento PackageContent/DiPDocuments & Viene lanciata l'eccezione con messaggio "Elemento PackageContent/DiPDocuments mancante" & S \\
+            \hline
+
+            TU57 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se DocumentClass è mancante o vuoto & Viene lanciata l'eccezione con messaggio "PackageContent/DiPDocuments/DocumentClass mancante o vuoto" & S \\
+            \hline
+
+            TU58 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se manca un attributo obbligatorio in DocumentClass & Viene lanciata l'eccezione con messaggio "Attributi obbligatori mancanti in DocumentClass (uuid, name, version, validFrom)" & S \\
+            \hline
+
+            TU59 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se DocumentClass non contiene elementi AiP & Viene lanciata l'eccezione con messaggio "DocumentClass dc1 senza elementi AiP" & S \\
+            \hline
+
+            TU60 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se un elemento AiP non ha l'attribuito uuid & Viene lanciata l'eccezione con messaggio "Attributo obbligatorio @\_uuid mancante in AiP" & S \\
+            \hline
+
+            TU61 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se un elemento AiP non contiene elementi Documenti & Viene lanciata l'eccezione con messaggio "AiP a1 senza elementi Document" & S \\
+            \hline
+
+            TU62 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se un elemento Document non ha l'attributo uuid & Viene lanciata l'eccezione con messaggio "Attributo obbligatorio @\_uuid mancante in Document" & S \\
+            \hline
+
+            TU63 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se un Document non possiede DocumentPath & Viene lanciata l'eccezione con messaggio "Document d1 senza DocumentPath" & S \\
+            \hline
+
+            TU64 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} lanci un errore se mancano Files/Metadata o Files/Primary in un Document & Viene lanciata l'eccezione con messaggio "Document d1 senza Files/Metadata o Files/Primary" & S \\
+            \hline
+
+            TU65 & Testare che \texttt{\seqsplit{DipIndexParserV1.parseDipIndex()}} restituisca l'oggetto parsato quando l'XML è valido e completo & L'oggetto restituito ha proprietà DiPIndex & S \\
             \hline
         
-            TU43 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1}} istanzi correttamente il parser. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
+            TU66 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1.parseMetadata()}} lanci un errore se l'XML non è valido & Viene lanciata l'eccezione con messaggio "DocumentMetadata XML non valido:" & S \\
+            \hline
+
+            TU67 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1.parseMetadata()}} lanci un errore se manca l'elemento Document & Viene lanciata l'eccezione con messaggio "Elemento Document mancante" & S \\
+            \hline
+
+            TU68 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1.parseMetadata()}} restituisca l'elemento parsato quando l'XML è valido e contiene Document & L'oggetto restituito ha la proprietà Document & S \\
+            \hline
+
+            TU69 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1.parseMetadata()}} parsi \texttt{ParoleChiave} come array anche con una sola occorrenza & Array contenente "uno" & S \\
+            \hline
+
+            TU70 & Testare che \texttt{\seqsplit{DocumentMetadataParserV1.parseMetadata()}} parsi \texttt{FileInformation} come array anche con una sola occorrenza & Array di lunghezza 1 con il primo elemento avente proprietà \texttt{Nome} uguale a "file.txt" & S \\
+            \hline
+
+            TU71 & Testare che \texttt{\seqsplit{DipParserV1.parseDipIndex()}} deleghi correttamente a \texttt{DipIndexParser} passando il contenuto del buffer come stringa UTF-8 & \texttt{dipIndexParser.parseDipIndex} viene chiamato una volta con la stringa corretta & S \\
+            \hline
+
+            TU72 & Testare che \texttt{\seqsplit{DipParserV1.parseDipIndex()}} deleghi correttamente a \texttt{AipInfoParser} passando il contenuto del buffer come stringa UTF-8 & \texttt{dipIndexParser.parseAiPInfo} viene chiamato una volta con la stringa corretta & S \\
+            \hline
+
+            TU73 & Testare che \texttt{\seqsplit{DipParserV1.parseDocumentsStream()}} emetta un risultato per ogni documento leggendo e parsando i metadata & Vengono emessi 2 risultati, \textsl{readFile} e \textsl{parseMetadata} vengono chiamati 2 volte ciascuno con i path corretti & S \\
+            \hline
+
+            TU74 & Testare che \texttt{\seqsplit{DipParserV1.parseDocumentsStream()}} propaghi correttamente gli errori di \texttt{readFile} o \texttt{parseMetadata} & Viene lanciata l'eccezione con messaggio "IO error" & S \\
             \hline
         
-            TU44 & Testare che \texttt{\seqsplit{LocalFileSystemProvider}} istanzi correttamente il provider. & \texttt{expect(true).toBeTruthy()} verifica semplicemente l'istanziamento senza logica aggiuntiva. & S \\
+            TU75 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.getStartDir()}} restituisca il path corretto in base alla piattaforma & Su win32 restituisce il path con prefisso \textbackslash\textbackslash?\textbackslash; altrimenti restituisce /app & S \\
             \hline
 
-            TU45 & Testare che \texttt{\seqsplit{CryptoHashProvider.toHashAlgorithm()}} converta \texttt{metadataValue} in un algoritmo hash supportato & 'sha256' & S \\
+            TU76 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.ensureDir()}} crei la directory e restituisca il path & Restituisce il path della directory creata & S \\
             \hline
 
-            TU46 & Testare che \texttt{\seqsplit{CryptoHashProvider.toHashAlgorithm()}} lanci un errore per un algoritmo non supportato & Viene lanciata l'eccezione 'Algoritmo hash non supportato nei metadata:unknown' & S \\
+            TU77 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.ensureDir()}} lanci un errore custom se la creazione della directory fallisce & Viene lanciata l'eccezione con messaggio "Creazione directory fallita" & S \\
             \hline
 
-            TU47 & Testare che \texttt{\seqsplit{CryptoHashProvider.hashStream()}} calcoli l'hash di uno stream & Un'istanza di buffer & S \\
+            TU78 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.findFile()}} restituisca il path del primo file che corrisponde al pattern & Restituisce il path completo del file "target.txt" & S \\
             \hline
 
-            TU48 & Testare che \texttt{\seqsplit{CryptoHashProvider.hashStream()}} produca hash consistenti per lo stesso input & I due hash calcolati sugli input sono identici & S \\
+            TU79 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.findFile()}} restituisca null se nessun file corrisponde al pattern & null & S \\
+            \hline
+
+            TU80 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.readFile()}} legga correttamente il file tramite \texttt{fs.promises.readFile} & Restituisce il buffer atteso & S \\
+            \hline
+
+            TU81 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.readDir()}} legga correttamente il contenuto della directory tramite \texttt{fs.promises.readdir} & Restituisce l'array ['a', 'b'] & S \\
+            \hline
+
+            TU82 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.createReadStream()}} restituisca lo stream creato da \texttt{fs} & Restituisce lo stream atteso & S \\
+            \hline
+
+            TU83 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.copyFile()}} copi il file tramite \texttt{fs.promises.copyFile} & \texttt{copyFile} viene chiamato con i path sorgente e destinazione corretti & S \\
+            \hline
+
+            TU84 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.copyFile()}} lanci un errore se la copia fallisce & Viene lanciata l'eccezione con messaggio "Copia file fallita" & S \\
+            \hline
+
+            TU85 & Testare che \texttt{\seqsplit{LocalFileSystemProvider.createTempFile()}} copi il file nella directory temp e restituisca il path & \texttt{app.getPath} viene chiamato con "temp" e \texttt{copyFile} viene chiamato con i path corretti & S \\
+            \hline
+
+            TU86 & Testare che \texttt{\seqsplit{CryptoHashProvider.toHashAlgorithm()}} converta \texttt{metadataValue} in un algoritmo hash supportato & 'sha256' & S \\
+            \hline
+
+            TU87 & Testare che \texttt{\seqsplit{CryptoHashProvider.toHashAlgorithm()}} lanci un errore per un algoritmo non supportato & Viene lanciata l'eccezione 'Algoritmo hash non supportato nei metadata:unknown' & S \\
+            \hline
+
+            TU88 & Testare che \texttt{\seqsplit{CryptoHashProvider.hashStream()}} calcoli l'hash di uno stream & Un'istanza di buffer & S \\
+            \hline
+
+            TU89 & Testare che \texttt{\seqsplit{CryptoHashProvider.hashStream()}} produca hash consistenti per lo stesso input & I due hash calcolati sugli input sono identici & S \\
             \hline
             
-            TU49 & Testare che \texttt{\seqsplit{CryptoHashProvider.areEqualsHashBytes()}} restituisca \texttt{true} per due hash identici & \texttt{true} & S \\
+            TU90 & Testare che \texttt{\seqsplit{CryptoHashProvider.areEqualsHashBytes()}} restituisca \texttt{true} per due hash identici & \texttt{true} & S \\
             \hline
           
-            TU50 & Testare che \texttt{\seqsplit{CryptoHashProvider.areEqualsHashBytes()}} restituisca \texttt{false} per due hash diversi & \texttt{false} & S \\
+            TU91 & Testare che \texttt{\seqsplit{CryptoHashProvider.areEqualsHashBytes()}} restituisca \texttt{false} per due hash diversi & \texttt{false} & S \\
             \hline
 
-            TU51 & Testare che \texttt{\seqsplit{ElectronShellProvider.openFile()}} non produca errori quando viene aperto un file & \texttt{shell.openPath} viene chiamato con il path corretto & S \\
+            TU92 & Testare che \texttt{\seqsplit{ElectronShellProvider.openFile()}} non produca errori quando viene aperto un file & \texttt{shell.openPath} viene chiamato con il path corretto & S \\
             \hline
 
-            TU52 & Testare che \texttt{\seqsplit{ElectronShellProvider.openFile()}} lanci un errore quando il file non viene aperto & Viene lanciata l'eccezione 'Impossibile aprire il file: fileNotFound' & S \\
+            TU93 & Testare che \texttt{\seqsplit{ElectronShellProvider.openFile()}} lanci un errore quando il file non viene aperto & Viene lanciata l'eccezione 'Impossibile aprire il file: fileNotFound' & S \\
             \hline
 
 %---------fine test infrastructure
 %---------inizio test presentation
 
-            TU53 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            TU94 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{execute} viene chiamato una volta e \texttt{result.data} contiene il dipUuid atteso & S \\
             \hline
 
-            TU54 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'DipIndex mancante' & S \\
+            TU95 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'DipIndex mancante' & S \\
             \hline
 
-            TU55 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Dip già importato in precedenza' & S \\
+            TU96 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Dip già importato in precedenza' & S \\
             \hline
 
-            TU56 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'AipInfo mancante' & S \\
+            TU97 & Testare che \texttt{\seqsplit{DipHandler.autoImport}} restituisca un errore specifico quando il use case lancia l'eccezione a lui associata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'AipInfo mancante' & S \\
             \hline
 
-            TU57 & Testare che \texttt{\seqsplit{DipHandler.getDipContent()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            TU98 & Testare che \texttt{\seqsplit{DipHandler.getDipContent()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{execute} viene chiamato una volta con "dip-uuid", \texttt{result.data} corrisponde all'oggetto all'oggetto atteso, \texttt{result.error} è null & S \\
             \hline
 
-            TU58 & Testare che \texttt{\seqsplit{DipHandler.getDipContent()}} restituisce \texttt{error} quando il use case lancia un'eccezione & Stampa 'Non esiste un DIP con questo UUID:uuid' & S \\
+            TU99 & Testare che \texttt{\seqsplit{DipHandler.getDipContent()}} restituisce \texttt{error} quando il use case lancia un'eccezione & Stampa 'Non esiste un DIP con questo UUID:uuid' & S \\
             \hline
 
-            TU59 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii i risultati parziali e il segnale DONE tramite IPC & \texttt{mockSend} è stato chiamato con \texttt{\seqsplit{IPC\_CHANNELS.DIP\_CHECK\_INTEGRITY\_RESULT}} contenente \{ data: $<$qualsiasi$>$, error: null \}, e successivamente con \texttt{IPC\_CHANNELS.DIP\_CHECK\_INTEGRITY\_DONE}. & S \\
+            TU100 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii N messaggi RESULT in ordine e poi DONE quando il generatore emette N valori & \texttt{execute} viene chiamato con "dip-uuid"; \texttt{send} viene chiamato 3 volte: prima con RESULT e \{step:1\}, poi con RESULT e \{step:2\}, infine con DONE & S \\
+            \hline
+
+            TU101 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii SOLO DONE se il generatore è vuoto & \texttt{execute} viene chiamato con "dip-uuid" e \texttt{send} viene chiamato una sola volta con DONE & S \\
             \hline
         
-            TU60 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii il segnale ERROR tramite IPC se fallisce & \texttt{mockSend} è stato chiamato con \texttt{IPC\_CHANNELS.DIP\_CHECK\_INTEGRITY\_ERROR} contenente \{ error: 'errore' \}. & S \\
+            TU102 & Testare che \texttt{\seqsplit{DipHandler.checkDipIntegrity()}} invii il segnale ERROR tramite IPC se fallisce & \texttt{execute} viene chiamato con "dip-uuid" e \texttt{send} viene chiamato una sola volta con ERROR e il messaggio "errore" & S \\
             \hline
 
-            TU61 & Testare che \texttt{\seqsplit{DocumentHandler.getDocumentDetails()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            TU103 & Testare che \texttt{\seqsplit{DocumentHandler.getDocumentDetails()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
             \hline
 
-            TU62 & Testare che \texttt{\seqsplit{DocumentHandler.getDocumentDetails()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un documento con questo UUID:uuid'  & S \\
+            TU104 & Testare che \texttt{\seqsplit{DocumentHandler.getDocumentDetails()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un documento con questo UUID:uuid'  & S \\
             \hline
 
-            TU63 & Testare che \texttt{\seqsplit{DocumentHandler.searchDocuemnts()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            TU105 & Testare che \texttt{\seqsplit{DocumentHandler.searchDocuemnts()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
             \hline
 
-            TU64 & Testare che \texttt{\seqsplit{DocumentHandler.searchDocuemnts()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore ricerca documento' & S \\
+            TU106 & Testare che \texttt{\seqsplit{DocumentHandler.searchDocuemnts()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore ricerca documento' & S \\
             \hline
 
-            TU65 & Testare che \texttt{\seqsplit{DocumentHandler.fileInternalPreview()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            TU107 & Testare che \texttt{\seqsplit{DocumentHandler.fileInternalPreview()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
             \hline
 
-            TU66 & Testare che \texttt{\seqsplit{DocumentHandler.fileInternalPreview()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore preview interna' & S \\
+            TU108 & Testare che \texttt{\seqsplit{DocumentHandler.fileInternalPreview()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore preview interna' & S \\
             \hline
 
-            TU67 & Testare che \texttt{\seqsplit{DocumentHandler.fileExternalPreview()}} restituisca \texttt{data} \texttt{void} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{data} è \texttt{void} mentre \texttt{error} è \texttt{null} & S \\
+            TU109 & Testare che \texttt{\seqsplit{DocumentHandler.fileExternalPreview()}} restituisca \texttt{data} \texttt{void} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{data} è \texttt{void} mentre \texttt{error} è \texttt{null} & S \\
             \hline
 
-            TU68 & Testare che \texttt{\seqsplit{DocumentHandler.fileExternalPreview()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore preview esterna' & S \\
+            TU110 & Testare che \texttt{\seqsplit{DocumentHandler.fileExternalPreview()}} restituisca \texttt{error} quando il use case lancia un'eccezione & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Errore preview esterna' & S \\
             \hline
 
-            TU69 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
+            TU111 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{data} e \texttt{error} \texttt{null} quando il use case termina correttamente & \texttt{null} & S \\
             \hline
 
-            TU70 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando il documento non esiste & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un documento con questo UUID:uuid' & S \\
+            TU112 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando il documento non esiste & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un documento con questo UUID:uuid' & S \\
             \hline
 
-            TU71 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando il file non è associato al documento & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un file con UUID:uuid associato al documento con UUID:uuid' & S \\
+            TU113 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando il file non è associato al documento & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Non esiste un file con UUID:uuid associato al documento con UUID:uuid' & S \\
             \hline
 
-            TU72 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando la selezione del path viene cancellata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Selezione cancellata' & S \\
+            TU114 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando la selezione del path viene cancellata & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Selezione cancellata' & S \\
             \hline
 
-            TU73 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando l'esportazione fallisce & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Esportazione file con UUID:uuid fallita' & S \\
+            TU115 & Testare che \texttt{\seqsplit{DocumentHandler.exportFile()}} restituisca \texttt{error} quando l'esportazione fallisce & \texttt{result.Data} è \texttt{null} mentre \texttt{result.Error} è 'Esportazione file con UUID:uuid fallita' & S \\
             \hline
 
 %---------fine test presentation
 %---------inizio test repositories
 
-            TU74 & Testare che se \texttt{\seqsplit{SQLiteConservationProcess.save()}} avviene con successo, restituisca il \texttt{conservationProcess} passato & \texttt{conservationProcess} & S \\
+            TU116 & Testare che se \texttt{\seqsplit{SQLiteConservationProcess.save()}} avviene con successo, restituisca il \texttt{conservationProcess} passato & \texttt{conservationProcess} & S \\
             \hline
 
-            TU75 & Testare che se \texttt{\seqsplit{SQLiteDipRepository.save()}} avviene con successo, restituisca il DIP passato & DIP & S \\
+            TU117 & Testare che se \texttt{\seqsplit{SQLiteDipRepository.save()}} avviene con successo, restituisca il DIP passato & DIP & S \\
             \hline
 
-            TU76 & Testare che \texttt{\seqsplit{SQLiteDipRepository.deleteByUuid()}} esegua la query DELETE corretta sul database & 'DELETE FROM archivi\_dip' & S \\
+            TU118 & Testare che \texttt{\seqsplit{SQLiteDipRepository.deleteByUuid()}} esegua la query DELETE corretta sul database & 'DELETE FROM archivi\_dip' & S \\
             \hline
 
-            TU77 & Testare che \texttt{\seqsplit{SQLiteDipRepository.findByUuid()}} restituisca un'istanza di DIP con quel UUID & DIP & S \\
+            TU119 & Testare che \texttt{\seqsplit{SQLiteDipRepository.findByUuid()}} restituisca un'istanza di DIP con quel UUID & DIP & S \\
             \hline
 
-            TU78 & Testare che \texttt{\seqsplit{SQLiteDipRepository.findByUuid()}} restituisca \texttt{null} quando il record non esiste & \texttt{null} & S \\
+            TU120 & Testare che \texttt{\seqsplit{SQLiteDipRepository.findByUuid()}} restituisca \texttt{null} quando il record non esiste & \texttt{null} & S \\
             \hline
 
-            TU79 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.save()}} restituisca la \texttt{documentClass} passata & \texttt{documentClass} & S \\
+            TU121 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.save()}} restituisca la \texttt{documentClass} passata & \texttt{documentClass} & S \\
             \hline
 
-            TU80 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.saveMany()}} salvi i documenti e li restituisca correttamente & Il risultato deve avere lunghezza 1 e dev'essere un'istanza di \texttt{Document} & S \\
+            TU122 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.saveMany()}} salvi i documenti e li restituisca correttamente & Il risultato deve avere lunghezza 1 e dev'essere un'istanza di \texttt{Document} & S \\
             \hline
 
-            TU81 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findByUuid()}} restituisca un'istanza di \texttt{Document} quando l'UUID esiste & istanza di \texttt{Document} & S \\
+            TU123 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findByUuid()}} restituisca un'istanza di \texttt{Document} quando l'UUID esiste & istanza di \texttt{Document} & S \\
             \hline
 
-            TU82 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findByUuid()}} restituisca \texttt{null} quando l'UUID non esiste & \texttt{null} & S \\
+            TU124 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findByUuid()}} restituisca \texttt{null} quando l'UUID non esiste & \texttt{null} & S \\
             \hline
 
-            TU83 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByDipUuid()}} restituisca un array di \texttt{Document} quando esistono dei documenti associati & Il risultato deve avere lunghezza 1 e dev'essere un'istanza di \texttt{Document} & S \\
+            TU125 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByDipUuid()}} restituisca un array di \texttt{Document} quando esistono dei documenti associati & Il risultato deve avere lunghezza 1 e dev'essere un'istanza di \texttt{Document} & S \\
             \hline
 
-            TU84 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByDipUuid()}} restituisca un array vuoto quando non esistono dei documenti associati & array vuoto & S \\
+            TU126 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByDipUuid()}} restituisca un array vuoto quando non esistono dei documenti associati & array vuoto & S \\
             \hline
 
-            TU85 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByMetadata()}} funzioni con i filtri applicati correttamente & Il risultato è un array con almeno un'istanza di \texttt{Document} & S \\
+            TU127 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByMetadata()}} funzioni con i filtri applicati correttamente & Il risultato è un array con almeno un'istanza di \texttt{Document} & S \\
             \hline
 
-            TU86 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByMetadata()}} funzioni con nessun filtro applicato & array vuoto & S \\
+            TU128 & Testare che \texttt{\seqsplit{SQLiteDocumentClassRepository.findAllByMetadata()}} funzioni con nessun filtro applicato & array vuoto & S \\
             \hline
 
-            TU87 & Testare che \texttt{\seqsplit{SearchQueryBuilder.uuidFilter()}} aggiunga un filtro correttamente & Non viene lanciata nessuna eccezione & S \\
+            TU129 & Testare che \texttt{\seqsplit{SearchQueryBuilder.uuidFilter()}} aggiunga un filtro correttamente & Non viene lanciata nessuna eccezione & S \\
             \hline
 
-            TU88 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} con branch LIKE costruisca una query valida con una sola clausola & La query corrisponde al pattern regex atteso & S \\
+            TU130 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} con branch LIKE costruisca una query valida con una sola clausola & La query corrisponde al pattern regex atteso & S \\
             \hline
 
-            TU89 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} con branch LIKE costruisca una query valida con n clausole separate da OR & La query corrisponde al pattern regex atteso & S \\
+            TU131 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} con branch LIKE costruisca una query valida con n clausole separate da OR & La query corrisponde al pattern regex atteso & S \\
             \hline
 
-            TU90 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} utilizzi il branch FTS quando tutte le stringhe hanno lunghezza >= 3 & La query corrisponde al pattern regex atteso & S \\
+            TU132 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} utilizzi il branch FTS quando tutte le stringhe hanno lunghezza >= 3 & La query corrisponde al pattern regex atteso & S \\
             \hline
 
-            TU91 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} gestisca correttamente il caso senza clausole & La query contiene WHERE e i params sono [0] & S \\
+            TU133 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} gestisca correttamente il caso senza clausole & La query contiene WHERE e i params sono [0] & S \\
             \hline
 
-            TU92 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} resetti i filtri dopo la chiamata & La seconda chiamata a \texttt{buildQuery()} restituisce params [0] & S \\
+            TU134 & Testare che \texttt{\seqsplit{SearchQueryBuilder.buildQuery()}} resetti i filtri dopo la chiamata & La seconda chiamata a \texttt{buildQuery()} restituisce params [0] & S \\
             \hline
 %---------fine test repositories
 %---------test renderer
 
-            TU93 & Testare che \texttt{App} inizializzi l'applicazione & L'istanza del componente root viene creata con successo & S \\
+            TU135 & Testare che \texttt{App} inizializzi l'applicazione & L'istanza del componente root viene creata con successo & S \\
             \hline
 
-            TU94 & Testare che \texttt{App} inizializzi l'applicazione & L'istanza del componente root viene creata con successo & S \\
+            TU136 & Testare che \texttt{App} inizializzi l'applicazione & L'istanza del componente root viene creata con successo & S \\
             \hline
 
-            TU95 & Testare che \texttt{\seqsplit{ElectronIpc.autoImport()}} la risposta avvenga con successo & Campo error con valore null & S \\
+            TU137 & Testare che \texttt{\seqsplit{ElectronIpc.autoImport()}} la risposta avvenga con successo & Campo error con valore null & S \\
             \hline
 
-            TU96 & Testare che \texttt{\seqsplit{ElectronIpc.autoImport()}} gestisca errore in caso di fallimento di \texttt{autoImport} & Lancia l'eccezione 'Auto import failed' & S \\
+            TU138 & Testare che \texttt{\seqsplit{ElectronIpc.autoImport()}} gestisca errore in caso di fallimento di \texttt{autoImport} & Lancia l'eccezione 'Auto import failed' & S \\
             \hline
 
-            TU97 & Testare che \texttt{\seqsplit{ElectronIpc.autoImport()}} gestisca correttamente quando l'API fallisce & Lancia l'eccezione 'API error' & S \\
+            TU139 & Testare che \texttt{\seqsplit{ElectronIpc.autoImport()}} gestisca correttamente quando l'API fallisce & Lancia l'eccezione 'API error' & S \\
             \hline
 
-            TU98 & Testare che \texttt{\seqsplit{ElectronIpc.content()}} restituisce il contenuto in caso di successo & Mock del contentResponse & S \\
+            TU140 & Testare che \texttt{\seqsplit{ElectronIpc.content()}} restituisce il contenuto in caso di successo & Mock del contentResponse & S \\
             \hline
 
-            TU99 & Testare che \texttt{\seqsplit{ElectronIpc.content()}} lanci un errore in caso di fallimento del caricamente del contenuto & Lancia l'eccezione 'Content loading failed' & S \\
+            TU141 & Testare che \texttt{\seqsplit{ElectronIpc.content()}} lanci un errore in caso di fallimento del caricamente del contenuto & Lancia l'eccezione 'Content loading failed' & S \\
             \hline
 
-            TU100 & Testare che \texttt{\seqsplit{ElectronIpc.checkIntegrity()}} chiami correttamente l'API & \texttt{\seqsplit{mockElectronAPI.dip.checkIntegrity}} con oggetto test-dip-uuid & S \\
+            TU142 & Testare che \texttt{\seqsplit{ElectronIpc.checkIntegrity()}} chiami correttamente l'API & \texttt{\seqsplit{mockElectronAPI.dip.checkIntegrity}} con oggetto test-dip-uuid & S \\
             \hline
 
-            TU101 & Testare che \texttt{\seqsplit{ElectronIpc.checkIntegrity()}} lanci un errore in caso di fallimento del controllo integrità & Lancia l'eccezione 'Integrity check failed' & S \\
+            TU143 & Testare che \texttt{\seqsplit{ElectronIpc.checkIntegrity()}} lanci un errore in caso di fallimento del controllo integrità & Lancia l'eccezione 'Integrity check failed' & S \\
             \hline
 
-            TU102 & Testare che \texttt{\seqsplit{ElectronIpc.getDocumentDetails()}} restituisca i dettagli del documento in caso di successo & \texttt{mockDetailsResponse}  & S \\
+            TU144 & Testare che \texttt{\seqsplit{ElectronIpc.getDocumentDetails()}} restituisca i dettagli del documento in caso di successo & \texttt{mockDetailsResponse}  & S \\
             \hline
 
-            TU103 & Testare che \texttt{\seqsplit{ElectronIpc.getDocumentDetails()}} lanci un errore in caso di fallimento del recupero dettagli documento & Lancia l'eccezione 'Document details loading failed' & S \\
+            TU145 & Testare che \texttt{\seqsplit{ElectronIpc.getDocumentDetails()}} lanci un errore in caso di fallimento del recupero dettagli documento & Lancia l'eccezione 'Document details loading failed' & S \\
             \hline
 
-            TU104 & Testare che \texttt{\seqsplit{ElectronIpc.searchDocuemnts()}} restituisca i risultati di ricerca in caso di successo & \texttt{mockSearchResponse} & S \\
+            TU146 & Testare che \texttt{\seqsplit{ElectronIpc.searchDocuemnts()}} restituisca i risultati di ricerca in caso di successo & \texttt{mockSearchResponse} & S \\
             \hline
 
-            TU105 & Testare che \texttt{\seqsplit{ElectronIpc.searchDocuemnts()}} lanci un errore in caso di fallimento della ricerca dei documenti & Lancia l'eccezione 'Document search failed' & S \\
+            TU147 & Testare che \texttt{\seqsplit{ElectronIpc.searchDocuemnts()}} lanci un errore in caso di fallimento della ricerca dei documenti & Lancia l'eccezione 'Document search failed' & S \\
             \hline
 
-            TU106 & Testare che \texttt{\seqsplit{ElectronIpc.fileInternalPreview()}} restituisca l'anteprima interna del file in caso di successo & \texttt{mockSearchResponse} & S \\
+            TU148 & Testare che \texttt{\seqsplit{ElectronIpc.fileInternalPreview()}} restituisca l'anteprima interna del file in caso di successo & \texttt{mockSearchResponse} & S \\
             \hline
 
-            TU107 & Testare che \texttt{\seqsplit{ElectronIpc.fileInternalPreview()}} lanci un errore in caso di fallimento della preview interna & Lancia l'eccezione 'Internal preview failed' & S \\
+            TU149 & Testare che \texttt{\seqsplit{ElectronIpc.fileInternalPreview()}} lanci un errore in caso di fallimento della preview interna & Lancia l'eccezione 'Internal preview failed' & S \\
             \hline
 
-            TU108 & Testare che \texttt{\seqsplit{ElectronIpc.fileExternalPreview()}} restituisca l'anteprima esterna del file in caso di successo & Promise si risolve con undefined & S \\
+            TU150 & Testare che \texttt{\seqsplit{ElectronIpc.fileExternalPreview()}} restituisca l'anteprima esterna del file in caso di successo & Promise si risolve con undefined & S \\
             \hline
 
-            TU109 & Testare che \texttt{\seqsplit{ElectronIpc.fileExternalPreview()}} lanci un errore in caso di fallimento della preview esterna & Lancia l'eccezione 'External preview failed' & S \\
+            TU151 & Testare che \texttt{\seqsplit{ElectronIpc.fileExternalPreview()}} lanci un errore in caso di fallimento della preview esterna & Lancia l'eccezione 'External preview failed' & S \\
             \hline
 
-            TU110 & Testare che \texttt{\seqsplit{ElectronIpc.exportFile()}} restituisca la risposta di esportazione file in caso di successo & success uguale a true & S \\
+            TU152 & Testare che \texttt{\seqsplit{ElectronIpc.exportFile()}} restituisca la risposta di esportazione file in caso di successo & success uguale a true & S \\
             \hline
 
-            TU111 & Testare che \texttt{\seqsplit{ElectronIpc.exportFile()}} lanci un errore in caso di fallimento dell'esportazione file & Lancia l'eccezione 'Export failed' & S \\
+            TU153 & Testare che \texttt{\seqsplit{ElectronIpc.exportFile()}} lanci un errore in caso di fallimento dell'esportazione file & Lancia l'eccezione 'Export failed' & S \\
             \hline
 
-            TU112 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
+            TU154 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
             \hline
 
-            TU113 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & All'aggiornamento di un valore l'array dei filtriAttivi viene cambiato & S \\
+            TU155 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & All'aggiornamento di un valore l'array dei filtriAttivi viene cambiato & S \\
             \hline
 
-            TU114 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & i valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
+            TU156 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuove i filtri dipendenti quando i valori cambiano & i valori con la componenti filtriAttivi si sincronizzano con gli input & S \\
             \hline
 
-            TU115 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I querySelector per gli input DOM corrispondono per lunghezza e tipologia ai mock definiti in \texttt{filtriAttivi} & S \\ 
+            TU157 & Testare che \texttt{Filters} mostri i diversi controlli di input per i tipi di filtro supportati & I querySelector per gli input DOM corrispondono per lunghezza e tipologia ai mock definiti in \texttt{filtriAttivi} & S \\ 
             \hline
             
-            TU116 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuova i filtri dipendenti quando i valori cambiano & L'array \texttt{filtriAttivi} e le opzioni di \texttt{opzioniDisponibili()} assumono lo stato mutato atteso & S \\ 
+            TU158 & Testare che \texttt{Filters} aggiunga filtri tramite il pulsante e rimuova i filtri dipendenti quando i valori cambiano & L'array \texttt{filtriAttivi} e le opzioni di \texttt{opzioniDisponibili()} assumono lo stato mutato atteso & S \\ 
             \hline
             
-            TU117 & Testare che \texttt{Filters} emetta solo filtri validi quando viene avviata una ricerca & L'EventEmitter \texttt{searchRequested} emette un array contenente unicamente i DTO dei filtri validati & S \\ 
+            TU159 & Testare che \texttt{Filters} emetta solo filtri validi quando viene avviata una ricerca & L'EventEmitter \texttt{searchRequested} emette un array contenente unicamente i DTO dei filtri validati & S \\ 
             \hline
             
-            TU118 & Testare che \texttt{Filters} rimuova le righe tramite il pulsante elimina e avvii una nuova ricerca & L'array \texttt{filtriAttivi} risulta con \texttt{length} uguale a 0 e \texttt{searchRequested} emette \texttt{[]} & S \\ 
+            TU160 & Testare che \texttt{Filters} rimuova le righe tramite il pulsante elimina e avvii una nuova ricerca & L'array \texttt{filtriAttivi} risulta con \texttt{length} uguale a 0 e \texttt{searchRequested} emette \texttt{[]} & S \\ 
             \hline
             
-            TU119 & Testare che \texttt{DocumentPreview} mostri lo stato vuoto quando non è selezionato alcun documento & \texttt{fixture.nativeElement.textContent} contiene la stringa di stato vuoto predefinita & S \\ 
+            TU161 & Testare che \texttt{DocumentPreview} mostri lo stato vuoto quando non è selezionato alcun documento & \texttt{fixture.nativeElement.textContent} contiene la stringa di stato vuoto predefinita & S \\ 
             \hline
             
-            TU120 & Testare che \texttt{DocumentPreview} mostri lo stato di caricamento quando l'anteprima è in generazione & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento & S \\ 
+            TU162 & Testare che \texttt{DocumentPreview} mostri lo stato di caricamento quando l'anteprima è in generazione & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento & S \\ 
             \hline
             
-            TU121 & Testare che \texttt{DocumentPreview} gestisca anteprime PDF, immagini e formati non supportati & \texttt{safeDocumentUrl} riflette la sicurezza del link e il DOM renderizza \texttt{<iframe>} o \texttt{<img>} in base a \texttt{itemFormato} & S \\ 
+            TU163 & Testare che \texttt{DocumentPreview} gestisca anteprime PDF, immagini e formati non supportati & \texttt{safeDocumentUrl} riflette la sicurezza del link e il DOM renderizza \texttt{<iframe>} o \texttt{<img>} in base a \texttt{itemFormato} & S \\ 
             \hline
 
-            TU122 & Testare che \texttt{DocumentList} mostri lo stato di caricamento quando richiesto & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento & S \\ 
+            TU164 & Testare che \texttt{DocumentList} mostri lo stato di caricamento quando richiesto & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento & S \\ 
             \hline
             
-            TU123 & Testare che \texttt{DocumentList} mostri lo stato di errore quando viene fornito un messaggio & \texttt{fixture.nativeElement.textContent} corrisponde al valore della property \texttt{errorMessage} & S \\ 
+            TU165 & Testare che \texttt{DocumentList} mostri lo stato di errore quando viene fornito un messaggio & \texttt{fixture.nativeElement.textContent} corrisponde al valore della property \texttt{errorMessage} & S \\ 
             \hline
             
-            TU124 & Testare che \texttt{DocumentList} mostri lo stato vuoto quando non ci sono documenti disponibili & \texttt{fixture.nativeElement.textContent} contiene la stringa di assenza documenti & S \\ 
+            TU166 & Testare che \texttt{DocumentList} mostri lo stato vuoto quando non ci sono documenti disponibili & \texttt{fixture.nativeElement.textContent} contiene la stringa di assenza documenti & S \\ 
             \hline
             
-            TU125 & Testare che \texttt{DocumentList} mostri documenti, allegati ed emetta eventi di selezione & \texttt{getIntegrityStatus} restituisce i valori mappati ed \texttt{EventEmitter} inviano i DTO previsti al click & S \\ 
+            TU167 & Testare che \texttt{DocumentList} mostri documenti, allegati ed emetta eventi di selezione & \texttt{getIntegrityStatus} restituisce i valori mappati ed \texttt{EventEmitter} inviano i DTO previsti al click & S \\ 
             \hline
             
-            TU126 & Testare che \texttt{DocumentDetails} mostri lo stato di caricamento quando richiesto & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento dettagli & S \\ 
+            TU168 & Testare che \texttt{DocumentDetails} mostri lo stato di caricamento quando richiesto & \texttt{fixture.nativeElement.textContent} contiene la stringa di caricamento dettagli & S \\ 
             \hline
             
-            TU127 & Testare che \texttt{DocumentDetails} mostri lo stato vuoto quando non è selezionato nulla & \texttt{fixture.nativeElement.textContent} contiene la stringa di richiesta selezione & S \\ 
+            TU169 & Testare che \texttt{DocumentDetails} mostri lo stato vuoto quando non è selezionato nulla & \texttt{fixture.nativeElement.textContent} contiene la stringa di richiesta selezione & S \\ 
             \hline
             
-            TU128 & Testare che \texttt{DocumentDetails} mostri i dettagli del documento, i soggetti e gli allegati & I nodi DOM per i metadati corrispondono al mock e \texttt{export} emette \texttt{\{documentUuid\}} & S \\ 
+            TU170 & Testare che \texttt{DocumentDetails} mostri i dettagli del documento, i soggetti e gli allegati & I nodi DOM per i metadati corrispondono al mock e \texttt{export} emette \texttt{\{documentUuid\}} & S \\ 
             \hline
             
-            TU129 & Testare che \texttt{DocumentDetails} mostri messaggi di relazione vuota quando mancano soggetti e allegati & \texttt{fixture.nativeElement.textContent} contiene le stringhe di fallback per \texttt{subjects} e \texttt{attachments} nulli & S \\ 
+            TU171 & Testare che \texttt{DocumentDetails} mostri messaggi di relazione vuota quando mancano soggetti e allegati & \texttt{fixture.nativeElement.textContent} contiene le stringhe di fallback per \texttt{subjects} e \texttt{attachments} nulli & S \\ 
             \hline
             
-            TU130 & Testare che \texttt{DocumentDetails} mostri i dettagli dell'allegato ed esporti il file selezionato & \texttt{export} emette il payload contenente sia \texttt{documentUuid} che \texttt{fileUuid} & S \\ 
+            TU172 & Testare che \texttt{DocumentDetails} mostri i dettagli dell'allegato ed esporti il file selezionato & \texttt{export} emette il payload contenente sia \texttt{documentUuid} che \texttt{fileUuid} & S \\ 
             \hline
             
-            TU131 & Testare che \texttt{DipDetails} mostri lo stato vuoto quando non ci sono pacchetti disponibili & \texttt{fixture.nativeElement.textContent} contiene la stringa di assenza pacchetti & S \\ 
+            TU173 & Testare che \texttt{DipDetails} mostri lo stato vuoto quando non ci sono pacchetti disponibili & \texttt{fixture.nativeElement.textContent} contiene la stringa di assenza pacchetti & S \\ 
             \hline
             
-            TU132 & Testare che \texttt{DipDetails} mostri i dati del pacchetto quando vengono fornite le info del DIP & \texttt{fixture.nativeElement.textContent} include le stringhe corrispondenti alle chiavi del DTO in ingresso & S \\ 
+            TU174 & Testare che \texttt{DipDetails} mostri i dati del pacchetto quando vengono fornite le info del DIP & \texttt{fixture.nativeElement.textContent} include le stringhe corrispondenti alle chiavi del DTO in ingresso & S \\ 
             \hline
             
-            TU133 & Testare che \texttt{DipDetails} usi N/D come fallback per i valori mancanti & Le occorrenze di \texttt{N/D} nel textContent sono conformi al numero di proprietà nulle in ingresso & S \\ 
+            TU175 & Testare che \texttt{DipDetails} usi N/D come fallback per i valori mancanti & Le occorrenze di \texttt{N/D} nel textContent sono conformi al numero di proprietà nulle in ingresso & S \\ 
             \hline
 
-            TU134 & Testare che \texttt{\seqsplit{DipDashboardContainer}} recuperi i dettagli del documento al suo click & \texttt{ElectronIpc.getDocumentDetails()} viene invocato con \texttt{\{documentUuid: 'doc-123'\}}, \texttt{selectedDocument()} corrisponde a \texttt{mockDetails} e \texttt{errorMessage()} è \texttt{null} & S \\ 
+            TU176 & Testare che \texttt{\seqsplit{DipDashboardContainer}} recuperi i dettagli del documento al suo click & \texttt{ElectronIpc.getDocumentDetails()} viene invocato con \texttt{\{documentUuid: 'doc-123'\}}, \texttt{selectedDocument()} corrisponde a \texttt{mockDetails} e \texttt{errorMessage()} è \texttt{null} & S \\ 
             \hline
             
-            TU135 & Testare che \texttt{\seqsplit{DipDashboardContainer}} aggiorni i risultati alla ricerca di documenti & \texttt{documentList().length} è \texttt{1} e la proprietà \texttt{name} del primo indice è \texttt{"Trovato"} & S \\ 
+            TU177 & Testare che \texttt{\seqsplit{DipDashboardContainer}} aggiorni i risultati alla ricerca di documenti & \texttt{documentList().length} è \texttt{1} e la proprietà \texttt{name} del primo indice è \texttt{"Trovato"} & S \\ 
             \hline
             
-            TU136 & Testare che \texttt{\seqsplit{DipDashboardContainer}} avvii l'esportazione del file & \texttt{ElectronIpc.exportFile()} viene invocato con l'oggetto \texttt{\{documentUuid: 'doc-123', fileUuid: undefined\}} & S \\ 
+            TU178 & Testare che \texttt{\seqsplit{DipDashboardContainer}} avvii l'esportazione del file & \texttt{ElectronIpc.exportFile()} viene invocato con l'oggetto \texttt{\{documentUuid: 'doc-123', fileUuid: undefined\}} & S \\ 
             \hline
             
-            TU137 & Testare che \texttt{\seqsplit{DipDashboardContainer}} carichi lo stato dell'integrità dei documenti & \texttt{ElectronIpc.checkIntegrity()} viene invocato con \texttt{\{dipUuid: 'doc-123'\}} e \texttt{integrityMap().get('doc-123')} restituisce \texttt{true} & S \\ 
+            TU179 & Testare che \texttt{\seqsplit{DipDashboardContainer}} carichi lo stato dell'integrità dei documenti & \texttt{ElectronIpc.checkIntegrity()} viene invocato con \texttt{\{dipUuid: 'doc-123'\}} e \texttt{integrityMap().get('doc-123')} restituisce \texttt{true} & S \\ 
             \hline
             
-            TU138 & Testare che \texttt{\seqsplit{DipDashboardContainer}} gestisca l'anteprima interna per i file supportati & \texttt{ElectronIpc.fileInternalPreview()} viene invocato con l'UUID del documento, \texttt{documentFileUrl()} assume l'URL atteso e \texttt{previewItemFormato()} è \texttt{"pdf"} & S \\ 
+            TU180 & Testare che \texttt{\seqsplit{DipDashboardContainer}} gestisca l'anteprima interna per i file supportati & \texttt{ElectronIpc.fileInternalPreview()} viene invocato con l'UUID del documento, \texttt{documentFileUrl()} assume l'URL atteso e \texttt{previewItemFormato()} è \texttt{"pdf"} & S \\ 
             \hline
             
-            TU139 & Testare che \texttt{\seqsplit{DipDashboardContainer}} deleghi a un lettore esterno l'anteprima di file non supportati & \texttt{ElectronIpc.fileExternalPreview()} viene invocato con \texttt{\{documentUuid: 'doc-err', fileUuid: undefined\}} e \texttt{documentFileUrl()} risulta \texttt{null} & S \\ 
+            TU181 & Testare che \texttt{\seqsplit{DipDashboardContainer}} deleghi a un lettore esterno l'anteprima di file non supportati & \texttt{ElectronIpc.fileExternalPreview()} viene invocato con \texttt{\{documentUuid: 'doc-err', fileUuid: undefined\}} e \texttt{documentFileUrl()} risulta \texttt{null} & S \\ 
             \hline
             
-            TU140 & Testare che \texttt{\seqsplit{DipDashboardContainer}} aggiorni i dettagli e la selezione dello specifico allegato & \texttt{ElectronIpc.getDocumentDetails()} viene invocato per il documento padre e \texttt{selectedAllegato()?.uuid} restituisce \texttt{"att-123"} & S \\ 
+            TU182 & Testare che \texttt{\seqsplit{DipDashboardContainer}} aggiorni i dettagli e la selezione dello specifico allegato & \texttt{ElectronIpc.getDocumentDetails()} viene invocato per il documento padre e \texttt{selectedAllegato()?.uuid} restituisce \texttt{"att-123"} & S \\ 
             \hline
             
-            TU141 & Testare che \texttt{\seqsplit{DipDashboardContainer}} pulisca le risorse alla distruzione del componente & I segnali \texttt{selectedDocument()}, \texttt{selectedAllegato()} e \texttt{previewSelectedDocument()} restituiscono tutti \texttt{null} & S \\ 
+            TU183 & Testare che \texttt{\seqsplit{DipDashboardContainer}} pulisca le risorse alla distruzione del componente & I segnali \texttt{selectedDocument()}, \texttt{selectedAllegato()} e \texttt{previewSelectedDocument()} restituiscono tutti \texttt{null} & S \\ 
             \hline
             
-            TU142 & Testare che \texttt{\seqsplit{DipDashboardContainer}} gestisca correttamente gli errori restituiti dal backend & \texttt{selectedDocument()} restituisce \texttt{null} e \texttt{errorMessage()} assume la stringa \texttt{"Failed to load document details."} & S \\ 
+            TU184 & Testare che \texttt{\seqsplit{DipDashboardContainer}} gestisca correttamente gli errori restituiti dal backend & \texttt{selectedDocument()} restituisce \texttt{null} e \texttt{errorMessage()} assume la stringa \texttt{"Failed to load document details."} & S \\ 
             \hline
             
-            TU143 & Testare che \texttt{\seqsplit{DipDashboardContainer}} renderizzi i dettagli del documento selezionato nel template & \texttt{fixture.nativeElement.textContent} contiene le stringhe \texttt{"Dettagli Documento"}, \texttt{"Documento dettagliato"} e \texttt{"REG-10"} & S \\ 
+            TU185 & Testare che \texttt{\seqsplit{DipDashboardContainer}} renderizzi i dettagli del documento selezionato nel template & \texttt{fixture.nativeElement.textContent} contiene le stringhe \texttt{"Dettagli Documento"}, \texttt{"Documento dettagliato"} e \texttt{"REG-10"} & S \\ 
             \hline
 
         \end{longtable}
